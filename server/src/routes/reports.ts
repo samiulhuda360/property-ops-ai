@@ -1,6 +1,7 @@
 import { Router, Response } from 'express'
 import { authenticate, AuthRequest } from '../middleware/auth'
 import { aiUsage, hoursReport, monthsWithRuns } from '../reports/hours'
+import { workQueue } from '../reports/workQueue'
 
 const router = Router()
 router.use(authenticate)
@@ -18,6 +19,11 @@ router.get('/hours', async (req: AuthRequest, res: Response) => {
   const month = requested ?? months[0] ?? new Date().toISOString().slice(0, 7)
   const [report, usage] = await Promise.all([hoursReport(req.userId!, month), aiUsage(month)])
   res.json({ ...report, months, aiUsage: usage })
+})
+
+/** GET /api/reports/work-queue: counts of items waiting for a person, for the dashboard. */
+router.get('/work-queue', async (req: AuthRequest, res: Response) => {
+  res.json(await workQueue(req.userId!))
 })
 
 /** GET /api/reports/hours.csv?month=YYYY-MM: the same table for a spreadsheet or an owner report. */

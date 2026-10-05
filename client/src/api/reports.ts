@@ -1,6 +1,16 @@
 import api from './client'
 import { HoursReport } from '../types/reports'
 
+export interface WorkQueue {
+  documentsToReview: number
+  inboxNeedsPerson: number
+  urgentInbox: number
+  bankExceptions: number
+  overdueRent: number
+}
+
+export const getWorkQueue = () => api.get<WorkQueue>('/reports/work-queue').then((r) => r.data)
+
 export const getHoursReport = (month?: string) =>
   api.get<HoursReport>('/reports/hours', { params: month ? { month } : {} }).then((r) => r.data)
 

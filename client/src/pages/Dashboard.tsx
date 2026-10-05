@@ -49,7 +49,7 @@ export default function Dashboard() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard label="Total Properties" value={properties.length} sub={`${vacantProperties} vacant`} color="text-blue-600" />
         <StatCard label="Active Tenants" value={tenants.filter(t => t.leases && t.leases.length > 0).length} sub={`${tenants.length} total`} color="text-green-600" />
-        <StatCard label="Weekly Rent" value={`$${totalRent.toLocaleString()}`} sub="from tenanted properties" color="text-purple-600" />
+        <StatCard label="Weekly Rent" value={`$${totalRent.toLocaleString()}`} sub="from tenanted properties" color="text-emerald-600" />
         <StatCard label="Open Issues" value={overduePayments + openMaintenance} sub={`${overduePayments} payments · ${openMaintenance} maintenance`} color={overduePayments + openMaintenance > 0 ? 'text-red-600' : 'text-gray-900'} />
       </div>
 
