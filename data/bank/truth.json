@@ -1,0 +1,2650 @@
+{
+  "statement": "data/bank/2026-09-statement.csv",
+  "description": "Synthetic September 2026 trust account statement for the demo portfolio. Every person, address and business is invented.",
+  "period": {
+    "start": "2026-09-01",
+    "end": "2026-09-30"
+  },
+  "format": {
+    "columns": [
+      "Date",
+      "Amount",
+      "Payee",
+      "Particulars",
+      "Code",
+      "Reference",
+      "Transaction Type"
+    ],
+    "dates": "dd/mm/yyyy",
+    "amounts": "money in positive, money out negative"
+  },
+  "policy": [
+    "Rent is matched by reference, then payer name, then a unique amount with rent due in the date window.",
+    "Money for a tenancy pays its unpaid rent oldest first, for weeks due up to 6 days after the payment date.",
+    "What is left, if it is a whole number of weeks' rent, pays the following weeks in advance; anything else is credit.",
+    "Duplicates, payments to an ended tenancy, unknown payers and ambiguous lines are held for a person, not allocated.",
+    "A weekly payment is paid only when fully covered; arrears are rent due on or before the statement end and not covered."
+  ],
+  "portfolio": {
+    "openingBalance": "August 2026 rent paid; September 2026 rent pending (as seeded)",
+    "leases": [
+      {
+        "code": "MTE14",
+        "address": "14 Kowhai Road",
+        "suburb": "Mount Eden",
+        "tenant": {
+          "firstName": "Aroha",
+          "lastName": "Ngata"
+        },
+        "weeklyRent": 720,
+        "bondAmount": 2880,
+        "rentReference": "NGATA MTE14",
+        "status": "active",
+        "startDate": "2025-02-10",
+        "endDate": null,
+        "payments": [
+          {
+            "dueDate": "2026-08-03",
+            "amount": 720,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-10",
+            "amount": 720,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-17",
+            "amount": 720,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-24",
+            "amount": 720,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-31",
+            "amount": 720,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-09-07",
+            "amount": 720,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-14",
+            "amount": 720,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-21",
+            "amount": 720,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-28",
+            "amount": 720,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "code": "PON7",
+        "address": "7 Vine Street",
+        "suburb": "Ponsonby",
+        "tenant": {
+          "firstName": "Daniel",
+          "lastName": "Kim"
+        },
+        "weeklyRent": 650,
+        "bondAmount": 2600,
+        "rentReference": "KIM PON7",
+        "status": "active",
+        "startDate": "2024-11-04",
+        "endDate": null,
+        "payments": [
+          {
+            "dueDate": "2026-08-03",
+            "amount": 650,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-10",
+            "amount": 650,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-17",
+            "amount": 650,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-24",
+            "amount": 650,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-31",
+            "amount": 650,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-09-07",
+            "amount": 650,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-14",
+            "amount": 650,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-21",
+            "amount": 650,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-28",
+            "amount": 650,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "code": "GLN22",
+        "address": "22 Ash Street",
+        "suburb": "Glen Innes",
+        "tenant": {
+          "firstName": "Mele",
+          "lastName": "Fifita"
+        },
+        "weeklyRent": 610,
+        "bondAmount": 2440,
+        "rentReference": "FIFITA GLN22",
+        "status": "active",
+        "startDate": "2025-06-02",
+        "endDate": null,
+        "payments": [
+          {
+            "dueDate": "2026-08-03",
+            "amount": 610,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-10",
+            "amount": 610,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-17",
+            "amount": 610,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-24",
+            "amount": 610,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-31",
+            "amount": 610,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-09-07",
+            "amount": 610,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-14",
+            "amount": 610,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-21",
+            "amount": 610,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-28",
+            "amount": 610,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "code": "HND5",
+        "address": "5 Rimu Crescent",
+        "suburb": "Henderson",
+        "tenant": {
+          "firstName": "Rajesh",
+          "lastName": "Patel"
+        },
+        "weeklyRent": 680,
+        "bondAmount": 2720,
+        "rentReference": "PATEL HND5",
+        "status": "active",
+        "startDate": "2023-09-18",
+        "endDate": null,
+        "payments": [
+          {
+            "dueDate": "2026-08-03",
+            "amount": 680,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-10",
+            "amount": 680,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-17",
+            "amount": 680,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-24",
+            "amount": 680,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-31",
+            "amount": 680,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-09-07",
+            "amount": 680,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-14",
+            "amount": 680,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-21",
+            "amount": 680,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-28",
+            "amount": 680,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "code": "TAK9",
+        "address": "9 Totara Avenue",
+        "suburb": "Takapuna",
+        "tenant": {
+          "firstName": "Sophie",
+          "lastName": "Clarke"
+        },
+        "weeklyRent": 780,
+        "bondAmount": 3120,
+        "rentReference": "CLARKE TAK9",
+        "status": "active",
+        "startDate": "2025-01-13",
+        "endDate": null,
+        "payments": [
+          {
+            "dueDate": "2026-08-03",
+            "amount": 780,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-10",
+            "amount": 780,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-17",
+            "amount": 780,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-24",
+            "amount": 780,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-31",
+            "amount": 780,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-09-07",
+            "amount": 780,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-14",
+            "amount": 780,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-21",
+            "amount": 780,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-28",
+            "amount": 780,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "code": "ONE3",
+        "address": "3/41 Arthur Street",
+        "suburb": "Onehunga",
+        "tenant": {
+          "firstName": "Tom",
+          "lastName": "Wright"
+        },
+        "weeklyRent": 560,
+        "bondAmount": 2240,
+        "rentReference": "WRIGHT ONE3",
+        "status": "active",
+        "startDate": "2026-03-02",
+        "endDate": null,
+        "payments": [
+          {
+            "dueDate": "2026-08-03",
+            "amount": 560,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-10",
+            "amount": 560,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-17",
+            "amount": 560,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-24",
+            "amount": 560,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-31",
+            "amount": 560,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-09-07",
+            "amount": 560,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-14",
+            "amount": 560,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-21",
+            "amount": 560,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-28",
+            "amount": 560,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "code": "PAP18",
+        "address": "18 Matai Road",
+        "suburb": "Papatoetoe",
+        "tenant": {
+          "firstName": "Ana",
+          "lastName": "Tupou"
+        },
+        "weeklyRent": 590,
+        "bondAmount": 2360,
+        "rentReference": "TUPOU PAP18",
+        "status": "active",
+        "startDate": "2024-07-22",
+        "endDate": null,
+        "payments": [
+          {
+            "dueDate": "2026-08-03",
+            "amount": 590,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-10",
+            "amount": 590,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-17",
+            "amount": 590,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-24",
+            "amount": 590,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-31",
+            "amount": 590,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-09-07",
+            "amount": 590,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-14",
+            "amount": 590,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-21",
+            "amount": 590,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-28",
+            "amount": 590,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "code": "NLN11",
+        "address": "11 Kauri Lane",
+        "suburb": "New Lynn",
+        "tenant": {
+          "firstName": "Liam",
+          "lastName": "O'Brien"
+        },
+        "weeklyRent": 540,
+        "bondAmount": 2160,
+        "rentReference": "OBRIEN NLN11",
+        "status": "active",
+        "startDate": "2025-10-06",
+        "endDate": null,
+        "payments": [
+          {
+            "dueDate": "2026-08-03",
+            "amount": 540,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-10",
+            "amount": 540,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-17",
+            "amount": 540,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-24",
+            "amount": 540,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-31",
+            "amount": 540,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-09-07",
+            "amount": 540,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-14",
+            "amount": 540,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-21",
+            "amount": 540,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-28",
+            "amount": 540,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "code": "MRB6",
+        "address": "6 Tui Terrace",
+        "suburb": "Mairangi Bay",
+        "tenant": {
+          "firstName": "Hannah",
+          "lastName": "Lee"
+        },
+        "weeklyRent": 850,
+        "bondAmount": 3400,
+        "rentReference": "LEE MRB6",
+        "status": "active",
+        "startDate": "2024-04-15",
+        "endDate": null,
+        "payments": [
+          {
+            "dueDate": "2026-08-03",
+            "amount": 850,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-10",
+            "amount": 850,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-17",
+            "amount": 850,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-24",
+            "amount": 850,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-31",
+            "amount": 850,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-09-07",
+            "amount": 850,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-14",
+            "amount": 850,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-21",
+            "amount": 850,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-28",
+            "amount": 850,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "code": "AVD25",
+        "address": "25 Puriri Street",
+        "suburb": "Avondale",
+        "tenant": {
+          "firstName": "Wiremu",
+          "lastName": "Parata"
+        },
+        "weeklyRent": 600,
+        "bondAmount": 2400,
+        "rentReference": "PARATA AVD25",
+        "status": "active",
+        "startDate": "2025-08-25",
+        "endDate": null,
+        "payments": [
+          {
+            "dueDate": "2026-08-03",
+            "amount": 600,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-10",
+            "amount": 600,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-17",
+            "amount": 600,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-24",
+            "amount": 600,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-31",
+            "amount": 600,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-09-07",
+            "amount": 600,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-14",
+            "amount": 600,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-21",
+            "amount": 600,
+            "status": "pending"
+          },
+          {
+            "dueDate": "2026-09-28",
+            "amount": 600,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "code": "HOW30",
+        "address": "30 Pohutukawa Drive",
+        "suburb": "Howick",
+        "tenant": {
+          "firstName": "Grace",
+          "lastName": "Chen"
+        },
+        "weeklyRent": 760,
+        "bondAmount": 3040,
+        "rentReference": "CHEN HOW30",
+        "status": "ended",
+        "startDate": "2023-05-01",
+        "endDate": "2026-08-31",
+        "payments": [
+          {
+            "dueDate": "2026-08-03",
+            "amount": 760,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-10",
+            "amount": 760,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-17",
+            "amount": 760,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-24",
+            "amount": 760,
+            "status": "paid"
+          },
+          {
+            "dueDate": "2026-08-31",
+            "amount": 760,
+            "status": "paid"
+          }
+        ]
+      }
+    ],
+    "vacantProperties": [
+      {
+        "code": "BLK2",
+        "address": "2/8 Manuka Road",
+        "suburb": "Blockhouse Bay"
+      }
+    ],
+    "contractors": [
+      {
+        "name": "Acme Plumbing",
+        "trade": "plumbing"
+      },
+      {
+        "name": "Acme Electrical",
+        "trade": "electrical"
+      },
+      {
+        "name": "Acme Cleaning Co",
+        "trade": "cleaning"
+      },
+      {
+        "name": "Acme Gardens",
+        "trade": "gardening"
+      },
+      {
+        "name": "Acme Locksmiths",
+        "trade": "locksmith"
+      },
+      {
+        "name": "Acme Roofing",
+        "trade": "roofing"
+      },
+      {
+        "name": "Acme Pest Control",
+        "trade": "pest_control"
+      },
+      {
+        "name": "Acme Insurance",
+        "trade": "insurance"
+      },
+      {
+        "name": "Acme Water",
+        "trade": "utilities"
+      }
+    ],
+    "jobs": [
+      {
+        "key": "MTE14: Hot water cylinder element",
+        "property": "MTE14",
+        "contractor": "Acme Plumbing",
+        "title": "Hot water cylinder element",
+        "status": "in_progress",
+        "quoteAmount": 480
+      },
+      {
+        "key": "PON7: Leaking kitchen mixer",
+        "property": "PON7",
+        "contractor": "Acme Plumbing",
+        "title": "Leaking kitchen mixer",
+        "status": "completed",
+        "quoteAmount": 220
+      },
+      {
+        "key": "GLN22: Smoke alarms to standard",
+        "property": "GLN22",
+        "contractor": "Acme Electrical",
+        "title": "Smoke alarms to standard",
+        "status": "completed",
+        "quoteAmount": 360
+      },
+      {
+        "key": "HND5: Gutter clean and downpipe",
+        "property": "HND5",
+        "contractor": "Acme Roofing",
+        "title": "Gutter clean and downpipe",
+        "status": "in_progress",
+        "quoteAmount": 540
+      },
+      {
+        "key": "TAK9: Front door lock",
+        "property": "TAK9",
+        "contractor": "Acme Locksmiths",
+        "title": "Front door lock",
+        "status": "completed",
+        "quoteAmount": 295
+      },
+      {
+        "key": "ONE3: Bathroom extractor fan",
+        "property": "ONE3",
+        "contractor": "Acme Electrical",
+        "title": "Bathroom extractor fan",
+        "status": "open",
+        "quoteAmount": 310
+      },
+      {
+        "key": "PAP18: Lawn and hedge tidy",
+        "property": "PAP18",
+        "contractor": "Acme Gardens",
+        "title": "Lawn and hedge tidy",
+        "status": "completed",
+        "quoteAmount": 180
+      },
+      {
+        "key": "NLN11: Mould treatment, bedroom 2",
+        "property": "NLN11",
+        "contractor": "Acme Cleaning Co",
+        "title": "Mould treatment, bedroom 2",
+        "status": "open",
+        "quoteAmount": 420
+      },
+      {
+        "key": "MRB6: Heat pump service",
+        "property": "MRB6",
+        "contractor": "Acme Electrical",
+        "title": "Heat pump service",
+        "status": "completed",
+        "quoteAmount": 240
+      },
+      {
+        "key": "AVD25: Rodent treatment",
+        "property": "AVD25",
+        "contractor": "Acme Pest Control",
+        "title": "Rodent treatment",
+        "status": "in_progress",
+        "quoteAmount": 260
+      },
+      {
+        "key": "HOW30: End of tenancy clean",
+        "property": "HOW30",
+        "contractor": "Acme Cleaning Co",
+        "title": "End of tenancy clean",
+        "status": "completed",
+        "quoteAmount": 520
+      }
+    ]
+  },
+  "lines": [
+    {
+      "row": 1,
+      "date": "2026-09-01",
+      "amount": 1800,
+      "payee": "K HAWKINS",
+      "particulars": "BOND",
+      "code": "BLK2",
+      "reference": "2/8 MANUKA RD",
+      "transactionType": "Direct Credit",
+      "expected": {
+        "type": "bond",
+        "lease": null,
+        "contractor": null,
+        "job": null,
+        "property": "BLK2",
+        "exception": null,
+        "autoAllocate": false,
+        "allocations": [],
+        "credit": 0
+      },
+      "answer": null,
+      "case": "bond_receipt",
+      "noise": [],
+      "note": "Bond for a new tenancy at 2/8 Manuka Road (4 weeks at $450). It must be lodged, not counted as rent."
+    },
+    {
+      "row": 2,
+      "date": "2026-09-07",
+      "amount": 720,
+      "payee": "A NGATA",
+      "particulars": "RENT",
+      "code": "",
+      "reference": "NGATA MTE14",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "MTE14",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-07",
+            "amount": 720
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [],
+      "note": "Regular rent."
+    },
+    {
+      "row": 3,
+      "date": "2026-09-07",
+      "amount": 650,
+      "payee": "D KIM",
+      "particulars": "",
+      "code": "",
+      "reference": "KIM PON7",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "PON7",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-07",
+            "amount": 650
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [],
+      "note": "Regular rent."
+    },
+    {
+      "row": 4,
+      "date": "2026-09-07",
+      "amount": 1220,
+      "payee": "M FIFITA",
+      "particulars": "FORTNIGHT",
+      "code": "",
+      "reference": "FIFITA GLN22",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "GLN22",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-07",
+            "amount": 610
+          },
+          {
+            "week": "2026-09-14",
+            "amount": 610
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": "fortnightly_payment",
+      "noise": [],
+      "note": "Pays fortnightly: two weeks of rent (7 and 14 September)."
+    },
+    {
+      "row": 5,
+      "date": "2026-09-07",
+      "amount": 680,
+      "payee": "R PATEL",
+      "particulars": "RENT",
+      "code": "",
+      "reference": "PATEL HND5",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "HND5",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-07",
+            "amount": 680
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [],
+      "note": "Regular rent."
+    },
+    {
+      "row": 6,
+      "date": "2026-09-07",
+      "amount": 780,
+      "payee": "J LEE",
+      "particulars": "RENT",
+      "code": "",
+      "reference": "CLARKE TAK9",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "TAK9",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-07",
+            "amount": 780
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [
+        "partner_pays"
+      ],
+      "note": "Sophie Clarke's partner pays from their own account, with the right reference."
+    },
+    {
+      "row": 7,
+      "date": "2026-09-07",
+      "amount": 560,
+      "payee": "T WRIGHT",
+      "particulars": "",
+      "code": "",
+      "reference": "WRIGHT ONE3",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "ONE3",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-07",
+            "amount": 560
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [],
+      "note": "Regular rent."
+    },
+    {
+      "row": 8,
+      "date": "2026-09-07",
+      "amount": 590,
+      "payee": "A TUPOU",
+      "particulars": "RENT",
+      "code": "",
+      "reference": "TUPOU PAP18",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "PAP18",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-07",
+            "amount": 590
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [],
+      "note": "Regular rent."
+    },
+    {
+      "row": 9,
+      "date": "2026-09-07",
+      "amount": 850,
+      "payee": "H LEE",
+      "particulars": "RENT",
+      "code": "",
+      "reference": "LEE MRB6",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "MRB6",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-07",
+            "amount": 850
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [],
+      "note": "Regular rent."
+    },
+    {
+      "row": 10,
+      "date": "2026-09-07",
+      "amount": 760,
+      "payee": "G CHEN",
+      "particulars": "RENT",
+      "code": "",
+      "reference": "CHEN HOW30",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "HOW30",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": "payment_to_ended_lease",
+        "autoAllocate": false,
+        "allocations": [],
+        "credit": 0
+      },
+      "answer": null,
+      "case": "payment_after_lease_end",
+      "noise": [],
+      "note": "Grace Chen's tenancy ended on 31 August; her automatic payment ran once more. It is owed back to her."
+    },
+    {
+      "row": 11,
+      "date": "2026-09-08",
+      "amount": 540,
+      "payee": "L OBRIEN",
+      "particulars": "",
+      "code": "",
+      "reference": "OBRIEN NLN11",
+      "transactionType": "Direct Credit",
+      "expected": {
+        "type": "rent",
+        "lease": "NLN11",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-07",
+            "amount": 540
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [],
+      "note": "Regular rent, paid a day late."
+    },
+    {
+      "row": 12,
+      "date": "2026-09-08",
+      "amount": 600,
+      "payee": "W PARATA",
+      "particulars": "",
+      "code": "",
+      "reference": "parata avd25",
+      "transactionType": "Direct Credit",
+      "expected": {
+        "type": "rent",
+        "lease": "AVD25",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-07",
+            "amount": 600
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [
+        "lower_case_reference"
+      ],
+      "note": "Regular rent, lower-case reference."
+    },
+    {
+      "row": 13,
+      "date": "2026-09-09",
+      "amount": -520,
+      "payee": "ACME CLEANING CO",
+      "particulars": "INV 7781",
+      "code": "HOW30",
+      "reference": "END OF TENANCY",
+      "transactionType": "Bill Payment",
+      "expected": {
+        "type": "contractor",
+        "lease": null,
+        "contractor": "Acme Cleaning Co",
+        "job": "HOW30: End of tenancy clean",
+        "property": null,
+        "exception": null,
+        "autoAllocate": false,
+        "allocations": [],
+        "credit": 0
+      },
+      "answer": null,
+      "case": "contractor_at_quote",
+      "noise": [],
+      "note": "End of tenancy clean, paid at the quoted amount."
+    },
+    {
+      "row": 14,
+      "date": "2026-09-10",
+      "amount": -760,
+      "payee": "G CHEN",
+      "particulars": "REFUND",
+      "code": "HOW30",
+      "reference": "RENT 07 SEP",
+      "transactionType": "Bill Payment",
+      "expected": {
+        "type": "refund",
+        "lease": "HOW30",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": false,
+        "allocations": [],
+        "credit": 0
+      },
+      "answer": null,
+      "case": "refund_to_ex_tenant",
+      "noise": [],
+      "note": "Refund of the automatic payment that arrived after the tenancy ended."
+    },
+    {
+      "row": 15,
+      "date": "2026-09-11",
+      "amount": 495,
+      "payee": "B HARRIS",
+      "particulars": "RENT",
+      "code": "",
+      "reference": "12 FERN ST",
+      "transactionType": "Direct Credit",
+      "expected": {
+        "type": "unknown",
+        "lease": null,
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": "unknown_payer",
+        "autoAllocate": false,
+        "allocations": [],
+        "credit": 0
+      },
+      "answer": {
+        "lease": null,
+        "category": "unidentified"
+      },
+      "case": "unknown_payer",
+      "noise": [],
+      "note": "Not a tenant and not one of our properties: most likely paid to the wrong property manager."
+    },
+    {
+      "row": 16,
+      "date": "2026-09-14",
+      "amount": 720,
+      "payee": "AROHA NGATA",
+      "particulars": "",
+      "code": "",
+      "reference": "ngata mte14",
+      "transactionType": "Direct Credit",
+      "expected": {
+        "type": "rent",
+        "lease": "MTE14",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-14",
+            "amount": 720
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [
+        "lower_case_reference",
+        "full_name_payee"
+      ],
+      "note": "Regular rent."
+    },
+    {
+      "row": 17,
+      "date": "2026-09-14",
+      "amount": 650,
+      "payee": "D KIM",
+      "particulars": "",
+      "code": "",
+      "reference": "KIM PON7",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "PON7",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-14",
+            "amount": 650
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [],
+      "note": "Regular rent."
+    },
+    {
+      "row": 18,
+      "date": "2026-09-14",
+      "amount": 650,
+      "payee": "D KIM",
+      "particulars": "",
+      "code": "",
+      "reference": "KIM PON7",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "PON7",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": "duplicate",
+        "autoAllocate": false,
+        "allocations": [],
+        "credit": 0
+      },
+      "answer": null,
+      "case": "duplicate",
+      "noise": [],
+      "note": "The same payment listed twice in the export."
+    },
+    {
+      "row": 19,
+      "date": "2026-09-14",
+      "amount": 680,
+      "payee": "R PATEL",
+      "particulars": "RENT",
+      "code": "",
+      "reference": "PATEL HND5",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "HND5",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-14",
+            "amount": 680
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [],
+      "note": "Regular rent."
+    },
+    {
+      "row": 20,
+      "date": "2026-09-14",
+      "amount": 780,
+      "payee": "J LEE",
+      "particulars": "",
+      "code": "",
+      "reference": "clarke tak9 rent",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "TAK9",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-14",
+            "amount": 780
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [
+        "partner_pays",
+        "lower_case_reference",
+        "extra_words"
+      ],
+      "note": "Sophie Clarke's partner again, with the reference in lower case."
+    },
+    {
+      "row": 21,
+      "date": "2026-09-14",
+      "amount": 510,
+      "payee": "T WRIGHT",
+      "particulars": "",
+      "code": "",
+      "reference": "WRIGHT ONE3",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "ONE3",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": "underpaid",
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-14",
+            "amount": 510
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": "underpaid",
+      "noise": [],
+      "note": "$50 short of the $560 weekly rent. The shortfall carries forward to the following weeks."
+    },
+    {
+      "row": 22,
+      "date": "2026-09-14",
+      "amount": 540,
+      "payee": "LIAM O'BRIEN",
+      "particulars": "",
+      "code": "",
+      "reference": "O'Brien NLN11",
+      "transactionType": "Direct Credit",
+      "expected": {
+        "type": "rent",
+        "lease": "NLN11",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-14",
+            "amount": 540
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [
+        "apostrophe",
+        "mixed_case_reference"
+      ],
+      "note": "Regular rent; the last payment Liam O'Brien makes this month."
+    },
+    {
+      "row": 23,
+      "date": "2026-09-14",
+      "amount": 850,
+      "payee": "H LEE",
+      "particulars": "RENT",
+      "code": "",
+      "reference": "LEE MRB6",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "MRB6",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-14",
+            "amount": 850
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [],
+      "note": "Regular rent."
+    },
+    {
+      "row": 24,
+      "date": "2026-09-15",
+      "amount": 590,
+      "payee": "TUPOU, A",
+      "particulars": "RENT",
+      "code": "",
+      "reference": "tupou pap18",
+      "transactionType": "Direct Credit",
+      "expected": {
+        "type": "rent",
+        "lease": "PAP18",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-14",
+            "amount": 590
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [
+        "comma_in_payee",
+        "lower_case_reference"
+      ],
+      "note": "Regular rent, a day late."
+    },
+    {
+      "row": 25,
+      "date": "2026-09-15",
+      "amount": 600,
+      "payee": "W PARATA",
+      "particulars": "",
+      "code": "",
+      "reference": "PARATA AVD25",
+      "transactionType": "Direct Credit",
+      "expected": {
+        "type": "rent",
+        "lease": "AVD25",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-14",
+            "amount": 600
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [],
+      "note": "Regular rent, a day late."
+    },
+    {
+      "row": 26,
+      "date": "2026-09-15",
+      "amount": -220,
+      "payee": "ACME PLUMBING LTD",
+      "particulars": "INV 1042",
+      "code": "PON7",
+      "reference": "KITCHEN MIXER",
+      "transactionType": "Bill Payment",
+      "expected": {
+        "type": "contractor",
+        "lease": null,
+        "contractor": "Acme Plumbing",
+        "job": "PON7: Leaking kitchen mixer",
+        "property": null,
+        "exception": null,
+        "autoAllocate": false,
+        "allocations": [],
+        "credit": 0
+      },
+      "answer": null,
+      "case": "contractor_at_quote",
+      "noise": [],
+      "note": "Leaking kitchen mixer, paid at the quoted amount."
+    },
+    {
+      "row": 27,
+      "date": "2026-09-18",
+      "amount": -395,
+      "payee": "ACME ELECTRICAL",
+      "particulars": "INV 2210",
+      "code": "GLN22",
+      "reference": "SMOKE ALARMS",
+      "transactionType": "Bill Payment",
+      "expected": {
+        "type": "contractor",
+        "lease": null,
+        "contractor": "Acme Electrical",
+        "job": "GLN22: Smoke alarms to standard",
+        "property": null,
+        "exception": "amount_differs_from_quote",
+        "autoAllocate": false,
+        "allocations": [],
+        "credit": 0
+      },
+      "answer": null,
+      "case": "amount_differs_from_quote",
+      "noise": [],
+      "note": "Smoke alarms job quoted at $360; paid $395."
+    },
+    {
+      "row": 28,
+      "date": "2026-09-21",
+      "amount": 720,
+      "payee": "A NGATA",
+      "particulars": "RENT",
+      "code": "WK3",
+      "reference": "RENT NGATA MTE14",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "MTE14",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-21",
+            "amount": 720
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [
+        "extra_words"
+      ],
+      "note": "Regular rent, extra words around the reference."
+    },
+    {
+      "row": 29,
+      "date": "2026-09-21",
+      "amount": 650,
+      "payee": "KIM, D",
+      "particulars": "",
+      "code": "",
+      "reference": "Kim Pon7",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "PON7",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-21",
+            "amount": 650
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [
+        "comma_in_payee",
+        "mixed_case_reference"
+      ],
+      "note": "Regular rent."
+    },
+    {
+      "row": 30,
+      "date": "2026-09-21",
+      "amount": 1220,
+      "payee": "MELE FIFITA",
+      "particulars": "FORTNIGHT",
+      "code": "",
+      "reference": "fifita gln22",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "GLN22",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-21",
+            "amount": 610
+          },
+          {
+            "week": "2026-09-28",
+            "amount": 610
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": "fortnightly_payment",
+      "noise": [
+        "lower_case_reference",
+        "full_name_payee"
+      ],
+      "note": "Fortnightly payment: 21 and 28 September."
+    },
+    {
+      "row": 31,
+      "date": "2026-09-21",
+      "amount": 680,
+      "payee": "RAJESH PATEL",
+      "particulars": "",
+      "code": "",
+      "reference": "SEPT RENT",
+      "transactionType": "Direct Credit",
+      "expected": {
+        "type": "rent",
+        "lease": "HND5",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-21",
+            "amount": 680
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": "wrong_reference_known_payer",
+      "noise": [],
+      "note": "Wrong reference, but the payer is the tenant and the amount is exactly the rent."
+    },
+    {
+      "row": 32,
+      "date": "2026-09-21",
+      "amount": 780,
+      "payee": "J LEE",
+      "particulars": "",
+      "code": "",
+      "reference": "",
+      "transactionType": "Direct Credit",
+      "expected": {
+        "type": "rent",
+        "lease": null,
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": "ambiguous",
+        "autoAllocate": false,
+        "allocations": [],
+        "credit": 0
+      },
+      "answer": {
+        "lease": "TAK9",
+        "category": "rent"
+      },
+      "case": "ambiguous",
+      "noise": [],
+      "note": "Sophie Clarke's partner paid with no reference. The surname matches Hannah Lee, but the amount is Sophie Clarke's rent, and the same payer used the TAK9 reference earlier in the month."
+    },
+    {
+      "row": 33,
+      "date": "2026-09-21",
+      "amount": 560,
+      "payee": "T WRIGHT",
+      "particulars": "",
+      "code": "",
+      "reference": "WRIGHT ONE3",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "ONE3",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-14",
+            "amount": 50
+          },
+          {
+            "week": "2026-09-21",
+            "amount": 510
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [],
+      "note": "Full rent; $50 goes to the previous week first."
+    },
+    {
+      "row": 34,
+      "date": "2026-09-21",
+      "amount": 900,
+      "payee": "H LEE",
+      "particulars": "RENT",
+      "code": "",
+      "reference": "LEE MRB6",
+      "transactionType": "Direct Credit",
+      "expected": {
+        "type": "rent",
+        "lease": "MRB6",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": "overpaid",
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-21",
+            "amount": 850
+          }
+        ],
+        "credit": 50
+      },
+      "answer": null,
+      "case": "overpaid",
+      "noise": [],
+      "note": "$50 more than the $850 rent: held as credit."
+    },
+    {
+      "row": 35,
+      "date": "2026-09-21",
+      "amount": 600,
+      "payee": "WIREMU PARATA",
+      "particulars": "RENT",
+      "code": "",
+      "reference": "PARATA AVD25",
+      "transactionType": "Direct Credit",
+      "expected": {
+        "type": "rent",
+        "lease": "AVD25",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-21",
+            "amount": 600
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [
+        "full_name_payee"
+      ],
+      "note": "Regular rent."
+    },
+    {
+      "row": 36,
+      "date": "2026-09-22",
+      "amount": 590,
+      "payee": "A TUPOU",
+      "particulars": "RENT",
+      "code": "",
+      "reference": "TUPOU PAP18",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "PAP18",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-21",
+            "amount": 590
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [],
+      "note": "Regular rent, a day late."
+    },
+    {
+      "row": 37,
+      "date": "2026-09-22",
+      "amount": -95,
+      "payee": "ACME GARDENS",
+      "particulars": "INV 0311",
+      "code": "HOW30",
+      "reference": "LAWNS",
+      "transactionType": "Bill Payment",
+      "expected": {
+        "type": "contractor",
+        "lease": null,
+        "contractor": "Acme Gardens",
+        "job": null,
+        "property": null,
+        "exception": "no_matching_job",
+        "autoAllocate": false,
+        "allocations": [],
+        "credit": 0
+      },
+      "answer": null,
+      "case": "no_matching_job",
+      "noise": [],
+      "note": "Lawns at 30 Pohutukawa Drive: Acme Gardens has no job there and no job at this amount."
+    },
+    {
+      "row": 38,
+      "date": "2026-09-24",
+      "amount": 610,
+      "payee": "SIONE M",
+      "particulars": "MELE RENT",
+      "code": "",
+      "reference": "",
+      "transactionType": "Direct Credit",
+      "expected": {
+        "type": "unknown",
+        "lease": null,
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": "unknown_payer",
+        "autoAllocate": false,
+        "allocations": [],
+        "credit": 0
+      },
+      "answer": {
+        "lease": "GLN22",
+        "category": "rent"
+      },
+      "case": "unknown_payer",
+      "noise": [],
+      "note": "A relative paid a week of Mele Fifita's rent (her first name, her exact rent) although her fortnightly payments already cover the month."
+    },
+    {
+      "row": 39,
+      "date": "2026-09-25",
+      "amount": 35,
+      "payee": "ACME ELECTRICAL",
+      "particulars": "CREDIT NOTE",
+      "code": "GLN22",
+      "reference": "CN 2210",
+      "transactionType": "Direct Credit",
+      "expected": {
+        "type": "contractor",
+        "lease": null,
+        "contractor": "Acme Electrical",
+        "job": "GLN22: Smoke alarms to standard",
+        "property": null,
+        "exception": null,
+        "autoAllocate": false,
+        "allocations": [],
+        "credit": 0
+      },
+      "answer": null,
+      "case": "contractor_credit_note",
+      "noise": [],
+      "note": "Credit note for the smoke alarms invoice. The GLN22 code must not be read as rent from Mele Fifita."
+    },
+    {
+      "row": 40,
+      "date": "2026-09-28",
+      "amount": 720,
+      "payee": "TE AWA M",
+      "particulars": "",
+      "code": "",
+      "reference": "14 KOWHAI RD",
+      "transactionType": "Direct Credit",
+      "expected": {
+        "type": "rent",
+        "lease": "MTE14",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-28",
+            "amount": 720
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": "amount_and_date_match",
+      "noise": [],
+      "note": "Aroha Ngata's mother paid this week. No reference or name match; $720 is only Aroha Ngata's rent, and her week is due."
+    },
+    {
+      "row": 41,
+      "date": "2026-09-28",
+      "amount": 650,
+      "payee": "D KIM",
+      "particulars": "",
+      "code": "",
+      "reference": "KIM PON7",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "PON7",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-28",
+            "amount": 650
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [],
+      "note": "Regular rent."
+    },
+    {
+      "row": 42,
+      "date": "2026-09-28",
+      "amount": 680,
+      "payee": "R PATEL",
+      "particulars": "RENT",
+      "code": "",
+      "reference": "PATEL HND5",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "HND5",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-28",
+            "amount": 680
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [],
+      "note": "Regular rent."
+    },
+    {
+      "row": 43,
+      "date": "2026-09-28",
+      "amount": 780,
+      "payee": "S CLARKE",
+      "particulars": "RENT",
+      "code": "",
+      "reference": "CLARKE TAK9",
+      "transactionType": "Direct Credit",
+      "expected": {
+        "type": "rent",
+        "lease": "TAK9",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-21",
+            "amount": 780
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [],
+      "note": "Sophie Clarke pays this week herself."
+    },
+    {
+      "row": 44,
+      "date": "2026-09-28",
+      "amount": 560,
+      "payee": "T WRIGHT",
+      "particulars": "",
+      "code": "",
+      "reference": "WRIGHT ONE3",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "ONE3",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-21",
+            "amount": 50
+          },
+          {
+            "week": "2026-09-28",
+            "amount": 510
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [],
+      "note": "Full rent; the $50 shortfall is still carried."
+    },
+    {
+      "row": 45,
+      "date": "2026-09-28",
+      "amount": 850,
+      "payee": "H LEE",
+      "particulars": "RENT",
+      "code": "",
+      "reference": "LEE MRB6",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "MRB6",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-28",
+            "amount": 850
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [],
+      "note": "Regular rent."
+    },
+    {
+      "row": 46,
+      "date": "2026-09-29",
+      "amount": 590,
+      "payee": "A TUPOU",
+      "particulars": "RENT",
+      "code": "",
+      "reference": "TUPOU PAP18",
+      "transactionType": "Automatic Payment",
+      "expected": {
+        "type": "rent",
+        "lease": "PAP18",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-28",
+            "amount": 590
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [],
+      "note": "Regular rent, a day late."
+    },
+    {
+      "row": 47,
+      "date": "2026-09-29",
+      "amount": 600,
+      "payee": "W PARATA",
+      "particulars": "",
+      "code": "",
+      "reference": "PARATA AVD25",
+      "transactionType": "Direct Credit",
+      "expected": {
+        "type": "rent",
+        "lease": "AVD25",
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": true,
+        "allocations": [
+          {
+            "week": "2026-09-28",
+            "amount": 600
+          }
+        ],
+        "credit": 0
+      },
+      "answer": null,
+      "case": null,
+      "noise": [],
+      "note": "Regular rent, a day late."
+    },
+    {
+      "row": 48,
+      "date": "2026-09-30",
+      "amount": -5,
+      "payee": "",
+      "particulars": "MONTHLY A/C FEE",
+      "code": "",
+      "reference": "",
+      "transactionType": "Bank Fee",
+      "expected": {
+        "type": "fee",
+        "lease": null,
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": false,
+        "allocations": [],
+        "credit": 0
+      },
+      "answer": null,
+      "case": "bank_fee",
+      "noise": [],
+      "note": "Monthly account fee."
+    },
+    {
+      "row": 49,
+      "date": "2026-09-30",
+      "amount": -2.4,
+      "payee": "",
+      "particulars": "TRANSACTION FEES",
+      "code": "",
+      "reference": "",
+      "transactionType": "Bank Fee",
+      "expected": {
+        "type": "fee",
+        "lease": null,
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": false,
+        "allocations": [],
+        "credit": 0
+      },
+      "answer": null,
+      "case": "bank_fee",
+      "noise": [],
+      "note": "Transaction fees for the month."
+    },
+    {
+      "row": 50,
+      "date": "2026-09-30",
+      "amount": -9000,
+      "payee": "OWNER DISBURSEMENTS",
+      "particulars": "SEP 2026",
+      "code": "",
+      "reference": "TRUST TFR",
+      "transactionType": "Transfer",
+      "expected": {
+        "type": "transfer",
+        "lease": null,
+        "contractor": null,
+        "job": null,
+        "property": null,
+        "exception": null,
+        "autoAllocate": false,
+        "allocations": [],
+        "credit": 0
+      },
+      "answer": null,
+      "case": "transfer",
+      "noise": [],
+      "note": "Monthly transfer of the owners' rent to the disbursements account."
+    }
+  ],
+  "cases": [
+    {
+      "case": "bond_receipt",
+      "rows": [
+        1
+      ]
+    },
+    {
+      "case": "fortnightly_payment",
+      "rows": [
+        4,
+        30
+      ]
+    },
+    {
+      "case": "payment_after_lease_end",
+      "rows": [
+        10
+      ]
+    },
+    {
+      "case": "contractor_at_quote",
+      "rows": [
+        13,
+        26
+      ]
+    },
+    {
+      "case": "refund_to_ex_tenant",
+      "rows": [
+        14
+      ]
+    },
+    {
+      "case": "unknown_payer",
+      "rows": [
+        15,
+        38
+      ]
+    },
+    {
+      "case": "duplicate",
+      "rows": [
+        18
+      ]
+    },
+    {
+      "case": "underpaid",
+      "rows": [
+        21
+      ]
+    },
+    {
+      "case": "amount_differs_from_quote",
+      "rows": [
+        27
+      ]
+    },
+    {
+      "case": "wrong_reference_known_payer",
+      "rows": [
+        31
+      ]
+    },
+    {
+      "case": "ambiguous",
+      "rows": [
+        32
+      ]
+    },
+    {
+      "case": "overpaid",
+      "rows": [
+        34
+      ]
+    },
+    {
+      "case": "no_matching_job",
+      "rows": [
+        37
+      ]
+    },
+    {
+      "case": "contractor_credit_note",
+      "rows": [
+        39
+      ]
+    },
+    {
+      "case": "amount_and_date_match",
+      "rows": [
+        40
+      ]
+    },
+    {
+      "case": "bank_fee",
+      "rows": [
+        48,
+        49
+      ]
+    },
+    {
+      "case": "transfer",
+      "rows": [
+        50
+      ]
+    },
+    {
+      "case": "missing_payments",
+      "rows": [],
+      "lease": "NLN11",
+      "weeks": [
+        "2026-09-21",
+        "2026-09-28"
+      ]
+    }
+  ],
+  "totals": {
+    "lines": 50,
+    "moneyIn": 29590,
+    "moneyOut": -10997.4,
+    "exceptions": 9
+  },
+  "arrears": {
+    "afterAutomatic": [
+      {
+        "lease": "TAK9",
+        "tenant": "Sophie Clarke",
+        "amount": 780,
+        "weeks": [
+          {
+            "week": "2026-09-28",
+            "outstanding": 780
+          }
+        ]
+      },
+      {
+        "lease": "ONE3",
+        "tenant": "Tom Wright",
+        "amount": 50,
+        "weeks": [
+          {
+            "week": "2026-09-28",
+            "outstanding": 50
+          }
+        ]
+      },
+      {
+        "lease": "NLN11",
+        "tenant": "Liam O'Brien",
+        "amount": 1080,
+        "weeks": [
+          {
+            "week": "2026-09-21",
+            "outstanding": 540
+          },
+          {
+            "week": "2026-09-28",
+            "outstanding": 540
+          }
+        ]
+      }
+    ],
+    "afterReview": [
+      {
+        "lease": "ONE3",
+        "tenant": "Tom Wright",
+        "amount": 50,
+        "weeks": [
+          {
+            "week": "2026-09-28",
+            "outstanding": 50
+          }
+        ]
+      },
+      {
+        "lease": "NLN11",
+        "tenant": "Liam O'Brien",
+        "amount": 1080,
+        "weeks": [
+          {
+            "week": "2026-09-21",
+            "outstanding": 540
+          },
+          {
+            "week": "2026-09-28",
+            "outstanding": 540
+          }
+        ]
+      }
+    ]
+  },
+  "credits": {
+    "afterAutomatic": [
+      {
+        "lease": "MRB6",
+        "tenant": "Hannah Lee",
+        "amount": 50
+      }
+    ],
+    "afterReview": [
+      {
+        "lease": "MRB6",
+        "tenant": "Hannah Lee",
+        "amount": 50
+      },
+      {
+        "lease": "GLN22",
+        "tenant": "Mele Fifita",
+        "amount": 610
+      }
+    ]
+  },
+  "rentPaidByWeek": {
+    "afterAutomatic": {
+      "MTE14": {
+        "2026-09-07": 720,
+        "2026-09-14": 720,
+        "2026-09-21": 720,
+        "2026-09-28": 720
+      },
+      "PON7": {
+        "2026-09-07": 650,
+        "2026-09-14": 650,
+        "2026-09-21": 650,
+        "2026-09-28": 650
+      },
+      "GLN22": {
+        "2026-09-07": 610,
+        "2026-09-14": 610,
+        "2026-09-21": 610,
+        "2026-09-28": 610
+      },
+      "HND5": {
+        "2026-09-07": 680,
+        "2026-09-14": 680,
+        "2026-09-21": 680,
+        "2026-09-28": 680
+      },
+      "TAK9": {
+        "2026-09-07": 780,
+        "2026-09-14": 780,
+        "2026-09-21": 780,
+        "2026-09-28": 0
+      },
+      "ONE3": {
+        "2026-09-07": 560,
+        "2026-09-14": 560,
+        "2026-09-21": 560,
+        "2026-09-28": 510
+      },
+      "PAP18": {
+        "2026-09-07": 590,
+        "2026-09-14": 590,
+        "2026-09-21": 590,
+        "2026-09-28": 590
+      },
+      "NLN11": {
+        "2026-09-07": 540,
+        "2026-09-14": 540,
+        "2026-09-21": 0,
+        "2026-09-28": 0
+      },
+      "MRB6": {
+        "2026-09-07": 850,
+        "2026-09-14": 850,
+        "2026-09-21": 850,
+        "2026-09-28": 850
+      },
+      "AVD25": {
+        "2026-09-07": 600,
+        "2026-09-14": 600,
+        "2026-09-21": 600,
+        "2026-09-28": 600
+      },
+      "HOW30": {}
+    },
+    "afterReview": {
+      "MTE14": {
+        "2026-09-07": 720,
+        "2026-09-14": 720,
+        "2026-09-21": 720,
+        "2026-09-28": 720
+      },
+      "PON7": {
+        "2026-09-07": 650,
+        "2026-09-14": 650,
+        "2026-09-21": 650,
+        "2026-09-28": 650
+      },
+      "GLN22": {
+        "2026-09-07": 610,
+        "2026-09-14": 610,
+        "2026-09-21": 610,
+        "2026-09-28": 610
+      },
+      "HND5": {
+        "2026-09-07": 680,
+        "2026-09-14": 680,
+        "2026-09-21": 680,
+        "2026-09-28": 680
+      },
+      "TAK9": {
+        "2026-09-07": 780,
+        "2026-09-14": 780,
+        "2026-09-21": 780,
+        "2026-09-28": 780
+      },
+      "ONE3": {
+        "2026-09-07": 560,
+        "2026-09-14": 560,
+        "2026-09-21": 560,
+        "2026-09-28": 510
+      },
+      "PAP18": {
+        "2026-09-07": 590,
+        "2026-09-14": 590,
+        "2026-09-21": 590,
+        "2026-09-28": 590
+      },
+      "NLN11": {
+        "2026-09-07": 540,
+        "2026-09-14": 540,
+        "2026-09-21": 0,
+        "2026-09-28": 0
+      },
+      "MRB6": {
+        "2026-09-07": 850,
+        "2026-09-14": 850,
+        "2026-09-21": 850,
+        "2026-09-28": 850
+      },
+      "AVD25": {
+        "2026-09-07": 600,
+        "2026-09-14": 600,
+        "2026-09-21": 600,
+        "2026-09-28": 600
+      },
+      "HOW30": {}
+    }
+  }
+}
