@@ -7,6 +7,7 @@ export interface User {
 export interface Property {
   id: number
   userId: number
+  code?: string | null
   address: string
   suburb: string
   city: string

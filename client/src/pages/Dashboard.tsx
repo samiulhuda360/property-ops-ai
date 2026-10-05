@@ -31,11 +31,9 @@ export default function Dashboard() {
   const openMaintenance = maintenance.filter(m => m.status !== 'completed').length
   const vacantProperties = properties.filter(p => p.status === 'vacant').length
 
-  const cityGroups = properties.reduce<Record<string, number>>((acc, p) => {
-    acc[p.city] = (acc[p.city] || 0) + 1
-    return acc
-  }, {})
-  const chartData = Object.entries(cityGroups).map(([city, count]) => ({ city, count }))
+  const chartData = [...properties]
+    .sort((a, b) => b.rentPrice - a.rentPrice)
+    .map((p) => ({ property: p.code || p.suburb, rent: p.rentPrice }))
 
   const recentPayments = [...payments]
     .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
@@ -57,15 +55,15 @@ export default function Dashboard() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="card">
-          <h2 className="text-base font-semibold text-gray-900 mb-4">Properties by City</h2>
+          <h2 className="text-base font-semibold text-gray-900 mb-4">Weekly rent by property</h2>
           {chartData.length > 0 ? (
             <ResponsiveContainer width="100%" height={200}>
               <BarChart data={chartData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                <XAxis dataKey="city" tick={{ fontSize: 12 }} />
-                <YAxis allowDecimals={false} tick={{ fontSize: 12 }} />
-                <Tooltip />
-                <Bar dataKey="count" fill="#3b82f6" radius={[4, 4, 0, 0]} />
+                <XAxis dataKey="property" tick={{ fontSize: 11 }} interval={0} />
+                <YAxis tick={{ fontSize: 12 }} unit="$" />
+                <Tooltip formatter={(v: number) => [`$${v}`, 'Weekly rent']} />
+                <Bar dataKey="rent" fill="#3b82f6" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           ) : (

@@ -1,0 +1,10 @@
+role,task,automation_key,items_per_month,minutes_per_item,rework_rate,ease,notes
+Accounts,Key a supplier invoice into accounting and check GST,invoice_extraction,18,12,0.12,3,"Read the PDF, find the job, check GST and the supplier's GST number, enter the bill"
+Accounts,Match bank lines to rent and chase gaps,rent_reconciliation,64,3,0.08,3,"One line at a time: find the tenant, the week, part-payments, then update the rent ledger"
+Tenant services,Read a tenant email and log or answer it,inbox_triage,70,6,0.06,2,"Find the tenant and property, decide urgency, log a maintenance job, draft a reply citing the terms"
+Property manager,Enter a new lease from the signed agreement,lease_extraction,2,25,0.15,3,"Rent, bond, dates, pets and occupants into the system; check against the advertised terms"
+Property manager,Write the monthly owner report,,12,35,0.05,1,"Rent received, arrears, maintenance done and planned, per owner"
+Property manager,Book a contractor for a maintenance job,,14,10,0.04,2,"Choose a contractor, agree the quote, give access details"
+Property manager,Routine inspection write-up,,4,45,0.03,1,"On site; photos and notes into the inspection template"
+Accounts,Pay approved bills in the bank,,18,2,0.02,1,"Batch payment; needs a second approver"
+Tenant services,Arrears reminder for a tenant,,6,8,0.05,2,"Check the ledger, send the reminder, note the conversation"
