@@ -120,8 +120,9 @@ export function validateSuggestion(raw: unknown, codes: string[]): Omit<AiSugges
   return { status: 'ok', tenancy, category, confidence, reason: parsed.data.reason }
 }
 
-// Live calls are spaced out because the model quota is shared; cached answers return at once.
-const MIN_GAP_MS = 2500
+// Live calls are spaced out (2.5 s by default, AI_MIN_GAP_MS to change) because the model quota is shared;
+// cached answers return at once.
+const minGapMs = () => Number(process.env.AI_MIN_GAP_MS ?? 2500)
 let lastLiveCall = 0
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -131,7 +132,7 @@ export async function suggestForLine(input: SuggestionInput): Promise<Omit<AiSug
   if (!aiEnabled()) {
     return { status: 'failed', tenancy: null, category: 'unidentified', confidence: 0, reason: '', model, cached: false, at, error: 'AI is off.' }
   }
-  const wait = lastLiveCall + MIN_GAP_MS - Date.now()
+  const wait = lastLiveCall + minGapMs() - Date.now()
   if (wait > 0) await sleep(wait)
   try {
     const result = await chat({
