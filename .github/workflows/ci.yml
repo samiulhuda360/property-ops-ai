@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: property_ops_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/property_ops_test
+      TEST_DATABASE_URL: postgresql://postgres:postgres@localhost:5432/property_ops_test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Generate the Prisma client
+        run: npx prisma generate
+        working-directory: server
+      - run: npm run typecheck -w server
+      - name: Server tests (unit and API, on a fresh Postgres)
+        run: npm test -w server
+      - name: Client typecheck and build
+        run: npm run build -w client

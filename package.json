@@ -1,0 +1,19 @@
+{
+  "name": "property-ops-ai",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=server\" \"npm run dev --workspace=client\"",
+    "build": "npm run build --workspace=server && npm run build --workspace=client",
+    "test": "npm test --workspace=server",
+    "db:setup": "npm run db:deploy --workspace=server && npm run db:seed --workspace=server"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "description": "Rental property management with AI operations: document extraction, rent reconciliation, tenant inbox triage and an hours-returned report"
+}

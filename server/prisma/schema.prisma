@@ -1,0 +1,242 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               Int               @id @default(autoincrement())
+  email            String            @unique
+  password         String
+  name             String
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  properties       Property[]
+  tenants          Tenant[]
+  contractors      Contractor[]
+  documents        Document[]
+  bankTransactions BankTransaction[]
+  inboxMessages    InboxMessage[]
+  automationRuns   AutomationRun[]
+}
+
+model Property {
+  id            Int                  @id @default(autoincrement())
+  userId        Int
+  user          User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  code          String? // short code used in bank references, e.g. MTE14
+  address       String
+  suburb        String
+  city          String
+  bedrooms      Int
+  bathrooms     Float
+  rentPrice     Float
+  status        String               @default("vacant") // vacant | tenanted | maintenance
+  description   String?
+  createdAt     DateTime             @default(now())
+  updatedAt     DateTime             @updatedAt
+  leases        Lease[]
+  maintenance   MaintenanceRequest[]
+  documents     Document[]
+  inboxMessages InboxMessage[]
+}
+
+model Tenant {
+  id            Int            @id @default(autoincrement())
+  userId        Int
+  user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  firstName     String
+  lastName      String
+  email         String
+  phone         String
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  leases        Lease[]
+  inboxMessages InboxMessage[]
+}
+
+model Lease {
+  id            Int            @id @default(autoincrement())
+  propertyId    Int
+  property      Property       @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  tenantId      Int
+  tenant        Tenant         @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  startDate     DateTime
+  endDate       DateTime?
+  weeklyRent    Float
+  bondAmount    Float
+  rentReference String? // what the tenant puts on bank payments, e.g. NGATA MTE14
+  status        String         @default("active") // active | ended
+  notes         String?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  payments      Payment[]
+  documents     Document[]
+  inboxMessages InboxMessage[]
+}
+
+model Payment {
+  id               Int               @id @default(autoincrement())
+  leaseId          Int
+  lease            Lease             @relation(fields: [leaseId], references: [id], onDelete: Cascade)
+  amount           Float
+  dueDate          DateTime
+  paidDate         DateTime?
+  status           String            @default("pending") // pending | paid | overdue
+  notes            String?
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  bankTransactions BankTransaction[]
+}
+
+model MaintenanceRequest {
+  id            Int            @id @default(autoincrement())
+  propertyId    Int
+  property      Property       @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  contractorId  Int?
+  contractor    Contractor?    @relation(fields: [contractorId], references: [id], onDelete: SetNull)
+  title         String
+  description   String
+  priority      String         @default("medium") // low | medium | high | urgent
+  status        String         @default("open") // open | in_progress | completed
+  source        String         @default("manual") // manual | inbox
+  quoteAmount   Float?
+  cost          Float?
+  completedAt   DateTime?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  documents     Document[]
+  inboxMessages InboxMessage[]
+}
+
+// A business that invoices the property manager: trades, utilities, insurers.
+model Contractor {
+  id          Int                  @id @default(autoincrement())
+  userId      Int
+  user        User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name        String
+  trade       String // plumbing | electrical | cleaning | gardening | locksmith | roofing | pest_control | insurance | utilities
+  email       String?
+  gstNumber   String?
+  bankAccount String?
+  createdAt   DateTime             @default(now())
+  updatedAt   DateTime             @updatedAt
+  maintenance MaintenanceRequest[]
+  documents   Document[]
+}
+
+// An uploaded PDF (a supplier invoice or a lease summary) and what was extracted from it.
+model Document {
+  id                   Int                 @id @default(autoincrement())
+  userId               Int
+  user                 User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  kind                 String // invoice | lease
+  fileName             String
+  storagePath          String?
+  text                 String // the PDF's text layer
+  method               String // rules | llm | llm+validation
+  extracted            Json // { field: { value, confidence, source } }
+  issues               Json // validation issues: [{ field, message, severity }]
+  status               String              @default("needs_review") // needs_review | approved | rejected | exported
+  propertyId           Int?
+  property             Property?           @relation(fields: [propertyId], references: [id], onDelete: SetNull)
+  contractorId         Int?
+  contractor           Contractor?         @relation(fields: [contractorId], references: [id], onDelete: SetNull)
+  maintenanceRequestId Int?
+  maintenanceRequest   MaintenanceRequest? @relation(fields: [maintenanceRequestId], references: [id], onDelete: SetNull)
+  leaseId              Int?
+  lease                Lease?              @relation(fields: [leaseId], references: [id], onDelete: SetNull)
+  invoiceNumber        String?
+  invoiceDate          DateTime?
+  dueDate              DateTime?
+  total                Float?
+  gst                  Float?
+  reviewedAt           DateTime?
+  reviewSeconds        Int?
+  createdAt            DateTime            @default(now())
+  updatedAt            DateTime            @updatedAt
+  bankTransactions     BankTransaction[]
+}
+
+// One line of an imported bank statement, and what it was matched to.
+model BankTransaction {
+  id          Int       @id @default(autoincrement())
+  userId      Int
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  importBatch String
+  date        DateTime
+  amount      Float // money in is positive, money out is negative
+  description String
+  particulars String?
+  code        String?
+  reference   String?
+  matchStatus String    @default("unmatched") // matched | exception | unmatched | ignored
+  matchType   String? // rent | invoice | other
+  exception   String? // why a person needs to look, e.g. underpaid, unknown_payer, duplicate
+  paymentId   Int?
+  payment     Payment?  @relation(fields: [paymentId], references: [id], onDelete: SetNull)
+  documentId  Int?
+  document    Document? @relation(fields: [documentId], references: [id], onDelete: SetNull)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+// An email received through the inbox webhook, and the triage result.
+model InboxMessage {
+  id                   Int                 @id @default(autoincrement())
+  userId               Int
+  user                 User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  externalId           String?
+  fromAddress          String
+  subject              String
+  body                 String
+  receivedAt           DateTime            @default(now())
+  category             String? // maintenance | rent | lease_question | complaint | end_of_tenancy | other
+  urgency              String? // urgent | high | normal | low
+  needsPerson          Boolean             @default(true)
+  reason               String?
+  replyDraft           String?
+  citedClause          String?
+  status               String              @default("new") // new | triaged | approved | sent | dismissed
+  tenantId             Int?
+  tenant               Tenant?             @relation(fields: [tenantId], references: [id], onDelete: SetNull)
+  propertyId           Int?
+  property             Property?           @relation(fields: [propertyId], references: [id], onDelete: SetNull)
+  leaseId              Int?
+  lease                Lease?              @relation(fields: [leaseId], references: [id], onDelete: SetNull)
+  maintenanceRequestId Int?
+  maintenanceRequest   MaintenanceRequest? @relation(fields: [maintenanceRequestId], references: [id], onDelete: SetNull)
+  approvedAt           DateTime?
+  reviewSeconds        Int?
+  createdAt            DateTime            @default(now())
+  updatedAt            DateTime            @updatedAt
+}
+
+// One item an automation handled. The hours-returned report is built from these rows.
+model AutomationRun {
+  id              Int      @id @default(autoincrement())
+  userId          Int
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  automation      String // invoice_extraction | lease_extraction | rent_reconciliation | inbox_triage
+  itemRef         String // e.g. document:12, bank:340, inbox:7
+  baselineMinutes Float // minutes the task takes by hand, from the discovery timings
+  reviewSeconds   Int      @default(0) // time a person spent checking the automation's work
+  outcome         String // auto | reviewed | corrected | rejected | failed
+  createdAt       DateTime @default(now())
+}
+
+// Every model call, for cost, latency and failure monitoring.
+model AiCall {
+  id           Int      @id @default(autoincrement())
+  feature      String
+  model        String
+  latencyMs    Int
+  inputTokens  Int?
+  outputTokens Int?
+  cached       Boolean  @default(false)
+  error        String?
+  createdAt    DateTime @default(now())
+}
