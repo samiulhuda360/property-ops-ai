@@ -53,8 +53,10 @@ export default function Dashboard() {
     .sort((a, b) => b.rentPrice - a.rentPrice)
     .map((p) => ({ property: p.code || p.suburb, rent: p.rentPrice }))
 
-  const recentPayments = [...payments]
-    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+  // The latest rent received: paid payments, newest payment date first.
+  const recentPayments = payments
+    .filter((p) => p.paidDate)
+    .sort((a, b) => new Date(b.paidDate!).getTime() - new Date(a.paidDate!).getTime() || b.id - a.id)
     .slice(0, 5)
 
   return (
@@ -90,11 +92,11 @@ export default function Dashboard() {
         <div className="card">
           <h2 className="text-base font-semibold text-gray-900 mb-4">Weekly rent by property</h2>
           {chartData.length > 0 ? (
-            <ResponsiveContainer width="100%" height={200}>
+            <ResponsiveContainer width="100%" height={230}>
               <BarChart data={chartData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                <XAxis dataKey="property" tick={{ fontSize: 11 }} interval={0} />
-                <YAxis tick={{ fontSize: 12 }} unit="$" />
+                <XAxis dataKey="property" tick={{ fontSize: 11 }} interval={0} angle={-35} textAnchor="end" height={48} />
+                <YAxis tick={{ fontSize: 12 }} tickFormatter={(v: number) => `$${v}`} />
                 <Tooltip formatter={(v: number) => [`$${v}`, 'Weekly rent']} />
                 <Bar dataKey="rent" fill="#3b82f6" radius={[4, 4, 0, 0]} />
               </BarChart>
