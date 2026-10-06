@@ -163,25 +163,32 @@ model Document {
 
 // One line of an imported bank statement, and what it was matched to.
 model BankTransaction {
-  id          Int       @id @default(autoincrement())
-  userId      Int
-  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  importBatch String
-  date        DateTime
-  amount      Float // money in is positive, money out is negative
-  description String
-  particulars String?
-  code        String?
-  reference   String?
-  matchStatus String    @default("unmatched") // matched | exception | unmatched | ignored
-  matchType   String? // rent | invoice | other
-  exception   String? // why a person needs to look, e.g. underpaid, unknown_payer, duplicate
-  paymentId   Int?
-  payment     Payment?  @relation(fields: [paymentId], references: [id], onDelete: SetNull)
-  documentId  Int?
-  document    Document? @relation(fields: [documentId], references: [id], onDelete: SetNull)
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  id           Int       @id @default(autoincrement())
+  userId       Int
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  importBatch  String
+  date         DateTime
+  amount       Float // money in is positive, money out is negative
+  description  String
+  particulars  String?
+  code         String?
+  reference    String?
+  matchStatus  String    @default("unmatched") // matched | exception | unmatched | ignored
+  matchType    String? // rent | contractor | bond | refund | fee | transfer | other
+  exception    String? // why a person needs to look, e.g. underpaid, unknown_payer, duplicate
+  paymentId    Int?
+  payment      Payment?  @relation(fields: [paymentId], references: [id], onDelete: SetNull)
+  documentId   Int?
+  document     Document? @relation(fields: [documentId], references: [id], onDelete: SetNull)
+  lineHash     String? // fingerprint of the line's fields and its occurrence in the file; a re-import skips known lines
+  details      Json? // the match: method, confidence, tenancy, rent weeks allocated, job, explanation, suggested action
+  aiSuggestion Json? // the model's suggestion for an unknown or ambiguous line; shown to a person, never applied
+  resolution   Json? // a person's decision on an exception: accept | reassign | ignore, note, review seconds
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@unique([userId, lineHash])
+  @@index([userId, importBatch])
 }
 
 // An email received through the inbox webhook, and the triage result.

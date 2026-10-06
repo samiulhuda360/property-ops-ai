@@ -1,0 +1,459 @@
+{
+  "date": "2026-10-06T06:51:49.903Z",
+  "model": "gemini-flash-lite-latest",
+  "dataset": {
+    "statement": "data/bank/2026-09-statement.csv",
+    "lines": 50,
+    "plantedExceptions": 9
+  },
+  "calls": {
+    "live": 8,
+    "cached": 0,
+    "failed": 0
+  },
+  "methods": [
+    {
+      "method": "Rules only",
+      "matchAccuracy": 1,
+      "linesCorrect": 50,
+      "lines": 50,
+      "exceptions": {
+        "per": [
+          {
+            "reason": "underpaid",
+            "expected": 1,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1
+          },
+          {
+            "reason": "overpaid",
+            "expected": 1,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1
+          },
+          {
+            "reason": "duplicate",
+            "expected": 1,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1
+          },
+          {
+            "reason": "unknown_payer",
+            "expected": 2,
+            "tp": 2,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1
+          },
+          {
+            "reason": "ambiguous",
+            "expected": 1,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1
+          },
+          {
+            "reason": "payment_to_ended_lease",
+            "expected": 1,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1
+          },
+          {
+            "reason": "no_matching_job",
+            "expected": 1,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1
+          },
+          {
+            "reason": "amount_differs_from_quote",
+            "expected": 1,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1
+          }
+        ],
+        "micro": {
+          "tp": 9,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1,
+          "recall": 1
+        }
+      },
+      "arrears": {
+        "found": [
+          {
+            "lease": "NLN11",
+            "amount": 1080
+          },
+          {
+            "lease": "TAK9",
+            "amount": 780
+          },
+          {
+            "lease": "ONE3",
+            "amount": 50
+          }
+        ],
+        "expected": [
+          {
+            "lease": "TAK9",
+            "tenant": "Sophie Clarke",
+            "amount": 780,
+            "weeks": [
+              {
+                "week": "2026-09-28",
+                "outstanding": 780
+              }
+            ]
+          },
+          {
+            "lease": "ONE3",
+            "tenant": "Tom Wright",
+            "amount": 50,
+            "weeks": [
+              {
+                "week": "2026-09-28",
+                "outstanding": 50
+              }
+            ]
+          },
+          {
+            "lease": "NLN11",
+            "tenant": "Liam O'Brien",
+            "amount": 1080,
+            "weeks": [
+              {
+                "week": "2026-09-21",
+                "outstanding": 540
+              },
+              {
+                "week": "2026-09-28",
+                "outstanding": 540
+              }
+            ]
+          }
+        ],
+        "exact": 3,
+        "missed": [],
+        "extra": []
+      },
+      "money": {
+        "correct": 24410,
+        "total": 24410,
+        "share": 1,
+        "misallocated": 0,
+        "weeksRight": 40,
+        "weeks": 40
+      },
+      "misses": []
+    },
+    {
+      "method": "Model only",
+      "matchAccuracy": 0.98,
+      "linesCorrect": 49,
+      "lines": 50,
+      "exceptions": {
+        "per": [
+          {
+            "reason": "underpaid",
+            "expected": 1,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1
+          },
+          {
+            "reason": "overpaid",
+            "expected": 1,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1
+          },
+          {
+            "reason": "duplicate",
+            "expected": 1,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1
+          },
+          {
+            "reason": "unknown_payer",
+            "expected": 2,
+            "tp": 1,
+            "fp": 1,
+            "fn": 1,
+            "precision": 0.5,
+            "recall": 0.5
+          },
+          {
+            "reason": "ambiguous",
+            "expected": 1,
+            "tp": 0,
+            "fp": 0,
+            "fn": 1,
+            "precision": null,
+            "recall": 0
+          },
+          {
+            "reason": "payment_to_ended_lease",
+            "expected": 1,
+            "tp": 1,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1
+          },
+          {
+            "reason": "no_matching_job",
+            "expected": 1,
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1
+          },
+          {
+            "reason": "amount_differs_from_quote",
+            "expected": 1,
+            "tp": 1,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1
+          }
+        ],
+        "micro": {
+          "tp": 7,
+          "fp": 3,
+          "fn": 2,
+          "precision": 0.7,
+          "recall": 0.7777777777777778
+        }
+      },
+      "arrears": {
+        "found": [
+          {
+            "lease": "NLN11",
+            "amount": 1080
+          },
+          {
+            "lease": "TAK9",
+            "amount": 780
+          },
+          {
+            "lease": "ONE3",
+            "amount": 50
+          }
+        ],
+        "expected": [
+          {
+            "lease": "TAK9",
+            "tenant": "Sophie Clarke",
+            "amount": 780,
+            "weeks": [
+              {
+                "week": "2026-09-28",
+                "outstanding": 780
+              }
+            ]
+          },
+          {
+            "lease": "ONE3",
+            "tenant": "Tom Wright",
+            "amount": 50,
+            "weeks": [
+              {
+                "week": "2026-09-28",
+                "outstanding": 50
+              }
+            ]
+          },
+          {
+            "lease": "NLN11",
+            "tenant": "Liam O'Brien",
+            "amount": 1080,
+            "weeks": [
+              {
+                "week": "2026-09-21",
+                "outstanding": 540
+              },
+              {
+                "week": "2026-09-28",
+                "outstanding": 540
+              }
+            ]
+          }
+        ],
+        "exact": 3,
+        "missed": [],
+        "extra": []
+      },
+      "money": {
+        "correct": 24410,
+        "total": 24410,
+        "share": 1,
+        "misallocated": 0,
+        "weeksRight": 40,
+        "weeks": 40
+      },
+      "misses": [
+        "Line 14 (G CHEN -760): expected refund HOW30; got refund HOW30, payment_to_ended_lease",
+        "Line 32 (J LEE 780): expected rent, ambiguous; got rent TAK9, unknown_payer",
+        "Line 37 (ACME GARDENS -95): expected contractor, no_matching_job; got contractor (HOW30: End of tenancy clean), no_matching_job",
+        "Line 38 (SIONE M 610): expected unknown, unknown_payer; got rent GLN22",
+        "Line 39 (ACME ELECTRICAL 35): expected contractor (GLN22: Smoke alarms to standard); got contractor (GLN22: Smoke alarms to standard), amount_differs_from_quote"
+      ]
+    }
+  ],
+  "modelOnly": {
+    "failures": [],
+    "missingRows": []
+  },
+  "rulesWithSuggestions": {
+    "suggestions": [
+      {
+        "row": 15,
+        "payee": "B HARRIS",
+        "amount": 495,
+        "rules": "unknown_payer",
+        "answer": {
+          "lease": null,
+          "category": "unidentified"
+        },
+        "suggestion": {
+          "status": "ok",
+          "tenancy": null,
+          "category": "unidentified",
+          "confidence": 0,
+          "reason": "The payer B HARRIS and reference 12 FERN ST do not match any active or ended tenancies in the portfolio.",
+          "model": "gemini-flash-lite-latest",
+          "cached": false,
+          "at": "2026-10-06T06:51:39.531Z"
+        },
+        "right": true
+      },
+      {
+        "row": 32,
+        "payee": "J LEE",
+        "amount": 780,
+        "rules": "ambiguous",
+        "answer": {
+          "lease": "TAK9",
+          "category": "rent"
+        },
+        "suggestion": {
+          "status": "ok",
+          "tenancy": "TAK9",
+          "category": "rent",
+          "confidence": 0.9,
+          "reason": "The payment amount of 780 matches the exact weekly rent for TAK9 (Sophie Clarke), and past payments on 7 September and 14 September from J LEE were also allocated to TAK9.",
+          "model": "gemini-flash-lite-latest",
+          "cached": false,
+          "at": "2026-10-06T06:51:41.173Z"
+        },
+        "right": true
+      },
+      {
+        "row": 38,
+        "payee": "SIONE M",
+        "amount": 610,
+        "rules": "unknown_payer",
+        "answer": {
+          "lease": "GLN22",
+          "category": "rent"
+        },
+        "suggestion": {
+          "status": "ok",
+          "tenancy": "GLN22",
+          "category": "rent",
+          "confidence": 0.95,
+          "reason": "The bank line features the first name Mele in the particulars and the exact weekly rent amount of $610, which matches Mele Fifita at GLN22. The payment frequency for GLN22 is fortnightly ($1220), meaning this $610 direct credit from SIONE M is likely a weekly part-payment or a specific installment.",
+          "model": "gemini-flash-lite-latest",
+          "cached": false,
+          "at": "2026-10-06T06:51:45.227Z"
+        },
+        "right": true
+      }
+    ],
+    "right": 3,
+    "ifAccepted": {
+      "arrears": {
+        "found": [
+          {
+            "lease": "NLN11",
+            "amount": 1080
+          },
+          {
+            "lease": "ONE3",
+            "amount": 50
+          }
+        ],
+        "expected": [
+          {
+            "lease": "ONE3",
+            "tenant": "Tom Wright",
+            "amount": 50,
+            "weeks": [
+              {
+                "week": "2026-09-28",
+                "outstanding": 50
+              }
+            ]
+          },
+          {
+            "lease": "NLN11",
+            "tenant": "Liam O'Brien",
+            "amount": 1080,
+            "weeks": [
+              {
+                "week": "2026-09-21",
+                "outstanding": 540
+              },
+              {
+                "week": "2026-09-28",
+                "outstanding": 540
+              }
+            ]
+          }
+        ],
+        "exact": 2,
+        "missed": [],
+        "extra": []
+      },
+      "money": {
+        "correct": 25190,
+        "total": 25190,
+        "share": 1,
+        "misallocated": 0,
+        "weeksRight": 40,
+        "weeks": 40
+      }
+    }
+  }
+}
