@@ -104,10 +104,14 @@ export async function hoursReport(userId: number, month: string) {
   }
 }
 
-/** Model usage for the month: calls, cache hits, failures, latency and tokens per feature. */
-export async function aiUsage(month: string) {
-  const { start, end } = monthRange(month)
-  const calls = await prisma.aiCall.findMany({ where: { createdAt: { gte: start, lt: end } } })
+/**
+ * Model usage over the last 30 days: calls, cache hits, failures, latency and tokens per feature.
+ * Calls are dated when they happen, while automation runs are dated by the item's business date, so usage is
+ * shown as a rolling window rather than per report month.
+ */
+export async function aiUsage(now = new Date()) {
+  const since = new Date(now.getTime() - 30 * 24 * 3600 * 1000)
+  const calls = await prisma.aiCall.findMany({ where: { createdAt: { gte: since } } })
   const features = new Map<string, typeof calls>()
   for (const c of calls) features.set(c.feature, [...(features.get(c.feature) ?? []), c])
   return [...features.entries()].map(([feature, list]) => {

@@ -3,10 +3,14 @@
 //   AI_API_KEY=... npm run demo -w server        with the model (responses are cached on disk)
 // Safe to run again: each loader replaces or skips what it loaded before.
 import 'dotenv/config'
+import { setCallLogger } from '../src/ai/llm'
 import { prisma } from '../src/lib/prisma'
 import { loadDemo as loadDocuments } from '../src/documents/demo'
 import { loadDemo as loadInbox } from '../src/inbox/demo'
 import { loadDemo as loadReconciliation } from '../src/reconciliation/demo'
+
+// Log model calls exactly as the server does, so the usage panel includes the demo load.
+setCallLogger((record) => prisma.aiCall.create({ data: record }).then(() => undefined))
 
 async function main() {
   const email = process.argv[2] ?? 'demo@example.com'

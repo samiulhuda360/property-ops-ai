@@ -17,7 +17,7 @@ router.get('/hours', async (req: AuthRequest, res: Response) => {
     return
   }
   const month = requested ?? months[0] ?? new Date().toISOString().slice(0, 7)
-  const [report, usage] = await Promise.all([hoursReport(req.userId!, month), aiUsage(month)])
+  const [report, usage] = await Promise.all([hoursReport(req.userId!, month), aiUsage()])
   res.json({ ...report, months, aiUsage: usage })
 })
 

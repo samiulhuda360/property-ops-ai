@@ -376,7 +376,7 @@ export async function importStatement(
   const saved = await prisma.bankTransaction.findMany({ where: { id: { in: ids } }, orderBy: { id: 'asc' } })
   for (const line of saved) {
     if (line.matchStatus === 'matched' && !line.exception) {
-      await recordRun({ userId, automation: AUTOMATION, itemRef: `bank:${line.id}`, outcome: 'auto' })
+      await recordRun({ userId, automation: AUTOMATION, itemRef: `bank:${line.id}`, outcome: 'auto', at: line.date })
     }
   }
 
@@ -547,7 +547,7 @@ export async function resolveLine(userId: number, id: number, input: ResolveInpu
 
   const itemRef = `bank:${line.id}`
   const reviewed = await recordReview(itemRef, reviewSeconds, outcome)
-  if (!reviewed) await recordRun({ userId, automation: AUTOMATION, itemRef, outcome, reviewSeconds })
+  if (!reviewed) await recordRun({ userId, automation: AUTOMATION, itemRef, outcome, reviewSeconds, at: line.date })
 
   const [view] = await describeLines(userId, await prisma.bankTransaction.findMany({ where: { id: line.id } }))
   return view

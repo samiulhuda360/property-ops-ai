@@ -183,9 +183,9 @@ export default function HoursReturned() {
         </div>
 
         <div className="card">
-          <h2 className="font-semibold text-gray-900">Model usage, {monthName(data.month)}</h2>
+          <h2 className="font-semibold text-gray-900">Model usage, last 30 days</h2>
           {data.aiUsage.length === 0 ? (
-            <p className="mt-3 text-sm text-gray-500">No model calls this month. The automations ran on their rules.</p>
+            <p className="mt-3 text-sm text-gray-500">No model calls in the last 30 days. The automations ran on their rules.</p>
           ) : (
             <table className="mt-3 min-w-full text-sm">
               <thead>
