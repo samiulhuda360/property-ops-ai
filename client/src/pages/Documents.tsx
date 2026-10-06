@@ -703,14 +703,23 @@ function Review({ id, onClose, onDone }: { id: number; onClose: () => void; onDo
             </div>
           )}
 
-          {doc.status === 'approved' && doc.kind === 'invoice' && (
-            <div className="card space-y-2">
-              <p className="text-sm text-gray-600">
-                Approved invoices go to accounting when you export the CSV from the queue, or one at a time here.
-              </p>
-              <button className="btn-primary" onClick={() => push.mutate()} disabled={busy}>
-                {push.isPending ? 'Sending...' : 'Send to accounting as a draft bill (nothing is paid)'}
-              </button>
+          {doc.status === 'approved' && (
+            <div className="card space-y-3">
+              {doc.kind === 'invoice' && (
+                <p className="text-sm text-gray-600">
+                  Approved invoices go to accounting when you export the CSV from the queue, or one at a time here.
+                </p>
+              )}
+              <div className="flex gap-3 flex-wrap">
+                {doc.kind === 'invoice' && (
+                  <button className="btn-primary" onClick={() => push.mutate()} disabled={busy}>
+                    {push.isPending ? 'Sending...' : 'Send to accounting as a draft bill (nothing is paid)'}
+                  </button>
+                )}
+                <button className="btn-secondary" onClick={() => reject.mutate()} disabled={busy}>
+                  {reject.isPending ? 'Rejecting...' : 'Reject instead, it will not be exported'}
+                </button>
+              </div>
             </div>
           )}
 
