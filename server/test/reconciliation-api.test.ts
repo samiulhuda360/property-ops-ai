@@ -285,7 +285,7 @@ describe.skipIf(!hasDb)('reconciliation API', () => {
     expect(res.headers['content-disposition']).toMatch(/reconciliation-2026-09-statement-[0-9a-f]{8}\.xlsx/)
 
     const book = new ExcelJS.Workbook()
-    await book.xlsx.load(res.body as Buffer)
+    await book.xlsx.load(res.body as unknown as ExcelJS.Buffer)
     expect(book.worksheets.map((w) => w.name)).toEqual(['Summary', 'Exceptions', 'Matched', 'Arrears'])
 
     const summary = book.getWorksheet('Summary')!
