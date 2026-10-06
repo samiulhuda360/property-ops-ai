@@ -1,0 +1,486 @@
+{
+  "description": "Held-out documents in four layouts the rules were not written for (totals above the items, GST-inclusive retail with \"GST content\", a detailed layout with a two-page invoice and a credit note, and a summary written as a letter). Field values are what each document prints; \"issues\" lists the problems planted on purpose.",
+  "documents": [
+    {
+      "file": "h-invoice-01-plumbing-mte14.pdf",
+      "kind": "invoice",
+      "layout": "summary",
+      "fields": {
+        "supplierName": "Acme Plumbing",
+        "supplierGstNumber": "102-345-673",
+        "supplierBankAccount": "12-3140-0456781-00",
+        "invoiceNumber": "AP-3104",
+        "invoiceDate": "2026-09-03",
+        "dueDate": "2026-09-17",
+        "propertyAddress": "14 Kowhai Road, Mount Eden, Auckland 1024",
+        "lineItems": [
+          {
+            "description": "Replace hot water cylinder element and thermostat",
+            "quantity": 1,
+            "unitAmount": 245,
+            "amount": 245
+          },
+          {
+            "description": "Labour (hours)",
+            "quantity": 2.5,
+            "unitAmount": 80,
+            "amount": 200
+          },
+          {
+            "description": "Travel and disposal",
+            "quantity": 1,
+            "unitAmount": 42,
+            "amount": 42
+          }
+        ],
+        "subtotal": 487,
+        "gst": 73.05,
+        "total": 560.05
+      },
+      "issues": [
+        "over_quote"
+      ],
+      "note": "Total $560.05 is 16.7% above the $480 quote."
+    },
+    {
+      "file": "h-invoice-02-roofing-hnd5.pdf",
+      "kind": "invoice",
+      "layout": "summary",
+      "fields": {
+        "supplierName": "Acme Roofing",
+        "supplierGstNumber": "118-765-435",
+        "supplierBankAccount": "01-0102-0234567-00",
+        "invoiceNumber": "R-2111",
+        "invoiceDate": "2026-09-24",
+        "dueDate": "2026-10-08",
+        "propertyAddress": "5 Rimu Cres, Henderson",
+        "lineItems": [
+          {
+            "description": "Clear gutters and downpipes, two-storey",
+            "quantity": 1,
+            "unitAmount": 260,
+            "amount": 260
+          },
+          {
+            "description": "Refit downpipe bracket",
+            "quantity": 1,
+            "unitAmount": 60,
+            "amount": 60
+          },
+          {
+            "description": "Roof inspection report",
+            "quantity": 1,
+            "unitAmount": 120,
+            "amount": 120
+          }
+        ],
+        "subtotal": 440,
+        "gst": 66,
+        "total": 506
+      },
+      "issues": []
+    },
+    {
+      "file": "h-invoice-03-pest-avd25.pdf",
+      "kind": "invoice",
+      "layout": "summary",
+      "fields": {
+        "supplierName": "Acme Pest Control",
+        "supplierGstNumber": "127-654-328",
+        "supplierBankAccount": "03-0254-0876543-00",
+        "invoiceNumber": "PC-7790",
+        "invoiceDate": "2026-09-29",
+        "dueDate": "2026-10-13",
+        "propertyAddress": "25 Puriri Street, Avondale",
+        "lineItems": [
+          {
+            "description": "Follow-up rodent inspection and re-bait",
+            "quantity": 1,
+            "unitAmount": 140,
+            "amount": 140
+          },
+          {
+            "description": "Bait stations",
+            "quantity": 2,
+            "unitAmount": 30,
+            "amount": 60
+          }
+        ],
+        "subtotal": 200,
+        "gst": 30,
+        "total": 230
+      },
+      "issues": []
+    },
+    {
+      "file": "h-invoice-04-plumbing-pon7.pdf",
+      "kind": "invoice",
+      "layout": "summary",
+      "fields": {
+        "supplierName": "Acme Plumbing",
+        "supplierGstNumber": "102-345-673",
+        "supplierBankAccount": "12-3140-0456781-00",
+        "invoiceNumber": "AP-3117",
+        "invoiceDate": "2026-09-15",
+        "dueDate": "2026-09-29",
+        "propertyAddress": "7 Vine Street, Ponsonby",
+        "lineItems": [
+          {
+            "description": "Replace kitchen mixer (supply and fit)",
+            "quantity": 1,
+            "unitAmount": 135,
+            "amount": 135
+          },
+          {
+            "description": "Labour (hours)",
+            "quantity": 0.5,
+            "unitAmount": 70,
+            "amount": 35
+          }
+        ],
+        "subtotal": 170,
+        "gst": 25.5,
+        "total": 195.5
+      },
+      "issues": []
+    },
+    {
+      "file": "h-invoice-05-gardens-pap18.pdf",
+      "kind": "invoice",
+      "layout": "retail",
+      "fields": {
+        "supplierName": "Acme Gardens",
+        "supplierGstNumber": "135-678-902",
+        "supplierBankAccount": "38-9012-0345678-00",
+        "invoiceNumber": "G-6010",
+        "invoiceDate": "2026-09-03",
+        "dueDate": "2026-09-17",
+        "propertyAddress": "18 Matai Road, Papatoetoe",
+        "lineItems": [
+          {
+            "description": "Lawn mow and edges",
+            "quantity": 1,
+            "unitAmount": 69,
+            "amount": 69
+          },
+          {
+            "description": "Hedge trim, front boundary",
+            "quantity": 1,
+            "unitAmount": 80.5,
+            "amount": 80.5
+          },
+          {
+            "description": "Green waste removal",
+            "quantity": 1,
+            "unitAmount": 23,
+            "amount": 23
+          }
+        ],
+        "subtotal": null,
+        "gst": 22.5,
+        "total": 172.5
+      },
+      "issues": []
+    },
+    {
+      "file": "h-invoice-06-locksmiths-tak9.pdf",
+      "kind": "invoice",
+      "layout": "retail",
+      "fields": {
+        "supplierName": "Acme Locksmiths",
+        "supplierGstNumber": "109-876-542",
+        "supplierBankAccount": "12-3077-0789012-00",
+        "invoiceNumber": "L-0931",
+        "invoiceDate": "2026-09-18",
+        "dueDate": "2026-10-02",
+        "propertyAddress": "9 Totara Avenue, Takapuna",
+        "lineItems": [
+          {
+            "description": "Supply and fit deadlock, back door",
+            "quantity": 1,
+            "unitAmount": 166.75,
+            "amount": 166.75
+          },
+          {
+            "description": "Call-out",
+            "quantity": 1,
+            "unitAmount": 86.25,
+            "amount": 86.25
+          }
+        ],
+        "subtotal": null,
+        "gst": 33,
+        "total": 253
+      },
+      "issues": []
+    },
+    {
+      "file": "h-invoice-07-cleaning-nln11.pdf",
+      "kind": "invoice",
+      "layout": "retail",
+      "fields": {
+        "supplierName": "Acme Cleaning Co",
+        "supplierGstNumber": "124-567-890",
+        "supplierBankAccount": "06-0193-0654321-00",
+        "invoiceNumber": "CC-3420",
+        "invoiceDate": "2026-09-28",
+        "dueDate": "2026-10-12",
+        "propertyAddress": "11 Kauri Lane, New Lynn",
+        "lineItems": [
+          {
+            "description": "Mould re-treatment, bedroom 2",
+            "quantity": 1,
+            "unitAmount": 230,
+            "amount": 230
+          },
+          {
+            "description": "Dehumidifier hire, one week",
+            "quantity": 1,
+            "unitAmount": 172.5,
+            "amount": 172.5
+          }
+        ],
+        "subtotal": null,
+        "gst": 60.38,
+        "total": 402.5
+      },
+      "issues": [
+        "gst_not_3_23"
+      ],
+      "note": "GST content $60.38; a $402.50 GST-inclusive total holds $52.50."
+    },
+    {
+      "file": "h-invoice-08-cleaning-how30.pdf",
+      "kind": "invoice",
+      "layout": "retail",
+      "fields": {
+        "supplierName": "Acme Cleaning Co",
+        "supplierGstNumber": "124-567-890",
+        "supplierBankAccount": "06-0193-0654321-00",
+        "invoiceNumber": "CC-3399",
+        "invoiceDate": "2026-09-10",
+        "dueDate": "2026-09-24",
+        "propertyAddress": "30 Pohutukawa Drive, Howick",
+        "lineItems": [
+          {
+            "description": "Window and track clean",
+            "quantity": 1,
+            "unitAmount": 207,
+            "amount": 207
+          },
+          {
+            "description": "Oven and rangehood deep clean",
+            "quantity": 1,
+            "unitAmount": 138,
+            "amount": 138
+          }
+        ],
+        "subtotal": null,
+        "gst": 45,
+        "total": 345
+      },
+      "issues": []
+    },
+    {
+      "file": "h-invoice-09-electrical-gln22.pdf",
+      "kind": "invoice",
+      "layout": "detailed",
+      "fields": {
+        "supplierName": "Acme Electrical",
+        "supplierGstNumber": "113-456-787",
+        "supplierBankAccount": "02-0500-0123456-001",
+        "invoiceNumber": "E-11002",
+        "invoiceDate": "2026-09-04",
+        "dueDate": "2026-09-18",
+        "propertyAddress": "22 Ash Street, Glen Innes, Auckland 1072",
+        "lineItems": [
+          {
+            "description": "Photoelectric smoke alarm, 10-year (supply)",
+            "quantity": 3,
+            "unitAmount": 48,
+            "amount": 144
+          },
+          {
+            "description": "Install and test alarms (hours)",
+            "quantity": 1.5,
+            "unitAmount": 72,
+            "amount": 108
+          },
+          {
+            "description": "Electrical safety check, whole house",
+            "quantity": 1,
+            "unitAmount": 60,
+            "amount": 60
+          }
+        ],
+        "subtotal": 312,
+        "gst": 46.8,
+        "total": 358.8
+      },
+      "issues": []
+    },
+    {
+      "file": "h-credit-10-electrical-mrb6.pdf",
+      "kind": "invoice",
+      "layout": "detailed",
+      "fields": {
+        "supplierName": "Acme Electrical",
+        "supplierGstNumber": "113-456-787",
+        "supplierBankAccount": null,
+        "invoiceNumber": "CN-0042",
+        "invoiceDate": "2026-09-25",
+        "dueDate": null,
+        "propertyAddress": "6 Tui Terrace, Mairangi Bay, Auckland 0630",
+        "lineItems": [
+          {
+            "description": "Credit: filter clean and sanitise not carried out",
+            "quantity": 1,
+            "unitAmount": -36,
+            "amount": -36
+          }
+        ],
+        "subtotal": -36,
+        "gst": -5.4,
+        "total": -41.4
+      },
+      "issues": [
+        "credit_note"
+      ],
+      "note": "A credit note, not a bill: amounts are negative and nothing is payable."
+    },
+    {
+      "file": "h-invoice-11-electrical-one3.pdf",
+      "kind": "invoice",
+      "layout": "detailed",
+      "fields": {
+        "supplierName": "Acme Electrical",
+        "supplierGstNumber": "113-456-787",
+        "supplierBankAccount": "02-0500-0123456-001",
+        "invoiceNumber": "E-11019",
+        "invoiceDate": "2026-09-30",
+        "dueDate": "2026-10-14",
+        "propertyAddress": "Flat 3, 41 Arthur St, Onehunga",
+        "lineItems": [
+          {
+            "description": "Extractor fan timer switch (supply)",
+            "quantity": 1,
+            "unitAmount": 64,
+            "amount": 64
+          },
+          {
+            "description": "Labour (hours)",
+            "quantity": 1,
+            "unitAmount": 72,
+            "amount": 72
+          },
+          {
+            "description": "Re-route ducting through soffit",
+            "quantity": 1,
+            "unitAmount": 114,
+            "amount": 114
+          }
+        ],
+        "subtotal": 250,
+        "gst": 37.5,
+        "total": 287.5
+      },
+      "issues": []
+    },
+    {
+      "file": "h-invoice-12-electrical-papakura.pdf",
+      "kind": "invoice",
+      "layout": "detailed",
+      "fields": {
+        "supplierName": "Acme Electrical",
+        "supplierGstNumber": "113-456-787",
+        "supplierBankAccount": "02-0500-0123456-001",
+        "invoiceNumber": "E-11025",
+        "invoiceDate": "2026-09-22",
+        "dueDate": "2026-10-06",
+        "propertyAddress": "18 Matai Road, Papakura, Auckland 2110",
+        "lineItems": [
+          {
+            "description": "Replace exterior light fitting",
+            "quantity": 1,
+            "unitAmount": 95,
+            "amount": 95
+          },
+          {
+            "description": "Labour (hours)",
+            "quantity": 1,
+            "unitAmount": 72,
+            "amount": 72
+          }
+        ],
+        "subtotal": 167,
+        "gst": 25.05,
+        "total": 192.05
+      },
+      "issues": [
+        "property_unknown"
+      ],
+      "note": "Same street and number as 18 Matai Road, Papatoetoe, but a different suburb: not in the portfolio."
+    },
+    {
+      "file": "h-lease-13-avd25.pdf",
+      "kind": "lease",
+      "layout": "prose",
+      "fields": {
+        "tenantNames": [
+          "Wiremu Parata"
+        ],
+        "propertyAddress": "25 Puriri Street, Avondale, Auckland 1026",
+        "startDate": "2025-08-25",
+        "endDate": "periodic",
+        "weeklyRent": 600,
+        "bond": 2400,
+        "rentFrequency": "weekly",
+        "petsAllowed": false,
+        "maxOccupants": 5
+      },
+      "issues": []
+    },
+    {
+      "file": "h-lease-14-hnd5.pdf",
+      "kind": "lease",
+      "layout": "prose",
+      "fields": {
+        "tenantNames": [
+          "Rajesh Patel",
+          "Priya Patel"
+        ],
+        "propertyAddress": "5 Rimu Crescent, Henderson, Auckland 0612",
+        "startDate": "2023-09-18",
+        "endDate": "periodic",
+        "weeklyRent": 700,
+        "bond": 2720,
+        "rentFrequency": "fortnightly",
+        "petsAllowed": true,
+        "maxOccupants": 6
+      },
+      "issues": [
+        "rent_differs"
+      ],
+      "note": "Rent $700 per week; the lease record says $680."
+    },
+    {
+      "file": "h-lease-15-tak9.pdf",
+      "kind": "lease",
+      "layout": "prose",
+      "fields": {
+        "tenantNames": [
+          "Sophie Clarke"
+        ],
+        "propertyAddress": "9 Totara Avenue, Takapuna, Auckland 0622",
+        "startDate": "2025-01-13",
+        "endDate": "2027-01-12",
+        "weeklyRent": 780,
+        "bond": 3120,
+        "rentFrequency": "fortnightly",
+        "petsAllowed": false,
+        "maxOccupants": 5
+      },
+      "issues": []
+    }
+  ]
+}

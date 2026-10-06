@@ -2,7 +2,8 @@
 // plus data/documents/truth.json with every expected field value and the problems planted on purpose.
 // Every business, person and address is invented; suppliers, properties and tenancies mirror prisma/seed.ts.
 //
-//   npx tsx scripts/generate-documents.ts            (from server/)
+//   npx tsx scripts/generate-documents.ts            (from server/; the 40 documents in data/documents/)
+//   npx tsx scripts/generate-documents.ts --heldout  (15 documents in four other layouts, in data/documents/heldout/)
 //
 // PW_CHROMIUM can point at another headless Chromium build.
 import { mkdirSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs'
@@ -991,8 +992,370 @@ function leaseTruth(spec: LeaseSpec) {
 }
 
 // ---------------------------------------------------------------------------------------------------------------
+// Held-out set: 12 invoices and 3 tenancy summaries in four layouts the rules were never written for. They measure
+// how each method copes with an unfamiliar supplier format. Written to data/documents/heldout/ with --heldout.
+
+const HELDOUT_DIR = join(OUT_DIR, 'heldout')
+
+const ordinal = (n: number) => `${n}${n % 10 === 1 && n !== 11 ? 'st' : n % 10 === 2 && n !== 12 ? 'nd' : n % 10 === 3 && n !== 13 ? 'rd' : 'th'}`
+type HeldDateStyle = 'words' | 'dash' | 'dots'
+function heldDate(iso: string, style: HeldDateStyle): string {
+  const [y, m, d] = iso.split('-').map(Number)
+  if (style === 'words') return `the ${ordinal(d)} of ${MONTHS[m - 1]} ${y}`
+  if (style === 'dash') return `${String(d).padStart(2, '0')}-${MONTHS[m - 1].slice(0, 3)}-${y}`
+  return `${String(d).padStart(2, '0')}.${String(m).padStart(2, '0')}.${String(y).slice(2)}`
+}
+
+type HeldLayout = 'summary' | 'retail' | 'detailed'
+
+interface HeldInvoice {
+  file: string
+  layout: HeldLayout
+  supplier: Supplier
+  number: string
+  date: string
+  /** null on a credit note, which has nothing to pay. */
+  due: string | null
+  address: string
+  jobTitle: string
+  lines: Line[]
+  /** Retail layout: line amounts and the total include GST, and no subtotal is printed. */
+  inclusive?: boolean
+  gst?: number
+  credit?: { against: string }
+  twoPage?: boolean
+  issues: string[]
+  note?: string
+}
+
+const heldInvoices: HeldInvoice[] = [
+  {
+    file: 'h-invoice-01-plumbing-mte14.pdf', layout: 'summary', supplier: S.plumbing, number: 'AP-3104', date: '2026-09-03', due: '2026-09-17',
+    address: fullAddress('MTE14'), jobTitle: 'Hot water cylinder element',
+    lines: [line(1, 'Replace hot water cylinder element and thermostat', 245), line(2.5, 'Labour (hours)', 80), line(1, 'Travel and disposal', 42)],
+    issues: ['over_quote'], note: 'Total $560.05 is 16.7% above the $480 quote.',
+  },
+  {
+    file: 'h-invoice-02-roofing-hnd5.pdf', layout: 'summary', supplier: S.roofing, number: 'R-2111', date: '2026-09-24', due: '2026-10-08',
+    address: '5 Rimu Cres, Henderson', jobTitle: 'Gutter clean and downpipe',
+    lines: [line(1, 'Clear gutters and downpipes, two-storey', 260), line(1, 'Refit downpipe bracket', 60), line(1, 'Roof inspection report', 120)],
+    issues: [],
+  },
+  {
+    file: 'h-invoice-03-pest-avd25.pdf', layout: 'summary', supplier: S.pest, number: 'PC-7790', date: '2026-09-29', due: '2026-10-13',
+    address: shortAddress('AVD25'), jobTitle: 'Rodent treatment',
+    lines: [line(1, 'Follow-up rodent inspection and re-bait', 140), line(2, 'Bait stations', 30)],
+    issues: [],
+  },
+  {
+    file: 'h-invoice-04-plumbing-pon7.pdf', layout: 'summary', supplier: S.plumbing, number: 'AP-3117', date: '2026-09-15', due: '2026-09-29',
+    address: shortAddress('PON7'), jobTitle: 'Leaking kitchen mixer',
+    lines: [line(1, 'Replace kitchen mixer (supply and fit)', 135), line(0.5, 'Labour (hours)', 70)],
+    issues: [],
+  },
+  {
+    file: 'h-invoice-05-gardens-pap18.pdf', layout: 'retail', supplier: S.gardens, number: 'G-6010', date: '2026-09-03', due: '2026-09-17',
+    address: shortAddress('PAP18'), jobTitle: 'Lawn and hedge tidy', inclusive: true,
+    lines: [line(1, 'Lawn mow and edges', 69), line(1, 'Hedge trim, front boundary', 80.5), line(1, 'Green waste removal', 23)],
+    issues: [],
+  },
+  {
+    file: 'h-invoice-06-locksmiths-tak9.pdf', layout: 'retail', supplier: S.locksmiths, number: 'L-0931', date: '2026-09-18', due: '2026-10-02',
+    address: shortAddress('TAK9'), jobTitle: 'Front door lock', inclusive: true,
+    lines: [line(1, 'Supply and fit deadlock, back door', 166.75), line(1, 'Call-out', 86.25)],
+    issues: [],
+  },
+  {
+    file: 'h-invoice-07-cleaning-nln11.pdf', layout: 'retail', supplier: S.cleaning, number: 'CC-3420', date: '2026-09-28', due: '2026-10-12',
+    address: shortAddress('NLN11'), jobTitle: 'Mould treatment, bedroom 2', inclusive: true,
+    lines: [line(1, 'Mould re-treatment, bedroom 2', 230), line(1, 'Dehumidifier hire, one week', 172.5)],
+    gst: 6038,
+    issues: ['gst_not_3_23'], note: 'GST content $60.38; a $402.50 GST-inclusive total holds $52.50.',
+  },
+  {
+    file: 'h-invoice-08-cleaning-how30.pdf', layout: 'retail', supplier: S.cleaning, number: 'CC-3399', date: '2026-09-10', due: '2026-09-24',
+    address: shortAddress('HOW30'), jobTitle: 'End of tenancy clean', inclusive: true,
+    lines: [line(1, 'Window and track clean', 207), line(1, 'Oven and rangehood deep clean', 138)],
+    issues: [],
+  },
+  {
+    file: 'h-invoice-09-electrical-gln22.pdf', layout: 'detailed', supplier: S.electrical, number: 'E-11002', date: '2026-09-04', due: '2026-09-18',
+    address: fullAddress('GLN22'), jobTitle: 'Smoke alarms to standard', twoPage: true,
+    lines: [
+      line(3, 'Photoelectric smoke alarm, 10-year (supply)', 48),
+      line(1.5, 'Install and test alarms (hours)', 72),
+      line(1, 'Electrical safety check, whole house', 60),
+    ],
+    issues: [],
+  },
+  {
+    file: 'h-credit-10-electrical-mrb6.pdf', layout: 'detailed', supplier: S.electrical, number: 'CN-0042', date: '2026-09-25', due: null,
+    address: fullAddress('MRB6'), jobTitle: 'Heat pump service', credit: { against: 'E-10427' },
+    lines: [line(1, 'Credit: filter clean and sanitise not carried out', -36)],
+    issues: ['credit_note'], note: 'A credit note, not a bill: amounts are negative and nothing is payable.',
+  },
+  {
+    file: 'h-invoice-11-electrical-one3.pdf', layout: 'detailed', supplier: S.electrical, number: 'E-11019', date: '2026-09-30', due: '2026-10-14',
+    address: 'Flat 3, 41 Arthur St, Onehunga', jobTitle: 'Bathroom extractor fan',
+    lines: [line(1, 'Extractor fan timer switch (supply)', 64), line(1, 'Labour (hours)', 72), line(1, 'Re-route ducting through soffit', 114)],
+    issues: [],
+  },
+  {
+    file: 'h-invoice-12-electrical-papakura.pdf', layout: 'detailed', supplier: S.electrical, number: 'E-11025', date: '2026-09-22', due: '2026-10-06',
+    address: '18 Matai Road, Papakura, Auckland 2110', jobTitle: 'Exterior light',
+    lines: [line(1, 'Replace exterior light fitting', 95), line(1, 'Labour (hours)', 72)],
+    issues: ['property_unknown'], note: 'Same street and number as 18 Matai Road, Papatoetoe, but a different suburb: not in the portfolio.',
+  },
+]
+
+interface HeldPrinted {
+  subtotal: number | null
+  gst: number
+  total: number
+}
+function heldPrinted(spec: HeldInvoice): HeldPrinted {
+  const sum = spec.lines.reduce((s, l) => s + l.amount, 0)
+  if (spec.inclusive) return { subtotal: null, gst: spec.gst ?? Math.round((sum * 3) / 23), total: sum }
+  const gstAmount = spec.gst ?? gstOf(sum)
+  return { subtotal: sum, gst: gstAmount, total: sum + gstAmount }
+}
+
+const signed = (c: number) => (c < 0 ? `-${money(-c)}` : money(c))
+const signedDollars = (c: number) => (c < 0 ? `-$${money(-c)}` : dollars(c))
+
+/** Totals first, then the work: "Amount payable", "Bill no.", dates written out in words. */
+function summaryFirst(spec: HeldInvoice): string {
+  const p = heldPrinted(spec)
+  const d = (iso: string) => heldDate(iso, 'words')
+  return page(
+    `body { font-family: Calibri, Arial, sans-serif; padding: 40px 50px; font-size: 13px; }
+    .name { font-size: 26px; font-weight: bold; color: #7c2d12; }
+    .due { margin: 18px 0; border: 2px solid #7c2d12; padding: 14px 18px; display: flex; gap: 40px; }
+    .due .k { font-size: 11px; text-transform: uppercase; color: #78716c; }
+    .due .v { font-size: 16px; font-weight: bold; }
+    table { width: 100%; margin-top: 10px; }
+    th { text-align: left; border-bottom: 1px solid #78716c; padding: 5px 4px; font-size: 11px; color: #57534e; }
+    td { padding: 6px 4px; border-bottom: 1px dotted #d6d3d1; }
+    .n { text-align: right; }`,
+    `<div class="name">${esc(spec.supplier.name)}</div>
+    <div>${esc(spec.supplier.address)} &middot; ${spec.supplier.phone}</div>
+    <div class="due">
+      <div><div class="k">Amount payable</div><div class="v">${dollars(p.total)}</div></div>
+      <div><div class="k">Pay by</div><div class="v">${d(spec.due!)}</div></div>
+      <div><div class="k">Bill no.</div><div class="v">${spec.number}</div></div>
+    </div>
+    <p>This amount is made up of charges of ${dollars(p.subtotal!)} plus GST @ 15% of ${dollars(p.gst)}.</p>
+    <p>Bill date: ${d(spec.date)}<br>GST reg. no. ${spec.supplier.gstNumber}<br>Charged to: ${BILL_TO.join(', ')}</p>
+    <p>Work site: ${esc(spec.address)} (${esc(spec.jobTitle)})</p>
+    <h3>Details of work</h3>
+    <table><tr><th>Item</th><th class="n">Hrs/Qty</th><th class="n">Rate</th><th class="n">Line total</th></tr>
+    ${spec.lines.map((l) => `<tr><td>${esc(l.description)}</td><td class="n">${l.quantity}</td><td class="n">${money(l.unit)}</td><td class="n">${money(l.amount)}</td></tr>`).join('')}
+    </table>
+    <p>Direct credit: ${spec.supplier.bank}. Please quote the bill number.</p>`,
+  )
+}
+
+/** A shop-style tax invoice: amounts include GST, "GST content", no subtotal. */
+function retail(spec: HeldInvoice): string {
+  const p = heldPrinted(spec)
+  const d = (iso: string) => heldDate(iso, 'dash')
+  return page(
+    `body { font-family: Arial, sans-serif; padding: 36px 120px; font-size: 12px; }
+    .c { text-align: center; } h1 { font-size: 20px; margin: 4px 0; }
+    table { width: 100%; margin: 14px 0; } td { padding: 5px 0; } .n { text-align: right; }
+    .box { border-top: 2px solid #111827; border-bottom: 2px solid #111827; padding: 8px 0; }`,
+    `<div class="c"><h1>${esc(spec.supplier.name)}</h1>${esc(spec.supplier.address)}<br>GST no ${spec.supplier.gstNumber}</div>
+    <p class="c"><b>TAX INVOICE</b></p>
+    <p>Tax invoice no: ${spec.number}<br>Date: ${d(spec.date)}<br>Payment due: ${d(spec.due!)}<br>
+      Customer: ${BILL_TO[0]}<br>Location: ${esc(spec.address)}</p>
+    <table><tr><td><b>Description</b></td><td class="n"><b>Amount (incl. GST)</b></td></tr>
+    ${spec.lines.map((l) => `<tr><td>${esc(l.description)}</td><td class="n">${money(l.amount)}</td></tr>`).join('')}
+    </table>
+    <div class="box"><table style="margin:0">
+      <tr><td><b>Amount payable</b></td><td class="n"><b>${dollars(p.total)}</b></td></tr>
+      <tr><td>GST content</td><td class="n">${money(p.gst)}</td></tr></table></div>
+    <p class="c">Pay to ${spec.supplier.bank}. Thank you for your custom.</p>`,
+  )
+}
+
+/** A detailed trade layout with two-digit-year dates; also used for a two-page invoice and a credit note. */
+function detailed(spec: HeldInvoice): string {
+  const p = heldPrinted(spec)
+  const d = (iso: string) => heldDate(iso, 'dots')
+  const title = spec.credit ? 'CREDIT NOTE' : 'TAX INVOICE'
+  const head = `<div class="top"><div><b style="font-size:20px">${esc(spec.supplier.name)}</b><br>${esc(spec.supplier.address)}<br>GST No. ${spec.supplier.gstNumber}</div>
+    <div class="t">${title}</div></div>`
+  const meta = `<table class="meta">
+      <tr><td>${spec.credit ? 'Credit note No.' : 'Document No.'}</td><td>${spec.number}</td><td>Dated</td><td>${d(spec.date)}</td></tr>
+      ${spec.credit ? `<tr><td>Against invoice</td><td>${spec.credit.against}</td><td></td><td></td></tr>` : `<tr><td>Balance due by</td><td>${d(spec.due!)}</td><td></td><td></td></tr>`}
+      <tr><td>Installation address</td><td colspan="3">${esc(spec.address)}</td></tr>
+      <tr><td>Ref</td><td colspan="3">${esc(spec.jobTitle)}</td></tr></table>`
+  const report = spec.twoPage
+    ? `<h3>Work report</h3><ol>${[
+        'Removed three ionisation smoke alarms (hallway, bedroom 1, bedroom 2).',
+        'Fitted three 10-year photoelectric alarms within 3 m of each bedroom door, as the tenancy standard requires.',
+        'Tested every alarm with the test button and with smoke spray; all sounded.',
+        'Checked the switchboard: RCD protection present on all lighting and power circuits.',
+        'RCD trip test: 22 ms at rated current, within limits.',
+        'Insulation resistance test, all circuits: above 200 megaohms.',
+        'Earth continuity: main earth 0.12 ohm, bonding to water pipes present.',
+        'Polarity checked at every socket outlet.',
+        'No faults found. Electrical safety certificate ES-55120 issued to the owner.',
+        'Photos of each alarm location are on file under the document number.',
+      ].map((x) => `<li>${x}</li>`).join('')}</ol>
+      <p>Charges follow on the next page.</p><div style="page-break-after: always"></div>
+      <p style="color:#6b7280">${esc(spec.supplier.name)} &middot; ${spec.number} &middot; page 2 of 2</p>`
+    : ''
+  return page(
+    `body { font-family: 'Segoe UI', Arial, sans-serif; padding: 34px 44px; font-size: 12px; }
+    .top { display: flex; justify-content: space-between; border-bottom: 2px solid #334155; padding-bottom: 10px; }
+    .t { font-size: 24px; letter-spacing: 3px; color: #334155; }
+    .meta { margin: 14px 0; } .meta td { padding: 3px 14px 3px 0; } .meta td:nth-child(odd) { color: #64748b; }
+    .items { width: 100%; } .items th { background: #e2e8f0; text-align: left; padding: 6px; }
+    .items td { padding: 6px; border-bottom: 1px solid #e2e8f0; } .n { text-align: right; }
+    .tot { margin: 12px 0 0 auto; } .tot td { padding: 3px 8px; }`,
+    `${head}${meta}${report}
+    <table class="items"><tr><th>Description</th><th class="n">Qty</th><th class="n">Unit</th><th class="n">Ext.</th></tr>
+    ${spec.lines.map((l) => `<tr><td>${esc(l.description)}</td><td class="n">${l.quantity}</td><td class="n">${signed(l.unit)}</td><td class="n">${signed(l.amount)}</td></tr>`).join('')}
+    </table>
+    <table class="tot"><tr><td>Nett</td><td class="n">${signed(p.subtotal!)}</td></tr>
+      <tr><td>GST</td><td class="n">${signed(p.gst)}</td></tr>
+      <tr><td><b>${spec.credit ? 'Credit total' : 'Balance due'}</b></td><td class="n"><b>${signedDollars(p.total)}</b></td></tr></table>
+    <p>${spec.credit ? 'This credit will be applied to your account. No payment is required.' : `Pay to ${spec.supplier.bank}, reference ${spec.number}.`}</p>`,
+  )
+}
+
+const HELD_TEMPLATES: Record<HeldLayout, (spec: HeldInvoice) => string> = { summary: summaryFirst, retail, detailed }
+
+interface HeldLease {
+  file: string
+  property: PropertyCode
+  tenants: string[]
+  start: string
+  end: string | null
+  weeklyRent: number
+  bond: number
+  frequency: 'weekly' | 'fortnightly'
+  rentBasis: 'week' | 'fortnight'
+  pets: boolean
+  maxOccupants: number
+  issues: string[]
+  note?: string
+}
+
+const heldLeases: HeldLease[] = [
+  {
+    file: 'h-lease-13-avd25.pdf', property: 'AVD25', tenants: ['Wiremu Parata'], start: '2025-08-25', end: null,
+    weeklyRent: 600, bond: 2400, frequency: 'weekly', rentBasis: 'week', pets: false, maxOccupants: 5, issues: [],
+  },
+  {
+    file: 'h-lease-14-hnd5.pdf', property: 'HND5', tenants: ['Rajesh Patel', 'Priya Patel'], start: '2023-09-18', end: null,
+    weeklyRent: 700, bond: 2720, frequency: 'fortnightly', rentBasis: 'week', pets: true, maxOccupants: 6,
+    issues: ['rent_differs'], note: 'Rent $700 per week; the lease record says $680.',
+  },
+  {
+    file: 'h-lease-15-tak9.pdf', property: 'TAK9', tenants: ['Sophie Clarke'], start: '2025-01-13', end: '2027-01-12',
+    weeklyRent: 780, bond: 3120, frequency: 'fortnightly', rentBasis: 'fortnight', pets: false, maxOccupants: 5, issues: [],
+  },
+]
+
+/** A tenancy summary written as a letter: everything is in sentences. */
+function prose(spec: HeldLease): string {
+  const d = (iso: string) => heldDate(iso, 'words')
+  const names = tenantList(spec.tenants)
+  const rent =
+    spec.rentBasis === 'week' ? `${dollars(spec.weeklyRent * 100)} per week` : `${dollars(spec.weeklyRent * 200)} per fortnight`
+  const term = spec.end
+    ? `on a fixed term from ${d(spec.start)} until ${d(spec.end)}`
+    : `from ${d(spec.start)} on a periodic tenancy, with no end date`
+  return page(
+    `body { font-family: Georgia, serif; padding: 60px 80px; font-size: 13px; line-height: 1.7; }
+    h1 { font-size: 18px; font-weight: normal; letter-spacing: 1px; }`,
+    `<p>${BILL_TO[0]}<br>${BILL_TO.slice(1).join(', ')}</p>
+    <h1>Tenancy summary: ${esc(P[spec.property].street)}</h1>
+    <p>We confirm that ${esc(names)} ${spec.tenants.length > 1 ? 'rent' : 'rents'} ${esc(fullAddress(spec.property))} ${term}.</p>
+    <p>The rent is ${rent}, paid ${spec.frequency} in advance by automatic payment. A bond of ${dollars(spec.bond * 100)} is held.</p>
+    <p>${spec.pets ? 'Pets are allowed at the property with the landlord\'s written consent.' : 'Pets are not allowed at the property.'}
+      No more than ${spec.maxOccupants} people may live at the property.</p>
+    <p>Yours sincerely,<br>Property manager</p>`,
+  )
+}
+
+async function mainHeldout() {
+  mkdirSync(HELDOUT_DIR, { recursive: true })
+  for (const f of readdirSync(HELDOUT_DIR)) if (f.endsWith('.pdf')) rmSync(join(HELDOUT_DIR, f))
+  const browser = await chromium.launch({ executablePath: CHROMIUM })
+  const tab = await browser.newPage()
+  try {
+    const docs: [string, string][] = [
+      ...heldInvoices.map((s) => [s.file, HELD_TEMPLATES[s.layout](s)] as [string, string]),
+      ...heldLeases.map((s) => [s.file, prose(s)] as [string, string]),
+    ]
+    for (const [file, html] of docs) {
+      await tab.setContent(html, { waitUntil: 'load' })
+      writeFileSync(join(HELDOUT_DIR, file), await tab.pdf({ format: 'A4', printBackground: true }))
+    }
+  } finally {
+    await browser.close()
+  }
+  const truth = {
+    description:
+      'Held-out documents in four layouts the rules were not written for (totals above the items, GST-inclusive ' +
+      'retail with "GST content", a detailed layout with a two-page invoice and a credit note, and a summary written ' +
+      'as a letter). Field values are what each document prints; "issues" lists the problems planted on purpose.',
+    documents: [
+      ...heldInvoices.map((s) => {
+        const p = heldPrinted(s)
+        return {
+          file: s.file,
+          kind: 'invoice' as const,
+          layout: s.layout,
+          fields: {
+            supplierName: s.supplier.name,
+            supplierGstNumber: s.supplier.gstNumber,
+            supplierBankAccount: s.credit ? null : s.supplier.bank,
+            invoiceNumber: s.number,
+            invoiceDate: s.date,
+            dueDate: s.due,
+            propertyAddress: s.address,
+            lineItems: s.lines.map((l) => ({ description: l.description, quantity: l.quantity, unitAmount: l.unit / 100, amount: l.amount / 100 })),
+            subtotal: p.subtotal === null ? null : p.subtotal / 100,
+            gst: p.gst / 100,
+            total: p.total / 100,
+          },
+          issues: s.issues,
+          ...(s.note ? { note: s.note } : {}),
+        }
+      }),
+      ...heldLeases.map((s) => ({
+        file: s.file,
+        kind: 'lease' as const,
+        layout: 'prose',
+        fields: {
+          tenantNames: s.tenants,
+          propertyAddress: fullAddress(s.property),
+          startDate: s.start,
+          endDate: s.end ?? 'periodic',
+          weeklyRent: s.weeklyRent,
+          bond: s.bond,
+          rentFrequency: s.frequency,
+          petsAllowed: s.pets,
+          maxOccupants: s.maxOccupants,
+        },
+        issues: s.issues,
+        ...(s.note ? { note: s.note } : {}),
+      })),
+    ],
+  }
+  writeFileSync(join(HELDOUT_DIR, 'truth.json'), JSON.stringify(truth, null, 2) + '\n')
+  const sizes = readdirSync(HELDOUT_DIR).filter((f) => f.endsWith('.pdf')).map((f) => statSync(join(HELDOUT_DIR, f)).size)
+  console.log(`Wrote ${sizes.length} held-out PDFs; largest ${(Math.max(...sizes) / 1024).toFixed(0)} KB.`)
+}
+
+// ---------------------------------------------------------------------------------------------------------------
 
 async function main() {
+  if (process.argv.includes('--heldout')) return mainHeldout()
   mkdirSync(OUT_DIR, { recursive: true })
   for (const f of readdirSync(OUT_DIR)) if (f.endsWith('.pdf')) rmSync(join(OUT_DIR, f))
 
