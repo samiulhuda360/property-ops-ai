@@ -14,7 +14,14 @@ own. A monthly report shows the hours returned, and how they were counted.
 It's for property managers and their accounts and tenant-services staff, and for anyone who has to show that back-office
 automation is safe, measured and actually saves time.
 
-![Dashboard: portfolio figures and what is waiting for a person](docs/screenshots/dashboard.png)
+![Walkthrough: sign in, approve a reply to an urgent tenant email, review an invoice beside its PDF, open an ambiguous bank line, and read the hours returned](docs/screenshots/walkthrough.gif)
+
+*A 40-second walkthrough recorded from the running app with the demo data:*
+1. sign in;
+2. open an urgent tenant email and approve the reply, which is not sent;
+3. review a flagged invoice beside its PDF;
+4. look at an ambiguous bank payment and the model's suggestion;
+5. read the hours returned for September.
 
 The demo business is a fictional Auckland property manager:
 - 12 properties, 11 tenancies and 9 "Acme" contractors;
@@ -198,6 +205,9 @@ hours returned = baseline minutes for items whose automated work was used - minu
 - **Rejected or failed items earn nothing:** a person did that task by hand.
 
 ## Screenshots
+
+**Dashboard:** the portfolio figures, and what is waiting for a person across the automations.
+![Dashboard](docs/screenshots/dashboard.png)
 
 **Tenant inbox:** urgent emails first, the email beside the triage, the cited clause and an editable reply draft.
 ![Tenant inbox](docs/screenshots/inbox.png)
