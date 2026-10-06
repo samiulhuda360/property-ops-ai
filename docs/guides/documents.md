@@ -66,6 +66,10 @@ the **Hours returned** report.
 - **Bank account warnings.** Confirm a changed bank account by phone, using the number on file and not the one on
   the invoice.
 - **Jobs still marked open or in progress.** Make sure the work is done, then update the job in Maintenance.
+- **Credit notes.** A credit note is read like an invoice and has no check of its own. If the document says
+  "Credit note", reject it here and enter the credit in the accounting system.
+- **Shop-style invoices whose amounts include GST** ("GST content", no subtotal). The line items may be read
+  without GST, or flagged as not adding up. Check the line amounts and the total against the PDF.
 - **Tenancy summaries that disagree with the lease record.** Approving a summary doesn't change the lease. If the
   summary is right, update the lease under Tenants.
 
