@@ -32,7 +32,7 @@ Demo login: `demo@example.com` / `demo1234`.
 ## Tests
 
 ```bash
-TEST_DATABASE_URL=postgresql://postgres:postgres@localhost:5432/property_ops_test npm test
+TEST_DATABASE_URL=postgresql://postgres@localhost:5432/property_ops_test npm test
 ```
 
 Without `TEST_DATABASE_URL` the unit tests run and the database tests are skipped.

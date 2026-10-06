@@ -4,7 +4,7 @@ services:
     image: postgres:16
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST_AUTH_METHOD: trust  # local development only
       POSTGRES_DB: property_ops
     ports:
       - "5432:5432"

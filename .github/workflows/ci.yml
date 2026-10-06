@@ -12,14 +12,14 @@ jobs:
         image: postgres:16
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_HOST_AUTH_METHOD: trust
           POSTGRES_DB: property_ops_test
         ports: ["5432:5432"]
         options: >-
           --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 10
     env:
-      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/property_ops_test
-      TEST_DATABASE_URL: postgresql://postgres:postgres@localhost:5432/property_ops_test
+      DATABASE_URL: postgresql://postgres@localhost:5432/property_ops_test
+      TEST_DATABASE_URL: postgresql://postgres@localhost:5432/property_ops_test
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
