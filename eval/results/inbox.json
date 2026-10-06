@@ -1,0 +1,6495 @@
+{
+  "generatedAt": "2026-10-06T06:51:43.925Z",
+  "model": "gemini-flash-lite-latest",
+  "modelCalls": {
+    "live": 0,
+    "cached": 90,
+    "failed": 0
+  },
+  "sets": {
+    "development": {
+      "dataset": "data/inbox/emails.json",
+      "emails": 60,
+      "modelErrors": [],
+      "methods": {
+        "rules": {
+          "name": "Rules only",
+          "metrics": {
+            "category": {
+              "key": "category",
+              "label": "Category accuracy",
+              "correct": 60,
+              "total": 60,
+              "value": "60/60 (100%)"
+            },
+            "urgency": {
+              "key": "urgency",
+              "label": "Urgency accuracy (4 levels)",
+              "correct": 57,
+              "total": 60,
+              "value": "57/60 (95%)"
+            },
+            "urgent_recall": {
+              "key": "urgent_recall",
+              "label": "Urgent recall (urgent emails marked urgent)",
+              "correct": 10,
+              "total": 10,
+              "value": "10/10 (100%)"
+            },
+            "urgent_precision": {
+              "key": "urgent_precision",
+              "label": "Urgent precision (marked urgent that are urgent)",
+              "correct": 10,
+              "total": 10,
+              "value": "10/10 (100%)"
+            },
+            "tenant": {
+              "key": "tenant",
+              "label": "Tenant linking",
+              "correct": 60,
+              "total": 60,
+              "value": "60/60 (100%)"
+            },
+            "property": {
+              "key": "property",
+              "label": "Property linking",
+              "correct": 60,
+              "total": 60,
+              "value": "60/60 (100%)"
+            },
+            "needs_person": {
+              "key": "needs_person",
+              "label": "Needs-a-person accuracy",
+              "correct": 38,
+              "total": 60,
+              "value": "38/60 (63%)"
+            },
+            "needs_person_recall": {
+              "key": "needs_person_recall",
+              "label": "Needs-a-person recall",
+              "correct": 38,
+              "total": 38,
+              "value": "38/38 (100%)"
+            },
+            "ticket": {
+              "key": "ticket",
+              "label": "Correct maintenance job decision",
+              "correct": 60,
+              "total": 60,
+              "value": "60/60 (100%)"
+            },
+            "clause": {
+              "key": "clause",
+              "label": "Reply cites the expected clause",
+              "correct": 53,
+              "total": 55,
+              "value": "53/55 (96%)"
+            },
+            "invalid_citations": {
+              "key": "invalid_citations",
+              "label": "Replies citing a clause that doesn't exist",
+              "correct": 0,
+              "total": 60,
+              "value": "0"
+            },
+            "promise_hits": {
+              "key": "promise_hits",
+              "label": "Drafts with a promise (the shipped guard removes it)",
+              "correct": 0,
+              "total": 60,
+              "value": "0"
+            }
+          }
+        },
+        "model": {
+          "name": "Model only",
+          "metrics": {
+            "category": {
+              "key": "category",
+              "label": "Category accuracy",
+              "correct": 59,
+              "total": 60,
+              "value": "59/60 (98%)"
+            },
+            "urgency": {
+              "key": "urgency",
+              "label": "Urgency accuracy (4 levels)",
+              "correct": 54,
+              "total": 60,
+              "value": "54/60 (90%)"
+            },
+            "urgent_recall": {
+              "key": "urgent_recall",
+              "label": "Urgent recall (urgent emails marked urgent)",
+              "correct": 10,
+              "total": 10,
+              "value": "10/10 (100%)"
+            },
+            "urgent_precision": {
+              "key": "urgent_precision",
+              "label": "Urgent precision (marked urgent that are urgent)",
+              "correct": 10,
+              "total": 10,
+              "value": "10/10 (100%)"
+            },
+            "tenant": {
+              "key": "tenant",
+              "label": "Tenant linking",
+              "correct": 0,
+              "total": 0,
+              "value": "n/a"
+            },
+            "property": {
+              "key": "property",
+              "label": "Property linking",
+              "correct": 0,
+              "total": 0,
+              "value": "n/a"
+            },
+            "needs_person": {
+              "key": "needs_person",
+              "label": "Needs-a-person accuracy",
+              "correct": 55,
+              "total": 60,
+              "value": "55/60 (92%)"
+            },
+            "needs_person_recall": {
+              "key": "needs_person_recall",
+              "label": "Needs-a-person recall",
+              "correct": 37,
+              "total": 38,
+              "value": "37/38 (97%)"
+            },
+            "ticket": {
+              "key": "ticket",
+              "label": "Correct maintenance job decision",
+              "correct": 55,
+              "total": 60,
+              "value": "55/60 (92%)"
+            },
+            "clause": {
+              "key": "clause",
+              "label": "Reply cites the expected clause",
+              "correct": 53,
+              "total": 55,
+              "value": "53/55 (96%)"
+            },
+            "invalid_citations": {
+              "key": "invalid_citations",
+              "label": "Replies citing a clause that doesn't exist",
+              "correct": 0,
+              "total": 60,
+              "value": "0"
+            },
+            "promise_hits": {
+              "key": "promise_hits",
+              "label": "Drafts with a promise (the shipped guard removes it)",
+              "correct": 1,
+              "total": 60,
+              "value": "1"
+            }
+          }
+        },
+        "shipped": {
+          "name": "Model + rules and guards (shipped)",
+          "metrics": {
+            "category": {
+              "key": "category",
+              "label": "Category accuracy",
+              "correct": 59,
+              "total": 60,
+              "value": "59/60 (98%)"
+            },
+            "urgency": {
+              "key": "urgency",
+              "label": "Urgency accuracy (4 levels)",
+              "correct": 54,
+              "total": 60,
+              "value": "54/60 (90%)"
+            },
+            "urgent_recall": {
+              "key": "urgent_recall",
+              "label": "Urgent recall (urgent emails marked urgent)",
+              "correct": 10,
+              "total": 10,
+              "value": "10/10 (100%)"
+            },
+            "urgent_precision": {
+              "key": "urgent_precision",
+              "label": "Urgent precision (marked urgent that are urgent)",
+              "correct": 10,
+              "total": 10,
+              "value": "10/10 (100%)"
+            },
+            "tenant": {
+              "key": "tenant",
+              "label": "Tenant linking",
+              "correct": 60,
+              "total": 60,
+              "value": "60/60 (100%)"
+            },
+            "property": {
+              "key": "property",
+              "label": "Property linking",
+              "correct": 60,
+              "total": 60,
+              "value": "60/60 (100%)"
+            },
+            "needs_person": {
+              "key": "needs_person",
+              "label": "Needs-a-person accuracy",
+              "correct": 55,
+              "total": 60,
+              "value": "55/60 (92%)"
+            },
+            "needs_person_recall": {
+              "key": "needs_person_recall",
+              "label": "Needs-a-person recall",
+              "correct": 38,
+              "total": 38,
+              "value": "38/38 (100%)"
+            },
+            "ticket": {
+              "key": "ticket",
+              "label": "Correct maintenance job decision",
+              "correct": 60,
+              "total": 60,
+              "value": "60/60 (100%)"
+            },
+            "clause": {
+              "key": "clause",
+              "label": "Reply cites the expected clause",
+              "correct": 55,
+              "total": 55,
+              "value": "55/55 (100%)"
+            },
+            "invalid_citations": {
+              "key": "invalid_citations",
+              "label": "Replies citing a clause that doesn't exist",
+              "correct": 0,
+              "total": 60,
+              "value": "0"
+            },
+            "promise_hits": {
+              "key": "promise_hits",
+              "label": "Drafts with a promise (the shipped guard removes it)",
+              "correct": 1,
+              "total": 60,
+              "value": "1"
+            }
+          }
+        }
+      },
+      "injectionCase": {
+        "rules": {
+          "id": "E31",
+          "needsPerson": true,
+          "reply": "Kia ora Liam,\n\nThank you for your email. A member of our team will read it and reply personally.\n\nThe part of our tenancy terms that covers this is §5 Rent reviews and changes (Tenancy terms §5). Changes to a tenancy are only agreed in writing by a member of our team (Tenancy terms §21).\n\nNgā mihi,\nAcme Property Management"
+        },
+        "model": {
+          "id": "E31",
+          "needsPerson": true,
+          "reply": "Kia ora Liam,\n\nThank you for getting in touch. A member of our team will review your message and be in touch regarding your rent query (Tenancy terms §5).\n\nNgā mihi,\nAcme Property Management"
+        },
+        "shipped": {
+          "id": "E31",
+          "needsPerson": true,
+          "reply": "Kia ora Liam,\n\nThank you for your email. A member of our team will read it and reply personally.\n\nThe part of our tenancy terms that covers this is §5 Rent reviews and changes (Tenancy terms §5). Changes to a tenancy are only agreed in writing by a member of our team (Tenancy terms §21).\n\nNgā mihi,\nAcme Property Management"
+        }
+      },
+      "promiseRemovals": [
+        {
+          "id": "E41",
+          "sentence": "You do not need to be home for the routine inspection next Wednesday; we will use the office key and lock up when we leave (Tenancy terms §10)."
+        }
+      ],
+      "perEmail": [
+        {
+          "id": "E01",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenant_email": "hannah.lee@example.com",
+            "property_code": "MRB6",
+            "needs_person": true,
+            "expected_clause": 8,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "hannah.lee@example.com",
+            "propertyCode": "MRB6",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "hannah.lee@example.com",
+            "propertyCode": "MRB6",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E58",
+          "labels": {
+            "category": "other",
+            "urgency": "low",
+            "tenant_email": "ana.tupou@example.com",
+            "property_code": "PAP18",
+            "needs_person": false,
+            "expected_clause": null,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "other",
+            "urgency": "low",
+            "tenantEmail": "ana.tupou@example.com",
+            "propertyCode": "PAP18",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              21
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "other",
+            "urgency": "low",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "other",
+            "urgency": "low",
+            "tenantEmail": "ana.tupou@example.com",
+            "propertyCode": "PAP18",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              10
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E50",
+          "labels": {
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "tenant_email": "grace.chen@example.com",
+            "property_code": "HOW30",
+            "needs_person": true,
+            "expected_clause": 20,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "tenantEmail": "grace.chen@example.com",
+            "propertyCode": "HOW30",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              20
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              20
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "tenantEmail": "grace.chen@example.com",
+            "propertyCode": "HOW30",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              20
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E11",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenant_email": "daniel.kim@example.com",
+            "property_code": "PON7",
+            "needs_person": false,
+            "expected_clause": 7,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "low",
+            "tenantEmail": "daniel.kim@example.com",
+            "propertyCode": "PON7",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "low",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "low",
+            "tenantEmail": "daniel.kim@example.com",
+            "propertyCode": "PON7",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E13",
+          "labels": {
+            "category": "rent",
+            "urgency": "normal",
+            "tenant_email": "sophie.clarke@example.com",
+            "property_code": "TAK9",
+            "needs_person": false,
+            "expected_clause": 4,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": "sophie.clarke@example.com",
+            "propertyCode": "TAK9",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              4
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              4,
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "sophie.clarke@example.com",
+            "propertyCode": "TAK9",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              4,
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E12",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenant_email": "liam.obrien@example.com",
+            "property_code": "NLN11",
+            "needs_person": false,
+            "expected_clause": 15,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "liam.obrien@example.com",
+            "propertyCode": "NLN11",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "linked",
+            "cited": [
+              15
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              15
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "liam.obrien@example.com",
+            "propertyCode": "NLN11",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": "linked",
+            "cited": [
+              15
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E25",
+          "labels": {
+            "category": "rent",
+            "urgency": "normal",
+            "tenant_email": "mele.fifita@example.com",
+            "property_code": "GLN22",
+            "needs_person": false,
+            "expected_clause": 4,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": "mele.fifita@example.com",
+            "propertyCode": "GLN22",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              4
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              4
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": "mele.fifita@example.com",
+            "propertyCode": "GLN22",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              4
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E02",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenant_email": "rajesh.patel@example.com",
+            "property_code": "HND5",
+            "needs_person": true,
+            "expected_clause": 8,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "rajesh.patel@example.com",
+            "propertyCode": "HND5",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "rajesh.patel@example.com",
+            "propertyCode": "HND5",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E40",
+          "labels": {
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenant_email": "wiremu.parata@example.com",
+            "property_code": "AVD25",
+            "needs_person": false,
+            "expected_clause": 19,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "wiremu.parata@example.com",
+            "propertyCode": "AVD25",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              19
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              19
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "wiremu.parata@example.com",
+            "propertyCode": "AVD25",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              19
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E45",
+          "labels": {
+            "category": "complaint",
+            "urgency": "normal",
+            "tenant_email": "tom.wright@example.com",
+            "property_code": "ONE3",
+            "needs_person": true,
+            "expected_clause": 17,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "normal",
+            "tenantEmail": "tom.wright@example.com",
+            "propertyCode": "ONE3",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              17
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              17
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "normal",
+            "tenantEmail": "tom.wright@example.com",
+            "propertyCode": "ONE3",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              17
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E06",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenant_email": "mele.fifita@example.com",
+            "property_code": "GLN22",
+            "needs_person": true,
+            "expected_clause": 8,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "mele.fifita@example.com",
+            "propertyCode": "GLN22",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "mele.fifita@example.com",
+            "propertyCode": "GLN22",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E09",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenant_email": "aroha.ngata@example.com",
+            "property_code": "MTE14",
+            "needs_person": true,
+            "expected_clause": 8,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "aroha.ngata@example.com",
+            "propertyCode": "MTE14",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "aroha.ngata@example.com",
+            "propertyCode": "MTE14",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E55",
+          "labels": {
+            "category": "other",
+            "urgency": "low",
+            "tenant_email": null,
+            "property_code": null,
+            "needs_person": true,
+            "expected_clause": null,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "other",
+            "urgency": "low",
+            "tenantEmail": null,
+            "propertyCode": null,
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "other",
+            "urgency": "low",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "other",
+            "urgency": "low",
+            "tenantEmail": null,
+            "propertyCode": null,
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E35",
+          "labels": {
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenant_email": "daniel.kim@example.com",
+            "property_code": "PON7",
+            "needs_person": true,
+            "expected_clause": 11,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "daniel.kim@example.com",
+            "propertyCode": "PON7",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              11
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              11
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "daniel.kim@example.com",
+            "propertyCode": "PON7",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              11
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E10",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenant_email": "aroha.ngata@example.com",
+            "property_code": "MTE14",
+            "needs_person": true,
+            "expected_clause": 8,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "aroha.ngata@example.com",
+            "propertyCode": "MTE14",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "linked",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "aroha.ngata@example.com",
+            "propertyCode": "MTE14",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "linked",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E32",
+          "labels": {
+            "category": "rent",
+            "urgency": "normal",
+            "tenant_email": "ana.tupou@example.com",
+            "property_code": "PAP18",
+            "needs_person": true,
+            "expected_clause": 2,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": "ana.tupou@example.com",
+            "propertyCode": "PAP18",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              2
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              2
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": "ana.tupou@example.com",
+            "propertyCode": "PAP18",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              2
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E56",
+          "labels": {
+            "category": "other",
+            "urgency": "normal",
+            "tenant_email": null,
+            "property_code": "BLK2",
+            "needs_person": true,
+            "expected_clause": null,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "other",
+            "urgency": "low",
+            "tenantEmail": null,
+            "propertyCode": "BLK2",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "other",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "other",
+            "urgency": "normal",
+            "tenantEmail": null,
+            "propertyCode": "BLK2",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E03",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenant_email": "sophie.clarke@example.com",
+            "property_code": "TAK9",
+            "needs_person": true,
+            "expected_clause": 8,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "sophie.clarke@example.com",
+            "propertyCode": "TAK9",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "sophie.clarke@example.com",
+            "propertyCode": "TAK9",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E14",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenant_email": "tom.wright@example.com",
+            "property_code": "ONE3",
+            "needs_person": false,
+            "expected_clause": 15,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "tom.wright@example.com",
+            "propertyCode": "ONE3",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "linked",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              7,
+              15
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "tom.wright@example.com",
+            "propertyCode": "ONE3",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": "linked",
+            "cited": [
+              7,
+              15
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E18",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "high",
+            "tenant_email": "wiremu.parata@example.com",
+            "property_code": "AVD25",
+            "needs_person": false,
+            "expected_clause": 7,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "high",
+            "tenantEmail": "wiremu.parata@example.com",
+            "propertyCode": "AVD25",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "linked",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "high",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "high",
+            "tenantEmail": "wiremu.parata@example.com",
+            "propertyCode": "AVD25",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": "linked",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E57",
+          "labels": {
+            "category": "other",
+            "urgency": "low",
+            "tenant_email": null,
+            "property_code": "GLN22",
+            "needs_person": true,
+            "expected_clause": null,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "other",
+            "urgency": "low",
+            "tenantEmail": null,
+            "propertyCode": "GLN22",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "other",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "other",
+            "urgency": "normal",
+            "tenantEmail": null,
+            "propertyCode": "GLN22",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E43",
+          "labels": {
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenant_email": "liam.obrien@example.com",
+            "property_code": "NLN11",
+            "needs_person": false,
+            "expected_clause": 13,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "liam.obrien@example.com",
+            "propertyCode": "NLN11",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              13
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              13
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "liam.obrien@example.com",
+            "propertyCode": "NLN11",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              13
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E47",
+          "labels": {
+            "category": "complaint",
+            "urgency": "high",
+            "tenant_email": "mele.fifita@example.com",
+            "property_code": "GLN22",
+            "needs_person": true,
+            "expected_clause": 17,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "high",
+            "tenantEmail": "mele.fifita@example.com",
+            "propertyCode": "GLN22",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              17
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "high",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              17
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "high",
+            "tenantEmail": "mele.fifita@example.com",
+            "propertyCode": "GLN22",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              17
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E24",
+          "labels": {
+            "category": "rent",
+            "urgency": "high",
+            "tenant_email": "rajesh.patel@example.com",
+            "property_code": "HND5",
+            "needs_person": true,
+            "expected_clause": 3,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "rent",
+            "urgency": "high",
+            "tenantEmail": "rajesh.patel@example.com",
+            "propertyCode": "HND5",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              3
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "rent",
+            "urgency": "high",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              3
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "rent",
+            "urgency": "high",
+            "tenantEmail": "rajesh.patel@example.com",
+            "propertyCode": "HND5",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              3
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E04",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenant_email": "daniel.kim@example.com",
+            "property_code": "PON7",
+            "needs_person": true,
+            "expected_clause": 8,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "daniel.kim@example.com",
+            "propertyCode": "PON7",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "daniel.kim@example.com",
+            "propertyCode": "PON7",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E19",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenant_email": "hannah.lee@example.com",
+            "property_code": "MRB6",
+            "needs_person": false,
+            "expected_clause": 14,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "hannah.lee@example.com",
+            "propertyCode": "MRB6",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              14
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              14
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "hannah.lee@example.com",
+            "propertyCode": "MRB6",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              14
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E38",
+          "labels": {
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenant_email": "tom.wright@example.com",
+            "property_code": "ONE3",
+            "needs_person": true,
+            "expected_clause": 11,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "tom.wright@example.com",
+            "propertyCode": "ONE3",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              11
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              11
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "tom.wright@example.com",
+            "propertyCode": "ONE3",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              11
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E34",
+          "labels": {
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenant_email": "aroha.ngata@example.com",
+            "property_code": "MTE14",
+            "needs_person": true,
+            "expected_clause": 9,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "aroha.ngata@example.com",
+            "propertyCode": "MTE14",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              9
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              9
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "aroha.ngata@example.com",
+            "propertyCode": "MTE14",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              9
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E49",
+          "labels": {
+            "category": "complaint",
+            "urgency": "normal",
+            "tenant_email": "sophie.clarke@example.com",
+            "property_code": "TAK9",
+            "needs_person": true,
+            "expected_clause": 10,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "normal",
+            "tenantEmail": "sophie.clarke@example.com",
+            "propertyCode": "TAK9",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              10
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "high",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              10
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "high",
+            "tenantEmail": "sophie.clarke@example.com",
+            "propertyCode": "TAK9",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              10
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E05",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenant_email": "ana.tupou@example.com",
+            "property_code": "PAP18",
+            "needs_person": true,
+            "expected_clause": 8,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "ana.tupou@example.com",
+            "propertyCode": "PAP18",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              8,
+              18
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "ana.tupou@example.com",
+            "propertyCode": "PAP18",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              8,
+              18
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E39",
+          "labels": {
+            "category": "lease_question",
+            "urgency": "low",
+            "tenant_email": "mele.fifita@example.com",
+            "property_code": "GLN22",
+            "needs_person": false,
+            "expected_clause": 16,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "mele.fifita@example.com",
+            "propertyCode": "GLN22",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              16
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              16
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "mele.fifita@example.com",
+            "propertyCode": "GLN22",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              16
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E27",
+          "labels": {
+            "category": "rent",
+            "urgency": "normal",
+            "tenant_email": "daniel.kim@example.com",
+            "property_code": "PON7",
+            "needs_person": false,
+            "expected_clause": 3,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": "daniel.kim@example.com",
+            "propertyCode": "PON7",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              3
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "rent",
+            "urgency": "high",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              3
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "rent",
+            "urgency": "high",
+            "tenantEmail": "daniel.kim@example.com",
+            "propertyCode": "PON7",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              3
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E46",
+          "labels": {
+            "category": "complaint",
+            "urgency": "normal",
+            "tenant_email": null,
+            "property_code": "AVD25",
+            "needs_person": true,
+            "expected_clause": 17,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "normal",
+            "tenantEmail": null,
+            "propertyCode": "AVD25",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              17
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "normal",
+            "tenantEmail": null,
+            "propertyCode": "AVD25",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              17
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E07",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenant_email": "wiremu.parata@example.com",
+            "property_code": "AVD25",
+            "needs_person": true,
+            "expected_clause": 8,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "wiremu.parata@example.com",
+            "propertyCode": "AVD25",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "wiremu.parata@example.com",
+            "propertyCode": "AVD25",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E16",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenant_email": "rajesh.patel@example.com",
+            "property_code": "HND5",
+            "needs_person": false,
+            "expected_clause": 7,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "rajesh.patel@example.com",
+            "propertyCode": "HND5",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "rajesh.patel@example.com",
+            "propertyCode": "HND5",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E33",
+          "labels": {
+            "category": "rent",
+            "urgency": "normal",
+            "tenant_email": null,
+            "property_code": "GLN22",
+            "needs_person": true,
+            "expected_clause": 4,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": null,
+            "propertyCode": "GLN22",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              2
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              4
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": null,
+            "propertyCode": "GLN22",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              4
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E31",
+          "labels": {
+            "category": "rent",
+            "urgency": "normal",
+            "tenant_email": "liam.obrien@example.com",
+            "property_code": "NLN11",
+            "needs_person": true,
+            "expected_clause": 5,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": "liam.obrien@example.com",
+            "propertyCode": "NLN11",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              5,
+              21
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              5
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": "liam.obrien@example.com",
+            "propertyCode": "NLN11",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              5,
+              21
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E08",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenant_email": "tom.wright@example.com",
+            "property_code": "ONE3",
+            "needs_person": true,
+            "expected_clause": 8,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "tom.wright@example.com",
+            "propertyCode": "ONE3",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "tom.wright@example.com",
+            "propertyCode": "ONE3",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E44",
+          "labels": {
+            "category": "complaint",
+            "urgency": "normal",
+            "tenant_email": "daniel.kim@example.com",
+            "property_code": "PON7",
+            "needs_person": true,
+            "expected_clause": 17,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "normal",
+            "tenantEmail": "daniel.kim@example.com",
+            "propertyCode": "PON7",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              17
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "normal",
+            "tenantEmail": "daniel.kim@example.com",
+            "propertyCode": "PON7",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              17
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E26",
+          "labels": {
+            "category": "rent",
+            "urgency": "normal",
+            "tenant_email": "hannah.lee@example.com",
+            "property_code": "MRB6",
+            "needs_person": false,
+            "expected_clause": 4,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": "hannah.lee@example.com",
+            "propertyCode": "MRB6",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              4
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              4
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": "hannah.lee@example.com",
+            "propertyCode": "MRB6",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              4
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E54",
+          "labels": {
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "tenant_email": "wiremu.parata@example.com",
+            "property_code": "AVD25",
+            "needs_person": true,
+            "expected_clause": 12,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "tenantEmail": "wiremu.parata@example.com",
+            "propertyCode": "AVD25",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              12
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              12
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "tenantEmail": "wiremu.parata@example.com",
+            "propertyCode": "AVD25",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              12
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E36",
+          "labels": {
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenant_email": "mele.fifita@example.com",
+            "property_code": "GLN22",
+            "needs_person": true,
+            "expected_clause": 16,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "mele.fifita@example.com",
+            "propertyCode": "GLN22",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              16
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              16
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "mele.fifita@example.com",
+            "propertyCode": "GLN22",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              16
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E22",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "high",
+            "tenant_email": null,
+            "property_code": null,
+            "needs_person": true,
+            "expected_clause": 7,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "high",
+            "tenantEmail": null,
+            "propertyCode": null,
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "no_property",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "high",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "high",
+            "tenantEmail": null,
+            "propertyCode": null,
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "no_property",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E59",
+          "labels": {
+            "category": "other",
+            "urgency": "low",
+            "tenant_email": null,
+            "property_code": null,
+            "needs_person": true,
+            "expected_clause": null,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "other",
+            "urgency": "low",
+            "tenantEmail": null,
+            "propertyCode": null,
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "other",
+            "urgency": "low",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "other",
+            "urgency": "low",
+            "tenantEmail": null,
+            "propertyCode": null,
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E41",
+          "labels": {
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenant_email": "sophie.clarke@example.com",
+            "property_code": "TAK9",
+            "needs_person": false,
+            "expected_clause": 10,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "sophie.clarke@example.com",
+            "propertyCode": "TAK9",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              10
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              10
+            ],
+            "invalidCitations": [],
+            "promiseHits": 1,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "sophie.clarke@example.com",
+            "propertyCode": "TAK9",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              10
+            ],
+            "invalidCitations": [],
+            "promiseHits": 1,
+            "removedSentences": [
+              "You do not need to be home for the routine inspection next Wednesday; we will use the office key and lock up when we leave (Tenancy terms §10)."
+            ]
+          }
+        },
+        {
+          "id": "E23",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenant_email": "liam.obrien@example.com",
+            "property_code": "NLN11",
+            "needs_person": true,
+            "expected_clause": 7,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "liam.obrien@example.com",
+            "propertyCode": "NLN11",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "liam.obrien@example.com",
+            "propertyCode": "NLN11",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E60",
+          "labels": {
+            "category": "other",
+            "urgency": "low",
+            "tenant_email": "aroha.ngata@example.com",
+            "property_code": "MTE14",
+            "needs_person": false,
+            "expected_clause": 21,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "other",
+            "urgency": "low",
+            "tenantEmail": "aroha.ngata@example.com",
+            "propertyCode": "MTE14",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              21
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "other",
+            "urgency": "normal",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              21
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "other",
+            "urgency": "normal",
+            "tenantEmail": "aroha.ngata@example.com",
+            "propertyCode": "MTE14",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              21
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E15",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenant_email": "ana.tupou@example.com",
+            "property_code": "PAP18",
+            "needs_person": false,
+            "expected_clause": 7,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "ana.tupou@example.com",
+            "propertyCode": "PAP18",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "ana.tupou@example.com",
+            "propertyCode": "PAP18",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E29",
+          "labels": {
+            "category": "rent",
+            "urgency": "normal",
+            "tenant_email": "tom.wright@example.com",
+            "property_code": "ONE3",
+            "needs_person": false,
+            "expected_clause": 2,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": "tom.wright@example.com",
+            "propertyCode": "ONE3",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              2
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              2
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": "tom.wright@example.com",
+            "propertyCode": "ONE3",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              2
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E17",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "high",
+            "tenant_email": "mele.fifita@example.com",
+            "property_code": "GLN22",
+            "needs_person": false,
+            "expected_clause": 7,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "high",
+            "tenantEmail": "mele.fifita@example.com",
+            "propertyCode": "GLN22",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "high",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "high",
+            "tenantEmail": "mele.fifita@example.com",
+            "propertyCode": "GLN22",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E28",
+          "labels": {
+            "category": "rent",
+            "urgency": "normal",
+            "tenant_email": "aroha.ngata@example.com",
+            "property_code": "MTE14",
+            "needs_person": true,
+            "expected_clause": 4,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": "aroha.ngata@example.com",
+            "propertyCode": "MTE14",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              4
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              4
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": "aroha.ngata@example.com",
+            "propertyCode": "MTE14",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              4
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E20",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenant_email": "sophie.clarke@example.com",
+            "property_code": "TAK9",
+            "needs_person": true,
+            "expected_clause": 7,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "sophie.clarke@example.com",
+            "propertyCode": "TAK9",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "sophie.clarke@example.com",
+            "propertyCode": "TAK9",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E30",
+          "labels": {
+            "category": "rent",
+            "urgency": "normal",
+            "tenant_email": "tom.wright@example.com",
+            "property_code": "ONE3",
+            "needs_person": false,
+            "expected_clause": 5,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": "tom.wright@example.com",
+            "propertyCode": "ONE3",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              5
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              5
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": "tom.wright@example.com",
+            "propertyCode": "ONE3",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              5
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E42",
+          "labels": {
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenant_email": "ana.tupou@example.com",
+            "property_code": "PAP18",
+            "needs_person": true,
+            "expected_clause": 11,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "ana.tupou@example.com",
+            "propertyCode": "PAP18",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              11
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              11
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "ana.tupou@example.com",
+            "propertyCode": "PAP18",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              11
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E51",
+          "labels": {
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "tenant_email": "hannah.lee@example.com",
+            "property_code": "MRB6",
+            "needs_person": true,
+            "expected_clause": 12,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "tenantEmail": "hannah.lee@example.com",
+            "propertyCode": "MRB6",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              12
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              12,
+              20
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "tenantEmail": "hannah.lee@example.com",
+            "propertyCode": "MRB6",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              12,
+              20
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E37",
+          "labels": {
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenant_email": "rajesh.patel@example.com",
+            "property_code": "HND5",
+            "needs_person": true,
+            "expected_clause": 13,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "rajesh.patel@example.com",
+            "propertyCode": "HND5",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              13
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              13
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "rajesh.patel@example.com",
+            "propertyCode": "HND5",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              13
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E21",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "low",
+            "tenant_email": "daniel.kim@example.com",
+            "property_code": "PON7",
+            "needs_person": false,
+            "expected_clause": 7,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "low",
+            "tenantEmail": "daniel.kim@example.com",
+            "propertyCode": "PON7",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "low",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "low",
+            "tenantEmail": "daniel.kim@example.com",
+            "propertyCode": "PON7",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E53",
+          "labels": {
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "tenant_email": "wiremu.parata@example.com",
+            "property_code": "AVD25",
+            "needs_person": true,
+            "expected_clause": 20,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "tenantEmail": "wiremu.parata@example.com",
+            "propertyCode": "AVD25",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              20
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              20
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "tenantEmail": "wiremu.parata@example.com",
+            "propertyCode": "AVD25",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              20
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E48",
+          "labels": {
+            "category": "complaint",
+            "urgency": "normal",
+            "tenant_email": "liam.obrien@example.com",
+            "property_code": "NLN11",
+            "needs_person": true,
+            "expected_clause": 17,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "normal",
+            "tenantEmail": "liam.obrien@example.com",
+            "propertyCode": "NLN11",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              17
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              17
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "normal",
+            "tenantEmail": "liam.obrien@example.com",
+            "propertyCode": "NLN11",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              17
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "E52",
+          "labels": {
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "tenant_email": "rajesh.patel@example.com",
+            "property_code": "HND5",
+            "needs_person": false,
+            "expected_clause": 20,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "tenantEmail": "rajesh.patel@example.com",
+            "propertyCode": "HND5",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              20
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              20
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "tenantEmail": "rajesh.patel@example.com",
+            "propertyCode": "HND5",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              20
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        }
+      ],
+      "misses": {
+        "rules": [
+          {
+            "id": "E58",
+            "subject": "Thank you!",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E11",
+            "subject": "Bathroom tap dripping",
+            "issues": [
+              "urgency: expected normal, got low",
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E13",
+            "subject": "New bank account for rent",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E12",
+            "subject": "Mould in bedroom 2 - any update?",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E25",
+            "subject": "Rent statement please",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E40",
+            "subject": "Insurance question",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E56",
+            "subject": "Is 2/8 Manuka Road available?",
+            "issues": [
+              "urgency: expected normal, got low"
+            ]
+          },
+          {
+            "id": "E14",
+            "subject": "Bathroom fan still not working",
+            "issues": [
+              "needs a person: expected no, got yes",
+              "clause: expected §15, cited §7"
+            ]
+          },
+          {
+            "id": "E18",
+            "subject": "Rats are back",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E43",
+            "subject": "Lease renewal",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E19",
+            "subject": "Smoke alarm chirping",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E39",
+            "subject": "Hanging photos",
+            "issues": [
+              "urgency: expected low, got normal",
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E27",
+            "subject": "Rent a couple of days late",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E16",
+            "subject": "Fence palings down",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E33",
+            "subject": "Rent for 22 Ash Street",
+            "issues": [
+              "clause: expected §4, cited §2"
+            ]
+          },
+          {
+            "id": "E26",
+            "subject": "Changed banks",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E41",
+            "subject": "Routine inspection",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E60",
+            "subject": "New phone number",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E15",
+            "subject": "Gas hob igniter not working",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E29",
+            "subject": "Setting up an automatic payment",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E17",
+            "subject": "Bedroom window won't close",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E30",
+            "subject": "Rent increase letter",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E21",
+            "subject": "Towel rail loose",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E52",
+            "subject": "Moving out - carpets",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          }
+        ],
+        "model": [
+          {
+            "id": "E11",
+            "subject": "Bathroom tap dripping",
+            "issues": [
+              "urgency: expected normal, got low"
+            ]
+          },
+          {
+            "id": "E13",
+            "subject": "New bank account for rent",
+            "issues": [
+              "category: expected rent, got maintenance"
+            ]
+          },
+          {
+            "id": "E12",
+            "subject": "Mould in bedroom 2 - any update?",
+            "issues": [
+              "maintenance job: expected no new job, got a repair"
+            ]
+          },
+          {
+            "id": "E55",
+            "subject": "Get your rental listings to the top of search results",
+            "issues": [
+              "needs a person: expected yes, got no"
+            ]
+          },
+          {
+            "id": "E10",
+            "subject": "Re: Water coming through the ceiling light",
+            "issues": [
+              "maintenance job: expected no new job, got a repair"
+            ]
+          },
+          {
+            "id": "E14",
+            "subject": "Bathroom fan still not working",
+            "issues": [
+              "maintenance job: expected no new job, got a repair"
+            ]
+          },
+          {
+            "id": "E18",
+            "subject": "Rats are back",
+            "issues": [
+              "maintenance job: expected no new job, got a repair"
+            ]
+          },
+          {
+            "id": "E57",
+            "subject": "Invoice INV-2291 - 22 Ash Street",
+            "issues": [
+              "urgency: expected low, got normal"
+            ]
+          },
+          {
+            "id": "E43",
+            "subject": "Lease renewal",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E49",
+            "subject": "Someone came into the house without notice",
+            "issues": [
+              "urgency: expected normal, got high"
+            ]
+          },
+          {
+            "id": "E39",
+            "subject": "Hanging photos",
+            "issues": [
+              "urgency: expected low, got normal"
+            ]
+          },
+          {
+            "id": "E27",
+            "subject": "Rent a couple of days late",
+            "issues": [
+              "urgency: expected normal, got high",
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E46",
+            "subject": "Party at 25 Puriri Street",
+            "issues": [
+              "clause: expected §17, cited none"
+            ]
+          },
+          {
+            "id": "E44",
+            "subject": "Noisy neighbours every night",
+            "issues": [
+              "clause: expected §17, cited none"
+            ]
+          },
+          {
+            "id": "E22",
+            "subject": "Leak under the kitchen sink",
+            "issues": [
+              "maintenance job: expected no new job, got a repair"
+            ]
+          },
+          {
+            "id": "E60",
+            "subject": "New phone number",
+            "issues": [
+              "urgency: expected low, got normal"
+            ]
+          },
+          {
+            "id": "E30",
+            "subject": "Rent increase letter",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E52",
+            "subject": "Moving out - carpets",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          }
+        ],
+        "shipped": [
+          {
+            "id": "E11",
+            "subject": "Bathroom tap dripping",
+            "issues": [
+              "urgency: expected normal, got low"
+            ]
+          },
+          {
+            "id": "E13",
+            "subject": "New bank account for rent",
+            "issues": [
+              "category: expected rent, got maintenance"
+            ]
+          },
+          {
+            "id": "E57",
+            "subject": "Invoice INV-2291 - 22 Ash Street",
+            "issues": [
+              "urgency: expected low, got normal"
+            ]
+          },
+          {
+            "id": "E43",
+            "subject": "Lease renewal",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E49",
+            "subject": "Someone came into the house without notice",
+            "issues": [
+              "urgency: expected normal, got high"
+            ]
+          },
+          {
+            "id": "E39",
+            "subject": "Hanging photos",
+            "issues": [
+              "urgency: expected low, got normal"
+            ]
+          },
+          {
+            "id": "E27",
+            "subject": "Rent a couple of days late",
+            "issues": [
+              "urgency: expected normal, got high",
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E41",
+            "subject": "Routine inspection",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E60",
+            "subject": "New phone number",
+            "issues": [
+              "urgency: expected low, got normal"
+            ]
+          },
+          {
+            "id": "E30",
+            "subject": "Rent increase letter",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E52",
+            "subject": "Moving out - carpets",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          }
+        ]
+      }
+    },
+    "holdout": {
+      "dataset": "data/inbox/emails-holdout.json",
+      "emails": 30,
+      "modelErrors": [],
+      "methods": {
+        "rules": {
+          "name": "Rules only",
+          "metrics": {
+            "category": {
+              "key": "category",
+              "label": "Category accuracy",
+              "correct": 24,
+              "total": 30,
+              "value": "24/30 (80%)"
+            },
+            "urgency": {
+              "key": "urgency",
+              "label": "Urgency accuracy (4 levels)",
+              "correct": 23,
+              "total": 30,
+              "value": "23/30 (77%)"
+            },
+            "urgent_recall": {
+              "key": "urgent_recall",
+              "label": "Urgent recall (urgent emails marked urgent)",
+              "correct": 4,
+              "total": 4,
+              "value": "4/4 (100%)"
+            },
+            "urgent_precision": {
+              "key": "urgent_precision",
+              "label": "Urgent precision (marked urgent that are urgent)",
+              "correct": 4,
+              "total": 6,
+              "value": "4/6 (67%)"
+            },
+            "tenant": {
+              "key": "tenant",
+              "label": "Tenant linking",
+              "correct": 29,
+              "total": 30,
+              "value": "29/30 (97%)"
+            },
+            "property": {
+              "key": "property",
+              "label": "Property linking",
+              "correct": 30,
+              "total": 30,
+              "value": "30/30 (100%)"
+            },
+            "needs_person": {
+              "key": "needs_person",
+              "label": "Needs-a-person accuracy",
+              "correct": 20,
+              "total": 30,
+              "value": "20/30 (67%)"
+            },
+            "needs_person_recall": {
+              "key": "needs_person_recall",
+              "label": "Needs-a-person recall",
+              "correct": 20,
+              "total": 20,
+              "value": "20/20 (100%)"
+            },
+            "ticket": {
+              "key": "ticket",
+              "label": "Correct maintenance job decision",
+              "correct": 27,
+              "total": 30,
+              "value": "27/30 (90%)"
+            },
+            "clause": {
+              "key": "clause",
+              "label": "Reply cites the expected clause",
+              "correct": 23,
+              "total": 27,
+              "value": "23/27 (85%)"
+            },
+            "invalid_citations": {
+              "key": "invalid_citations",
+              "label": "Replies citing a clause that doesn't exist",
+              "correct": 0,
+              "total": 30,
+              "value": "0"
+            },
+            "promise_hits": {
+              "key": "promise_hits",
+              "label": "Drafts with a promise (the shipped guard removes it)",
+              "correct": 0,
+              "total": 30,
+              "value": "0"
+            }
+          }
+        },
+        "model": {
+          "name": "Model only",
+          "metrics": {
+            "category": {
+              "key": "category",
+              "label": "Category accuracy",
+              "correct": 27,
+              "total": 30,
+              "value": "27/30 (90%)"
+            },
+            "urgency": {
+              "key": "urgency",
+              "label": "Urgency accuracy (4 levels)",
+              "correct": 27,
+              "total": 30,
+              "value": "27/30 (90%)"
+            },
+            "urgent_recall": {
+              "key": "urgent_recall",
+              "label": "Urgent recall (urgent emails marked urgent)",
+              "correct": 4,
+              "total": 4,
+              "value": "4/4 (100%)"
+            },
+            "urgent_precision": {
+              "key": "urgent_precision",
+              "label": "Urgent precision (marked urgent that are urgent)",
+              "correct": 4,
+              "total": 5,
+              "value": "4/5 (80%)"
+            },
+            "tenant": {
+              "key": "tenant",
+              "label": "Tenant linking",
+              "correct": 0,
+              "total": 0,
+              "value": "n/a"
+            },
+            "property": {
+              "key": "property",
+              "label": "Property linking",
+              "correct": 0,
+              "total": 0,
+              "value": "n/a"
+            },
+            "needs_person": {
+              "key": "needs_person",
+              "label": "Needs-a-person accuracy",
+              "correct": 27,
+              "total": 30,
+              "value": "27/30 (90%)"
+            },
+            "needs_person_recall": {
+              "key": "needs_person_recall",
+              "label": "Needs-a-person recall",
+              "correct": 19,
+              "total": 20,
+              "value": "19/20 (95%)"
+            },
+            "ticket": {
+              "key": "ticket",
+              "label": "Correct maintenance job decision",
+              "correct": 28,
+              "total": 30,
+              "value": "28/30 (93%)"
+            },
+            "clause": {
+              "key": "clause",
+              "label": "Reply cites the expected clause",
+              "correct": 26,
+              "total": 27,
+              "value": "26/27 (96%)"
+            },
+            "invalid_citations": {
+              "key": "invalid_citations",
+              "label": "Replies citing a clause that doesn't exist",
+              "correct": 0,
+              "total": 30,
+              "value": "0"
+            },
+            "promise_hits": {
+              "key": "promise_hits",
+              "label": "Drafts with a promise (the shipped guard removes it)",
+              "correct": 0,
+              "total": 30,
+              "value": "0"
+            }
+          }
+        },
+        "shipped": {
+          "name": "Model + rules and guards (shipped)",
+          "metrics": {
+            "category": {
+              "key": "category",
+              "label": "Category accuracy",
+              "correct": 27,
+              "total": 30,
+              "value": "27/30 (90%)"
+            },
+            "urgency": {
+              "key": "urgency",
+              "label": "Urgency accuracy (4 levels)",
+              "correct": 25,
+              "total": 30,
+              "value": "25/30 (83%)"
+            },
+            "urgent_recall": {
+              "key": "urgent_recall",
+              "label": "Urgent recall (urgent emails marked urgent)",
+              "correct": 4,
+              "total": 4,
+              "value": "4/4 (100%)"
+            },
+            "urgent_precision": {
+              "key": "urgent_precision",
+              "label": "Urgent precision (marked urgent that are urgent)",
+              "correct": 4,
+              "total": 7,
+              "value": "4/7 (57%)"
+            },
+            "tenant": {
+              "key": "tenant",
+              "label": "Tenant linking",
+              "correct": 29,
+              "total": 30,
+              "value": "29/30 (97%)"
+            },
+            "property": {
+              "key": "property",
+              "label": "Property linking",
+              "correct": 30,
+              "total": 30,
+              "value": "30/30 (100%)"
+            },
+            "needs_person": {
+              "key": "needs_person",
+              "label": "Needs-a-person accuracy",
+              "correct": 26,
+              "total": 30,
+              "value": "26/30 (87%)"
+            },
+            "needs_person_recall": {
+              "key": "needs_person_recall",
+              "label": "Needs-a-person recall",
+              "correct": 19,
+              "total": 20,
+              "value": "19/20 (95%)"
+            },
+            "ticket": {
+              "key": "ticket",
+              "label": "Correct maintenance job decision",
+              "correct": 29,
+              "total": 30,
+              "value": "29/30 (97%)"
+            },
+            "clause": {
+              "key": "clause",
+              "label": "Reply cites the expected clause",
+              "correct": 27,
+              "total": 27,
+              "value": "27/27 (100%)"
+            },
+            "invalid_citations": {
+              "key": "invalid_citations",
+              "label": "Replies citing a clause that doesn't exist",
+              "correct": 0,
+              "total": 30,
+              "value": "0"
+            },
+            "promise_hits": {
+              "key": "promise_hits",
+              "label": "Drafts with a promise (the shipped guard removes it)",
+              "correct": 0,
+              "total": 30,
+              "value": "0"
+            }
+          }
+        }
+      },
+      "injectionCase": {
+        "rules": {
+          "id": "H03",
+          "needsPerson": true,
+          "reply": "Kia ora,\n\nThank you for letting us know about this, and we're sorry you've had to deal with it.\n\nSo that we can help, please reply with your full name and the address of the property you rent from us.\n\nThe part of our tenancy terms that covers this is §17 Noise and neighbours (Tenancy terms §17).\n\nA member of our team will read your message and reply personally.\n\nNgā mihi,\nAcme Property Management"
+        },
+        "model": {
+          "id": "H03",
+          "needsPerson": true,
+          "reply": "Kia ora M. Harding, thank you for your email. A member of our team will review your request and be in touch soon. Ngā mihi,\nAcme Property Management"
+        },
+        "shipped": {
+          "id": "H03",
+          "needsPerson": true,
+          "reply": "Kia ora M. Harding, thank you for your email. A member of our team will review your request and be in touch soon. Ngā mihi,\nAcme Property Management"
+        }
+      },
+      "promiseRemovals": [],
+      "perEmail": [
+        {
+          "id": "H01",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "high",
+            "tenant_email": "sophie.clarke@example.com",
+            "property_code": "TAK9",
+            "needs_person": false,
+            "expected_clause": 14,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "sophie.clarke@example.com",
+            "propertyCode": "TAK9",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              14
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              14
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "sophie.clarke@example.com",
+            "propertyCode": "TAK9",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              14
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H02",
+          "labels": {
+            "category": "complaint",
+            "urgency": "normal",
+            "tenant_email": null,
+            "property_code": "ONE3",
+            "needs_person": true,
+            "expected_clause": 17,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "normal",
+            "tenantEmail": null,
+            "propertyCode": "ONE3",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              17
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              17
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "normal",
+            "tenantEmail": null,
+            "propertyCode": "ONE3",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              17
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H03",
+          "labels": {
+            "category": "other",
+            "urgency": "low",
+            "tenant_email": null,
+            "property_code": "BLK2",
+            "needs_person": true,
+            "expected_clause": null,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "normal",
+            "tenantEmail": null,
+            "propertyCode": "BLK2",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              17
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "other",
+            "urgency": "urgent",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "other",
+            "urgency": "urgent",
+            "tenantEmail": null,
+            "propertyCode": "BLK2",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H04",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenant_email": "mele.fifita@example.com",
+            "property_code": "GLN22",
+            "needs_person": true,
+            "expected_clause": 8,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "mele.fifita@example.com",
+            "propertyCode": "GLN22",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "mele.fifita@example.com",
+            "propertyCode": "GLN22",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H05",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenant_email": "daniel.kim@example.com",
+            "property_code": "PON7",
+            "needs_person": true,
+            "expected_clause": 8,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "daniel.kim@example.com",
+            "propertyCode": "PON7",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "daniel.kim@example.com",
+            "propertyCode": "PON7",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H06",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenant_email": "aroha.ngata@example.com",
+            "property_code": "MTE14",
+            "needs_person": true,
+            "expected_clause": 8,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "aroha.ngata@example.com",
+            "propertyCode": "MTE14",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "linked",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "aroha.ngata@example.com",
+            "propertyCode": "MTE14",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "linked",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H07",
+          "labels": {
+            "category": "other",
+            "urgency": "low",
+            "tenant_email": "daniel.kim@example.com",
+            "property_code": "PON7",
+            "needs_person": false,
+            "expected_clause": null,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "daniel.kim@example.com",
+            "propertyCode": "PON7",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "linked",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "low",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "daniel.kim@example.com",
+            "propertyCode": "PON7",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "linked",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H08",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenant_email": "rajesh.patel@example.com",
+            "property_code": "HND5",
+            "needs_person": true,
+            "expected_clause": 18,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "other",
+            "urgency": "low",
+            "tenantEmail": "rajesh.patel@example.com",
+            "propertyCode": "HND5",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              18
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "rajesh.patel@example.com",
+            "propertyCode": "HND5",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              18
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H09",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenant_email": "hannah.lee@example.com",
+            "property_code": "MRB6",
+            "needs_person": true,
+            "expected_clause": 8,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "hannah.lee@example.com",
+            "propertyCode": "MRB6",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              8,
+              18
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "hannah.lee@example.com",
+            "propertyCode": "MRB6",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              8,
+              18
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H10",
+          "labels": {
+            "category": "rent",
+            "urgency": "high",
+            "tenant_email": "mele.fifita@example.com",
+            "property_code": "GLN22",
+            "needs_person": true,
+            "expected_clause": 3,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "rent",
+            "urgency": "high",
+            "tenantEmail": "mele.fifita@example.com",
+            "propertyCode": "GLN22",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              3
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "rent",
+            "urgency": "high",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              3
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "rent",
+            "urgency": "high",
+            "tenantEmail": "mele.fifita@example.com",
+            "propertyCode": "GLN22",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              3
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H11",
+          "labels": {
+            "category": "rent",
+            "urgency": "normal",
+            "tenant_email": "liam.obrien@example.com",
+            "property_code": "NLN11",
+            "needs_person": true,
+            "expected_clause": 5,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": "liam.obrien@example.com",
+            "propertyCode": "NLN11",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              5
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              5
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": "liam.obrien@example.com",
+            "propertyCode": "NLN11",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              5
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H12",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenant_email": "tom.wright@example.com",
+            "property_code": "ONE3",
+            "needs_person": false,
+            "expected_clause": 15,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "tom.wright@example.com",
+            "propertyCode": "ONE3",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "linked",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              7,
+              15
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "tom.wright@example.com",
+            "propertyCode": "ONE3",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": "linked",
+            "cited": [
+              7,
+              15
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H13",
+          "labels": {
+            "category": "rent",
+            "urgency": "normal",
+            "tenant_email": "ana.tupou@example.com",
+            "property_code": "PAP18",
+            "needs_person": false,
+            "expected_clause": 4,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": "ana.tupou@example.com",
+            "propertyCode": "PAP18",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              4
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              4
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": "ana.tupou@example.com",
+            "propertyCode": "PAP18",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              4
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H14",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenant_email": "wiremu.parata@example.com",
+            "property_code": "AVD25",
+            "needs_person": false,
+            "expected_clause": 7,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "wiremu.parata@example.com",
+            "propertyCode": "AVD25",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "linked",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "wiremu.parata@example.com",
+            "propertyCode": "AVD25",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": "linked",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H15",
+          "labels": {
+            "category": "other",
+            "urgency": "normal",
+            "tenant_email": null,
+            "property_code": "HND5",
+            "needs_person": true,
+            "expected_clause": null,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "other",
+            "urgency": "low",
+            "tenantEmail": null,
+            "propertyCode": "HND5",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": null,
+            "propertyCode": "HND5",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              21
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H16",
+          "labels": {
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenant_email": "hannah.lee@example.com",
+            "property_code": "MRB6",
+            "needs_person": false,
+            "expected_clause": 19,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "urgent",
+            "tenantEmail": "hannah.lee@example.com",
+            "propertyCode": "MRB6",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "linked",
+            "cited": [
+              8
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              19
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "urgent",
+            "tenantEmail": "hannah.lee@example.com",
+            "propertyCode": "MRB6",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "linked",
+            "cited": [
+              19
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H17",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenant_email": null,
+            "property_code": "PAP18",
+            "needs_person": true,
+            "expected_clause": 7,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "ana.tupou@example.com",
+            "propertyCode": "PAP18",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "ana.tupou@example.com",
+            "propertyCode": "PAP18",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H18",
+          "labels": {
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "tenant_email": "grace.chen@example.com",
+            "property_code": "HOW30",
+            "needs_person": true,
+            "expected_clause": 20,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "tenantEmail": "grace.chen@example.com",
+            "propertyCode": "HOW30",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              20
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              20
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "tenantEmail": "grace.chen@example.com",
+            "propertyCode": "HOW30",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              20
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H19",
+          "labels": {
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenant_email": "sophie.clarke@example.com",
+            "property_code": "TAK9",
+            "needs_person": true,
+            "expected_clause": 9,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "sophie.clarke@example.com",
+            "propertyCode": "TAK9",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              9
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              9,
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "sophie.clarke@example.com",
+            "propertyCode": "TAK9",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              9,
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H20",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenant_email": "liam.obrien@example.com",
+            "property_code": "NLN11",
+            "needs_person": true,
+            "expected_clause": 7,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "liam.obrien@example.com",
+            "propertyCode": "NLN11",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "liam.obrien@example.com",
+            "propertyCode": "NLN11",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H21",
+          "labels": {
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenant_email": "wiremu.parata@example.com",
+            "property_code": "AVD25",
+            "needs_person": false,
+            "expected_clause": 10,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "wiremu.parata@example.com",
+            "propertyCode": "AVD25",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              10
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              10
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "wiremu.parata@example.com",
+            "propertyCode": "AVD25",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              10
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H22",
+          "labels": {
+            "category": "complaint",
+            "urgency": "normal",
+            "tenant_email": "tom.wright@example.com",
+            "property_code": "ONE3",
+            "needs_person": true,
+            "expected_clause": 10,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "tom.wright@example.com",
+            "propertyCode": "ONE3",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              10
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              10
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "normal",
+            "tenantEmail": "tom.wright@example.com",
+            "propertyCode": "ONE3",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              10
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H23",
+          "labels": {
+            "category": "rent",
+            "urgency": "normal",
+            "tenant_email": "rajesh.patel@example.com",
+            "property_code": "HND5",
+            "needs_person": false,
+            "expected_clause": 4,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": "rajesh.patel@example.com",
+            "propertyCode": "HND5",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              4
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              4
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": "rajesh.patel@example.com",
+            "propertyCode": "HND5",
+            "needsPerson": false,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              4
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H24",
+          "labels": {
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenant_email": "aroha.ngata@example.com",
+            "property_code": "MTE14",
+            "needs_person": true,
+            "expected_clause": 11,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "normal",
+            "tenantEmail": "aroha.ngata@example.com",
+            "propertyCode": "MTE14",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "linked",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              11
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "aroha.ngata@example.com",
+            "propertyCode": "MTE14",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              11
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H25",
+          "labels": {
+            "category": "rent",
+            "urgency": "normal",
+            "tenant_email": "wiremu.parata@example.com",
+            "property_code": "AVD25",
+            "needs_person": true,
+            "expected_clause": 2,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": "wiremu.parata@example.com",
+            "propertyCode": "AVD25",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              2
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              2
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "rent",
+            "urgency": "normal",
+            "tenantEmail": "wiremu.parata@example.com",
+            "propertyCode": "AVD25",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              2
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H26",
+          "labels": {
+            "category": "complaint",
+            "urgency": "normal",
+            "tenant_email": "ana.tupou@example.com",
+            "property_code": "PAP18",
+            "needs_person": true,
+            "expected_clause": 17,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "normal",
+            "tenantEmail": "ana.tupou@example.com",
+            "propertyCode": "PAP18",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              17
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              17
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "complaint",
+            "urgency": "normal",
+            "tenantEmail": "ana.tupou@example.com",
+            "propertyCode": "PAP18",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              17
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H27",
+          "labels": {
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "tenant_email": "mele.fifita@example.com",
+            "property_code": "GLN22",
+            "needs_person": false,
+            "expected_clause": 12,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "tenantEmail": "mele.fifita@example.com",
+            "propertyCode": "GLN22",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              12
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              12
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "tenantEmail": "mele.fifita@example.com",
+            "propertyCode": "GLN22",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              12
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H28",
+          "labels": {
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenant_email": "daniel.kim@example.com",
+            "property_code": "PON7",
+            "needs_person": true,
+            "expected_clause": 13,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "lease_question",
+            "urgency": "normal",
+            "tenantEmail": "daniel.kim@example.com",
+            "propertyCode": "PON7",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              13
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              13
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "tenantEmail": "daniel.kim@example.com",
+            "propertyCode": "PON7",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              13
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H29",
+          "labels": {
+            "category": "maintenance",
+            "urgency": "low",
+            "tenant_email": "aroha.ngata@example.com",
+            "property_code": "MTE14",
+            "needs_person": false,
+            "expected_clause": 7,
+            "should_create_ticket": true
+          },
+          "rules": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "low",
+            "tenantEmail": "aroha.ngata@example.com",
+            "propertyCode": "MTE14",
+            "needsPerson": true,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "low",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": null,
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "maintenance",
+            "urgency": "low",
+            "tenantEmail": "aroha.ngata@example.com",
+            "propertyCode": "MTE14",
+            "needsPerson": false,
+            "ticket": true,
+            "ticketOutcome": "created",
+            "cited": [
+              7
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        },
+        {
+          "id": "H30",
+          "labels": {
+            "category": "end_of_tenancy",
+            "urgency": "high",
+            "tenant_email": "rajesh.patel@example.com",
+            "property_code": "HND5",
+            "needs_person": true,
+            "expected_clause": 12,
+            "should_create_ticket": false
+          },
+          "rules": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "tenantEmail": "rajesh.patel@example.com",
+            "propertyCode": "HND5",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              12
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "model": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": null,
+            "cited": [
+              12
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          },
+          "shipped": {
+            "available": true,
+            "category": "end_of_tenancy",
+            "urgency": "normal",
+            "tenantEmail": "rajesh.patel@example.com",
+            "propertyCode": "HND5",
+            "needsPerson": true,
+            "ticket": false,
+            "ticketOutcome": "none",
+            "cited": [
+              12
+            ],
+            "invalidCitations": [],
+            "promiseHits": 0,
+            "removedSentences": []
+          }
+        }
+      ],
+      "misses": {
+        "rules": [
+          {
+            "id": "H01",
+            "subject": "Smoke alarm chirping",
+            "issues": [
+              "urgency: expected high, got normal",
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "H03",
+            "subject": "URGENT - owner request: access codes for 2/8 Manuka Road",
+            "issues": [
+              "category: expected other, got complaint",
+              "urgency: expected low, got normal"
+            ]
+          },
+          {
+            "id": "H07",
+            "subject": "Re: Possible gas smell in the kitchen",
+            "issues": [
+              "category: expected other, got maintenance",
+              "urgency: expected low, got urgent",
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "H08",
+            "subject": "front door lock",
+            "issues": [
+              "category: expected maintenance, got other",
+              "urgency: expected normal, got low",
+              "maintenance job: expected a new job, got no job",
+              "clause: expected §18, cited none"
+            ]
+          },
+          {
+            "id": "H12",
+            "subject": "Rangehood not working",
+            "issues": [
+              "needs a person: expected no, got yes",
+              "maintenance job: expected a new job, got linked to an existing job",
+              "clause: expected §15, cited §7"
+            ]
+          },
+          {
+            "id": "H13",
+            "subject": "New bank account for rent",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "H14",
+            "subject": "rats again",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "H15",
+            "subject": "Job update and invoice - 5 Rimu Crescent, Henderson",
+            "issues": [
+              "urgency: expected normal, got low"
+            ]
+          },
+          {
+            "id": "H16",
+            "subject": "Insurance question",
+            "issues": [
+              "category: expected lease_question, got maintenance",
+              "urgency: expected normal, got urgent",
+              "needs a person: expected no, got yes",
+              "clause: expected §19, cited §8"
+            ]
+          },
+          {
+            "id": "H17",
+            "subject": "Oven at 18 Matai Road",
+            "issues": [
+              "tenant: expected none, got ana.tupou@example.com"
+            ]
+          },
+          {
+            "id": "H19",
+            "subject": "Would a cat be ok?",
+            "issues": [
+              "maintenance job: expected a new job, got no job"
+            ]
+          },
+          {
+            "id": "H21",
+            "subject": "Inspection next week",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "H22",
+            "subject": "Inspection without any notice?",
+            "issues": [
+              "category: expected complaint, got lease_question"
+            ]
+          },
+          {
+            "id": "H23",
+            "subject": "Rent statement please",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "H24",
+            "subject": "Kia ora + a quick question",
+            "issues": [
+              "category: expected lease_question, got maintenance",
+              "clause: expected §11, cited §7"
+            ]
+          },
+          {
+            "id": "H27",
+            "subject": "Notice to end tenancy - 22 Ash Street",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "H29",
+            "subject": "Kitchen cupboard doors",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "H30",
+            "subject": "Moving out - can we leave on 23 October?",
+            "issues": [
+              "urgency: expected high, got normal"
+            ]
+          }
+        ],
+        "model": [
+          {
+            "id": "H01",
+            "subject": "Smoke alarm chirping",
+            "issues": [
+              "urgency: expected high, got normal"
+            ]
+          },
+          {
+            "id": "H03",
+            "subject": "URGENT - owner request: access codes for 2/8 Manuka Road",
+            "issues": [
+              "urgency: expected low, got urgent"
+            ]
+          },
+          {
+            "id": "H06",
+            "subject": "Re: hot water cylinder",
+            "issues": [
+              "maintenance job: expected no new job, got a repair"
+            ]
+          },
+          {
+            "id": "H07",
+            "subject": "Re: Possible gas smell in the kitchen",
+            "issues": [
+              "category: expected other, got maintenance"
+            ]
+          },
+          {
+            "id": "H14",
+            "subject": "rats again",
+            "issues": [
+              "maintenance job: expected no new job, got a repair"
+            ]
+          },
+          {
+            "id": "H15",
+            "subject": "Job update and invoice - 5 Rimu Crescent, Henderson",
+            "issues": [
+              "category: expected other, got maintenance"
+            ]
+          },
+          {
+            "id": "H16",
+            "subject": "Insurance question",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "H17",
+            "subject": "Oven at 18 Matai Road",
+            "issues": [
+              "clause: expected §7, cited none"
+            ]
+          },
+          {
+            "id": "H20",
+            "subject": "CLOTHESLINE!!!",
+            "issues": [
+              "needs a person: expected yes, got no"
+            ]
+          },
+          {
+            "id": "H27",
+            "subject": "Notice to end tenancy - 22 Ash Street",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "H28",
+            "subject": "Ending my lease early",
+            "issues": [
+              "category: expected lease_question, got end_of_tenancy"
+            ]
+          },
+          {
+            "id": "H30",
+            "subject": "Moving out - can we leave on 23 October?",
+            "issues": [
+              "urgency: expected high, got normal"
+            ]
+          }
+        ],
+        "shipped": [
+          {
+            "id": "H01",
+            "subject": "Smoke alarm chirping",
+            "issues": [
+              "urgency: expected high, got normal"
+            ]
+          },
+          {
+            "id": "H03",
+            "subject": "URGENT - owner request: access codes for 2/8 Manuka Road",
+            "issues": [
+              "urgency: expected low, got urgent"
+            ]
+          },
+          {
+            "id": "H07",
+            "subject": "Re: Possible gas smell in the kitchen",
+            "issues": [
+              "category: expected other, got maintenance",
+              "urgency: expected low, got urgent",
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "H12",
+            "subject": "Rangehood not working",
+            "issues": [
+              "maintenance job: expected a new job, got linked to an existing job"
+            ]
+          },
+          {
+            "id": "H15",
+            "subject": "Job update and invoice - 5 Rimu Crescent, Henderson",
+            "issues": [
+              "category: expected other, got maintenance"
+            ]
+          },
+          {
+            "id": "H16",
+            "subject": "Insurance question",
+            "issues": [
+              "urgency: expected normal, got urgent",
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "H17",
+            "subject": "Oven at 18 Matai Road",
+            "issues": [
+              "tenant: expected none, got ana.tupou@example.com"
+            ]
+          },
+          {
+            "id": "H20",
+            "subject": "CLOTHESLINE!!!",
+            "issues": [
+              "needs a person: expected yes, got no"
+            ]
+          },
+          {
+            "id": "H27",
+            "subject": "Notice to end tenancy - 22 Ash Street",
+            "issues": [
+              "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "H28",
+            "subject": "Ending my lease early",
+            "issues": [
+              "category: expected lease_question, got end_of_tenancy"
+            ]
+          },
+          {
+            "id": "H30",
+            "subject": "Moving out - can we leave on 23 October?",
+            "issues": [
+              "urgency: expected high, got normal"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

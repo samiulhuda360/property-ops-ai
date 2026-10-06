@@ -208,6 +208,8 @@ model InboxMessage {
   replyDraft           String?
   citedClause          String?
   status               String              @default("new") // new | triaged | approved | sent | dismissed
+  method               String? // how the triage was produced: rules | llm+rules
+  triage               Json? // summary, reasons, guard flags, clause candidates, ticket decision, the system draft
   tenantId             Int?
   tenant               Tenant?             @relation(fields: [tenantId], references: [id], onDelete: SetNull)
   propertyId           Int?
@@ -220,6 +222,9 @@ model InboxMessage {
   reviewSeconds        Int?
   createdAt            DateTime            @default(now())
   updatedAt            DateTime            @updatedAt
+
+  // The webhook's messageId: one stored message per id and account, even when deliveries race.
+  @@unique([userId, externalId])
 }
 
 // One item an automation handled. The hours-returned report is built from these rows.
