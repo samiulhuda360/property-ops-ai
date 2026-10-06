@@ -1,0 +1,1414 @@
+{
+  "description": "Synthetic supplier invoices and tenancy summaries for the fictional Property Ops portfolio. Field values are what each document prints (dates as ISO, money in dollars). \"issues\" lists the problems planted on purpose; an empty list means the document is clean.",
+  "documents": [
+    {
+      "file": "invoice-01-plumbing-mte14.pdf",
+      "kind": "invoice",
+      "layout": "classic",
+      "property": "MTE14",
+      "fields": {
+        "supplierName": "Acme Plumbing",
+        "supplierGstNumber": "102-345-673",
+        "supplierBankAccount": "12-3140-0456781-00",
+        "invoiceNumber": "AP-2291",
+        "invoiceDate": "2026-09-09",
+        "dueDate": "2026-09-23",
+        "propertyAddress": "14 Kowhai Road, Mount Eden, Auckland 1024",
+        "lineItems": [
+          {
+            "description": "Call-out and fault diagnosis",
+            "quantity": 1,
+            "unitAmount": 85,
+            "amount": 85
+          },
+          {
+            "description": "Hot water cylinder element 3 kW (supply)",
+            "quantity": 1,
+            "unitAmount": 165,
+            "amount": 165
+          },
+          {
+            "description": "Cylinder thermostat (supply)",
+            "quantity": 1,
+            "unitAmount": 62,
+            "amount": 62
+          },
+          {
+            "description": "Labour, replace element and thermostat (hours)",
+            "quantity": 1.5,
+            "unitAmount": 80,
+            "amount": 120
+          }
+        ],
+        "subtotal": 432,
+        "gst": 64.8,
+        "total": 496.8
+      },
+      "issues": []
+    },
+    {
+      "file": "invoice-02-plumbing-pon7.pdf",
+      "kind": "invoice",
+      "layout": "classic",
+      "property": "PON7",
+      "fields": {
+        "supplierName": "Acme Plumbing",
+        "supplierGstNumber": "102-345-673",
+        "supplierBankAccount": "12-3140-0456781-00",
+        "invoiceNumber": "AP-2296",
+        "invoiceDate": "2026-09-08",
+        "dueDate": "2026-09-22",
+        "propertyAddress": "7 Vine St, Ponsonby",
+        "lineItems": [
+          {
+            "description": "Kitchen mixer cartridge (supply)",
+            "quantity": 1,
+            "unitAmount": 58,
+            "amount": 58
+          },
+          {
+            "description": "Labour, replace cartridge and re-seal (hours)",
+            "quantity": 1.25,
+            "unitAmount": 80,
+            "amount": 100
+          }
+        ],
+        "subtotal": 158,
+        "gst": 23.7,
+        "total": 181.7
+      },
+      "issues": []
+    },
+    {
+      "file": "invoice-03-plumbing-pon7.pdf",
+      "kind": "invoice",
+      "layout": "classic",
+      "property": "PON7",
+      "fields": {
+        "supplierName": "Acme Plumbing",
+        "supplierGstNumber": "102-345-673",
+        "supplierBankAccount": "12-3140-0456781-00",
+        "invoiceNumber": "AP-2296",
+        "invoiceDate": "2026-09-08",
+        "dueDate": "2026-09-22",
+        "propertyAddress": "7 Vine St, Ponsonby",
+        "lineItems": [
+          {
+            "description": "Kitchen mixer cartridge (supply)",
+            "quantity": 1,
+            "unitAmount": 58,
+            "amount": 58
+          },
+          {
+            "description": "Labour, replace cartridge and re-seal (hours)",
+            "quantity": 1.25,
+            "unitAmount": 80,
+            "amount": 100
+          }
+        ],
+        "subtotal": 158,
+        "gst": 23.7,
+        "total": 181.7
+      },
+      "issues": [
+        "duplicate_invoice"
+      ],
+      "note": "The same invoice sent again as a reminder: same supplier, same invoice number as invoice-02."
+    },
+    {
+      "file": "invoice-04-plumbing-grey-lynn.pdf",
+      "kind": "invoice",
+      "layout": "classic",
+      "property": null,
+      "fields": {
+        "supplierName": "Acme Plumbing",
+        "supplierGstNumber": "102-345-673",
+        "supplierBankAccount": "12-3140-0456781-00",
+        "invoiceNumber": "AP-2302",
+        "invoiceDate": "2026-09-16",
+        "dueDate": "2026-09-30",
+        "propertyAddress": "52 Kahikatea Street, Grey Lynn, Auckland 1021",
+        "lineItems": [
+          {
+            "description": "Blocked drain clearing, high-pressure jet",
+            "quantity": 1,
+            "unitAmount": 195,
+            "amount": 195
+          },
+          {
+            "description": "CCTV drain inspection",
+            "quantity": 1,
+            "unitAmount": 120,
+            "amount": 120
+          }
+        ],
+        "subtotal": 315,
+        "gst": 47.25,
+        "total": 362.25
+      },
+      "issues": [
+        "property_unknown"
+      ],
+      "note": "The job address is not a property in the portfolio."
+    },
+    {
+      "file": "invoice-05-electrical-gln22.pdf",
+      "kind": "invoice",
+      "layout": "modern",
+      "property": "GLN22",
+      "fields": {
+        "supplierName": "Acme Electrical",
+        "supplierGstNumber": "113-456-787",
+        "supplierBankAccount": "02-0500-0123456-001",
+        "invoiceNumber": "E-10418",
+        "invoiceDate": "2026-09-03",
+        "dueDate": "2026-09-17",
+        "propertyAddress": "22 Ash Street, Glen Innes, Auckland 1072",
+        "lineItems": [
+          {
+            "description": "10-year photoelectric smoke alarm (supply and fit)",
+            "quantity": 3,
+            "unitAmount": 54,
+            "amount": 162
+          },
+          {
+            "description": "Labour (hours)",
+            "quantity": 2,
+            "unitAmount": 72,
+            "amount": 144
+          }
+        ],
+        "subtotal": 306,
+        "gst": 45.9,
+        "total": 351.9
+      },
+      "issues": []
+    },
+    {
+      "file": "invoice-06-electrical-one3.pdf",
+      "kind": "invoice",
+      "layout": "modern",
+      "property": "ONE3",
+      "fields": {
+        "supplierName": "Acme Electrical",
+        "supplierGstNumber": "113-456-787",
+        "supplierBankAccount": "02-0500-0123456-001",
+        "invoiceNumber": "E-10433",
+        "invoiceDate": "2026-09-24",
+        "dueDate": "2026-10-08",
+        "propertyAddress": "Flat 3, 41 Arthur Street, Onehunga",
+        "lineItems": [
+          {
+            "description": "Bathroom extractor fan 150 mm with backdraft shutter",
+            "quantity": 1,
+            "unitAmount": 129,
+            "amount": 129
+          },
+          {
+            "description": "Ducting, vent cap and fittings",
+            "quantity": 1,
+            "unitAmount": 38.5,
+            "amount": 38.5
+          },
+          {
+            "description": "Labour (hours)",
+            "quantity": 1.5,
+            "unitAmount": 72,
+            "amount": 108
+          }
+        ],
+        "subtotal": 275.5,
+        "gst": 41.33,
+        "total": 316.83
+      },
+      "issues": []
+    },
+    {
+      "file": "invoice-07-electrical-mrb6.pdf",
+      "kind": "invoice",
+      "layout": "modern",
+      "property": "MRB6",
+      "fields": {
+        "supplierName": "Acme Electrical",
+        "supplierGstNumber": "113-456-787",
+        "supplierBankAccount": "02-0500-0123456-001",
+        "invoiceNumber": "E-10427",
+        "invoiceDate": "2026-09-18",
+        "dueDate": "2026-10-02",
+        "propertyAddress": "6 Tui Terrace, Mairangi Bay, Auckland 0630",
+        "lineItems": [
+          {
+            "description": "Heat pump annual service, indoor and outdoor units",
+            "quantity": 1,
+            "unitAmount": 160,
+            "amount": 160
+          },
+          {
+            "description": "Filter clean and sanitise",
+            "quantity": 1,
+            "unitAmount": 36,
+            "amount": 36
+          }
+        ],
+        "subtotal": 196,
+        "gst": 24.5,
+        "total": 220.5
+      },
+      "issues": [
+        "gst_not_3_23"
+      ],
+      "note": "GST charged at 12.5% instead of 15%: $24.50 is not 3/23 of the $220.50 total."
+    },
+    {
+      "file": "invoice-08-cleaning-nln11.pdf",
+      "kind": "invoice",
+      "layout": "letter",
+      "property": "NLN11",
+      "fields": {
+        "supplierName": "Acme Cleaning Co",
+        "supplierGstNumber": "124-567-890",
+        "supplierBankAccount": "06-0193-0654321-00",
+        "invoiceNumber": "CC-3381",
+        "invoiceDate": "2026-09-21",
+        "dueDate": "2026-10-05",
+        "propertyAddress": "11 Kauri Lane, New Lynn",
+        "lineItems": [
+          {
+            "description": "Mould treatment and anti-fungal wash, bedroom 2 ceiling and walls",
+            "quantity": 1,
+            "unitAmount": 280,
+            "amount": 280
+          },
+          {
+            "description": "Stain-block and repaint affected ceiling corner",
+            "quantity": 1,
+            "unitAmount": 180,
+            "amount": 180
+          }
+        ],
+        "subtotal": 460,
+        "gst": 69,
+        "total": 529
+      },
+      "issues": [
+        "over_quote"
+      ],
+      "note": "Total $529.00 is 26% above the $420 quote."
+    },
+    {
+      "file": "invoice-09-cleaning-how30.pdf",
+      "kind": "invoice",
+      "layout": "letter",
+      "property": "HOW30",
+      "fields": {
+        "supplierName": "Acme Cleaning Co",
+        "supplierGstNumber": "124-567-890",
+        "supplierBankAccount": "06-0193-0654321-00",
+        "invoiceNumber": "CC-3364",
+        "invoiceDate": "2026-09-05",
+        "dueDate": "2026-09-19",
+        "propertyAddress": "30 Pohutukawa Drive, Howick",
+        "lineItems": [
+          {
+            "description": "End-of-tenancy clean, four-bedroom house",
+            "quantity": 1,
+            "unitAmount": 320,
+            "amount": 320
+          },
+          {
+            "description": "Carpet steam clean, four rooms",
+            "quantity": 1,
+            "unitAmount": 120,
+            "amount": 120
+          }
+        ],
+        "subtotal": 450,
+        "gst": 67.5,
+        "total": 517.5
+      },
+      "issues": [
+        "line_items_dont_add"
+      ],
+      "note": "The two charges add up to $440.00 but the subtotal says $450.00."
+    },
+    {
+      "file": "invoice-10-gardens-pap18.pdf",
+      "kind": "invoice",
+      "layout": "receipt",
+      "property": "PAP18",
+      "fields": {
+        "supplierName": "Acme Gardens",
+        "supplierGstNumber": "135-678-902",
+        "supplierBankAccount": "38-9012-0345678-00",
+        "invoiceNumber": "G-5521",
+        "invoiceDate": "2026-09-15",
+        "dueDate": "2026-09-29",
+        "propertyAddress": "18 Matai Rd, Papatoetoe",
+        "lineItems": [
+          {
+            "description": "Lawn mow and edges",
+            "quantity": 1,
+            "unitAmount": 65,
+            "amount": 65
+          },
+          {
+            "description": "Hedge trim, front boundary",
+            "quantity": 1,
+            "unitAmount": 70,
+            "amount": 70
+          },
+          {
+            "description": "Green waste removal",
+            "quantity": 1,
+            "unitAmount": 21,
+            "amount": 21
+          }
+        ],
+        "subtotal": 156,
+        "gst": 23.4,
+        "total": 179.4
+      },
+      "issues": []
+    },
+    {
+      "file": "invoice-11-locksmiths-tak9.pdf",
+      "kind": "invoice",
+      "layout": "receipt",
+      "property": "TAK9",
+      "fields": {
+        "supplierName": "Acme Locksmiths",
+        "supplierGstNumber": "109-876-542",
+        "supplierBankAccount": "12-3077-0789012-00",
+        "invoiceNumber": "L-0877",
+        "invoiceDate": "2026-09-11",
+        "dueDate": "2026-09-25",
+        "propertyAddress": "9 Totara Ave, Takapuna",
+        "lineItems": [
+          {
+            "description": "Replace front door lock cylinder",
+            "quantity": 1,
+            "unitAmount": 145,
+            "amount": 145
+          },
+          {
+            "description": "Re-key, cut keys",
+            "quantity": 3,
+            "unitAmount": 12,
+            "amount": 36
+          },
+          {
+            "description": "Call-out",
+            "quantity": 1,
+            "unitAmount": 75,
+            "amount": 75
+          }
+        ],
+        "subtotal": 256,
+        "gst": 38.4,
+        "total": 294.4
+      },
+      "issues": []
+    },
+    {
+      "file": "invoice-12-roofing-hnd5.pdf",
+      "kind": "invoice",
+      "layout": "letter",
+      "property": "HND5",
+      "fields": {
+        "supplierName": "Acme Roofing",
+        "supplierGstNumber": "118-765-435",
+        "supplierBankAccount": "01-0102-0234567-00",
+        "invoiceNumber": "R-2045",
+        "invoiceDate": "2026-09-19",
+        "dueDate": "2026-10-03",
+        "propertyAddress": "5 Rimu Crescent, Henderson",
+        "lineItems": [
+          {
+            "description": "Gutter clean, full perimeter",
+            "quantity": 1,
+            "unitAmount": 340,
+            "amount": 340
+          },
+          {
+            "description": "Replace downpipe bracket and re-seal joint",
+            "quantity": 1,
+            "unitAmount": 95,
+            "amount": 95
+          },
+          {
+            "description": "Edge protection hire, one day",
+            "quantity": 1,
+            "unitAmount": 95,
+            "amount": 95
+          }
+        ],
+        "subtotal": 530,
+        "gst": 79.5,
+        "total": 609.5
+      },
+      "issues": [
+        "over_quote"
+      ],
+      "note": "Total $609.50 is 12.9% above the $540 quote."
+    },
+    {
+      "file": "invoice-13-pest-avd25.pdf",
+      "kind": "invoice",
+      "layout": "classic",
+      "property": "AVD25",
+      "fields": {
+        "supplierName": "Acme Pest Control",
+        "supplierGstNumber": null,
+        "supplierBankAccount": "03-0254-0876543-00",
+        "invoiceNumber": "PC-7712",
+        "invoiceDate": "2026-09-22",
+        "dueDate": "2026-10-06",
+        "propertyAddress": "25 Puriri Street, Avondale, Auckland 1026",
+        "lineItems": [
+          {
+            "description": "Rodent baiting programme, ceiling space (3 stations)",
+            "quantity": 1,
+            "unitAmount": 165,
+            "amount": 165
+          },
+          {
+            "description": "Entry point proofing",
+            "quantity": 1,
+            "unitAmount": 55,
+            "amount": 55
+          }
+        ],
+        "subtotal": 220,
+        "gst": 33,
+        "total": 253
+      },
+      "issues": [
+        "gst_number_missing"
+      ],
+      "note": "The invoice has no GST number."
+    },
+    {
+      "file": "water-01-mte14.pdf",
+      "kind": "invoice",
+      "layout": "utility",
+      "property": "MTE14",
+      "fields": {
+        "supplierName": "Acme Water",
+        "supplierGstNumber": "145-432-103",
+        "supplierBankAccount": "12-3011-0112233-00",
+        "invoiceNumber": "W-883101",
+        "invoiceDate": "2026-09-07",
+        "dueDate": "2026-09-27",
+        "propertyAddress": "14 Kowhai Road, Mount Eden, Auckland 1024",
+        "lineItems": [
+          {
+            "description": "Water supply fixed charge, 92 days @ $0.25 per day",
+            "quantity": 92,
+            "unitAmount": 0.25,
+            "amount": 23
+          },
+          {
+            "description": "Water usage, 24 kL @ $2.10 per kL",
+            "quantity": 24,
+            "unitAmount": 2.1,
+            "amount": 50.4
+          },
+          {
+            "description": "Wastewater fixed charge, 92 days @ $1.10 per day",
+            "quantity": 92,
+            "unitAmount": 1.1,
+            "amount": 101.2
+          },
+          {
+            "description": "Wastewater usage, 19.2 kL @ $3.00 per kL",
+            "quantity": 19.2,
+            "unitAmount": 3,
+            "amount": 57.6
+          }
+        ],
+        "subtotal": 232.2,
+        "gst": 34.83,
+        "total": 267.03
+      },
+      "issues": []
+    },
+    {
+      "file": "water-02-pon7.pdf",
+      "kind": "invoice",
+      "layout": "utility",
+      "property": "PON7",
+      "fields": {
+        "supplierName": "Acme Water",
+        "supplierGstNumber": "145-432-103",
+        "supplierBankAccount": "12-3011-0112233-00",
+        "invoiceNumber": "W-883102",
+        "invoiceDate": "2026-09-07",
+        "dueDate": "2026-09-27",
+        "propertyAddress": "7 Vine Street, Ponsonby, Auckland 1011",
+        "lineItems": [
+          {
+            "description": "Water supply fixed charge, 92 days @ $0.25 per day",
+            "quantity": 92,
+            "unitAmount": 0.25,
+            "amount": 23
+          },
+          {
+            "description": "Water usage, 18 kL @ $2.10 per kL",
+            "quantity": 18,
+            "unitAmount": 2.1,
+            "amount": 37.8
+          },
+          {
+            "description": "Wastewater fixed charge, 92 days @ $1.10 per day",
+            "quantity": 92,
+            "unitAmount": 1.1,
+            "amount": 101.2
+          },
+          {
+            "description": "Wastewater usage, 14.4 kL @ $3.00 per kL",
+            "quantity": 14.4,
+            "unitAmount": 3,
+            "amount": 43.2
+          }
+        ],
+        "subtotal": 205.2,
+        "gst": 30.78,
+        "total": 235.98
+      },
+      "issues": []
+    },
+    {
+      "file": "water-03-gln22.pdf",
+      "kind": "invoice",
+      "layout": "utility",
+      "property": "GLN22",
+      "fields": {
+        "supplierName": "Acme Water",
+        "supplierGstNumber": "145-432-103",
+        "supplierBankAccount": "12-3011-0112233-00",
+        "invoiceNumber": "W-883117",
+        "invoiceDate": "2026-09-08",
+        "dueDate": "2026-09-28",
+        "propertyAddress": "22 Ash Street, Glen Innes, Auckland 1072",
+        "lineItems": [
+          {
+            "description": "Water supply fixed charge, 92 days @ $0.25 per day",
+            "quantity": 92,
+            "unitAmount": 0.25,
+            "amount": 23
+          },
+          {
+            "description": "Water usage, 31 kL @ $2.10 per kL",
+            "quantity": 31,
+            "unitAmount": 2.1,
+            "amount": 65.1
+          },
+          {
+            "description": "Wastewater fixed charge, 92 days @ $1.10 per day",
+            "quantity": 92,
+            "unitAmount": 1.1,
+            "amount": 101.2
+          },
+          {
+            "description": "Wastewater usage, 24.8 kL @ $3.00 per kL",
+            "quantity": 24.8,
+            "unitAmount": 3,
+            "amount": 74.4
+          }
+        ],
+        "subtotal": 263.7,
+        "gst": 38.56,
+        "total": 302.26
+      },
+      "issues": [
+        "gst_not_3_23"
+      ],
+      "note": "GST printed a dollar short of 15%, so it is not 3/23 of the total."
+    },
+    {
+      "file": "water-04-hnd5.pdf",
+      "kind": "invoice",
+      "layout": "utility",
+      "property": "HND5",
+      "fields": {
+        "supplierName": "Acme Water",
+        "supplierGstNumber": "145-432-103",
+        "supplierBankAccount": "12-3011-0112233-00",
+        "invoiceNumber": "W-883125",
+        "invoiceDate": "2026-09-14",
+        "dueDate": "2026-09-04",
+        "propertyAddress": "5 Rimu Crescent, Henderson, Auckland 0612",
+        "lineItems": [
+          {
+            "description": "Water supply fixed charge, 92 days @ $0.25 per day",
+            "quantity": 92,
+            "unitAmount": 0.25,
+            "amount": 23
+          },
+          {
+            "description": "Water usage, 38 kL @ $2.10 per kL",
+            "quantity": 38,
+            "unitAmount": 2.1,
+            "amount": 79.8
+          },
+          {
+            "description": "Wastewater fixed charge, 92 days @ $1.10 per day",
+            "quantity": 92,
+            "unitAmount": 1.1,
+            "amount": 101.2
+          },
+          {
+            "description": "Wastewater usage, 30.4 kL @ $3.00 per kL",
+            "quantity": 30.4,
+            "unitAmount": 3,
+            "amount": 91.2
+          }
+        ],
+        "subtotal": 295.2,
+        "gst": 44.28,
+        "total": 339.48
+      },
+      "issues": [
+        "due_before_invoice"
+      ],
+      "note": "Due date 04/09/2026 is before the bill date 14/09/2026."
+    },
+    {
+      "file": "water-05-tak9.pdf",
+      "kind": "invoice",
+      "layout": "utility",
+      "property": "TAK9",
+      "fields": {
+        "supplierName": "Acme Water",
+        "supplierGstNumber": "145-432-103",
+        "supplierBankAccount": "12-3011-0112233-00",
+        "invoiceNumber": "W-883131",
+        "invoiceDate": "2026-09-08",
+        "dueDate": "2026-09-28",
+        "propertyAddress": "9 Totara Avenue, Takapuna, Auckland 0622",
+        "lineItems": [
+          {
+            "description": "Water supply fixed charge, 92 days @ $0.25 per day",
+            "quantity": 92,
+            "unitAmount": 0.25,
+            "amount": 23
+          },
+          {
+            "description": "Water usage, 27 kL @ $2.10 per kL",
+            "quantity": 27,
+            "unitAmount": 2.1,
+            "amount": 56.7
+          },
+          {
+            "description": "Wastewater fixed charge, 92 days @ $1.10 per day",
+            "quantity": 92,
+            "unitAmount": 1.1,
+            "amount": 101.2
+          },
+          {
+            "description": "Wastewater usage, 21.6 kL @ $3.00 per kL",
+            "quantity": 21.6,
+            "unitAmount": 3,
+            "amount": 64.8
+          }
+        ],
+        "subtotal": 245.7,
+        "gst": 36.86,
+        "total": 282.56
+      },
+      "issues": []
+    },
+    {
+      "file": "water-06-one3.pdf",
+      "kind": "invoice",
+      "layout": "utility",
+      "property": "ONE3",
+      "fields": {
+        "supplierName": "Acme Water",
+        "supplierGstNumber": "145-432-103",
+        "supplierBankAccount": "12-3011-0112233-00",
+        "invoiceNumber": "W-883140",
+        "invoiceDate": "2026-09-09",
+        "dueDate": "2026-09-29",
+        "propertyAddress": "3/41 Arthur Street, Onehunga, Auckland 1061",
+        "lineItems": [
+          {
+            "description": "Water supply fixed charge, 92 days @ $0.25 per day",
+            "quantity": 92,
+            "unitAmount": 0.25,
+            "amount": 23
+          },
+          {
+            "description": "Water usage, 12 kL @ $2.10 per kL",
+            "quantity": 12,
+            "unitAmount": 2.1,
+            "amount": 25.2
+          },
+          {
+            "description": "Wastewater fixed charge, 92 days @ $1.10 per day",
+            "quantity": 92,
+            "unitAmount": 1.1,
+            "amount": 101.2
+          },
+          {
+            "description": "Wastewater usage, 9.6 kL @ $3.00 per kL",
+            "quantity": 9.6,
+            "unitAmount": 3,
+            "amount": 28.8
+          }
+        ],
+        "subtotal": 178.2,
+        "gst": 26.73,
+        "total": 204.93
+      },
+      "issues": []
+    },
+    {
+      "file": "water-07-pap18.pdf",
+      "kind": "invoice",
+      "layout": "utility",
+      "property": "PAP18",
+      "fields": {
+        "supplierName": "Acme Water",
+        "supplierGstNumber": "145-432-103",
+        "supplierBankAccount": "12-3011-0112233-00",
+        "invoiceNumber": "W-883152",
+        "invoiceDate": "2026-09-09",
+        "dueDate": "2026-09-29",
+        "propertyAddress": "18 Matai Road, Papatoetoe, Auckland 2025",
+        "lineItems": [
+          {
+            "description": "Water supply fixed charge, 92 days @ $0.25 per day",
+            "quantity": 92,
+            "unitAmount": 0.25,
+            "amount": 23
+          },
+          {
+            "description": "Water usage, 33 kL @ $2.10 per kL",
+            "quantity": 33,
+            "unitAmount": 2.1,
+            "amount": 69.3
+          },
+          {
+            "description": "Wastewater fixed charge, 92 days @ $1.10 per day",
+            "quantity": 92,
+            "unitAmount": 1.1,
+            "amount": 101.2
+          },
+          {
+            "description": "Wastewater usage, 26.4 kL @ $3.00 per kL",
+            "quantity": 26.4,
+            "unitAmount": 3,
+            "amount": 79.2
+          }
+        ],
+        "subtotal": 272.7,
+        "gst": 40.91,
+        "total": 313.61
+      },
+      "issues": []
+    },
+    {
+      "file": "water-08-nln11.pdf",
+      "kind": "invoice",
+      "layout": "utility",
+      "property": "NLN11",
+      "fields": {
+        "supplierName": "Acme Water",
+        "supplierGstNumber": "145-432-103",
+        "supplierBankAccount": "12-3011-0112233-00",
+        "invoiceNumber": "W-883160",
+        "invoiceDate": "2026-09-10",
+        "dueDate": "2026-09-30",
+        "propertyAddress": "11 Kauri Lane, New Lynn, Auckland 0600",
+        "lineItems": [
+          {
+            "description": "Water supply fixed charge, 92 days @ $0.25 per day",
+            "quantity": 92,
+            "unitAmount": 0.25,
+            "amount": 23
+          },
+          {
+            "description": "Water usage, 15 kL @ $2.10 per kL",
+            "quantity": 15,
+            "unitAmount": 2.1,
+            "amount": 31.5
+          },
+          {
+            "description": "Wastewater fixed charge, 92 days @ $1.10 per day",
+            "quantity": 92,
+            "unitAmount": 1.1,
+            "amount": 101.2
+          },
+          {
+            "description": "Wastewater usage, 12 kL @ $3.00 per kL",
+            "quantity": 12,
+            "unitAmount": 3,
+            "amount": 36
+          }
+        ],
+        "subtotal": 191.7,
+        "gst": 28.76,
+        "total": 220.46
+      },
+      "issues": []
+    },
+    {
+      "file": "water-09-blk2.pdf",
+      "kind": "invoice",
+      "layout": "utility",
+      "property": "BLK2",
+      "fields": {
+        "supplierName": "Acme Water",
+        "supplierGstNumber": "145-432-103",
+        "supplierBankAccount": "12-3011-0112233-00",
+        "invoiceNumber": "W-883171",
+        "invoiceDate": "2026-09-10",
+        "dueDate": "2026-09-30",
+        "propertyAddress": "2/8 Manuka Road, Blockhouse Bay, Auckland 0600",
+        "lineItems": [
+          {
+            "description": "Water supply fixed charge, 92 days @ $0.25 per day",
+            "quantity": 92,
+            "unitAmount": 0.25,
+            "amount": 23
+          },
+          {
+            "description": "Wastewater fixed charge, 92 days @ $1.10 per day",
+            "quantity": 92,
+            "unitAmount": 1.1,
+            "amount": 101.2
+          }
+        ],
+        "subtotal": 124.2,
+        "gst": 18.63,
+        "total": 142.83
+      },
+      "issues": []
+    },
+    {
+      "file": "insurance-01-tak9.pdf",
+      "kind": "invoice",
+      "layout": "insurance",
+      "property": "TAK9",
+      "fields": {
+        "supplierName": "Acme Insurance",
+        "supplierGstNumber": "136-543-210",
+        "supplierBankAccount": "02-0100-0998877-000",
+        "invoiceNumber": "INS-77120",
+        "invoiceDate": "2026-09-01",
+        "dueDate": "2026-10-01",
+        "propertyAddress": "9 Totara Avenue, Takapuna, Auckland 0622",
+        "lineItems": [
+          {
+            "description": "Landlord insurance premium",
+            "quantity": 1,
+            "unitAmount": 1420,
+            "amount": 1420
+          },
+          {
+            "description": "Natural hazards levy",
+            "quantity": 1,
+            "unitAmount": 300,
+            "amount": 300
+          },
+          {
+            "description": "Fire levy",
+            "quantity": 1,
+            "unitAmount": 106,
+            "amount": 106
+          }
+        ],
+        "subtotal": 1826,
+        "gst": 273.9,
+        "total": 2099.9
+      },
+      "issues": []
+    },
+    {
+      "file": "insurance-02-mrb6.pdf",
+      "kind": "invoice",
+      "layout": "insurance",
+      "property": "MRB6",
+      "fields": {
+        "supplierName": "Acme Insurance",
+        "supplierGstNumber": "136-543-210",
+        "supplierBankAccount": "02-0100-0998877-000",
+        "invoiceNumber": "INS-77134",
+        "invoiceDate": "2026-09-03",
+        "dueDate": "2026-10-01",
+        "propertyAddress": "6 Tui Terrace, Mairangi Bay, Auckland 0630",
+        "lineItems": [
+          {
+            "description": "Landlord insurance premium",
+            "quantity": 1,
+            "unitAmount": 1560,
+            "amount": 1560
+          },
+          {
+            "description": "Natural hazards levy",
+            "quantity": 1,
+            "unitAmount": 300,
+            "amount": 300
+          },
+          {
+            "description": "Fire levy",
+            "quantity": 1,
+            "unitAmount": 106,
+            "amount": 106
+          }
+        ],
+        "subtotal": 1966,
+        "gst": 294.9,
+        "total": 2260.9
+      },
+      "issues": []
+    },
+    {
+      "file": "insurance-03-how30.pdf",
+      "kind": "invoice",
+      "layout": "insurance",
+      "property": "HOW30",
+      "fields": {
+        "supplierName": "Acme Insurance",
+        "supplierGstNumber": "136-543-210",
+        "supplierBankAccount": "02-0100-0998877-000",
+        "invoiceNumber": "INS-77152",
+        "invoiceDate": "2026-09-07",
+        "dueDate": "2026-10-01",
+        "propertyAddress": "30 Pohutukawa Drive, Howick, Auckland 2014",
+        "lineItems": [
+          {
+            "description": "Landlord insurance premium",
+            "quantity": 1,
+            "unitAmount": 1390,
+            "amount": 1390
+          },
+          {
+            "description": "Natural hazards levy",
+            "quantity": 1,
+            "unitAmount": 300,
+            "amount": 300
+          },
+          {
+            "description": "Fire levy",
+            "quantity": 1,
+            "unitAmount": 106,
+            "amount": 106
+          }
+        ],
+        "subtotal": 1796,
+        "gst": 269.4,
+        "total": 2065.4
+      },
+      "issues": []
+    },
+    {
+      "file": "insurance-04-avd25.pdf",
+      "kind": "invoice",
+      "layout": "insurance",
+      "property": "AVD25",
+      "fields": {
+        "supplierName": "Acme Insurance",
+        "supplierGstNumber": "136-543-211",
+        "supplierBankAccount": "02-0100-0998877-000",
+        "invoiceNumber": "INS-77167",
+        "invoiceDate": "2026-09-10",
+        "dueDate": "2026-10-01",
+        "propertyAddress": "25 Puriri Street, Avondale, Auckland 1026",
+        "lineItems": [
+          {
+            "description": "Landlord insurance premium",
+            "quantity": 1,
+            "unitAmount": 1180,
+            "amount": 1180
+          },
+          {
+            "description": "Natural hazards levy",
+            "quantity": 1,
+            "unitAmount": 300,
+            "amount": 300
+          },
+          {
+            "description": "Fire levy",
+            "quantity": 1,
+            "unitAmount": 106,
+            "amount": 106
+          }
+        ],
+        "subtotal": 1586,
+        "gst": 237.9,
+        "total": 1823.9
+      },
+      "issues": [
+        "gst_number_invalid"
+      ],
+      "note": "GST number 136-543-211 fails the check digit (the insurer is registered as 136-543-210)."
+    },
+    {
+      "file": "insurance-05-pon7.pdf",
+      "kind": "invoice",
+      "layout": "insurance",
+      "property": "PON7",
+      "fields": {
+        "supplierName": "Acme Insurance",
+        "supplierGstNumber": "136-543-210",
+        "supplierBankAccount": "02-0100-0998877-000",
+        "invoiceNumber": "INS-77181",
+        "invoiceDate": "2026-09-14",
+        "dueDate": "2026-10-01",
+        "propertyAddress": "7 Vine Street, Ponsonby, Auckland 1011",
+        "lineItems": [
+          {
+            "description": "Landlord insurance premium",
+            "quantity": 1,
+            "unitAmount": 1050,
+            "amount": 1050
+          },
+          {
+            "description": "Natural hazards levy",
+            "quantity": 1,
+            "unitAmount": 300,
+            "amount": 300
+          },
+          {
+            "description": "Fire levy",
+            "quantity": 1,
+            "unitAmount": 106,
+            "amount": 106
+          }
+        ],
+        "subtotal": 1456,
+        "gst": 218.4,
+        "total": 1674.4
+      },
+      "issues": []
+    },
+    {
+      "file": "insurance-06-hnd5.pdf",
+      "kind": "invoice",
+      "layout": "insurance",
+      "property": "HND5",
+      "fields": {
+        "supplierName": "Acme Insurance",
+        "supplierGstNumber": "136-543-210",
+        "supplierBankAccount": "02-0100-0998877-000",
+        "invoiceNumber": "INS-77196",
+        "invoiceDate": "2026-09-17",
+        "dueDate": "2026-10-01",
+        "propertyAddress": "5 Rimu Crescent, Henderson, Auckland 0612",
+        "lineItems": [
+          {
+            "description": "Landlord insurance premium",
+            "quantity": 1,
+            "unitAmount": 1310,
+            "amount": 1310
+          },
+          {
+            "description": "Natural hazards levy",
+            "quantity": 1,
+            "unitAmount": 300,
+            "amount": 300
+          },
+          {
+            "description": "Fire levy",
+            "quantity": 1,
+            "unitAmount": 106,
+            "amount": 106
+          }
+        ],
+        "subtotal": 1716,
+        "gst": 257.4,
+        "total": 1973.4
+      },
+      "issues": []
+    },
+    {
+      "file": "insurance-07-mte14.pdf",
+      "kind": "invoice",
+      "layout": "insurance",
+      "property": "MTE14",
+      "fields": {
+        "supplierName": "Acme Insurance",
+        "supplierGstNumber": "136-543-210",
+        "supplierBankAccount": "02-0100-0998877-000",
+        "invoiceNumber": "INS-77210",
+        "invoiceDate": "2026-09-21",
+        "dueDate": "2026-10-01",
+        "propertyAddress": "14 Kowhai Road, Mount Eden, Auckland 1024",
+        "lineItems": [
+          {
+            "description": "Landlord insurance premium",
+            "quantity": 1,
+            "unitAmount": 1240,
+            "amount": 1240
+          },
+          {
+            "description": "Natural hazards levy",
+            "quantity": 1,
+            "unitAmount": 300,
+            "amount": 300
+          },
+          {
+            "description": "Fire levy",
+            "quantity": 1,
+            "unitAmount": 106,
+            "amount": 106
+          }
+        ],
+        "subtotal": 1646,
+        "gst": 246.9,
+        "total": 1892.9
+      },
+      "issues": []
+    },
+    {
+      "file": "insurance-08-gln22.pdf",
+      "kind": "invoice",
+      "layout": "insurance",
+      "property": "GLN22",
+      "fields": {
+        "supplierName": "Acme Insurance",
+        "supplierGstNumber": "136-543-210",
+        "supplierBankAccount": "02-0100-0998877-000",
+        "invoiceNumber": "INS-77225",
+        "invoiceDate": "2026-09-24",
+        "dueDate": "2026-10-01",
+        "propertyAddress": "22 Ash Street, Glen Innes, Auckland 1072",
+        "lineItems": [
+          {
+            "description": "Landlord insurance premium",
+            "quantity": 1,
+            "unitAmount": 1120,
+            "amount": 1120
+          },
+          {
+            "description": "Natural hazards levy",
+            "quantity": 1,
+            "unitAmount": 300,
+            "amount": 300
+          },
+          {
+            "description": "Fire levy",
+            "quantity": 1,
+            "unitAmount": 106,
+            "amount": 106
+          }
+        ],
+        "subtotal": 1526,
+        "gst": 228.9,
+        "total": 1754.9
+      },
+      "issues": []
+    },
+    {
+      "file": "lease-01-mte14.pdf",
+      "kind": "lease",
+      "layout": "agency",
+      "property": "MTE14",
+      "fields": {
+        "tenantNames": [
+          "Aroha Ngata"
+        ],
+        "propertyAddress": "14 Kowhai Road, Mount Eden, Auckland 1024",
+        "startDate": "2025-02-10",
+        "endDate": "periodic",
+        "weeklyRent": 720,
+        "bond": 2880,
+        "rentFrequency": "weekly",
+        "petsAllowed": false,
+        "maxOccupants": 4
+      },
+      "issues": []
+    },
+    {
+      "file": "lease-02-pon7.pdf",
+      "kind": "lease",
+      "layout": "agency",
+      "property": "PON7",
+      "fields": {
+        "tenantNames": [
+          "Daniel Kim"
+        ],
+        "propertyAddress": "7 Vine Street, Ponsonby, Auckland 1011",
+        "startDate": "2024-11-04",
+        "endDate": "periodic",
+        "weeklyRent": 680,
+        "bond": 2600,
+        "rentFrequency": "weekly",
+        "petsAllowed": true,
+        "maxOccupants": 3
+      },
+      "issues": [
+        "rent_differs"
+      ],
+      "note": "Rent $680 per week; the lease record says $650."
+    },
+    {
+      "file": "lease-03-gln22.pdf",
+      "kind": "lease",
+      "layout": "cards",
+      "property": "GLN22",
+      "fields": {
+        "tenantNames": [
+          "Mele Fifita"
+        ],
+        "propertyAddress": "22 Ash Street, Glen Innes, Auckland 1072",
+        "startDate": "2025-06-02",
+        "endDate": "periodic",
+        "weeklyRent": 610,
+        "bond": 2640,
+        "rentFrequency": "fortnightly",
+        "petsAllowed": false,
+        "maxOccupants": 5
+      },
+      "issues": [
+        "bond_differs",
+        "bond_over_four_weeks"
+      ],
+      "note": "Bond $2,640; the lease record says $2,440, and $2,640 is more than four weeks of $610 rent."
+    },
+    {
+      "file": "lease-04-hnd5.pdf",
+      "kind": "lease",
+      "layout": "cards",
+      "property": "HND5",
+      "fields": {
+        "tenantNames": [
+          "Rajesh Patel",
+          "Priya Patel"
+        ],
+        "propertyAddress": "5 Rimu Crescent, Henderson, Auckland 0612",
+        "startDate": "2023-09-18",
+        "endDate": "periodic",
+        "weeklyRent": 680,
+        "bond": 2720,
+        "rentFrequency": "fortnightly",
+        "petsAllowed": true,
+        "maxOccupants": 6
+      },
+      "issues": []
+    },
+    {
+      "file": "lease-05-tak9.pdf",
+      "kind": "lease",
+      "layout": "agency",
+      "property": "TAK9",
+      "fields": {
+        "tenantNames": [
+          "Sophie Clarke"
+        ],
+        "propertyAddress": "9 Totara Avenue, Takapuna, Auckland 0622",
+        "startDate": "2025-01-13",
+        "endDate": "periodic",
+        "weeklyRent": 780,
+        "bond": 3120,
+        "rentFrequency": "weekly",
+        "petsAllowed": false,
+        "maxOccupants": 5
+      },
+      "issues": []
+    },
+    {
+      "file": "lease-06-one3.pdf",
+      "kind": "lease",
+      "layout": "cards",
+      "property": "ONE3",
+      "fields": {
+        "tenantNames": [
+          "Tom Wright"
+        ],
+        "propertyAddress": "3/41 Arthur Street, Onehunga, Auckland 1061",
+        "startDate": "2026-03-02",
+        "endDate": "2027-03-01",
+        "weeklyRent": 560,
+        "bond": 2240,
+        "rentFrequency": "weekly",
+        "petsAllowed": false,
+        "maxOccupants": 2
+      },
+      "issues": []
+    },
+    {
+      "file": "lease-07-pap18.pdf",
+      "kind": "lease",
+      "layout": "agency",
+      "property": "PAP18",
+      "fields": {
+        "tenantNames": [
+          "Ana Tupou",
+          "Sione Tupou"
+        ],
+        "propertyAddress": "18 Matai Road, Papatoetoe, Auckland 2025",
+        "startDate": "2024-07-22",
+        "endDate": "periodic",
+        "weeklyRent": 590,
+        "bond": 2360,
+        "rentFrequency": "weekly",
+        "petsAllowed": true,
+        "maxOccupants": 6
+      },
+      "issues": []
+    },
+    {
+      "file": "lease-08-nln11.pdf",
+      "kind": "lease",
+      "layout": "cards",
+      "property": "NLN11",
+      "fields": {
+        "tenantNames": [
+          "Liam O'Brien"
+        ],
+        "propertyAddress": "11 Kauri Lane, New Lynn, Auckland 0600",
+        "startDate": "2025-10-06",
+        "endDate": "2026-10-05",
+        "weeklyRent": 540,
+        "bond": 2160,
+        "rentFrequency": "fortnightly",
+        "petsAllowed": false,
+        "maxOccupants": 2
+      },
+      "issues": []
+    },
+    {
+      "file": "lease-09-mrb6.pdf",
+      "kind": "lease",
+      "layout": "agency",
+      "property": "MRB6",
+      "fields": {
+        "tenantNames": [
+          "Hannah Lee"
+        ],
+        "propertyAddress": "6 Tui Terrace, Mairangi Bay, Auckland 0630",
+        "startDate": "2024-04-15",
+        "endDate": "periodic",
+        "weeklyRent": 850,
+        "bond": 3400,
+        "rentFrequency": "fortnightly",
+        "petsAllowed": true,
+        "maxOccupants": 6
+      },
+      "issues": []
+    },
+    {
+      "file": "lease-10-how30.pdf",
+      "kind": "lease",
+      "layout": "cards",
+      "property": "HOW30",
+      "fields": {
+        "tenantNames": [
+          "Grace Chen"
+        ],
+        "propertyAddress": "30 Pohutukawa Drive, Howick, Auckland 2014",
+        "startDate": "2023-05-01",
+        "endDate": "2026-08-31",
+        "weeklyRent": 760,
+        "bond": 3040,
+        "rentFrequency": "weekly",
+        "petsAllowed": false,
+        "maxOccupants": 6
+      },
+      "issues": []
+    }
+  ]
+}
