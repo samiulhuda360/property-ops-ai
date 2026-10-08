@@ -2,8 +2,63 @@
 
 [![CI](https://github.com/samiulhuda360/property-ops-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/samiulhuda360/property-ops-ai/actions/workflows/ci.yml)
 
+![Walkthrough: sign in, approve a reply to an urgent tenant email, review an invoice beside its PDF, open an ambiguous bank line, and read the hours returned](docs/screenshots/walkthrough.gif)
+
+*A 40-second walkthrough recorded from the running app with the demo data:*
+1. sign in;
+2. open an urgent tenant email and approve the reply, which is not sent;
+3. review a flagged invoice beside its PDF;
+4. look at an unclear bank payment and the AI's suggestion;
+5. read the hours returned for September.
+
+## What it does
+
+Property Ops is a web app for a business that lets out rental homes. It reads tenant emails, supplier bills and the
+bank statement, and prepares the routine work: a reply to send, the details from a bill, and a list of who has
+paid rent. A person checks each item and makes the final decision, so nothing is ever sent or paid by the app on
+its own.
+
+## A real-life example
+
+Mere runs the office at Acme Lettings, a small Auckland company that looks after 12 rental homes.
+
+**Before:** every week she reads each tenant email and writes a reply by hand (about 6 minutes each). She types
+each contractor's bill into the accounts (about 12 minutes each) and ticks off every line of the bank statement
+against the rent list (about 3 minutes a line). A 50-line statement alone takes about two and a half hours, and an
+urgent "no hot water" email can sit behind a pile of routine ones.
+
+**With Property Ops:**
+1. Tenant emails arrive in the app already sorted. Urgent safety problems, such as gas, flooding or no hot water,
+   are at the top, each with a reply ready to edit and a note of which tenancy rule it relies on.
+2. She uploads the bills as PDFs. The app fills in the supplier, amounts and tax, checks the sums, and flags
+   anything odd, such as a bill sent twice or a price well above the agreed quote.
+3. She uploads the bank statement. The app ticks off the rent payments and lists only the ones it couldn't match,
+   each with a reason and a suggested next step.
+4. She approves, corrects or rejects each item. Replies go out from her own email.
+
+**After:** on the demo month the app matched 82% of the 50 bank lines by itself and held back the other 9 for her,
+each with a reason. In testing it put every urgent email at the top (4 out of 4), and the bill details it marked as
+"high confidence" were all correct. A monthly report shows how many hours were handed back to her, and how that was
+counted.
+
+## How you would use it
+
+1. Open the app in your web browser and sign in.
+2. **Tenant inbox:** open the first email, read the suggested reply, change anything you like, and click approve.
+   Then send it from your own email.
+3. **Documents:** upload a supplier bill or a tenancy summary as a PDF. The bill appears beside the details the app
+   read from it. Fix anything flagged, then approve. Approved bills can be downloaded as a file for the accounts
+   system.
+4. **Reconciliation:** upload the bank statement file. You get a list of matched payments, the payments that need
+   your decision, and who is behind on rent. Download it all as an Excel workbook.
+5. **Hours returned:** pick a month to see the time saved, and download it for the owner's report.
+
+The technical setup is in [Getting started](#getting-started) further down.
+
+## Overview
+
 **Property Ops** is a rental property manager for a New Zealand letting business. It comes with three AI
-automations for the back-office work that eats the week:
+automations (tasks the software prepares by itself) for the back-office work that eats the week:
 - tenant emails;
 - supplier invoices and lease summaries;
 - rent reconciliation against the bank statement.
@@ -14,29 +69,22 @@ own. A monthly report shows the hours returned, and how they were counted.
 It's for property managers and their accounts and tenant-services staff, and for anyone who has to show that back-office
 automation is safe, measured and actually saves time.
 
-![Walkthrough: sign in, approve a reply to an urgent tenant email, review an invoice beside its PDF, open an ambiguous bank line, and read the hours returned](docs/screenshots/walkthrough.gif)
-
-*A 40-second walkthrough recorded from the running app with the demo data:*
-1. sign in;
-2. open an urgent tenant email and approve the reply, which is not sent;
-3. review a flagged invoice beside its PDF;
-4. look at an ambiguous bank payment and the model's suggestion;
-5. read the hours returned for September.
-
 The demo business is a fictional Auckland property manager:
 - 12 properties, 11 tenancies and 9 "Acme" contractors;
 - a September 2026 month of emails, invoices and bank lines.
 
 Every person, address and business in it is invented.
 
-**Contents:** [Features](#features) · [Architecture](#architecture) · [How it works](#how-it-works) ·
+**Contents:** [What it does](#what-it-does) · [A real-life example](#a-real-life-example) ·
+[How you would use it](#how-you-would-use-it) · [Features](#features) · [Architecture](#architecture) · [How it works](#how-it-works) ·
 [Screenshots](#screenshots) · [Evaluation](#evaluation) · [Tech stack](#tech-stack) ·
 [Getting started](#getting-started) · [Configuration](#configuration) · [Usage](#usage) · [API](#api) ·
 [Project structure](#project-structure) · [Tests](#tests) · [Licence](#licence)
 
 ## Features
 
-- **Tenant inbox triage.** Emails arrive through a webhook. Each one gets:
+- **Tenant inbox triage** (sorting emails by topic and urgency). Emails arrive through a webhook (a web address
+  the mail system forwards each new email to). Each one gets:
   - a category and an urgency;
   - a link to the tenant, lease and property;
   - a maintenance job when it reports a repair;
@@ -44,17 +92,17 @@ Every person, address and business in it is invented.
 
   Urgent safety issues (gas, flooding, sparking power points, no hot water) jump to the top. Replies are approved, never sent automatically.
 - **Invoice and lease extraction.** It reads supplier invoices and tenancy summaries from PDF and checks them:
-  - GST is 3/23 of the total;
+  - GST (New Zealand's sales tax) is 3/23 of the total;
   - the supplier's GST number passes Inland Revenue's check digit;
   - the property, contractor and maintenance job are matched, and the total is compared with the job's quote;
   - duplicate invoice numbers are caught;
   - rent and bond are checked against the lease.
 
-  Every field shows a confidence level, and the review screen puts the PDF beside the fields. Approved invoices export as a Xero bill-import CSV, or go to an accounting adapter as draft bills.
-- **Rent reconciliation.** It imports the bank CSV and matches rent by reference, payer and amount. It handles part payments, overpayments and payments covering several weeks, and builds the rent ledger and the arrears. Exceptions are held for a person, with a reason and a suggested action, and the exceptions report downloads as Excel. A model can suggest who paid an unidentified line, but a suggestion is never applied on its own.
+  Every field shows a confidence level, and the review screen puts the PDF beside the fields. Approved invoices export as a Xero (accounting software) bill-import CSV (a plain spreadsheet file), or go to an accounting adapter as draft bills.
+- **Rent reconciliation** (checking the bank statement against the rent that was due). It imports the bank CSV and matches rent by reference, payer and amount. It handles part payments, overpayments and payments covering several weeks, and builds the rent ledger and the arrears. Exceptions are held for a person, with a reason and a suggested action, and the exceptions report downloads as Excel. A model (the AI language service) can suggest who paid an unidentified line, but a suggestion is never applied on its own.
 - **Hours-returned report.** Each month it shows the baseline minutes for every item an automation handled, minus the review time measured in the app, with the method on the page. A CSV export is included.
 - **Discovery pack.** It includes process maps for three roles, task timings, and an automation backlog ranked by hours, rework risk and ease ([discovery/](discovery/)).
-- **The model is optional.** Each automation runs on rules alone without an API key. With a key, any OpenAI-compatible model works (Google Gemini by default), using structured JSON output, retries, a response cache and a log of every call.
+- **The model is optional.** Each automation runs on fixed rules alone without an API key (the password for a paid AI service). With a key, any OpenAI-compatible model works (one that accepts the same request format as OpenAI's; Google Gemini by default), using structured JSON output (answers in a fixed, machine-readable form), retries, a response cache and a log of every call.
 
 ## Architecture
 
@@ -80,6 +128,7 @@ flowchart TD
     SERVER --> DB[("PostgreSQL<br/>Prisma")]
 ```
 
+The app talks to the server over a REST API (standard web requests), signed in with a JWT (a login token).
 Every automation writes one `AutomationRun` row per item it handles, and updates it when a person approves,
 corrects or rejects the item. The hours-returned report is built from those rows. Every model call is stored as an
 `AiCall` row: latency, tokens, cache hit and errors.
