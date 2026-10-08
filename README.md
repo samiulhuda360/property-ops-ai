@@ -4,7 +4,7 @@
 
 ![Walkthrough: sign in, approve a reply to an urgent tenant email, review an invoice beside its PDF, open an ambiguous bank line, and read the hours returned](docs/screenshots/walkthrough.gif)
 
-*A 40-second walkthrough recorded from the running app with the demo data:*
+*A 40-second recording of someone using the app with the demo data. It shows the whole job in one pass:*
 1. sign in;
 2. open an urgent tenant email and approve the reply, which is not sent;
 3. review a flagged invoice beside its PDF;
@@ -35,6 +35,12 @@ urgent "no hot water" email can sit behind a pile of routine ones.
 3. She uploads the bank statement. The app ticks off the rent payments and lists only the ones it couldn't match,
    each with a reason and a suggested next step.
 4. She approves, corrects or rejects each item. Replies go out from her own email.
+
+![Mere's month in five steps: the sorted inbox, a bill beside its details, the bank statement checked, an unclear payment, and the hours handed back](docs/screenshots/example.gif)
+
+*Mere's month in five steps, using real screens from the app with the demo data: urgent emails first, a bill checked
+beside its details, the bank statement ticked off, an unclear payment left for her to decide, and the time handed
+back.*
 
 **After:** on the demo month the app matched 82% of the 50 bank lines by itself and held back the other 9 for her,
 each with a reason. In testing it put every urgent email at the top (4 out of 4), and the bill details it marked as
@@ -255,7 +261,7 @@ hours returned = baseline minutes for items whose automated work was used - minu
 
 ## Screenshots
 
-**Dashboard:** the portfolio figures, and what is waiting for a person across the automations.
+**Dashboard:** the homes, tenancies and rent at a glance, and how much work is waiting for a person.
 ![Dashboard](docs/screenshots/dashboard.png)
 
 **Tenant inbox:** urgent emails first, the email beside the triage, the cited clause and an editable reply draft.
@@ -269,7 +275,7 @@ hours returned = baseline minutes for items whose automated work was used - minu
 | ![Documents queue](docs/screenshots/documents.png) | ![Reconciliation](docs/screenshots/reconciliation.png) |
 | **Documents queue:** 12 invoices and 3 tenancy summaries; the ones with a problem are flagged. | **Reconciliation:** 50 bank lines, 82% matched automatically, 9 exceptions with reasons and actions, and the arrears. |
 | ![Reviewing a bank line](docs/screenshots/reconciliation-review.png) | ![Hours returned](docs/screenshots/hours.png) |
-| **Reviewing an ambiguous bank line:** what the rules found, and the model's suggestion marked as not applied. | **Hours returned for the demo month,** by automation, with the method on the page. |
+| **Reviewing an unclear bank payment:** what the fixed rules found, and the AI's guess at who paid, which is not used until a person agrees. | **Hours returned for the demo month,** by automation, with the method on the page. |
 
 ## Evaluation
 
