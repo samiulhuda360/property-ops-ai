@@ -50,8 +50,8 @@ export type NameStrength = 'strong' | 'medium' | 'weak'
 
 /**
  * How well a payer name matches a tenant.
- * - strong: surname plus the first name or its initial ("R PATEL", "KIM, D", "LIAM O'BRIEN");
- * - medium: the surname alone ("PATEL");
+ * - strong: surname plus the first name or its initial ("B CARTER", "KIM, D", "LIAM O'BRIEN");
+ * - medium: the surname alone ("CARTER");
  * - weak: the surname with a different first name or initial ("J LEE" for Hannah Lee).
  * Returns null when the surname isn't there: a first name alone is never enough.
  */

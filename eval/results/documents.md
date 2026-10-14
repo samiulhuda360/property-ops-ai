@@ -1,6 +1,6 @@
 # Document extraction: evaluation
 
-Two labelled synthetic sets of supplier invoices and tenancy summaries, each run through the rules, the model alone, and the model with validation. Run on 2026-10-06 with model `gemini-flash-lite-latest`.
+Two labelled synthetic sets of supplier invoices and tenancy summaries, each run through the rules, the model alone, and the model with validation. Run on 2026-10-14 with model `gemini-flash-lite-latest`.
 
 ## Seen layouts (40)
 
@@ -15,8 +15,8 @@ Two labelled synthetic sets of supplier invoices and tenancy summaries, each run
 | Planted problems caught (recall) | 100.0% (13/13) | 100.0% (13/13) | 100.0% (13/13) |
 | Clean documents with a false alarm | 0/28 | 0/28 | 0/28 |
 | Extra issues on planted documents | 0 | 0 | 0 |
-| Median latency per document | 17 ms | 2.19 s | 2.41 s |
-| Model calls this run: live / cached | 0 / 0 | 0 / 40 | 0 / 52 |
+| Median latency per document | 8 ms | 2.79 s | 3.42 s |
+| Model calls this run: live / cached | 0 / 0 | 25 / 15 | 8 / 44 |
 | Documents that needed the repair call | – | – | 12 |
 
 The methods read the same share of fields correctly on this set, so it does not separate them on accuracy. The planted problems are caught by the business checks, which run after every method.
@@ -60,16 +60,16 @@ The methods read the same share of fields correctly on this set, so it does not 
 
 | Metric | Rules | Model | Model + validation |
 |---|---:|---:|---:|
-| Field accuracy, all fields | 46.5% (74/159) | 93.7% (149/159) | 93.7% (149/159) |
-| Field accuracy, invoices | 52.3% (69/132) | 92.4% (122/132) | 92.4% (122/132) |
+| Field accuracy, all fields | 46.5% (74/159) | 95.0% (151/159) | 95.0% (151/159) |
+| Field accuracy, invoices | 52.3% (69/132) | 93.9% (124/132) | 93.9% (124/132) |
 | Field accuracy, tenancy summaries | 18.5% (5/27) | 100.0% (27/27) | 100.0% (27/27) |
-| Documents fully correct | 0/15 | 10/15 | 10/15 |
+| Documents fully correct | 0/15 | 11/15 | 11/15 |
 | Planted problems caught (recall) | 40.0% (2/5) | 80.0% (4/5) | 80.0% (4/5) |
-| Clean documents with a false alarm | 10/10 | 1/10 | 1/10 |
+| Clean documents with a false alarm | 10/10 | 2/10 | 2/10 |
 | Extra issues on planted documents | 8 | 3 | 3 |
-| Median latency per document | 19 ms | 11.22 s | 14.91 s |
-| Model calls this run: live / cached | 0 / 0 | 15 / 0 | 6 / 15 |
-| Documents that needed the repair call | – | – | 6 |
+| Median latency per document | 18 ms | 4.09 s | 5.17 s |
+| Model calls this run: live / cached | 0 / 0 | 15 / 0 | 7 / 15 |
+| Documents that needed the repair call | – | – | 7 |
 
 ### Held-out layouts: accuracy per field
 
@@ -82,8 +82,8 @@ The methods read the same share of fields correctly on this set, so it does not 
 | Invoice: invoiceDate | 0.0% (0/12) | 100.0% (12/12) | 100.0% (12/12) |
 | Invoice: dueDate | 8.3% (1/12) | 100.0% (12/12) | 100.0% (12/12) |
 | Invoice: propertyAddress | 66.7% (8/12) | 100.0% (12/12) | 100.0% (12/12) |
-| Invoice: lineItems | 0.0% (0/12) | 75.0% (9/12) | 75.0% (9/12) |
-| Invoice: subtotal | 33.3% (4/12) | 58.3% (7/12) | 58.3% (7/12) |
+| Invoice: lineItems | 0.0% (0/12) | 83.3% (10/12) | 83.3% (10/12) |
+| Invoice: subtotal | 33.3% (4/12) | 66.7% (8/12) | 66.7% (8/12) |
 | Invoice: gst | 66.7% (8/12) | 91.7% (11/12) | 91.7% (11/12) |
 | Invoice: total | 66.7% (8/12) | 91.7% (11/12) | 91.7% (11/12) |
 | Summary: tenantNames | 0.0% (0/3) | 100.0% (3/3) | 100.0% (3/3) |
@@ -100,9 +100,9 @@ The methods read the same share of fields correctly on this set, so it does not 
 
 | Confidence | Model | Model + validation |
 |---|---:|---:|
-| high | 99.3% of 150 fields | 100.0% of 63 fields |
-| medium | 0.0% of 4 fields | 94.7% of 75 fields |
-| low | 0.0% of 5 fields | 71.4% of 21 fields |
+| high | 99.3% of 151 fields | 100.0% of 63 fields |
+| medium | 0.0% of 3 fields | 97.3% of 73 fields |
+| low | 20.0% of 5 fields | 73.9% of 23 fields |
 
 ## How it is measured
 
@@ -142,22 +142,22 @@ Every field and every planted problem was handled correctly, with no false alarm
 - `h-invoice-11-electrical-one3.pdf`: invoiceNumber: expected "E-11019", read nothing; invoiceDate: expected "2026-09-30", read nothing; dueDate: expected "2026-10-14", read nothing; lineItems: expected 3 lines (64.00, 72.00, 114.00), read nothing; subtotal: expected $250.00, read nothing; total: expected $287.50, read $14.10; raised missing_field, gst_not_3_23 (not planted)
 - `h-invoice-12-electrical-papakura.pdf`: invoiceNumber: expected "E-11025", read nothing; invoiceDate: expected "2026-09-22", read nothing; dueDate: expected "2026-10-06", read nothing; lineItems: expected 2 lines (72.00, 95.00), read nothing; subtotal: expected $167.00, read nothing; total: expected $192.05, read $6.10; raised missing_field, gst_not_3_23 (not planted)
 - `h-lease-13-avd25.pdf`: tenantNames: expected ["Wiremu Parata"], read nothing; propertyAddress: expected "25 Puriri Street, Avondale, Auckland 1026", read nothing; startDate: expected "2025-08-25", read nothing; weeklyRent: expected $600.00, read nothing; bond: expected $2400.00, read nothing; petsAllowed: expected false, read nothing; maxOccupants: expected 5, read nothing; raised missing_field (not planted)
-- `h-lease-14-hnd5.pdf`: tenantNames: expected ["Rajesh Patel","Priya Patel"], read nothing; propertyAddress: expected "5 Rimu Crescent, Henderson, Auckland 0612", read nothing; startDate: expected "2023-09-18", read nothing; weeklyRent: expected $700.00, read nothing; bond: expected $2720.00, read nothing; petsAllowed: expected true, read nothing; maxOccupants: expected 6, read nothing; missed rent_differs; raised missing_field (not planted)
+- `h-lease-14-hnd5.pdf`: tenantNames: expected ["Ben Carter","Lucy Carter"], read nothing; propertyAddress: expected "5 Rimu Crescent, Henderson, Auckland 0612", read nothing; startDate: expected "2023-09-18", read nothing; weeklyRent: expected $700.00, read nothing; bond: expected $2720.00, read nothing; petsAllowed: expected true, read nothing; maxOccupants: expected 6, read nothing; missed rent_differs; raised missing_field (not planted)
 - `h-lease-15-tak9.pdf`: tenantNames: expected ["Sophie Clarke"], read nothing; propertyAddress: expected "9 Totara Avenue, Takapuna, Auckland 0622", read nothing; startDate: expected "2025-01-13", read nothing; endDate: expected "2027-01-12", read nothing; weeklyRent: expected $780.00, read nothing; bond: expected $3120.00, read nothing; petsAllowed: expected false, read nothing; maxOccupants: expected 5, read nothing; raised missing_field (not planted)
 
 ### Held-out layouts: Model
 
 - `h-invoice-05-gardens-pap18.pdf`: lineItems: expected 3 lines (23.00, 69.00, 80.50), read 3 lines (20.00, 60.00, 70.00); subtotal: expected nothing, read $150.00
 - `h-invoice-06-locksmiths-tak9.pdf`: subtotal: expected nothing, read $220.00; raised line_items_dont_add (not planted)
-- `h-invoice-07-cleaning-nln11.pdf`: subtotal: expected nothing, read $342.12; raised line_items_dont_add (not planted)
-- `h-invoice-08-cleaning-how30.pdf`: lineItems: expected 2 lines (138.00, 207.00), read 2 lines (120.00, 180.00); subtotal: expected nothing, read $300.00
+- `h-invoice-07-cleaning-nln11.pdf`: raised line_items_dont_add (not planted)
+- `h-invoice-08-cleaning-how30.pdf`: subtotal: expected nothing, read $300.00; raised line_items_dont_add (not planted)
 - `h-credit-10-electrical-mrb6.pdf`: lineItems: expected 1 lines (-36.00), read nothing; subtotal: expected $-36.00, read nothing; gst: expected $-5.40, read nothing; total: expected $-41.40, read nothing; missed credit_note; raised invalid_value, missing_field (not planted)
 
 ### Held-out layouts: Model + validation
 
 - `h-invoice-05-gardens-pap18.pdf`: lineItems: expected 3 lines (23.00, 69.00, 80.50), read 3 lines (20.00, 60.00, 70.00); subtotal: expected nothing, read $150.00
-- `h-invoice-06-locksmiths-tak9.pdf`: subtotal: expected nothing, read $220.00; raised line_items_dont_add (not planted)
+- `h-invoice-06-locksmiths-tak9.pdf`: raised line_items_dont_add (not planted)
 - `h-invoice-07-cleaning-nln11.pdf`: subtotal: expected nothing, read $342.12; raised line_items_dont_add (not planted)
-- `h-invoice-08-cleaning-how30.pdf`: lineItems: expected 2 lines (138.00, 207.00), read 2 lines (120.00, 180.00); subtotal: expected nothing, read $300.00
+- `h-invoice-08-cleaning-how30.pdf`: subtotal: expected nothing, read $300.00; raised line_items_dont_add (not planted)
 - `h-credit-10-electrical-mrb6.pdf`: lineItems: expected 1 lines (-36.00), read nothing; subtotal: expected $-36.00, read nothing; gst: expected $-5.40, read nothing; total: expected $-41.40, read nothing; missed credit_note; raised invalid_value, missing_field (not planted)
 

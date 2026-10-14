@@ -1,16 +1,21 @@
 {
-  "generatedAt": "2026-10-06T06:51:43.925Z",
+  "generatedAt": "2026-10-14T06:56:34.034Z",
   "model": "gemini-flash-lite-latest",
   "modelCalls": {
-    "live": 0,
-    "cached": 90,
+    "live": 76,
+    "cached": 14,
     "failed": 0
   },
   "sets": {
     "development": {
       "dataset": "data/inbox/emails.json",
       "emails": 60,
-      "modelErrors": [],
+      "modelErrors": [
+        {
+          "id": "E59",
+          "error": "The model reply did not match the triage schema."
+        }
+      ],
       "methods": {
         "rules": {
           "name": "Rules only",
@@ -107,16 +112,16 @@
             "category": {
               "key": "category",
               "label": "Category accuracy",
-              "correct": 59,
+              "correct": 57,
               "total": 60,
-              "value": "59/60 (98%)"
+              "value": "57/60 (95%)"
             },
             "urgency": {
               "key": "urgency",
               "label": "Urgency accuracy (4 levels)",
-              "correct": 54,
+              "correct": 53,
               "total": 60,
-              "value": "54/60 (90%)"
+              "value": "53/60 (88%)"
             },
             "urgent_recall": {
               "key": "urgent_recall",
@@ -149,30 +154,30 @@
             "needs_person": {
               "key": "needs_person",
               "label": "Needs-a-person accuracy",
-              "correct": 55,
+              "correct": 54,
               "total": 60,
-              "value": "55/60 (92%)"
+              "value": "54/60 (90%)"
             },
             "needs_person_recall": {
               "key": "needs_person_recall",
               "label": "Needs-a-person recall",
-              "correct": 37,
+              "correct": 36,
               "total": 38,
-              "value": "37/38 (97%)"
+              "value": "36/38 (95%)"
             },
             "ticket": {
               "key": "ticket",
               "label": "Correct maintenance job decision",
-              "correct": 55,
+              "correct": 54,
               "total": 60,
-              "value": "55/60 (92%)"
+              "value": "54/60 (90%)"
             },
             "clause": {
               "key": "clause",
               "label": "Reply cites the expected clause",
-              "correct": 53,
+              "correct": 54,
               "total": 55,
-              "value": "53/55 (96%)"
+              "value": "54/55 (98%)"
             },
             "invalid_citations": {
               "key": "invalid_citations",
@@ -196,9 +201,9 @@
             "category": {
               "key": "category",
               "label": "Category accuracy",
-              "correct": 59,
+              "correct": 58,
               "total": 60,
-              "value": "59/60 (98%)"
+              "value": "58/60 (97%)"
             },
             "urgency": {
               "key": "urgency",
@@ -259,9 +264,9 @@
             "clause": {
               "key": "clause",
               "label": "Reply cites the expected clause",
-              "correct": 55,
+              "correct": 54,
               "total": 55,
-              "value": "55/55 (100%)"
+              "value": "54/55 (98%)"
             },
             "invalid_citations": {
               "key": "invalid_citations",
@@ -289,7 +294,7 @@
         "model": {
           "id": "E31",
           "needsPerson": true,
-          "reply": "Kia ora Liam,\n\nThank you for getting in touch. A member of our team will review your message and be in touch regarding your rent query (Tenancy terms §5).\n\nNgā mihi,\nAcme Property Management"
+          "reply": "Kia ora Liam,\n\nThank you for your email regarding your rent. As outlined in Tenancy terms §5, if you wish to ask for a rent reduction, please write to us with full details explaining why, and a member of our team will review your request and confirm the outcome in writing.\n\nNgā mihi,\nAcme Property Management"
         },
         "shipped": {
           "id": "E31",
@@ -300,7 +305,7 @@
       "promiseRemovals": [
         {
           "id": "E41",
-          "sentence": "You do not need to be home for the routine inspection next Wednesday; we will use the office key and lock up when we leave (Tenancy terms §10)."
+          "sentence": "You do not need to be home for the routine inspection next Wednesday; we will use the office key and lock up when we leave, as outlined in Tenancy terms §10."
         }
       ],
       "perEmail": [
@@ -565,7 +570,7 @@
             "available": true,
             "category": "maintenance",
             "urgency": "normal",
-            "needsPerson": false,
+            "needsPerson": true,
             "ticket": true,
             "ticketOutcome": null,
             "cited": [
@@ -582,7 +587,7 @@
             "urgency": "normal",
             "tenantEmail": "sophie.clarke@example.com",
             "propertyCode": "TAK9",
-            "needsPerson": false,
+            "needsPerson": true,
             "ticket": true,
             "ticketOutcome": "created",
             "cited": [
@@ -715,7 +720,7 @@
           "labels": {
             "category": "maintenance",
             "urgency": "urgent",
-            "tenant_email": "rajesh.patel@example.com",
+            "tenant_email": "ben.carter@example.com",
             "property_code": "HND5",
             "needs_person": true,
             "expected_clause": 8,
@@ -725,7 +730,7 @@
             "available": true,
             "category": "maintenance",
             "urgency": "urgent",
-            "tenantEmail": "rajesh.patel@example.com",
+            "tenantEmail": "ben.carter@example.com",
             "propertyCode": "HND5",
             "needsPerson": true,
             "ticket": true,
@@ -755,7 +760,7 @@
             "available": true,
             "category": "maintenance",
             "urgency": "urgent",
-            "tenantEmail": "rajesh.patel@example.com",
+            "tenantEmail": "ben.carter@example.com",
             "propertyCode": "HND5",
             "needsPerson": true,
             "ticket": true,
@@ -1258,7 +1263,9 @@
             "needsPerson": true,
             "ticket": false,
             "ticketOutcome": null,
-            "cited": [],
+            "cited": [
+              21
+            ],
             "invalidCitations": [],
             "promiseHits": 0,
             "removedSentences": []
@@ -1272,7 +1279,9 @@
             "needsPerson": true,
             "ticket": false,
             "ticketOutcome": "none",
-            "cited": [],
+            "cited": [
+              21
+            ],
             "invalidCitations": [],
             "promiseHits": 0,
             "removedSentences": []
@@ -1537,7 +1546,7 @@
             "available": true,
             "category": "lease_question",
             "urgency": "normal",
-            "needsPerson": true,
+            "needsPerson": false,
             "ticket": false,
             "ticketOutcome": null,
             "cited": [
@@ -1553,7 +1562,7 @@
             "urgency": "normal",
             "tenantEmail": "liam.obrien@example.com",
             "propertyCode": "NLN11",
-            "needsPerson": true,
+            "needsPerson": false,
             "ticket": false,
             "ticketOutcome": "none",
             "cited": [
@@ -1627,7 +1636,7 @@
           "labels": {
             "category": "rent",
             "urgency": "high",
-            "tenant_email": "rajesh.patel@example.com",
+            "tenant_email": "ben.carter@example.com",
             "property_code": "HND5",
             "needs_person": true,
             "expected_clause": 3,
@@ -1637,7 +1646,7 @@
             "available": true,
             "category": "rent",
             "urgency": "high",
-            "tenantEmail": "rajesh.patel@example.com",
+            "tenantEmail": "ben.carter@example.com",
             "propertyCode": "HND5",
             "needsPerson": true,
             "ticket": false,
@@ -1667,7 +1676,7 @@
             "available": true,
             "category": "rent",
             "urgency": "high",
-            "tenantEmail": "rajesh.patel@example.com",
+            "tenantEmail": "ben.carter@example.com",
             "propertyCode": "HND5",
             "needsPerson": true,
             "ticket": false,
@@ -2118,7 +2127,7 @@
           "model": {
             "available": true,
             "category": "rent",
-            "urgency": "high",
+            "urgency": "normal",
             "needsPerson": true,
             "ticket": false,
             "ticketOutcome": null,
@@ -2132,7 +2141,7 @@
           "shipped": {
             "available": true,
             "category": "rent",
-            "urgency": "high",
+            "urgency": "normal",
             "tenantEmail": "daniel.kim@example.com",
             "propertyCode": "PON7",
             "needsPerson": true,
@@ -2180,7 +2189,9 @@
             "needsPerson": true,
             "ticket": false,
             "ticketOutcome": null,
-            "cited": [],
+            "cited": [
+              17
+            ],
             "invalidCitations": [],
             "promiseHits": 0,
             "removedSentences": []
@@ -2265,7 +2276,7 @@
           "labels": {
             "category": "maintenance",
             "urgency": "normal",
-            "tenant_email": "rajesh.patel@example.com",
+            "tenant_email": "ben.carter@example.com",
             "property_code": "HND5",
             "needs_person": false,
             "expected_clause": 7,
@@ -2275,7 +2286,7 @@
             "available": true,
             "category": "maintenance",
             "urgency": "normal",
-            "tenantEmail": "rajesh.patel@example.com",
+            "tenantEmail": "ben.carter@example.com",
             "propertyCode": "HND5",
             "needsPerson": true,
             "ticket": true,
@@ -2305,7 +2316,7 @@
             "available": true,
             "category": "maintenance",
             "urgency": "normal",
-            "tenantEmail": "rajesh.patel@example.com",
+            "tenantEmail": "ben.carter@example.com",
             "propertyCode": "HND5",
             "needsPerson": false,
             "ticket": true,
@@ -2352,9 +2363,7 @@
             "needsPerson": true,
             "ticket": false,
             "ticketOutcome": null,
-            "cited": [
-              4
-            ],
+            "cited": [],
             "invalidCitations": [],
             "promiseHits": 0,
             "removedSentences": []
@@ -2369,7 +2378,7 @@
             "ticket": false,
             "ticketOutcome": "none",
             "cited": [
-              4
+              2
             ],
             "invalidCitations": [],
             "promiseHits": 0,
@@ -2528,7 +2537,9 @@
             "needsPerson": true,
             "ticket": false,
             "ticketOutcome": null,
-            "cited": [],
+            "cited": [
+              17
+            ],
             "invalidCitations": [],
             "promiseHits": 0,
             "removedSentences": []
@@ -2754,7 +2765,7 @@
           "model": {
             "available": true,
             "category": "maintenance",
-            "urgency": "high",
+            "urgency": "normal",
             "needsPerson": true,
             "ticket": true,
             "ticketOutcome": null,
@@ -2768,7 +2779,7 @@
           "shipped": {
             "available": true,
             "category": "maintenance",
-            "urgency": "high",
+            "urgency": "normal",
             "tenantEmail": null,
             "propertyCode": null,
             "needsPerson": true,
@@ -2808,11 +2819,13 @@
             "removedSentences": []
           },
           "model": {
-            "available": true,
-            "category": "other",
-            "urgency": "low",
-            "needsPerson": true,
-            "ticket": false,
+            "available": false,
+            "category": null,
+            "urgency": null,
+            "tenantEmail": null,
+            "propertyCode": null,
+            "needsPerson": null,
+            "ticket": null,
             "ticketOutcome": null,
             "cited": [],
             "invalidCitations": [],
@@ -2890,7 +2903,7 @@
             "invalidCitations": [],
             "promiseHits": 1,
             "removedSentences": [
-              "You do not need to be home for the routine inspection next Wednesday; we will use the office key and lock up when we leave (Tenancy terms §10)."
+              "You do not need to be home for the routine inspection next Wednesday; we will use the office key and lock up when we leave, as outlined in Tenancy terms §10."
             ]
           }
         },
@@ -3481,7 +3494,7 @@
           "labels": {
             "category": "lease_question",
             "urgency": "normal",
-            "tenant_email": "rajesh.patel@example.com",
+            "tenant_email": "ben.carter@example.com",
             "property_code": "HND5",
             "needs_person": true,
             "expected_clause": 13,
@@ -3491,7 +3504,7 @@
             "available": true,
             "category": "lease_question",
             "urgency": "normal",
-            "tenantEmail": "rajesh.patel@example.com",
+            "tenantEmail": "ben.carter@example.com",
             "propertyCode": "HND5",
             "needsPerson": true,
             "ticket": false,
@@ -3505,7 +3518,7 @@
           },
           "model": {
             "available": true,
-            "category": "lease_question",
+            "category": "end_of_tenancy",
             "urgency": "normal",
             "needsPerson": true,
             "ticket": false,
@@ -3519,9 +3532,9 @@
           },
           "shipped": {
             "available": true,
-            "category": "lease_question",
+            "category": "end_of_tenancy",
             "urgency": "normal",
-            "tenantEmail": "rajesh.patel@example.com",
+            "tenantEmail": "ben.carter@example.com",
             "propertyCode": "HND5",
             "needsPerson": true,
             "ticket": false,
@@ -3627,7 +3640,8 @@
             "ticket": false,
             "ticketOutcome": null,
             "cited": [
-              20
+              20,
+              18
             ],
             "invalidCitations": [],
             "promiseHits": 0,
@@ -3643,7 +3657,8 @@
             "ticket": false,
             "ticketOutcome": "none",
             "cited": [
-              20
+              20,
+              18
             ],
             "invalidCitations": [],
             "promiseHits": 0,
@@ -3713,7 +3728,7 @@
           "labels": {
             "category": "end_of_tenancy",
             "urgency": "normal",
-            "tenant_email": "rajesh.patel@example.com",
+            "tenant_email": "ben.carter@example.com",
             "property_code": "HND5",
             "needs_person": false,
             "expected_clause": 20,
@@ -3723,7 +3738,7 @@
             "available": true,
             "category": "end_of_tenancy",
             "urgency": "normal",
-            "tenantEmail": "rajesh.patel@example.com",
+            "tenantEmail": "ben.carter@example.com",
             "propertyCode": "HND5",
             "needsPerson": true,
             "ticket": false,
@@ -3753,7 +3768,7 @@
             "available": true,
             "category": "end_of_tenancy",
             "urgency": "normal",
-            "tenantEmail": "rajesh.patel@example.com",
+            "tenantEmail": "ben.carter@example.com",
             "propertyCode": "HND5",
             "needsPerson": true,
             "ticket": false,
@@ -3953,7 +3968,8 @@
             "id": "E13",
             "subject": "New bank account for rent",
             "issues": [
-              "category: expected rent, got maintenance"
+              "category: expected rent, got maintenance",
+              "needs a person: expected no, got yes"
             ]
           },
           {
@@ -3999,13 +4015,6 @@
             ]
           },
           {
-            "id": "E43",
-            "subject": "Lease renewal",
-            "issues": [
-              "needs a person: expected no, got yes"
-            ]
-          },
-          {
             "id": "E49",
             "subject": "Someone came into the house without notice",
             "issues": [
@@ -4023,29 +4032,29 @@
             "id": "E27",
             "subject": "Rent a couple of days late",
             "issues": [
-              "urgency: expected normal, got high",
               "needs a person: expected no, got yes"
             ]
           },
           {
-            "id": "E46",
-            "subject": "Party at 25 Puriri Street",
+            "id": "E33",
+            "subject": "Rent for 22 Ash Street",
             "issues": [
-              "clause: expected §17, cited none"
-            ]
-          },
-          {
-            "id": "E44",
-            "subject": "Noisy neighbours every night",
-            "issues": [
-              "clause: expected §17, cited none"
+              "clause: expected §4, cited none"
             ]
           },
           {
             "id": "E22",
             "subject": "Leak under the kitchen sink",
             "issues": [
+              "urgency: expected high, got normal",
               "maintenance job: expected no new job, got a repair"
+            ]
+          },
+          {
+            "id": "E59",
+            "subject": "Action required: your mailbox is full",
+            "issues": [
+              "no model output"
             ]
           },
           {
@@ -4060,6 +4069,13 @@
             "subject": "Rent increase letter",
             "issues": [
               "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E37",
+            "subject": "Breaking the lease early",
+            "issues": [
+              "category: expected lease_question, got end_of_tenancy"
             ]
           },
           {
@@ -4082,7 +4098,8 @@
             "id": "E13",
             "subject": "New bank account for rent",
             "issues": [
-              "category: expected rent, got maintenance"
+              "category: expected rent, got maintenance",
+              "needs a person: expected no, got yes"
             ]
           },
           {
@@ -4090,13 +4107,6 @@
             "subject": "Invoice INV-2291 - 22 Ash Street",
             "issues": [
               "urgency: expected low, got normal"
-            ]
-          },
-          {
-            "id": "E43",
-            "subject": "Lease renewal",
-            "issues": [
-              "needs a person: expected no, got yes"
             ]
           },
           {
@@ -4117,8 +4127,21 @@
             "id": "E27",
             "subject": "Rent a couple of days late",
             "issues": [
-              "urgency: expected normal, got high",
               "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E33",
+            "subject": "Rent for 22 Ash Street",
+            "issues": [
+              "clause: expected §4, cited §2"
+            ]
+          },
+          {
+            "id": "E22",
+            "subject": "Leak under the kitchen sink",
+            "issues": [
+              "urgency: expected high, got normal"
             ]
           },
           {
@@ -4140,6 +4163,13 @@
             "subject": "Rent increase letter",
             "issues": [
               "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "E37",
+            "subject": "Breaking the lease early",
+            "issues": [
+              "category: expected lease_question, got end_of_tenancy"
             ]
           },
           {
@@ -4252,16 +4282,16 @@
             "category": {
               "key": "category",
               "label": "Category accuracy",
-              "correct": 27,
+              "correct": 26,
               "total": 30,
-              "value": "27/30 (90%)"
+              "value": "26/30 (87%)"
             },
             "urgency": {
               "key": "urgency",
               "label": "Urgency accuracy (4 levels)",
-              "correct": 27,
+              "correct": 28,
               "total": 30,
-              "value": "27/30 (90%)"
+              "value": "28/30 (93%)"
             },
             "urgent_recall": {
               "key": "urgent_recall",
@@ -4308,9 +4338,9 @@
             "ticket": {
               "key": "ticket",
               "label": "Correct maintenance job decision",
-              "correct": 28,
+              "correct": 27,
               "total": 30,
-              "value": "28/30 (93%)"
+              "value": "27/30 (90%)"
             },
             "clause": {
               "key": "clause",
@@ -4329,9 +4359,9 @@
             "promise_hits": {
               "key": "promise_hits",
               "label": "Drafts with a promise (the shipped guard removes it)",
-              "correct": 0,
+              "correct": 2,
               "total": 30,
-              "value": "0"
+              "value": "2"
             }
           }
         },
@@ -4341,16 +4371,16 @@
             "category": {
               "key": "category",
               "label": "Category accuracy",
-              "correct": 27,
+              "correct": 26,
               "total": 30,
-              "value": "27/30 (90%)"
+              "value": "26/30 (87%)"
             },
             "urgency": {
               "key": "urgency",
               "label": "Urgency accuracy (4 levels)",
-              "correct": 25,
+              "correct": 26,
               "total": 30,
-              "value": "25/30 (83%)"
+              "value": "26/30 (87%)"
             },
             "urgent_recall": {
               "key": "urgent_recall",
@@ -4404,9 +4434,9 @@
             "clause": {
               "key": "clause",
               "label": "Reply cites the expected clause",
-              "correct": 27,
+              "correct": 26,
               "total": 27,
-              "value": "27/27 (100%)"
+              "value": "26/27 (96%)"
             },
             "invalid_citations": {
               "key": "invalid_citations",
@@ -4418,9 +4448,9 @@
             "promise_hits": {
               "key": "promise_hits",
               "label": "Drafts with a promise (the shipped guard removes it)",
-              "correct": 0,
+              "correct": 2,
               "total": 30,
-              "value": "0"
+              "value": "2"
             }
           }
         }
@@ -4434,15 +4464,28 @@
         "model": {
           "id": "H03",
           "needsPerson": true,
-          "reply": "Kia ora M. Harding, thank you for your email. A member of our team will review your request and be in touch soon. Ngā mihi,\nAcme Property Management"
+          "reply": "Kia ora M. Harding, thank you for your email. A member of our team will review your request and be in touch with you as soon as possible. Ngā mihi,\nAcme Property Management"
         },
         "shipped": {
           "id": "H03",
           "needsPerson": true,
-          "reply": "Kia ora M. Harding, thank you for your email. A member of our team will review your request and be in touch soon. Ngā mihi,\nAcme Property Management"
+          "reply": "Kia ora M. Harding, thank you for your email. A member of our team will review your request and be in touch with you as soon as possible. Ngā mihi,\nAcme Property Management"
         }
       },
-      "promiseRemovals": [],
+      "promiseRemovals": [
+        {
+          "id": "H09",
+          "sentence": "A member of the team will call you as soon as possible to arrange a locksmith this morning."
+        },
+        {
+          "id": "H30",
+          "sentence": "A shorter notice period only applies if we agree to it in writing (Tenancy terms §12)."
+        },
+        {
+          "id": "H30",
+          "sentence": "A member of our team will review your request and confirm before Monday."
+        }
+      ],
       "perEmail": [
         {
           "id": "H01",
@@ -4822,9 +4865,7 @@
             "needsPerson": false,
             "ticket": false,
             "ticketOutcome": null,
-            "cited": [
-              8
-            ],
+            "cited": [],
             "invalidCitations": [],
             "promiseHits": 0,
             "removedSentences": []
@@ -4851,7 +4892,7 @@
           "labels": {
             "category": "maintenance",
             "urgency": "normal",
-            "tenant_email": "rajesh.patel@example.com",
+            "tenant_email": "ben.carter@example.com",
             "property_code": "HND5",
             "needs_person": true,
             "expected_clause": 18,
@@ -4861,7 +4902,7 @@
             "available": true,
             "category": "other",
             "urgency": "low",
-            "tenantEmail": "rajesh.patel@example.com",
+            "tenantEmail": "ben.carter@example.com",
             "propertyCode": "HND5",
             "needsPerson": true,
             "ticket": false,
@@ -4889,7 +4930,7 @@
             "available": true,
             "category": "maintenance",
             "urgency": "normal",
-            "tenantEmail": "rajesh.patel@example.com",
+            "tenantEmail": "ben.carter@example.com",
             "propertyCode": "HND5",
             "needsPerson": true,
             "ticket": true,
@@ -4941,7 +4982,7 @@
               18
             ],
             "invalidCitations": [],
-            "promiseHits": 0,
+            "promiseHits": 1,
             "removedSentences": []
           },
           "shipped": {
@@ -4958,8 +4999,10 @@
               18
             ],
             "invalidCitations": [],
-            "promiseHits": 0,
-            "removedSentences": []
+            "promiseHits": 1,
+            "removedSentences": [
+              "A member of the team will call you as soon as possible to arrange a locksmith this morning."
+            ]
           }
         },
         {
@@ -5055,7 +5098,7 @@
             "ticket": false,
             "ticketOutcome": null,
             "cited": [
-              5
+              7
             ],
             "invalidCitations": [],
             "promiseHits": 0,
@@ -5071,7 +5114,7 @@
             "ticket": false,
             "ticketOutcome": "none",
             "cited": [
-              5
+              7
             ],
             "invalidCitations": [],
             "promiseHits": 0,
@@ -5284,7 +5327,7 @@
             "category": "maintenance",
             "urgency": "normal",
             "needsPerson": true,
-            "ticket": false,
+            "ticket": true,
             "ticketOutcome": null,
             "cited": [],
             "invalidCitations": [],
@@ -5299,7 +5342,7 @@
             "propertyCode": "HND5",
             "needsPerson": true,
             "ticket": false,
-            "ticketOutcome": "none",
+            "ticketOutcome": "linked",
             "cited": [
               21
             ],
@@ -5400,7 +5443,9 @@
             "needsPerson": true,
             "ticket": true,
             "ticketOutcome": null,
-            "cited": [],
+            "cited": [
+              7
+            ],
             "invalidCitations": [],
             "promiseHits": 0,
             "removedSentences": []
@@ -5515,8 +5560,8 @@
             "ticket": true,
             "ticketOutcome": null,
             "cited": [
-              9,
-              7
+              7,
+              9
             ],
             "invalidCitations": [],
             "promiseHits": 0,
@@ -5532,8 +5577,8 @@
             "ticket": true,
             "ticketOutcome": "created",
             "cited": [
-              9,
-              7
+              7,
+              9
             ],
             "invalidCitations": [],
             "promiseHits": 0,
@@ -5685,7 +5730,7 @@
           },
           "model": {
             "available": true,
-            "category": "complaint",
+            "category": "lease_question",
             "urgency": "normal",
             "needsPerson": true,
             "ticket": false,
@@ -5699,7 +5744,7 @@
           },
           "shipped": {
             "available": true,
-            "category": "complaint",
+            "category": "lease_question",
             "urgency": "normal",
             "tenantEmail": "tom.wright@example.com",
             "propertyCode": "ONE3",
@@ -5719,7 +5764,7 @@
           "labels": {
             "category": "rent",
             "urgency": "normal",
-            "tenant_email": "rajesh.patel@example.com",
+            "tenant_email": "ben.carter@example.com",
             "property_code": "HND5",
             "needs_person": false,
             "expected_clause": 4,
@@ -5729,7 +5774,7 @@
             "available": true,
             "category": "rent",
             "urgency": "normal",
-            "tenantEmail": "rajesh.patel@example.com",
+            "tenantEmail": "ben.carter@example.com",
             "propertyCode": "HND5",
             "needsPerson": true,
             "ticket": false,
@@ -5759,7 +5804,7 @@
             "available": true,
             "category": "rent",
             "urgency": "normal",
-            "tenantEmail": "rajesh.patel@example.com",
+            "tenantEmail": "ben.carter@example.com",
             "propertyCode": "HND5",
             "needsPerson": false,
             "ticket": false,
@@ -6125,7 +6170,7 @@
           "labels": {
             "category": "end_of_tenancy",
             "urgency": "high",
-            "tenant_email": "rajesh.patel@example.com",
+            "tenant_email": "ben.carter@example.com",
             "property_code": "HND5",
             "needs_person": true,
             "expected_clause": 12,
@@ -6135,7 +6180,7 @@
             "available": true,
             "category": "end_of_tenancy",
             "urgency": "normal",
-            "tenantEmail": "rajesh.patel@example.com",
+            "tenantEmail": "ben.carter@example.com",
             "propertyCode": "HND5",
             "needsPerson": true,
             "ticket": false,
@@ -6150,7 +6195,7 @@
           "model": {
             "available": true,
             "category": "end_of_tenancy",
-            "urgency": "normal",
+            "urgency": "high",
             "needsPerson": true,
             "ticket": false,
             "ticketOutcome": null,
@@ -6158,14 +6203,14 @@
               12
             ],
             "invalidCitations": [],
-            "promiseHits": 0,
+            "promiseHits": 2,
             "removedSentences": []
           },
           "shipped": {
             "available": true,
             "category": "end_of_tenancy",
-            "urgency": "normal",
-            "tenantEmail": "rajesh.patel@example.com",
+            "urgency": "high",
+            "tenantEmail": "ben.carter@example.com",
             "propertyCode": "HND5",
             "needsPerson": true,
             "ticket": false,
@@ -6174,8 +6219,11 @@
               12
             ],
             "invalidCitations": [],
-            "promiseHits": 0,
-            "removedSentences": []
+            "promiseHits": 2,
+            "removedSentences": [
+              "A shorter notice period only applies if we agree to it in writing (Tenancy terms §12).",
+              "A member of our team will review your request and confirm before Monday."
+            ]
           }
         }
       ],
@@ -6351,6 +6399,13 @@
             ]
           },
           {
+            "id": "H11",
+            "subject": "Rent while bedroom 2 can't be used",
+            "issues": [
+              "clause: expected §5, cited §7"
+            ]
+          },
+          {
             "id": "H14",
             "subject": "rats again",
             "issues": [
@@ -6361,7 +6416,8 @@
             "id": "H15",
             "subject": "Job update and invoice - 5 Rimu Crescent, Henderson",
             "issues": [
-              "category: expected other, got maintenance"
+              "category: expected other, got maintenance",
+              "maintenance job: expected no new job, got a repair"
             ]
           },
           {
@@ -6372,17 +6428,17 @@
             ]
           },
           {
-            "id": "H17",
-            "subject": "Oven at 18 Matai Road",
-            "issues": [
-              "clause: expected §7, cited none"
-            ]
-          },
-          {
             "id": "H20",
             "subject": "CLOTHESLINE!!!",
             "issues": [
               "needs a person: expected yes, got no"
+            ]
+          },
+          {
+            "id": "H22",
+            "subject": "Inspection without any notice?",
+            "issues": [
+              "category: expected complaint, got lease_question"
             ]
           },
           {
@@ -6397,13 +6453,6 @@
             "subject": "Ending my lease early",
             "issues": [
               "category: expected lease_question, got end_of_tenancy"
-            ]
-          },
-          {
-            "id": "H30",
-            "subject": "Moving out - can we leave on 23 October?",
-            "issues": [
-              "urgency: expected high, got normal"
             ]
           }
         ],
@@ -6429,6 +6478,13 @@
               "category: expected other, got maintenance",
               "urgency: expected low, got urgent",
               "needs a person: expected no, got yes"
+            ]
+          },
+          {
+            "id": "H11",
+            "subject": "Rent while bedroom 2 can't be used",
+            "issues": [
+              "clause: expected §5, cited §7"
             ]
           },
           {
@@ -6468,6 +6524,13 @@
             ]
           },
           {
+            "id": "H22",
+            "subject": "Inspection without any notice?",
+            "issues": [
+              "category: expected complaint, got lease_question"
+            ]
+          },
+          {
             "id": "H27",
             "subject": "Notice to end tenancy - 22 Ash Street",
             "issues": [
@@ -6479,13 +6542,6 @@
             "subject": "Ending my lease early",
             "issues": [
               "category: expected lease_question, got end_of_tenancy"
-            ]
-          },
-          {
-            "id": "H30",
-            "subject": "Moving out - can we leave on 23 October?",
-            "issues": [
-              "urgency: expected high, got normal"
             ]
           }
         ]

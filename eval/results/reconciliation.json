@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-06T06:51:49.903Z",
+  "date": "2026-10-14T06:38:07.655Z",
   "model": "gemini-flash-lite-latest",
   "dataset": {
     "statement": "data/bank/2026-09-statement.csv",
@@ -206,9 +206,9 @@
             "reason": "unknown_payer",
             "expected": 2,
             "tp": 1,
-            "fp": 1,
+            "fp": 0,
             "fn": 1,
-            "precision": 0.5,
+            "precision": 1,
             "recall": 0.5
           },
           {
@@ -250,9 +250,9 @@
         ],
         "micro": {
           "tp": 7,
-          "fp": 3,
+          "fp": 2,
           "fn": 2,
-          "precision": 0.7,
+          "precision": 0.7777777777777778,
           "recall": 0.7777777777777778
         }
       },
@@ -261,10 +261,6 @@
           {
             "lease": "NLN11",
             "amount": 1080
-          },
-          {
-            "lease": "TAK9",
-            "amount": 780
           },
           {
             "lease": "ONE3",
@@ -310,21 +306,23 @@
             ]
           }
         ],
-        "exact": 3,
-        "missed": [],
+        "exact": 2,
+        "missed": [
+          "TAK9"
+        ],
         "extra": []
       },
       "money": {
         "correct": 24410,
         "total": 24410,
         "share": 1,
-        "misallocated": 0,
-        "weeksRight": 40,
+        "misallocated": 780,
+        "weeksRight": 39,
         "weeks": 40
       },
       "misses": [
         "Line 14 (G CHEN -760): expected refund HOW30; got refund HOW30, payment_to_ended_lease",
-        "Line 32 (J LEE 780): expected rent, ambiguous; got rent TAK9, unknown_payer",
+        "Line 32 (J LEE 780): expected rent, ambiguous; got rent TAK9",
         "Line 37 (ACME GARDENS -95): expected contractor, no_matching_job; got contractor (HOW30: End of tenancy clean), no_matching_job",
         "Line 38 (SIONE M 610): expected unknown, unknown_payer; got rent GLN22",
         "Line 39 (ACME ELECTRICAL 35): expected contractor (GLN22: Smoke alarms to standard); got contractor (GLN22: Smoke alarms to standard), amount_differs_from_quote"
@@ -351,10 +349,10 @@
           "tenancy": null,
           "category": "unidentified",
           "confidence": 0,
-          "reason": "The payer B HARRIS and reference 12 FERN ST do not match any active or ended tenancies in the portfolio.",
+          "reason": "The payer B HARRIS and reference 12 FERN ST do not match any active tenancy property address, tenant name, or known rent amount.",
           "model": "gemini-flash-lite-latest",
           "cached": false,
-          "at": "2026-10-06T06:51:39.531Z"
+          "at": "2026-10-14T06:37:25.237Z"
         },
         "right": true
       },
@@ -371,11 +369,11 @@
           "status": "ok",
           "tenancy": "TAK9",
           "category": "rent",
-          "confidence": 0.9,
-          "reason": "The payment amount of 780 matches the exact weekly rent for TAK9 (Sophie Clarke), and past payments on 7 September and 14 September from J LEE were also allocated to TAK9.",
+          "confidence": 0.95,
+          "reason": "The payment amount of 780 matches the exact weekly rent for Sophie Clarke at TAK9, and historical matching shows J LEE pays for TAK9.",
           "model": "gemini-flash-lite-latest",
           "cached": false,
-          "at": "2026-10-06T06:51:41.173Z"
+          "at": "2026-10-14T06:37:34.293Z"
         },
         "right": true
       },
@@ -392,11 +390,11 @@
           "status": "ok",
           "tenancy": "GLN22",
           "category": "rent",
-          "confidence": 0.95,
-          "reason": "The bank line features the first name Mele in the particulars and the exact weekly rent amount of $610, which matches Mele Fifita at GLN22. The payment frequency for GLN22 is fortnightly ($1220), meaning this $610 direct credit from SIONE M is likely a weekly part-payment or a specific installment.",
+          "confidence": 0.85,
+          "reason": "The bank line amount of 610 matches the exact weekly rent for Mele Fifita at GLN22, and the particulars reference 'MELE RENT' matches her first name.",
           "model": "gemini-flash-lite-latest",
           "cached": false,
-          "at": "2026-10-06T06:51:45.227Z"
+          "at": "2026-10-14T06:37:46.701Z"
         },
         "right": true
       }

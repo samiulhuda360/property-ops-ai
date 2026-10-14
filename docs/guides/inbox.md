@@ -99,12 +99,12 @@ the prompt.
 | Shipped pipeline (AI + rules and guards) | 60 development emails | 30 held-out emails |
 |---|---|---|
 | Urgent emails marked urgent | 10/10 | 4/4 |
-| Category | 98% | 90% |
-| Urgency (4 levels) | 90% | 83% |
+| Category | 97% | 87% |
+| Urgency (4 levels) | 90% | 87% |
 | Tenant / property linked correctly | 100% / 100% | 97% / 100% |
 | "Needs a person" correct | 92% | 87% |
 | Maintenance job created or linked correctly | 100% | 97% |
-| Reply cites the expected clause | 100% | 100% |
+| Reply cites the expected clause | 98% | 96% |
 
 Rules only, on the held-out emails: category 80%, urgency 77%, every urgent email marked urgent, and every message
 marked for a person.

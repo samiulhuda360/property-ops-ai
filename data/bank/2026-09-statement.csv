@@ -3,7 +3,7 @@ Date,Amount,Payee,Particulars,Code,Reference,Transaction Type
 07/09/2026,720.00,A NGATA,RENT,,NGATA MTE14,Automatic Payment
 07/09/2026,650.00,D KIM,,,KIM PON7,Automatic Payment
 07/09/2026,1220.00,M FIFITA,FORTNIGHT,,FIFITA GLN22,Automatic Payment
-07/09/2026,680.00,R PATEL,RENT,,PATEL HND5,Automatic Payment
+07/09/2026,680.00,B CARTER,RENT,,CARTER HND5,Automatic Payment
 07/09/2026,780.00,J LEE,RENT,,CLARKE TAK9,Automatic Payment
 07/09/2026,560.00,T WRIGHT,,,WRIGHT ONE3,Automatic Payment
 07/09/2026,590.00,A TUPOU,RENT,,TUPOU PAP18,Automatic Payment
@@ -17,7 +17,7 @@ Date,Amount,Payee,Particulars,Code,Reference,Transaction Type
 14/09/2026,720.00,AROHA NGATA,,,ngata mte14,Direct Credit
 14/09/2026,650.00,D KIM,,,KIM PON7,Automatic Payment
 14/09/2026,650.00,D KIM,,,KIM PON7,Automatic Payment
-14/09/2026,680.00,R PATEL,RENT,,PATEL HND5,Automatic Payment
+14/09/2026,680.00,B CARTER,RENT,,CARTER HND5,Automatic Payment
 14/09/2026,780.00,J LEE,,,clarke tak9 rent,Automatic Payment
 14/09/2026,510.00,T WRIGHT,,,WRIGHT ONE3,Automatic Payment
 14/09/2026,540.00,LIAM O'BRIEN,,,O'Brien NLN11,Direct Credit
@@ -29,7 +29,7 @@ Date,Amount,Payee,Particulars,Code,Reference,Transaction Type
 21/09/2026,720.00,A NGATA,RENT,WK3,RENT NGATA MTE14,Automatic Payment
 21/09/2026,650.00,"KIM, D",,,Kim Pon7,Automatic Payment
 21/09/2026,1220.00,MELE FIFITA,FORTNIGHT,,fifita gln22,Automatic Payment
-21/09/2026,680.00,RAJESH PATEL,,,SEPT RENT,Direct Credit
+21/09/2026,680.00,BEN CARTER,,,SEPT RENT,Direct Credit
 21/09/2026,780.00,J LEE,,,,Direct Credit
 21/09/2026,560.00,T WRIGHT,,,WRIGHT ONE3,Automatic Payment
 21/09/2026,900.00,H LEE,RENT,,LEE MRB6,Direct Credit
@@ -40,7 +40,7 @@ Date,Amount,Payee,Particulars,Code,Reference,Transaction Type
 25/09/2026,35.00,ACME ELECTRICAL,CREDIT NOTE,GLN22,CN 2210,Direct Credit
 28/09/2026,720.00,TE AWA M,,,14 KOWHAI RD,Direct Credit
 28/09/2026,650.00,D KIM,,,KIM PON7,Automatic Payment
-28/09/2026,680.00,R PATEL,RENT,,PATEL HND5,Automatic Payment
+28/09/2026,680.00,B CARTER,RENT,,CARTER HND5,Automatic Payment
 28/09/2026,780.00,S CLARKE,RENT,,CLARKE TAK9,Direct Credit
 28/09/2026,560.00,T WRIGHT,,,WRIGHT ONE3,Automatic Payment
 28/09/2026,850.00,H LEE,RENT,,LEE MRB6,Automatic Payment

@@ -1,6 +1,6 @@
 # Evaluation: rent reconciliation
 
-Run on 2026-10-06 against the labelled synthetic statement `data/bank/2026-09-statement.csv` (50 lines, 9 planted exceptions, ground truth in `data/bank/truth.json`). Model: `gemini-flash-lite-latest`.
+Run on 2026-10-14 against the labelled synthetic statement `data/bank/2026-09-statement.csv` (50 lines, 9 planted exceptions, ground truth in `data/bank/truth.json`). Model: `gemini-flash-lite-latest`.
 
 ## How it is measured
 
@@ -17,10 +17,10 @@ Run on 2026-10-06 against the labelled synthetic statement `data/bank/2026-09-st
 | Method | Match accuracy | Exception precision | Exception recall | Arrears found (exact / expected, extra) | Rent money correctly allocated | Weeks right | Model calls |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Rules only | 100% (50/50) | 100% | 100% | 3/3, 0 | 100% (24410/24410; 0 misallocated) | 40/40 | 0 |
-| Model only | 98% (49/50) | 70% | 77.8% | 3/3, 0 | 100% (24410/24410; 0 misallocated) | 40/40 | 5 (batches of 10 lines) |
+| Model only | 98% (49/50) | 77.8% | 77.8% | 2/3, 0 | 100% (24410/24410; 780 misallocated) | 39/40 | 5 (batches of 10 lines) |
 | Rules + model suggestions | 100% (suggestions are not applied) | 100% | 100% | 3/3, 0 | 100% | 40/40 | 3 (one per held line) |
 
-Live model calls in this run: 8 (cache hits: 0, failed: 0). Rules-only time for the whole statement: 73 ms.
+Live model calls in this run: 8 (cache hits: 0, failed: 0). Rules-only time for the whole statement: 125 ms.
 
 ### Exception detection by reason
 
@@ -29,7 +29,7 @@ Live model calls in this run: 8 (cache hits: 0, failed: 0). Rules-only time for 
 | underpaid | 1 | 100% (1/1) | 100% (1/1) | 100% (1/1) | 100% (1/1) |
 | overpaid | 1 | 100% (1/1) | 100% (1/1) | 100% (1/1) | 100% (1/1) |
 | duplicate | 1 | 100% (1/1) | 100% (1/1) | 100% (1/1) | 100% (1/1) |
-| unknown_payer | 2 | 100% (2/2) | 100% (2/2) | 50% (1/2) | 50% (1/2) |
+| unknown_payer | 2 | 100% (2/2) | 100% (2/2) | 100% (1/1) | 50% (1/2) |
 | ambiguous | 1 | 100% (1/1) | 100% (1/1) | n/a (0/0) | 0% (0/1) |
 | payment_to_ended_lease | 1 | 100% (1/1) | 100% (1/1) | 50% (1/2) | 100% (1/1) |
 | no_matching_job | 1 | 100% (1/1) | 100% (1/1) | 100% (1/1) | 100% (1/1) |
@@ -39,9 +39,9 @@ Live model calls in this run: 8 (cache hits: 0, failed: 0). Rules-only time for 
 
 | Line | Payee | Amount | Rules | Real answer | Suggestion | Right |
 | --- | --- | --- | --- | --- | --- | --- |
-| 15 | B HARRIS | 495 | unknown_payer | none (unidentified) | none: The payer B HARRIS and reference 12 FERN ST do not match any active or ended tenancies in the portfolio. | yes |
-| 32 | J LEE | 780 | ambiguous | TAK9 | TAK9: The payment amount of 780 matches the exact weekly rent for TAK9 (Sophie Clarke), and past payments on 7 September and 14 September from J LEE were also allocated to TAK9. | yes |
-| 38 | SIONE M | 610 | unknown_payer | GLN22 | GLN22: The bank line features the first name Mele in the particulars and the exact weekly rent amount of $610, which matches Mele Fifita at GLN22. The payment frequency for GLN22 is fortnightly ($1220), meaning this $610 direct credit from SIONE M is likely a weekly part-payment or a specific installment. | yes |
+| 15 | B HARRIS | 495 | unknown_payer | none (unidentified) | none: The payer B HARRIS and reference 12 FERN ST do not match any active tenancy property address, tenant name, or known rent amount. | yes |
+| 32 | J LEE | 780 | ambiguous | TAK9 | TAK9: The payment amount of 780 matches the exact weekly rent for Sophie Clarke at TAK9, and historical matching shows J LEE pays for TAK9. | yes |
+| 38 | SIONE M | 610 | unknown_payer | GLN22 | GLN22: The bank line amount of 610 matches the exact weekly rent for Mele Fifita at GLN22, and the particulars reference 'MELE RENT' matches her first name. | yes |
 
 Suggestions right: 3/3. If a person accepted every suggestion naming a tenancy, arrears would match the expected after-review arrears for 2/2 tenancies (extra: none), and 100% of the after-review rent money would be on the right weeks (0 misallocated).
 
@@ -49,7 +49,7 @@ Suggestions right: 3/3. If a person accepted every suggestion naming a tenancy, 
 
 | Tenancy | Expected (automatic pass) | Rules only | Model only |
 | --- | --- | --- | --- |
-| TAK9 | 780 | 780 | 780 |
+| TAK9 | 780 | 780 | 0 |
 | ONE3 | 50 | 50 | 50 |
 | NLN11 | 1080 | 1080 | 1080 |
 
@@ -62,7 +62,7 @@ TAK9 (Sophie Clarke) is expected in arrears after the automatic pass because her
 **Model only:** 
 
 - Line 14 (G CHEN -760): expected refund HOW30; got refund HOW30, payment_to_ended_lease
-- Line 32 (J LEE 780): expected rent, ambiguous; got rent TAK9, unknown_payer
+- Line 32 (J LEE 780): expected rent, ambiguous; got rent TAK9
 - Line 37 (ACME GARDENS -95): expected contractor, no_matching_job; got contractor (HOW30: End of tenancy clean), no_matching_job
 - Line 38 (SIONE M 610): expected unknown, unknown_payer; got rent GLN22
 - Line 39 (ACME ELECTRICAL 35): expected contractor (GLN22: Smoke alarms to standard); got contractor (GLN22: Smoke alarms to standard), amount_differs_from_quote

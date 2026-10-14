@@ -305,10 +305,10 @@ describe('matching rules', () => {
 
 describe('payer names', () => {
   it('rates the match by surname and first name or initial', () => {
-    expect(nameStrength('R PATEL', 'Rajesh', 'Patel')).toBe('strong')
+    expect(nameStrength('B CARTER', 'Ben', 'Carter')).toBe('strong')
     expect(nameStrength('KIM, D', 'Daniel', 'Kim')).toBe('strong')
     expect(nameStrength("LIAM O'BRIEN", 'Liam', "O'Brien")).toBe('strong')
-    expect(nameStrength('MR PATEL', 'Rajesh', 'Patel')).toBe('medium')
+    expect(nameStrength('MR CARTER', 'Ben', 'Carter')).toBe('medium')
     expect(nameStrength('J LEE', 'Hannah', 'Lee')).toBe('weak')
     expect(nameStrength('KIMBERLEY D', 'Daniel', 'Kim')).toBeNull()
     expect(nameStrength('MELE', 'Mele', 'Fifita')).toBeNull()

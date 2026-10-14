@@ -36,7 +36,7 @@ const TENANCIES: [string, string, string, string, string | null][] = [
   ['MTE14', 'Aroha', 'Ngata', '2025-02-10', null],
   ['PON7', 'Daniel', 'Kim', '2024-11-04', null],
   ['GLN22', 'Mele', 'Fifita', '2025-06-02', null],
-  ['HND5', 'Rajesh', 'Patel', '2023-09-18', null],
+  ['HND5', 'Ben', 'Carter', '2023-09-18', null],
   ['TAK9', 'Sophie', 'Clarke', '2025-01-13', null],
   ['ONE3', 'Tom', 'Wright', '2026-03-02', null],
   ['PAP18', 'Ana', 'Tupou', '2024-07-22', null],

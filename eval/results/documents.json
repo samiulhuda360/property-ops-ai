@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-06",
+  "date": "2026-10-14",
   "model": "gemini-flash-lite-latest",
   "sets": [
     {
@@ -125,7 +125,7 @@
             "cleanDocumentsFlagged": 0,
             "extraIssuesOnPlantedDocuments": 0
           },
-          "medianLatencyMs": 17.06100000000015,
+          "medianLatencyMs": 8.252250000000231,
           "modelCalls": {
             "live": 0,
             "cached": 0,
@@ -256,10 +256,10 @@
             "cleanDocumentsFlagged": 0,
             "extraIssuesOnPlantedDocuments": 0
           },
-          "medianLatencyMs": 2187.96005,
+          "medianLatencyMs": 2791.8154000000004,
           "modelCalls": {
-            "live": 0,
-            "cached": 40,
+            "live": 25,
+            "cached": 15,
             "repairs": 0
           },
           "confidence": {
@@ -387,10 +387,10 @@
             "cleanDocumentsFlagged": 0,
             "extraIssuesOnPlantedDocuments": 0
           },
-          "medianLatencyMs": 2409.4427000000005,
+          "medianLatencyMs": 3422.74855,
           "modelCalls": {
-            "live": 0,
-            "cached": 52,
+            "live": 8,
+            "cached": 44,
             "repairs": 12
           },
           "confidence": {
@@ -549,7 +549,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 1085.8196000000003,
+            "latencyMs": 481.0543,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -670,7 +670,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 55.556199999999535,
+            "latencyMs": 17.553899999999885,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -797,7 +797,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 53.06530000000021,
+            "latencyMs": 13.518699999999853,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -924,7 +924,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 34.85689999999977,
+            "latencyMs": 16.509300000000167,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -1045,7 +1045,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 57.429699999999684,
+            "latencyMs": 15.013000000000147,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -1178,7 +1178,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 44.30040000000008,
+            "latencyMs": 12.180099999999811,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -1305,7 +1305,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 43.11459999999988,
+            "latencyMs": 18.584800000000087,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -1432,7 +1432,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 28.279199999999946,
+            "latencyMs": 13.29600000000005,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -1559,7 +1559,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 23.415500000000065,
+            "latencyMs": 12.359299999999848,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -1692,7 +1692,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 23.619700000000194,
+            "latencyMs": 10.104199999999764,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -1825,7 +1825,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 24.547299999999268,
+            "latencyMs": 10.382800000000088,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -1964,7 +1964,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 27.871000000000095,
+            "latencyMs": 11.828500000000076,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -2091,7 +2091,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 18.543499999999767,
+            "latencyMs": 7.473999999999933,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -2236,7 +2236,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 17.237700000000586,
+            "latencyMs": 8.85609999999997,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -2381,7 +2381,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 25.092999999999847,
+            "latencyMs": 8.751399999999876,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -2532,7 +2532,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 23.347100000000864,
+            "latencyMs": 8.804600000000164,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -2683,7 +2683,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 15.827900000000227,
+            "latencyMs": 7.826200000000199,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -2828,7 +2828,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 17.448500000000422,
+            "latencyMs": 8.7195999999999,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -2973,7 +2973,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 14.647700000000441,
+            "latencyMs": 8.279300000000376,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -3118,7 +3118,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 15.93249999999989,
+            "latencyMs": 9.535499999999729,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -3263,7 +3263,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 17.90349999999944,
+            "latencyMs": 7.217300000000023,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -3384,7 +3384,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 13.01339999999982,
+            "latencyMs": 7.497199999999793,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -3517,7 +3517,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 13.68289999999979,
+            "latencyMs": 7.3957000000000335,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -3650,7 +3650,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 13.11160000000018,
+            "latencyMs": 7.179800000000114,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -3783,7 +3783,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 13.643799999999828,
+            "latencyMs": 7.057700000000068,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -3922,7 +3922,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 20.771699999999328,
+            "latencyMs": 8.046799999999848,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -4055,7 +4055,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 13.46349999999984,
+            "latencyMs": 7.309100000000171,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -4188,7 +4188,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 11.581299999999828,
+            "latencyMs": 7.664099999999962,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -4321,7 +4321,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 11.225200000000768,
+            "latencyMs": 6.832300000000032,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -4454,7 +4454,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 11.451100000000224,
+            "latencyMs": 9.806100000000015,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -4539,7 +4539,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 19.8075000000008,
+            "latencyMs": 8.943299999999908,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -4630,7 +4630,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 15.4403999999995,
+            "latencyMs": 8.13390000000004,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -4724,7 +4724,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 16.68119999999908,
+            "latencyMs": 7.958900000000085,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -4740,12 +4740,12 @@
                 "field": "tenantNames",
                 "correct": true,
                 "expected": [
-                  "Rajesh Patel",
-                  "Priya Patel"
+                  "Ben Carter",
+                  "Lucy Carter"
                 ],
                 "got": [
-                  "Rajesh Patel",
-                  "Priya Patel"
+                  "Ben Carter",
+                  "Lucy Carter"
                 ],
                 "confidence": "medium"
               },
@@ -4811,7 +4811,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 16.884299999999712,
+            "latencyMs": 7.317299999999932,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -4896,7 +4896,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 14.899500000000444,
+            "latencyMs": 7.925600000000031,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -4981,7 +4981,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 13.109000000000378,
+            "latencyMs": 6.724699999999984,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -5068,7 +5068,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 13.630400000000009,
+            "latencyMs": 8.225200000000086,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -5153,7 +5153,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 14.233900000000176,
+            "latencyMs": 7.204099999999926,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -5238,7 +5238,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 12.841600000000653,
+            "latencyMs": 8.006799999999885,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -5323,7 +5323,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 10.970099999999547,
+            "latencyMs": 7.686400000000276,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -5470,7 +5470,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 3658.8196000000003,
+            "latencyMs": 2931.0543,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -5591,7 +5591,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2298.5561999999995,
+            "latencyMs": 2703.5539,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -5718,7 +5718,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2126.0653,
+            "latencyMs": 3224.5186999999996,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -5845,10 +5845,10 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2098.8568999999998,
+            "latencyMs": 11081.509300000002,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           },
@@ -5966,7 +5966,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2148.4296999999997,
+            "latencyMs": 2362.013,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -6099,7 +6099,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2202.3004,
+            "latencyMs": 2346.1801,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -6226,7 +6226,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2596.1146,
+            "latencyMs": 2313.5848000000005,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -6353,7 +6353,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2136.2792,
+            "latencyMs": 1978.296,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -6480,10 +6480,10 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2138.4155,
+            "latencyMs": 24705.3593,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           },
@@ -6613,7 +6613,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2173.6197,
+            "latencyMs": 2166.1041999999998,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -6701,19 +6701,19 @@
                   {
                     "description": "Replace front door lock cylinder",
                     "quantity": 1,
-                    "unitAmount": null,
+                    "unitAmount": 145,
                     "amount": 145
                   },
                   {
                     "description": "Re-key, cut keys",
                     "quantity": 3,
-                    "unitAmount": null,
+                    "unitAmount": 12,
                     "amount": 36
                   },
                   {
                     "description": "Call-out",
                     "quantity": 1,
-                    "unitAmount": null,
+                    "unitAmount": 75,
                     "amount": 75
                   }
                 ],
@@ -6746,7 +6746,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2240.5472999999993,
+            "latencyMs": 2255.3828000000003,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -6885,10 +6885,10 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2238.871,
+            "latencyMs": 3203.8285,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           },
@@ -7012,7 +7012,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 3005.5434999999998,
+            "latencyMs": 2041.474,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -7157,7 +7157,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2424.2377000000006,
+            "latencyMs": 2494.8561,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -7302,10 +7302,10 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2434.093,
+            "latencyMs": 2321.7514,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           },
@@ -7453,10 +7453,10 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2570.347100000001,
+            "latencyMs": 2729.8046000000004,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           },
@@ -7604,10 +7604,10 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2438.8279,
+            "latencyMs": 2853.8262000000004,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           },
@@ -7749,10 +7749,10 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2381.4485000000004,
+            "latencyMs": 2358.7196,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           },
@@ -7894,10 +7894,10 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2394.6477000000004,
+            "latencyMs": 2408.2793,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           },
@@ -8039,10 +8039,10 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2582.9325,
+            "latencyMs": 2912.5355,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           },
@@ -8184,10 +8184,10 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2871.9034999999994,
+            "latencyMs": 3915.2173000000003,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           },
@@ -8305,10 +8305,10 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2491.0134,
+            "latencyMs": 3023.4972,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           },
@@ -8438,7 +8438,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2162.6829,
+            "latencyMs": 2162.3957,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -8571,10 +8571,10 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2444.1116,
+            "latencyMs": 3257.1798,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           },
@@ -8704,10 +8704,10 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2170.6438,
+            "latencyMs": 2958.0577000000003,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           },
@@ -8843,10 +8843,10 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2121.7716999999993,
+            "latencyMs": 5709.0468,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           },
@@ -8976,10 +8976,10 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2086.4635,
+            "latencyMs": 2357.3091000000004,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           },
@@ -9109,10 +9109,10 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2321.5813,
+            "latencyMs": 3896.6641,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           },
@@ -9242,10 +9242,10 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2566.2252000000008,
+            "latencyMs": 20433.832300000002,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           },
@@ -9375,10 +9375,10 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2080.4511,
+            "latencyMs": 2413.8061,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           },
@@ -9460,7 +9460,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 1719.8075000000008,
+            "latencyMs": 1836.9433,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -9551,7 +9551,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2000.4403999999995,
+            "latencyMs": 1936.1339,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -9645,10 +9645,10 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 1742.681199999999,
+            "latencyMs": 36770.958900000005,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           },
@@ -9661,12 +9661,12 @@
                 "field": "tenantNames",
                 "correct": true,
                 "expected": [
-                  "Rajesh Patel",
-                  "Priya Patel"
+                  "Ben Carter",
+                  "Lucy Carter"
                 ],
                 "got": [
-                  "Rajesh Patel",
-                  "Priya Patel"
+                  "Ben Carter",
+                  "Lucy Carter"
                 ],
                 "confidence": "high"
               },
@@ -9732,10 +9732,10 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 1539.8842999999997,
+            "latencyMs": 3588.3172999999997,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           },
@@ -9817,10 +9817,10 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 1660.8995000000004,
+            "latencyMs": 47529.9256,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           },
@@ -9902,7 +9902,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 1970.1090000000004,
+            "latencyMs": 1718.7247,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -9989,10 +9989,10 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2241.6304,
+            "latencyMs": 2188.2252000000003,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           },
@@ -10074,10 +10074,10 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 1735.2339000000002,
+            "latencyMs": 5790.2041,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           },
@@ -10159,10 +10159,10 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 1723.8416000000007,
+            "latencyMs": 22509.0068,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           },
@@ -10244,10 +10244,10 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2129.9700999999995,
+            "latencyMs": 4067.6864,
             "calls": {
-              "live": 0,
-              "cached": 1,
+              "live": 1,
+              "cached": 0,
               "repaired": false
             }
           }
@@ -10391,7 +10391,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 3658.8196000000003,
+            "latencyMs": 2931.0543,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -10512,7 +10512,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2298.5561999999995,
+            "latencyMs": 2703.5539,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -10639,10 +10639,10 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 4598.0653,
+            "latencyMs": 6511.5187,
             "calls": {
-              "live": 0,
-              "cached": 2,
+              "live": 1,
+              "cached": 1,
               "repaired": true
             }
           },
@@ -10766,10 +10766,10 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 4456.8569,
+            "latencyMs": 17746.509299999998,
             "calls": {
-              "live": 0,
-              "cached": 2,
+              "live": 1,
+              "cached": 1,
               "repaired": true
             }
           },
@@ -10887,7 +10887,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2148.4296999999997,
+            "latencyMs": 2362.013,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -11020,7 +11020,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2202.3004,
+            "latencyMs": 2346.1801,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -11147,7 +11147,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 4774.1146,
+            "latencyMs": 4433.5848000000005,
             "calls": {
               "live": 0,
               "cached": 2,
@@ -11274,7 +11274,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 4607.2792,
+            "latencyMs": 4133.296,
             "calls": {
               "live": 0,
               "cached": 2,
@@ -11401,10 +11401,10 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 4450.4155,
+            "latencyMs": 30462.3593,
             "calls": {
-              "live": 0,
-              "cached": 2,
+              "live": 1,
+              "cached": 1,
               "repaired": true
             }
           },
@@ -11534,7 +11534,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2173.6197,
+            "latencyMs": 2166.1041999999998,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -11622,19 +11622,19 @@
                   {
                     "description": "Replace front door lock cylinder",
                     "quantity": 1,
-                    "unitAmount": null,
+                    "unitAmount": 145,
                     "amount": 145
                   },
                   {
                     "description": "Re-key, cut keys",
                     "quantity": 3,
-                    "unitAmount": null,
+                    "unitAmount": 12,
                     "amount": 36
                   },
                   {
                     "description": "Call-out",
                     "quantity": 1,
-                    "unitAmount": null,
+                    "unitAmount": 75,
                     "amount": 75
                   }
                 ],
@@ -11667,7 +11667,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2240.5472999999993,
+            "latencyMs": 2255.3828000000003,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -11806,10 +11806,10 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 4447.871,
+            "latencyMs": 6801.8285,
             "calls": {
-              "live": 0,
-              "cached": 2,
+              "live": 1,
+              "cached": 1,
               "repaired": true
             }
           },
@@ -11933,7 +11933,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 5021.5435,
+            "latencyMs": 4385.473999999999,
             "calls": {
               "live": 0,
               "cached": 2,
@@ -12078,7 +12078,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2424.2377000000006,
+            "latencyMs": 2494.8561,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -12223,7 +12223,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2434.093,
+            "latencyMs": 2321.7514,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -12374,10 +12374,10 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 5072.347100000001,
+            "latencyMs": 5895.8046,
             "calls": {
-              "live": 0,
-              "cached": 2,
+              "live": 1,
+              "cached": 1,
               "repaired": true
             }
           },
@@ -12525,10 +12525,10 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 4944.8279,
+            "latencyMs": 7908.8261999999995,
             "calls": {
-              "live": 0,
-              "cached": 2,
+              "live": 1,
+              "cached": 1,
               "repaired": true
             }
           },
@@ -12670,7 +12670,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2381.4485000000004,
+            "latencyMs": 2358.7196,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -12815,7 +12815,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2394.6477000000004,
+            "latencyMs": 2408.2793,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -12960,7 +12960,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2582.9325,
+            "latencyMs": 2912.5355,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -13105,7 +13105,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2871.9034999999994,
+            "latencyMs": 3915.2173000000003,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -13226,7 +13226,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2491.0134,
+            "latencyMs": 3023.4972,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -13359,7 +13359,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2162.6829,
+            "latencyMs": 2162.3957,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -13492,7 +13492,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2444.1116,
+            "latencyMs": 3257.1798,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -13625,7 +13625,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2170.6438,
+            "latencyMs": 2958.0577000000003,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -13764,10 +13764,10 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 4515.771699999999,
+            "latencyMs": 11320.0468,
             "calls": {
-              "live": 0,
-              "cached": 2,
+              "live": 1,
+              "cached": 1,
               "repaired": true
             }
           },
@@ -13897,7 +13897,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2086.4635,
+            "latencyMs": 2357.3091000000004,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -14030,7 +14030,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2321.5813,
+            "latencyMs": 3896.6641,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -14163,7 +14163,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2566.2252000000008,
+            "latencyMs": 20433.832300000002,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -14296,7 +14296,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2080.4511,
+            "latencyMs": 2413.8061,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -14381,7 +14381,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 1719.8075000000008,
+            "latencyMs": 1836.9433,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -14472,7 +14472,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 3522.4403999999995,
+            "latencyMs": 6294.1339,
             "calls": {
               "live": 0,
               "cached": 2,
@@ -14566,10 +14566,10 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 4313.681199999999,
+            "latencyMs": 39779.958900000005,
             "calls": {
-              "live": 0,
-              "cached": 2,
+              "live": 1,
+              "cached": 1,
               "repaired": true
             }
           },
@@ -14582,12 +14582,12 @@
                 "field": "tenantNames",
                 "correct": true,
                 "expected": [
-                  "Rajesh Patel",
-                  "Priya Patel"
+                  "Ben Carter",
+                  "Lucy Carter"
                 ],
                 "got": [
-                  "Rajesh Patel",
-                  "Priya Patel"
+                  "Ben Carter",
+                  "Lucy Carter"
                 ],
                 "confidence": "high"
               },
@@ -14653,7 +14653,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 1539.8842999999997,
+            "latencyMs": 3588.3172999999997,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -14738,7 +14738,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 1660.8995000000004,
+            "latencyMs": 47529.9256,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -14823,7 +14823,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 1970.1090000000004,
+            "latencyMs": 1718.7247,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -14910,7 +14910,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2241.6304,
+            "latencyMs": 2188.2252000000003,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -14995,7 +14995,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 1735.2339000000002,
+            "latencyMs": 5790.2041,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -15080,7 +15080,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 1723.8416000000007,
+            "latencyMs": 22509.0068,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -15165,7 +15165,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 2129.9700999999995,
+            "latencyMs": 4067.6864,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -15298,7 +15298,7 @@
             "cleanDocumentsFlagged": 10,
             "extraIssuesOnPlantedDocuments": 8
           },
-          "medianLatencyMs": 18.597999999999047,
+          "medianLatencyMs": 18.465599999995902,
           "modelCalls": {
             "live": 0,
             "cached": 0,
@@ -15324,10 +15324,10 @@
           "documents": 15,
           "kindCorrect": 15,
           "fieldAccuracy": {
-            "correct": 149,
+            "correct": 151,
             "total": 159,
             "invoice": {
-              "correct": 122,
+              "correct": 124,
               "total": 132
             },
             "lease": {
@@ -15364,11 +15364,11 @@
                 "total": 12
               },
               "invoice.lineItems": {
-                "correct": 9,
+                "correct": 10,
                 "total": 12
               },
               "invoice.subtotal": {
-                "correct": 7,
+                "correct": 8,
                 "total": 12
               },
               "invoice.gst": {
@@ -15417,7 +15417,7 @@
               }
             }
           },
-          "documentsFullyCorrect": 10,
+          "documentsFullyCorrect": 11,
           "planted": {
             "problems": 5,
             "caught": 4,
@@ -15426,10 +15426,10 @@
           },
           "falseAlarms": {
             "cleanDocuments": 10,
-            "cleanDocumentsFlagged": 1,
+            "cleanDocumentsFlagged": 2,
             "extraIssuesOnPlantedDocuments": 3
           },
-          "medianLatencyMs": 11222.4949,
+          "medianLatencyMs": 4092.465599999996,
           "modelCalls": {
             "live": 15,
             "cached": 0,
@@ -15437,16 +15437,16 @@
           },
           "confidence": {
             "high": {
-              "fields": 150,
-              "correct": 149
+              "fields": 151,
+              "correct": 150
             },
             "medium": {
-              "fields": 4,
+              "fields": 3,
               "correct": 0
             },
             "low": {
               "fields": 5,
-              "correct": 0
+              "correct": 1
             }
           }
         },
@@ -15455,10 +15455,10 @@
           "documents": 15,
           "kindCorrect": 15,
           "fieldAccuracy": {
-            "correct": 149,
+            "correct": 151,
             "total": 159,
             "invoice": {
-              "correct": 122,
+              "correct": 124,
               "total": 132
             },
             "lease": {
@@ -15495,11 +15495,11 @@
                 "total": 12
               },
               "invoice.lineItems": {
-                "correct": 9,
+                "correct": 10,
                 "total": 12
               },
               "invoice.subtotal": {
-                "correct": 7,
+                "correct": 8,
                 "total": 12
               },
               "invoice.gst": {
@@ -15548,7 +15548,7 @@
               }
             }
           },
-          "documentsFullyCorrect": 10,
+          "documentsFullyCorrect": 11,
           "planted": {
             "problems": 5,
             "caught": 4,
@@ -15557,14 +15557,14 @@
           },
           "falseAlarms": {
             "cleanDocuments": 10,
-            "cleanDocumentsFlagged": 1,
+            "cleanDocumentsFlagged": 2,
             "extraIssuesOnPlantedDocuments": 3
           },
-          "medianLatencyMs": 14909.2349,
+          "medianLatencyMs": 5168.118300000031,
           "modelCalls": {
-            "live": 6,
+            "live": 7,
             "cached": 15,
-            "repairs": 6
+            "repairs": 7
           },
           "confidence": {
             "high": {
@@ -15572,12 +15572,12 @@
               "correct": 63
             },
             "medium": {
-              "fields": 75,
+              "fields": 73,
               "correct": 71
             },
             "low": {
-              "fields": 21,
-              "correct": 15
+              "fields": 23,
+              "correct": 17
             }
           }
         }
@@ -15703,7 +15703,7 @@
               "gst_number_missing",
               "property_unknown"
             ],
-            "latencyMs": 18.64930000000004,
+            "latencyMs": 69.32200000004377,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -15823,7 +15823,7 @@
               "missing_field",
               "gst_number_missing"
             ],
-            "latencyMs": 38.92070000000058,
+            "latencyMs": 46.17009999998845,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -15937,7 +15937,7 @@
               "missing_field",
               "gst_number_missing"
             ],
-            "latencyMs": 31.966300000000047,
+            "latencyMs": 27.788699999975506,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -16051,7 +16051,7 @@
               "missing_field",
               "gst_number_missing"
             ],
-            "latencyMs": 28.51889999999912,
+            "latencyMs": 27.16970000002766,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -16169,7 +16169,7 @@
             "unexpected": [
               "missing_field"
             ],
-            "latencyMs": 18.597999999999047,
+            "latencyMs": 15.244000000006054,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -16281,7 +16281,7 @@
             "unexpected": [
               "missing_field"
             ],
-            "latencyMs": 16.49489999999969,
+            "latencyMs": 15.992599999997765,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -16398,7 +16398,7 @@
             "unexpected": [
               "missing_field"
             ],
-            "latencyMs": 21.55109999999968,
+            "latencyMs": 13.025900000007823,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -16510,7 +16510,7 @@
             "unexpected": [
               "missing_field"
             ],
-            "latencyMs": 15.740600000000086,
+            "latencyMs": 17.118300000031013,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -16630,7 +16630,7 @@
               "missing_field",
               "gst_not_3_23"
             ],
-            "latencyMs": 24.076600000000326,
+            "latencyMs": 21.570200000016484,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -16740,7 +16740,7 @@
             "unexpected": [
               "missing_field"
             ],
-            "latencyMs": 15.522799999999734,
+            "latencyMs": 15.000600000028498,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -16860,7 +16860,7 @@
               "missing_field",
               "gst_not_3_23"
             ],
-            "latencyMs": 48.23490000000038,
+            "latencyMs": 18.465599999995902,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -16979,7 +16979,7 @@
               "missing_field",
               "gst_not_3_23"
             ],
-            "latencyMs": 17.92290000000048,
+            "latencyMs": 19.337799999979325,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -17066,7 +17066,7 @@
             "unexpected": [
               "missing_field"
             ],
-            "latencyMs": 12.173699999999371,
+            "latencyMs": 37.12099999998463,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -17082,8 +17082,8 @@
                 "field": "tenantNames",
                 "correct": false,
                 "expected": [
-                  "Rajesh Patel",
-                  "Priya Patel"
+                  "Ben Carter",
+                  "Lucy Carter"
                 ],
                 "got": null,
                 "confidence": "low"
@@ -17158,7 +17158,7 @@
             "unexpected": [
               "missing_field"
             ],
-            "latencyMs": 13.73029999999926,
+            "latencyMs": 16.645500000042375,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -17245,7 +17245,7 @@
             "unexpected": [
               "missing_field"
             ],
-            "latencyMs": 10.360000000000582,
+            "latencyMs": 17.382800000021234,
             "calls": {
               "live": 0,
               "cached": 0,
@@ -17386,7 +17386,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 6038.6493,
+            "latencyMs": 2662.3220000000438,
             "calls": {
               "live": 1,
               "cached": 0,
@@ -17519,7 +17519,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 5583.920700000001,
+            "latencyMs": 3426.1700999999885,
             "calls": {
               "live": 1,
               "cached": 0,
@@ -17640,7 +17640,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 10144.9663,
+            "latencyMs": 3064.7886999999755,
             "calls": {
               "live": 1,
               "cached": 0,
@@ -17761,7 +17761,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 11709.5189,
+            "latencyMs": 2309.1697000000277,
             "calls": {
               "live": 1,
               "cached": 0,
@@ -17894,7 +17894,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 10157.597999999998,
+            "latencyMs": 4284.244000000006,
             "calls": {
               "live": 1,
               "cached": 0,
@@ -18019,7 +18019,7 @@
             "unexpected": [
               "line_items_dont_add"
             ],
-            "latencyMs": 11222.4949,
+            "latencyMs": 3880.9925999999978,
             "calls": {
               "live": 1,
               "cached": 0,
@@ -18115,9 +18115,9 @@
               },
               {
                 "field": "subtotal",
-                "correct": false,
+                "correct": true,
                 "expected": null,
-                "got": 342.12,
+                "got": null,
                 "confidence": "low"
               },
               {
@@ -18149,7 +18149,7 @@
             "unexpected": [
               "line_items_dont_add"
             ],
-            "latencyMs": 11222.5511,
+            "latencyMs": 7533.025900000008,
             "calls": {
               "live": 1,
               "cached": 0,
@@ -18212,7 +18212,7 @@
               },
               {
                 "field": "lineItems",
-                "correct": false,
+                "correct": true,
                 "expected": [
                   {
                     "description": "Window and track clean",
@@ -18232,16 +18232,16 @@
                     "description": "Window and track clean",
                     "quantity": null,
                     "unitAmount": null,
-                    "amount": 180
+                    "amount": 207
                   },
                   {
                     "description": "Oven and rangehood deep clean",
                     "quantity": null,
                     "unitAmount": null,
-                    "amount": 120
+                    "amount": 138
                   }
                 ],
-                "confidence": "medium"
+                "confidence": "high"
               },
               {
                 "field": "subtotal",
@@ -18266,11 +18266,15 @@
               }
             ],
             "expectedIssues": [],
-            "raisedIssues": [],
+            "raisedIssues": [
+              "line_items_dont_add"
+            ],
             "caught": [],
             "missed": [],
-            "unexpected": [],
-            "latencyMs": 10240.7406,
+            "unexpected": [
+              "line_items_dont_add"
+            ],
+            "latencyMs": 2693.118300000031,
             "calls": {
               "live": 1,
               "cached": 0,
@@ -18403,7 +18407,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 5020.0766,
+            "latencyMs": 4329.5702000000165,
             "calls": {
               "live": 1,
               "cached": 0,
@@ -18515,7 +18519,7 @@
               "invalid_value",
               "missing_field"
             ],
-            "latencyMs": 5733.5228,
+            "latencyMs": 3668.0006000000285,
             "calls": {
               "live": 1,
               "cached": 0,
@@ -18648,7 +18652,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 14909.2349,
+            "latencyMs": 4092.465599999996,
             "calls": {
               "live": 1,
               "cached": 0,
@@ -18775,7 +18779,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 16250.922900000001,
+            "latencyMs": 10024.33779999998,
             "calls": {
               "live": 1,
               "cached": 0,
@@ -18860,7 +18864,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 11297.1737,
+            "latencyMs": 7267.120999999985,
             "calls": {
               "live": 1,
               "cached": 0,
@@ -18876,12 +18880,12 @@
                 "field": "tenantNames",
                 "correct": true,
                 "expected": [
-                  "Rajesh Patel",
-                  "Priya Patel"
+                  "Ben Carter",
+                  "Lucy Carter"
                 ],
                 "got": [
-                  "Rajesh Patel",
-                  "Priya Patel"
+                  "Ben Carter",
+                  "Lucy Carter"
                 ],
                 "confidence": "high"
               },
@@ -18953,7 +18957,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 16036.7303,
+            "latencyMs": 4133.645500000042,
             "calls": {
               "live": 1,
               "cached": 0,
@@ -19038,7 +19042,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 21636.36,
+            "latencyMs": 6009.382800000021,
             "calls": {
               "live": 1,
               "cached": 0,
@@ -19179,7 +19183,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 17858.649299999997,
+            "latencyMs": 5052.322000000044,
             "calls": {
               "live": 1,
               "cached": 1,
@@ -19312,7 +19316,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 5583.920700000001,
+            "latencyMs": 3426.1700999999885,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -19433,7 +19437,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 10144.9663,
+            "latencyMs": 3064.7886999999755,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -19554,7 +19558,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 11709.5189,
+            "latencyMs": 2309.1697000000277,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -19687,7 +19691,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 10157.597999999998,
+            "latencyMs": 4284.244000000006,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -19783,9 +19787,9 @@
               },
               {
                 "field": "subtotal",
-                "correct": false,
+                "correct": true,
                 "expected": null,
-                "got": 220,
+                "got": null,
                 "confidence": "low"
               },
               {
@@ -19812,7 +19816,7 @@
             "unexpected": [
               "line_items_dont_add"
             ],
-            "latencyMs": 26486.494899999998,
+            "latencyMs": 14956.992599999998,
             "calls": {
               "live": 1,
               "cached": 1,
@@ -19942,7 +19946,7 @@
             "unexpected": [
               "line_items_dont_add"
             ],
-            "latencyMs": 24097.5511,
+            "latencyMs": 9575.025900000008,
             "calls": {
               "live": 1,
               "cached": 1,
@@ -20005,7 +20009,7 @@
               },
               {
                 "field": "lineItems",
-                "correct": false,
+                "correct": true,
                 "expected": [
                   {
                     "description": "Window and track clean",
@@ -20025,23 +20029,23 @@
                     "description": "Window and track clean",
                     "quantity": null,
                     "unitAmount": null,
-                    "amount": 180
+                    "amount": 207
                   },
                   {
                     "description": "Oven and rangehood deep clean",
                     "quantity": null,
                     "unitAmount": null,
-                    "amount": 120
+                    "amount": 138
                   }
                 ],
-                "confidence": "medium"
+                "confidence": "low"
               },
               {
                 "field": "subtotal",
                 "correct": false,
                 "expected": null,
                 "got": 300,
-                "confidence": "medium"
+                "confidence": "low"
               },
               {
                 "field": "gst",
@@ -20059,15 +20063,19 @@
               }
             ],
             "expectedIssues": [],
-            "raisedIssues": [],
+            "raisedIssues": [
+              "line_items_dont_add"
+            ],
             "caught": [],
             "missed": [],
-            "unexpected": [],
-            "latencyMs": 10240.7406,
+            "unexpected": [
+              "line_items_dont_add"
+            ],
+            "latencyMs": 5168.118300000031,
             "calls": {
-              "live": 0,
+              "live": 1,
               "cached": 1,
-              "repaired": false
+              "repaired": true
             }
           },
           {
@@ -20196,7 +20204,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 5020.0766,
+            "latencyMs": 4329.5702000000165,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -20308,7 +20316,7 @@
               "invalid_value",
               "missing_field"
             ],
-            "latencyMs": 17649.5228,
+            "latencyMs": 6914.0006000000285,
             "calls": {
               "live": 1,
               "cached": 1,
@@ -20441,7 +20449,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 14909.2349,
+            "latencyMs": 4092.465599999996,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -20568,7 +20576,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 35512.9229,
+            "latencyMs": 12156.33779999998,
             "calls": {
               "live": 1,
               "cached": 1,
@@ -20653,7 +20661,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 11297.1737,
+            "latencyMs": 7267.120999999985,
             "calls": {
               "live": 0,
               "cached": 1,
@@ -20669,12 +20677,12 @@
                 "field": "tenantNames",
                 "correct": true,
                 "expected": [
-                  "Rajesh Patel",
-                  "Priya Patel"
+                  "Ben Carter",
+                  "Lucy Carter"
                 ],
                 "got": [
-                  "Rajesh Patel",
-                  "Priya Patel"
+                  "Ben Carter",
+                  "Lucy Carter"
                 ],
                 "confidence": "medium"
               },
@@ -20746,7 +20754,7 @@
             ],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 30662.730299999996,
+            "latencyMs": 15835.645500000042,
             "calls": {
               "live": 1,
               "cached": 1,
@@ -20831,7 +20839,7 @@
             "caught": [],
             "missed": [],
             "unexpected": [],
-            "latencyMs": 21636.36,
+            "latencyMs": 6009.382800000021,
             "calls": {
               "live": 0,
               "cached": 1,

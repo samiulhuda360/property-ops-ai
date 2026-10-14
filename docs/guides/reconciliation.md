@@ -14,7 +14,7 @@ Money in is matched to a tenancy in order of confidence:
 
 1. **Reference:** the reference, particulars or code name the tenancy's rent reference (for example `NGATA MTE14`,
    in any case and with extra words) or its property code.
-2. **Payer name:** the payer is the tenant (surname with the first name or initial, such as `R PATEL`).
+2. **Payer name:** the payer is the tenant (surname with the first name or initial, such as `B CARTER`).
 3. **Amount and date:** the amount is one or two weeks' rent of exactly one tenancy that has rent due around the
    payment date. This is shown with a lower confidence.
 

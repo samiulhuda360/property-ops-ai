@@ -5,22 +5,22 @@ Two labelled synthetic sets. Every sender, address and business in them is inven
 - **Development set** (`data/inbox/emails.json`, 60 emails: 22 maintenance, 6 other, 5 end of tenancy, 11 rent, 10 lease question, 6 complaint; 10 urgent). The rules, the clause retrieval and the prompt were written alongside it, so it measures coverage of the cases they were designed for.
 - **Held-out set** (`data/inbox/emails-holdout.json`, 30 emails: 11 maintenance, 3 complaint, 3 other, 5 rent, 5 lease question, 3 end of tenancy; 4 urgent). Written separately from the rules and the prompt with the same label guide, and scored with them unchanged. It is the better estimate of how the triage handles new emails.
 
-Model: `gemini-flash-lite-latest`, temperature 0, one call per email shared by the "model only" and "shipped" columns. Model calls in this run: 0 live, 90 from the disk cache.
+Model: `gemini-flash-lite-latest`, temperature 0, one call per email shared by the "model only" and "shipped" columns. Model calls in this run: 76 live, 14 from the disk cache.
 
 ## Development set: 60 emails
 
 | Metric | Rules only | Model only | Model + rules and guards (shipped) |
 |---|---|---|---|
-| Category accuracy | 60/60 (100%) | 59/60 (98%) | 59/60 (98%) |
-| Urgency accuracy (4 levels) | 57/60 (95%) | 54/60 (90%) | 54/60 (90%) |
+| Category accuracy | 60/60 (100%) | 57/60 (95%) | 58/60 (97%) |
+| Urgency accuracy (4 levels) | 57/60 (95%) | 53/60 (88%) | 54/60 (90%) |
 | Urgent recall (urgent emails marked urgent) | 10/10 (100%) | 10/10 (100%) | 10/10 (100%) |
 | Urgent precision (marked urgent that are urgent) | 10/10 (100%) | 10/10 (100%) | 10/10 (100%) |
 | Tenant linking | 60/60 (100%) | n/a | 60/60 (100%) |
 | Property linking | 60/60 (100%) | n/a | 60/60 (100%) |
-| Needs-a-person accuracy | 38/60 (63%) | 55/60 (92%) | 55/60 (92%) |
-| Needs-a-person recall | 38/38 (100%) | 37/38 (97%) | 38/38 (100%) |
-| Correct maintenance job decision | 60/60 (100%) | 55/60 (92%) | 60/60 (100%) |
-| Reply cites the expected clause | 53/55 (96%) | 53/55 (96%) | 55/55 (100%) |
+| Needs-a-person accuracy | 38/60 (63%) | 54/60 (90%) | 55/60 (92%) |
+| Needs-a-person recall | 38/38 (100%) | 36/38 (95%) | 38/38 (100%) |
+| Correct maintenance job decision | 60/60 (100%) | 54/60 (90%) | 60/60 (100%) |
+| Reply cites the expected clause | 53/55 (96%) | 54/55 (98%) | 54/55 (98%) |
 | Replies citing a clause that doesn't exist | 0 | 0 | 0 |
 | Drafts with a promise (the shipped guard removes it) | 0 | 1 | 1 |
 
@@ -28,18 +28,18 @@ Model: `gemini-flash-lite-latest`, temperature 0, one call per email shared by t
 
 | Metric | Rules only | Model only | Model + rules and guards (shipped) |
 |---|---|---|---|
-| Category accuracy | 24/30 (80%) | 27/30 (90%) | 27/30 (90%) |
-| Urgency accuracy (4 levels) | 23/30 (77%) | 27/30 (90%) | 25/30 (83%) |
+| Category accuracy | 24/30 (80%) | 26/30 (87%) | 26/30 (87%) |
+| Urgency accuracy (4 levels) | 23/30 (77%) | 28/30 (93%) | 26/30 (87%) |
 | Urgent recall (urgent emails marked urgent) | 4/4 (100%) | 4/4 (100%) | 4/4 (100%) |
 | Urgent precision (marked urgent that are urgent) | 4/6 (67%) | 4/5 (80%) | 4/7 (57%) |
 | Tenant linking | 29/30 (97%) | n/a | 29/30 (97%) |
 | Property linking | 30/30 (100%) | n/a | 30/30 (100%) |
 | Needs-a-person accuracy | 20/30 (67%) | 27/30 (90%) | 26/30 (87%) |
 | Needs-a-person recall | 20/20 (100%) | 19/20 (95%) | 19/20 (95%) |
-| Correct maintenance job decision | 27/30 (90%) | 28/30 (93%) | 29/30 (97%) |
-| Reply cites the expected clause | 23/27 (85%) | 26/27 (96%) | 27/27 (100%) |
+| Correct maintenance job decision | 27/30 (90%) | 27/30 (90%) | 29/30 (97%) |
+| Reply cites the expected clause | 23/27 (85%) | 26/27 (96%) | 26/27 (96%) |
 | Replies citing a clause that doesn't exist | 0 | 0 | 0 |
-| Drafts with a promise (the shipped guard removes it) | 0 | 0 | 0 |
+| Drafts with a promise (the shipped guard removes it) | 0 | 2 | 2 |
 
 ## How it is measured
 
@@ -53,43 +53,52 @@ Model: `gemini-flash-lite-latest`, temperature 0, one call per email shared by t
 
 ## Sentences the promise guard removed
 
-- E41: "You do not need to be home for the routine inspection next Wednesday; we will use the office key and lock up when we leave (Tenancy terms §10)."
+- E41: "You do not need to be home for the routine inspection next Wednesday; we will use the office key and lock up when we leave, as outlined in Tenancy terms §10."
+- H09: "A member of the team will call you as soon as possible to arrange a locksmith this morning."
+- H30: "A shorter notice period only applies if we agree to it in writing (Tenancy terms §12)."
+- H30: "A member of our team will review your request and confirm before Monday."
+
+## Model errors
+
+- E59: The model reply did not match the triage schema.
 
 ## Items not handled correctly
 
-### Development set: 60 emails, Model + rules and guards (shipped) (11 emails)
+### Development set: 60 emails, Model + rules and guards (shipped) (13 emails)
 
 - E11 "Bathroom tap dripping": urgency: expected normal, got low.
-- E13 "New bank account for rent": category: expected rent, got maintenance.
+- E13 "New bank account for rent": category: expected rent, got maintenance; needs a person: expected no, got yes.
 - E57 "Invoice INV-2291 - 22 Ash Street": urgency: expected low, got normal.
-- E43 "Lease renewal": needs a person: expected no, got yes.
 - E49 "Someone came into the house without notice": urgency: expected normal, got high.
 - E39 "Hanging photos": urgency: expected low, got normal.
-- E27 "Rent a couple of days late": urgency: expected normal, got high; needs a person: expected no, got yes.
+- E27 "Rent a couple of days late": needs a person: expected no, got yes.
+- E33 "Rent for 22 Ash Street": clause: expected §4, cited §2.
+- E22 "Leak under the kitchen sink": urgency: expected high, got normal.
 - E41 "Routine inspection": needs a person: expected no, got yes.
 - E60 "New phone number": urgency: expected low, got normal.
 - E30 "Rent increase letter": needs a person: expected no, got yes.
+- E37 "Breaking the lease early": category: expected lease_question, got end_of_tenancy.
 - E52 "Moving out - carpets": needs a person: expected no, got yes.
 
 ### Development set: 60 emails, Model only (18 emails)
 
 - E11 "Bathroom tap dripping": urgency: expected normal, got low.
-- E13 "New bank account for rent": category: expected rent, got maintenance.
+- E13 "New bank account for rent": category: expected rent, got maintenance; needs a person: expected no, got yes.
 - E12 "Mould in bedroom 2 - any update?": maintenance job: expected no new job, got a repair.
 - E55 "Get your rental listings to the top of search results": needs a person: expected yes, got no.
 - E10 "Re: Water coming through the ceiling light": maintenance job: expected no new job, got a repair.
 - E14 "Bathroom fan still not working": maintenance job: expected no new job, got a repair.
 - E18 "Rats are back": maintenance job: expected no new job, got a repair.
 - E57 "Invoice INV-2291 - 22 Ash Street": urgency: expected low, got normal.
-- E43 "Lease renewal": needs a person: expected no, got yes.
 - E49 "Someone came into the house without notice": urgency: expected normal, got high.
 - E39 "Hanging photos": urgency: expected low, got normal.
-- E27 "Rent a couple of days late": urgency: expected normal, got high; needs a person: expected no, got yes.
-- E46 "Party at 25 Puriri Street": clause: expected §17, cited none.
-- E44 "Noisy neighbours every night": clause: expected §17, cited none.
-- E22 "Leak under the kitchen sink": maintenance job: expected no new job, got a repair.
+- E27 "Rent a couple of days late": needs a person: expected no, got yes.
+- E33 "Rent for 22 Ash Street": clause: expected §4, cited none.
+- E22 "Leak under the kitchen sink": urgency: expected high, got normal; maintenance job: expected no new job, got a repair.
+- E59 "Action required: your mailbox is full": no model output.
 - E60 "New phone number": urgency: expected low, got normal.
 - E30 "Rent increase letter": needs a person: expected no, got yes.
+- E37 "Breaking the lease early": category: expected lease_question, got end_of_tenancy.
 - E52 "Moving out - carpets": needs a person: expected no, got yes.
 
 ### Development set: 60 emails, Rules only (24 emails)
@@ -119,19 +128,20 @@ Model: `gemini-flash-lite-latest`, temperature 0, one call per email shared by t
 - E21 "Towel rail loose": needs a person: expected no, got yes.
 - E52 "Moving out - carpets": needs a person: expected no, got yes.
 
-### Held-out set: 30 emails, Model + rules and guards (shipped) (11 emails)
+### Held-out set: 30 emails, Model + rules and guards (shipped) (12 emails)
 
 - H01 "Smoke alarm chirping": urgency: expected high, got normal.
 - H03 "URGENT - owner request: access codes for 2/8 Manuka Road": urgency: expected low, got urgent.
 - H07 "Re: Possible gas smell in the kitchen": category: expected other, got maintenance; urgency: expected low, got urgent; needs a person: expected no, got yes.
+- H11 "Rent while bedroom 2 can't be used": clause: expected §5, cited §7.
 - H12 "Rangehood not working": maintenance job: expected a new job, got linked to an existing job.
 - H15 "Job update and invoice - 5 Rimu Crescent, Henderson": category: expected other, got maintenance.
 - H16 "Insurance question": urgency: expected normal, got urgent; needs a person: expected no, got yes.
 - H17 "Oven at 18 Matai Road": tenant: expected none, got ana.tupou@example.com.
 - H20 "CLOTHESLINE!!!": needs a person: expected yes, got no.
+- H22 "Inspection without any notice?": category: expected complaint, got lease_question.
 - H27 "Notice to end tenancy - 22 Ash Street": needs a person: expected no, got yes.
 - H28 "Ending my lease early": category: expected lease_question, got end_of_tenancy.
-- H30 "Moving out - can we leave on 23 October?": urgency: expected high, got normal.
 
 ### Held-out set: 30 emails, Model only (12 emails)
 
@@ -139,14 +149,14 @@ Model: `gemini-flash-lite-latest`, temperature 0, one call per email shared by t
 - H03 "URGENT - owner request: access codes for 2/8 Manuka Road": urgency: expected low, got urgent.
 - H06 "Re: hot water cylinder": maintenance job: expected no new job, got a repair.
 - H07 "Re: Possible gas smell in the kitchen": category: expected other, got maintenance.
+- H11 "Rent while bedroom 2 can't be used": clause: expected §5, cited §7.
 - H14 "rats again": maintenance job: expected no new job, got a repair.
-- H15 "Job update and invoice - 5 Rimu Crescent, Henderson": category: expected other, got maintenance.
+- H15 "Job update and invoice - 5 Rimu Crescent, Henderson": category: expected other, got maintenance; maintenance job: expected no new job, got a repair.
 - H16 "Insurance question": needs a person: expected no, got yes.
-- H17 "Oven at 18 Matai Road": clause: expected §7, cited none.
 - H20 "CLOTHESLINE!!!": needs a person: expected yes, got no.
+- H22 "Inspection without any notice?": category: expected complaint, got lease_question.
 - H27 "Notice to end tenancy - 22 Ash Street": needs a person: expected no, got yes.
 - H28 "Ending my lease early": category: expected lease_question, got end_of_tenancy.
-- H30 "Moving out - can we leave on 23 October?": urgency: expected high, got normal.
 
 ### Held-out set: 30 emails, Rules only (18 emails)
 
@@ -169,4 +179,4 @@ Model: `gemini-flash-lite-latest`, temperature 0, one call per email shared by t
 - H29 "Kitchen cupboard doors": needs a person: expected no, got yes.
 - H30 "Moving out - can we leave on 23 October?": urgency: expected high, got normal.
 
-Generated 2026-10-06 by `server/eval/inbox.ts`.
+Generated 2026-10-14 by `server/eval/inbox.ts`.

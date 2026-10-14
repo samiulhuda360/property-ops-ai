@@ -287,21 +287,21 @@ and prompts. Model: `gemini-flash-lite-latest`. Full reports are in [eval/result
 
 | Held-out set (30 emails) | Rules only | Model only | Shipped (model + rules and guards) |
 |---|---|---|---|
-| Category | 80% | 90% | 90% |
+| Category | 80% | 87% | 87% |
 | Urgent emails caught (recall) | 4/4 | 4/4 | 4/4 |
 | Needs a person | 67% | 90% | 87% |
-| Maintenance job decision | 90% | 93% | 97% |
-| Reply cites the expected clause | 85% | 96% | 100% |
+| Maintenance job decision | 90% | 90% | 97% |
+| Reply cites the expected clause | 85% | 96% | 96% |
 
 **Invoice and lease extraction** ([report](eval/results/documents.md)): 40 documents in 8 layouts, plus 15 in 4
 unseen layouts.
 
 | Held-out layouts (15 documents) | Rules | Model | Model + validation |
 |---|---|---|---|
-| Field accuracy | 46.5% | 93.7% | 93.7% |
-| Documents fully correct | 0/15 | 10/15 | 10/15 |
+| Field accuracy | 46.5% | 95.0% | 95.0% |
+| Documents fully correct | 0/15 | 11/15 | 11/15 |
 | Planted problems caught | 2/5 | 4/5 | 4/5 |
-| Clean documents with a false alarm | 10/10 | 1/10 | 1/10 |
+| Clean documents with a false alarm | 10/10 | 2/10 | 2/10 |
 
 - **Seen layouts:** all three methods read all 40 documents correctly and catch all 13 planted problems.
 - **Confidence:** with validation, fields marked high confidence on the unseen layouts were 100% correct.
@@ -312,7 +312,7 @@ exceptions.
 | | Rules only | Model only | Rules + model suggestions |
 |---|---|---|---|
 | Lines matched correctly | 50/50 | 49/50 | 50/50 |
-| Exception precision / recall | 100% / 100% | 70% / 78% | 100% / 100% |
+| Exception precision / recall | 100% / 100% | 78% / 78% | 100% / 100% |
 | Rent money allocated to the right week | 100% | 100% | 100% |
 
 The rules handle reconciliation, because amounts and references reward exact logic. The model's three suggestions

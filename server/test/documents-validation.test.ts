@@ -265,7 +265,7 @@ describe('model answers and field confidence', () => {
     expect(sameFieldValue('invoiceDate', '2026-09-08', '8 Sep 2026')).toBe(true)
     expect(sameFieldValue('supplierGstNumber', '102345673', '102-345-673')).toBe(true)
     expect(sameFieldValue('supplierName', 'ACME CLEANING CO LTD', 'Acme Cleaning Co')).toBe(true)
-    expect(sameFieldValue('tenantNames', ['Priya Patel', 'Rajesh Patel'], ['rajesh patel', 'priya patel'])).toBe(true)
+    expect(sameFieldValue('tenantNames', ['Lucy Carter', 'Ben Carter'], ['ben carter', 'lucy carter'])).toBe(true)
     expect(sameFieldValue('lineItems', [{ amount: 58 }, { amount: 100 }], [{ amount: 100 }, { amount: 58 }])).toBe(true)
     expect(sameFieldValue('endDate', 'Periodic', 'periodic')).toBe(true)
     expect(sameFieldValue('total', null, 0)).toBe(false)

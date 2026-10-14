@@ -829,7 +829,7 @@ const leases: LeaseSpec[] = [
     note: 'Bond $2,640; the lease record says $2,440, and $2,640 is more than four weeks of $610 rent.',
   },
   {
-    file: 'lease-04-hnd5.pdf', layout: 'cards', property: 'HND5', tenants: ['Rajesh Patel', 'Priya Patel'], start: '2023-09-18', end: null,
+    file: 'lease-04-hnd5.pdf', layout: 'cards', property: 'HND5', tenants: ['Ben Carter', 'Lucy Carter'], start: '2023-09-18', end: null,
     weeklyRent: 680, bond: 2720, frequency: 'fortnightly', rentBasis: 'fortnight', pets: true, petNote: 'Yes, one dog', maxOccupants: 6,
     prepared: '2026-09-15', dateStyle: 'iso', issues: [],
   },
@@ -1249,7 +1249,7 @@ const heldLeases: HeldLease[] = [
     weeklyRent: 600, bond: 2400, frequency: 'weekly', rentBasis: 'week', pets: false, maxOccupants: 5, issues: [],
   },
   {
-    file: 'h-lease-14-hnd5.pdf', property: 'HND5', tenants: ['Rajesh Patel', 'Priya Patel'], start: '2023-09-18', end: null,
+    file: 'h-lease-14-hnd5.pdf', property: 'HND5', tenants: ['Ben Carter', 'Lucy Carter'], start: '2023-09-18', end: null,
     weeklyRent: 700, bond: 2720, frequency: 'fortnightly', rentBasis: 'week', pets: true, maxOccupants: 6,
     issues: ['rent_differs'], note: 'Rent $700 per week; the lease record says $680.',
   },
