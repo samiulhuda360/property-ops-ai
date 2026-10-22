@@ -1,0 +1,1950 @@
+{
+  "leases": [
+    {
+      "file": "lease-h-nz-01.pdf",
+      "ref": "ACM-NZ-H-01",
+      "country": "NZ",
+      "leaseType": "commercial",
+      "layout": "narrative",
+      "dateStyle": "ordinal",
+      "fields": {
+        "landlord": "Acme Waterfront Holdings Limited",
+        "tenant": "Kauri Street Dental Limited",
+        "guarantor": "Oliver Finch",
+        "premises": "Level 1, 9 Kauri Street, Wellington 6011",
+        "commencementDate": "2026-05-01",
+        "termMonths": 48,
+        "rentAmount": 6250,
+        "rentFrequency": "monthly",
+        "reviewMechanism": "fixed",
+        "reviewPercent": 2.5,
+        "outgoingsBasis": "proportion",
+        "outgoingsAnnual": 11400,
+        "bondAmount": 18750,
+        "breakNoticeMonths": null,
+        "breakDate": null,
+        "renewalTerms": 1,
+        "renewalTermMonths": 48,
+        "permittedUse": "Dental surgery",
+        "makeGood": "tenant_cost",
+        "insurance": "landlord",
+        "leaseRef": "ACM-NZ-H-01",
+        "currency": "NZD",
+        "expiryDate": "2030-04-30",
+        "annualRent": 75000,
+        "reviewDates": [
+          "2027-05-01",
+          "2028-05-01",
+          "2029-05-01"
+        ]
+      },
+      "risks": [
+        "personal_guarantee",
+        "uncapped_outgoings",
+        "make_good_tenant_cost"
+      ],
+      "issues": [],
+      "charges": [
+        {
+          "kind": "bond",
+          "description": "Bond / security deposit",
+          "amount": 18750,
+          "currency": "NZD",
+          "dueDate": "2026-05-01",
+          "period": "one-off"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 1",
+          "amount": 950,
+          "currency": "NZD",
+          "dueDate": "2026-05-01",
+          "period": "2026-05-01 to 2026-05-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 1",
+          "amount": 6250,
+          "currency": "NZD",
+          "dueDate": "2026-05-01",
+          "period": "2026-05-01 to 2026-05-31"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 2",
+          "amount": 950,
+          "currency": "NZD",
+          "dueDate": "2026-06-01",
+          "period": "2026-06-01 to 2026-06-30"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 2",
+          "amount": 6250,
+          "currency": "NZD",
+          "dueDate": "2026-06-01",
+          "period": "2026-06-01 to 2026-06-30"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 3",
+          "amount": 950,
+          "currency": "NZD",
+          "dueDate": "2026-07-01",
+          "period": "2026-07-01 to 2026-07-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 3",
+          "amount": 6250,
+          "currency": "NZD",
+          "dueDate": "2026-07-01",
+          "period": "2026-07-01 to 2026-07-31"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 4",
+          "amount": 950,
+          "currency": "NZD",
+          "dueDate": "2026-08-01",
+          "period": "2026-08-01 to 2026-08-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 4",
+          "amount": 6250,
+          "currency": "NZD",
+          "dueDate": "2026-08-01",
+          "period": "2026-08-01 to 2026-08-31"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 5",
+          "amount": 950,
+          "currency": "NZD",
+          "dueDate": "2026-09-01",
+          "period": "2026-09-01 to 2026-09-30"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 5",
+          "amount": 6250,
+          "currency": "NZD",
+          "dueDate": "2026-09-01",
+          "period": "2026-09-01 to 2026-09-30"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 6",
+          "amount": 950,
+          "currency": "NZD",
+          "dueDate": "2026-10-01",
+          "period": "2026-10-01 to 2026-10-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 6",
+          "amount": 6250,
+          "currency": "NZD",
+          "dueDate": "2026-10-01",
+          "period": "2026-10-01 to 2026-10-31"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 7",
+          "amount": 950,
+          "currency": "NZD",
+          "dueDate": "2026-11-01",
+          "period": "2026-11-01 to 2026-11-30"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 7",
+          "amount": 6250,
+          "currency": "NZD",
+          "dueDate": "2026-11-01",
+          "period": "2026-11-01 to 2026-11-30"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 8",
+          "amount": 950,
+          "currency": "NZD",
+          "dueDate": "2026-12-01",
+          "period": "2026-12-01 to 2026-12-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 8",
+          "amount": 6250,
+          "currency": "NZD",
+          "dueDate": "2026-12-01",
+          "period": "2026-12-01 to 2026-12-31"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 9",
+          "amount": 950,
+          "currency": "NZD",
+          "dueDate": "2027-01-01",
+          "period": "2027-01-01 to 2027-01-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 9",
+          "amount": 6250,
+          "currency": "NZD",
+          "dueDate": "2027-01-01",
+          "period": "2027-01-01 to 2027-01-31"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 10",
+          "amount": 950,
+          "currency": "NZD",
+          "dueDate": "2027-02-01",
+          "period": "2027-02-01 to 2027-02-28"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 10",
+          "amount": 6250,
+          "currency": "NZD",
+          "dueDate": "2027-02-01",
+          "period": "2027-02-01 to 2027-02-28"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 11",
+          "amount": 950,
+          "currency": "NZD",
+          "dueDate": "2027-03-01",
+          "period": "2027-03-01 to 2027-03-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 11",
+          "amount": 6250,
+          "currency": "NZD",
+          "dueDate": "2027-03-01",
+          "period": "2027-03-01 to 2027-03-31"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 12",
+          "amount": 950,
+          "currency": "NZD",
+          "dueDate": "2027-04-01",
+          "period": "2027-04-01 to 2027-04-30"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 12",
+          "amount": 6250,
+          "currency": "NZD",
+          "dueDate": "2027-04-01",
+          "period": "2027-04-01 to 2027-04-30"
+        }
+      ]
+    },
+    {
+      "file": "lease-h-nz-02.pdf",
+      "ref": "ACM-NZ-H-02",
+      "country": "NZ",
+      "leaseType": "residential",
+      "layout": "narrative",
+      "dateStyle": "long",
+      "fields": {
+        "landlord": "Acme Rentals Limited",
+        "tenant": "Grace Holloway",
+        "guarantor": null,
+        "premises": "12 Pohutukawa Avenue, Mount Maunganui 3116",
+        "commencementDate": "2026-02-09",
+        "termMonths": 12,
+        "rentAmount": 690,
+        "rentFrequency": "weekly",
+        "reviewMechanism": "none",
+        "reviewPercent": null,
+        "outgoingsBasis": "landlord_pays",
+        "outgoingsAnnual": null,
+        "bondAmount": 2760,
+        "breakNoticeMonths": null,
+        "breakDate": null,
+        "renewalTerms": 0,
+        "renewalTermMonths": null,
+        "permittedUse": "Private residence",
+        "makeGood": "fair_wear",
+        "insurance": "landlord",
+        "leaseRef": "ACM-NZ-H-02",
+        "currency": "NZD",
+        "expiryDate": "2027-02-08",
+        "annualRent": 35880,
+        "reviewDates": null
+      },
+      "risks": [],
+      "issues": [],
+      "charges": [
+        {
+          "kind": "bond",
+          "description": "Bond / security deposit",
+          "amount": 2760,
+          "currency": "NZD",
+          "dueDate": "2026-02-09",
+          "period": "one-off"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 1",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-02-09",
+          "period": "2026-02-09 to 2026-02-15"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 2",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-02-16",
+          "period": "2026-02-16 to 2026-02-22"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 3",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-02-23",
+          "period": "2026-02-23 to 2026-03-01"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 4",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-03-02",
+          "period": "2026-03-02 to 2026-03-08"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 5",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-03-09",
+          "period": "2026-03-09 to 2026-03-15"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 6",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-03-16",
+          "period": "2026-03-16 to 2026-03-22"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 7",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-03-23",
+          "period": "2026-03-23 to 2026-03-29"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 8",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-03-30",
+          "period": "2026-03-30 to 2026-04-05"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 9",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-04-06",
+          "period": "2026-04-06 to 2026-04-12"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 10",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-04-13",
+          "period": "2026-04-13 to 2026-04-19"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 11",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-04-20",
+          "period": "2026-04-20 to 2026-04-26"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 12",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-04-27",
+          "period": "2026-04-27 to 2026-05-03"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 13",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-05-04",
+          "period": "2026-05-04 to 2026-05-10"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 14",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-05-11",
+          "period": "2026-05-11 to 2026-05-17"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 15",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-05-18",
+          "period": "2026-05-18 to 2026-05-24"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 16",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-05-25",
+          "period": "2026-05-25 to 2026-05-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 17",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-06-01",
+          "period": "2026-06-01 to 2026-06-07"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 18",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-06-08",
+          "period": "2026-06-08 to 2026-06-14"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 19",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-06-15",
+          "period": "2026-06-15 to 2026-06-21"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 20",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-06-22",
+          "period": "2026-06-22 to 2026-06-28"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 21",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-06-29",
+          "period": "2026-06-29 to 2026-07-05"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 22",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-07-06",
+          "period": "2026-07-06 to 2026-07-12"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 23",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-07-13",
+          "period": "2026-07-13 to 2026-07-19"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 24",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-07-20",
+          "period": "2026-07-20 to 2026-07-26"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 25",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-07-27",
+          "period": "2026-07-27 to 2026-08-02"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 26",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-08-03",
+          "period": "2026-08-03 to 2026-08-09"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 27",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-08-10",
+          "period": "2026-08-10 to 2026-08-16"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 28",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-08-17",
+          "period": "2026-08-17 to 2026-08-23"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 29",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-08-24",
+          "period": "2026-08-24 to 2026-08-30"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 30",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-08-31",
+          "period": "2026-08-31 to 2026-09-06"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 31",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-09-07",
+          "period": "2026-09-07 to 2026-09-13"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 32",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-09-14",
+          "period": "2026-09-14 to 2026-09-20"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 33",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-09-21",
+          "period": "2026-09-21 to 2026-09-27"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 34",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-09-28",
+          "period": "2026-09-28 to 2026-10-04"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 35",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-10-05",
+          "period": "2026-10-05 to 2026-10-11"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 36",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-10-12",
+          "period": "2026-10-12 to 2026-10-18"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 37",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-10-19",
+          "period": "2026-10-19 to 2026-10-25"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 38",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-10-26",
+          "period": "2026-10-26 to 2026-11-01"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 39",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-11-02",
+          "period": "2026-11-02 to 2026-11-08"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 40",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-11-09",
+          "period": "2026-11-09 to 2026-11-15"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 41",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-11-16",
+          "period": "2026-11-16 to 2026-11-22"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 42",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-11-23",
+          "period": "2026-11-23 to 2026-11-29"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 43",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-11-30",
+          "period": "2026-11-30 to 2026-12-06"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 44",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-12-07",
+          "period": "2026-12-07 to 2026-12-13"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 45",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-12-14",
+          "period": "2026-12-14 to 2026-12-20"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 46",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-12-21",
+          "period": "2026-12-21 to 2026-12-27"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 47",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2026-12-28",
+          "period": "2026-12-28 to 2027-01-03"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 48",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2027-01-04",
+          "period": "2027-01-04 to 2027-01-10"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 49",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2027-01-11",
+          "period": "2027-01-11 to 2027-01-17"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 50",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2027-01-18",
+          "period": "2027-01-18 to 2027-01-24"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 51",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2027-01-25",
+          "period": "2027-01-25 to 2027-01-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 52",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2027-02-01",
+          "period": "2027-02-01 to 2027-02-07"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, week 53",
+          "amount": 690,
+          "currency": "NZD",
+          "dueDate": "2027-02-08",
+          "period": "2027-02-08 to 2027-02-08"
+        }
+      ]
+    },
+    {
+      "file": "lease-h-au-01.pdf",
+      "ref": "ACM-AU-H-01",
+      "country": "AU",
+      "leaseType": "commercial",
+      "layout": "narrative",
+      "dateStyle": "slash",
+      "fields": {
+        "landlord": "Acme Harbour Estates Pty Ltd",
+        "tenant": "Redgum Architects Pty Ltd",
+        "guarantor": null,
+        "premises": "Suite 8, 150 Clarence Street, Sydney NSW 2000",
+        "commencementDate": "2025-12-01",
+        "termMonths": 60,
+        "rentAmount": 9500,
+        "rentFrequency": "monthly",
+        "reviewMechanism": "cpi",
+        "reviewPercent": null,
+        "outgoingsBasis": "tenant_pays",
+        "outgoingsAnnual": 16200,
+        "bondAmount": 28500,
+        "breakNoticeMonths": 6,
+        "breakDate": "2028-12-01",
+        "renewalTerms": 0,
+        "renewalTermMonths": null,
+        "permittedUse": "Architectural practice offices",
+        "makeGood": "fair_wear",
+        "insurance": "both",
+        "leaseRef": "ACM-AU-H-01",
+        "currency": "AUD",
+        "expiryDate": "2030-11-30",
+        "annualRent": 114000,
+        "reviewDates": [
+          "2026-12-01",
+          "2027-12-01",
+          "2028-12-01",
+          "2029-12-01"
+        ]
+      },
+      "risks": [
+        "uncapped_outgoings"
+      ],
+      "issues": [],
+      "charges": [
+        {
+          "kind": "bond",
+          "description": "Bond / security deposit",
+          "amount": 28500,
+          "currency": "AUD",
+          "dueDate": "2025-12-01",
+          "period": "one-off"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 1",
+          "amount": 1350,
+          "currency": "AUD",
+          "dueDate": "2025-12-01",
+          "period": "2025-12-01 to 2025-12-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 1",
+          "amount": 9500,
+          "currency": "AUD",
+          "dueDate": "2025-12-01",
+          "period": "2025-12-01 to 2025-12-31"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 2",
+          "amount": 1350,
+          "currency": "AUD",
+          "dueDate": "2026-01-01",
+          "period": "2026-01-01 to 2026-01-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 2",
+          "amount": 9500,
+          "currency": "AUD",
+          "dueDate": "2026-01-01",
+          "period": "2026-01-01 to 2026-01-31"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 3",
+          "amount": 1350,
+          "currency": "AUD",
+          "dueDate": "2026-02-01",
+          "period": "2026-02-01 to 2026-02-28"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 3",
+          "amount": 9500,
+          "currency": "AUD",
+          "dueDate": "2026-02-01",
+          "period": "2026-02-01 to 2026-02-28"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 4",
+          "amount": 1350,
+          "currency": "AUD",
+          "dueDate": "2026-03-01",
+          "period": "2026-03-01 to 2026-03-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 4",
+          "amount": 9500,
+          "currency": "AUD",
+          "dueDate": "2026-03-01",
+          "period": "2026-03-01 to 2026-03-31"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 5",
+          "amount": 1350,
+          "currency": "AUD",
+          "dueDate": "2026-04-01",
+          "period": "2026-04-01 to 2026-04-30"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 5",
+          "amount": 9500,
+          "currency": "AUD",
+          "dueDate": "2026-04-01",
+          "period": "2026-04-01 to 2026-04-30"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 6",
+          "amount": 1350,
+          "currency": "AUD",
+          "dueDate": "2026-05-01",
+          "period": "2026-05-01 to 2026-05-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 6",
+          "amount": 9500,
+          "currency": "AUD",
+          "dueDate": "2026-05-01",
+          "period": "2026-05-01 to 2026-05-31"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 7",
+          "amount": 1350,
+          "currency": "AUD",
+          "dueDate": "2026-06-01",
+          "period": "2026-06-01 to 2026-06-30"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 7",
+          "amount": 9500,
+          "currency": "AUD",
+          "dueDate": "2026-06-01",
+          "period": "2026-06-01 to 2026-06-30"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 8",
+          "amount": 1350,
+          "currency": "AUD",
+          "dueDate": "2026-07-01",
+          "period": "2026-07-01 to 2026-07-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 8",
+          "amount": 9500,
+          "currency": "AUD",
+          "dueDate": "2026-07-01",
+          "period": "2026-07-01 to 2026-07-31"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 9",
+          "amount": 1350,
+          "currency": "AUD",
+          "dueDate": "2026-08-01",
+          "period": "2026-08-01 to 2026-08-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 9",
+          "amount": 9500,
+          "currency": "AUD",
+          "dueDate": "2026-08-01",
+          "period": "2026-08-01 to 2026-08-31"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 10",
+          "amount": 1350,
+          "currency": "AUD",
+          "dueDate": "2026-09-01",
+          "period": "2026-09-01 to 2026-09-30"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 10",
+          "amount": 9500,
+          "currency": "AUD",
+          "dueDate": "2026-09-01",
+          "period": "2026-09-01 to 2026-09-30"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 11",
+          "amount": 1350,
+          "currency": "AUD",
+          "dueDate": "2026-10-01",
+          "period": "2026-10-01 to 2026-10-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 11",
+          "amount": 9500,
+          "currency": "AUD",
+          "dueDate": "2026-10-01",
+          "period": "2026-10-01 to 2026-10-31"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 12",
+          "amount": 1350,
+          "currency": "AUD",
+          "dueDate": "2026-11-01",
+          "period": "2026-11-01 to 2026-11-30"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 12",
+          "amount": 9500,
+          "currency": "AUD",
+          "dueDate": "2026-11-01",
+          "period": "2026-11-01 to 2026-11-30"
+        }
+      ]
+    },
+    {
+      "file": "lease-h-au-02.pdf",
+      "ref": "ACM-AU-H-02",
+      "country": "AU",
+      "leaseType": "residential",
+      "layout": "narrative",
+      "dateStyle": "long",
+      "fields": {
+        "landlord": "Acme Coastal Property Pty Ltd",
+        "tenant": "Ethan Marsh and Lily Marsh",
+        "guarantor": null,
+        "premises": "4/61 Esplanade, Glenelg SA 5045",
+        "commencementDate": "2026-03-16",
+        "termMonths": 12,
+        "rentAmount": 1180,
+        "rentFrequency": "fortnightly",
+        "reviewMechanism": "none",
+        "reviewPercent": null,
+        "outgoingsBasis": "landlord_pays",
+        "outgoingsAnnual": null,
+        "bondAmount": 2360,
+        "breakNoticeMonths": null,
+        "breakDate": null,
+        "renewalTerms": 0,
+        "renewalTermMonths": null,
+        "permittedUse": "Private residence",
+        "makeGood": "fair_wear",
+        "insurance": "landlord",
+        "leaseRef": "ACM-AU-H-02",
+        "currency": "AUD",
+        "expiryDate": "2027-03-15",
+        "annualRent": 30680,
+        "reviewDates": null
+      },
+      "risks": [],
+      "issues": [],
+      "charges": [
+        {
+          "kind": "bond",
+          "description": "Bond / security deposit",
+          "amount": 2360,
+          "currency": "AUD",
+          "dueDate": "2026-03-16",
+          "period": "one-off"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 1",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2026-03-16",
+          "period": "2026-03-16 to 2026-03-29"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 2",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2026-03-30",
+          "period": "2026-03-30 to 2026-04-12"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 3",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2026-04-13",
+          "period": "2026-04-13 to 2026-04-26"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 4",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2026-04-27",
+          "period": "2026-04-27 to 2026-05-10"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 5",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2026-05-11",
+          "period": "2026-05-11 to 2026-05-24"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 6",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2026-05-25",
+          "period": "2026-05-25 to 2026-06-07"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 7",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2026-06-08",
+          "period": "2026-06-08 to 2026-06-21"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 8",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2026-06-22",
+          "period": "2026-06-22 to 2026-07-05"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 9",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2026-07-06",
+          "period": "2026-07-06 to 2026-07-19"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 10",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2026-07-20",
+          "period": "2026-07-20 to 2026-08-02"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 11",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2026-08-03",
+          "period": "2026-08-03 to 2026-08-16"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 12",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2026-08-17",
+          "period": "2026-08-17 to 2026-08-30"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 13",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2026-08-31",
+          "period": "2026-08-31 to 2026-09-13"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 14",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2026-09-14",
+          "period": "2026-09-14 to 2026-09-27"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 15",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2026-09-28",
+          "period": "2026-09-28 to 2026-10-11"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 16",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2026-10-12",
+          "period": "2026-10-12 to 2026-10-25"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 17",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2026-10-26",
+          "period": "2026-10-26 to 2026-11-08"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 18",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2026-11-09",
+          "period": "2026-11-09 to 2026-11-22"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 19",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2026-11-23",
+          "period": "2026-11-23 to 2026-12-06"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 20",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2026-12-07",
+          "period": "2026-12-07 to 2026-12-20"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 21",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2026-12-21",
+          "period": "2026-12-21 to 2027-01-03"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 22",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2027-01-04",
+          "period": "2027-01-04 to 2027-01-17"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 23",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2027-01-18",
+          "period": "2027-01-18 to 2027-01-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 24",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2027-02-01",
+          "period": "2027-02-01 to 2027-02-14"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 25",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2027-02-15",
+          "period": "2027-02-15 to 2027-02-28"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 26",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2027-03-01",
+          "period": "2027-03-01 to 2027-03-14"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, fortnight 27",
+          "amount": 1180,
+          "currency": "AUD",
+          "dueDate": "2027-03-15",
+          "period": "2027-03-15 to 2027-03-15"
+        }
+      ]
+    },
+    {
+      "file": "lease-h-uk-01.pdf",
+      "ref": "ACM-UK-H-01",
+      "country": "UK",
+      "leaseType": "commercial",
+      "layout": "narrative",
+      "dateStyle": "ordinal",
+      "fields": {
+        "landlord": "Acme City Estates Limited",
+        "tenant": "Rowan & Bright Opticians Limited",
+        "guarantor": "Fiona Rowan",
+        "premises": "22 High Street, Oxford OX1 4AH",
+        "commencementDate": "2026-09-29",
+        "termMonths": 120,
+        "rentAmount": 9000,
+        "rentFrequency": "quarterly",
+        "reviewMechanism": "market",
+        "reviewPercent": null,
+        "reviewDates": [
+          "2031-09-29"
+        ],
+        "outgoingsBasis": "proportion",
+        "outgoingsAnnual": 5200,
+        "bondAmount": 9000,
+        "breakNoticeMonths": 6,
+        "breakDate": "2031-09-29",
+        "renewalTerms": 0,
+        "renewalTermMonths": null,
+        "permittedUse": "Opticians and retail sale of eyewear",
+        "makeGood": "tenant_cost",
+        "insurance": "landlord",
+        "leaseRef": "ACM-UK-H-01",
+        "currency": "GBP",
+        "expiryDate": "2036-09-28",
+        "annualRent": 36000
+      },
+      "risks": [
+        "personal_guarantee",
+        "ratchet_review",
+        "uncapped_outgoings",
+        "make_good_tenant_cost"
+      ],
+      "issues": [],
+      "charges": [
+        {
+          "kind": "bond",
+          "description": "Bond / security deposit",
+          "amount": 9000,
+          "currency": "GBP",
+          "dueDate": "2026-09-29",
+          "period": "one-off"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 1",
+          "amount": 433.33,
+          "currency": "GBP",
+          "dueDate": "2026-09-29",
+          "period": "2026-09-29 to 2026-10-28"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, quarter 1",
+          "amount": 9000,
+          "currency": "GBP",
+          "dueDate": "2026-09-29",
+          "period": "2026-09-29 to 2026-12-28"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 2",
+          "amount": 433.33,
+          "currency": "GBP",
+          "dueDate": "2026-10-29",
+          "period": "2026-10-29 to 2026-11-28"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 3",
+          "amount": 433.33,
+          "currency": "GBP",
+          "dueDate": "2026-11-29",
+          "period": "2026-11-29 to 2026-12-28"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 4",
+          "amount": 433.33,
+          "currency": "GBP",
+          "dueDate": "2026-12-29",
+          "period": "2026-12-29 to 2027-01-28"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, quarter 2",
+          "amount": 9000,
+          "currency": "GBP",
+          "dueDate": "2026-12-29",
+          "period": "2026-12-29 to 2027-03-28"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 5",
+          "amount": 433.33,
+          "currency": "GBP",
+          "dueDate": "2027-01-29",
+          "period": "2027-01-29 to 2027-02-27"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 6",
+          "amount": 433.33,
+          "currency": "GBP",
+          "dueDate": "2027-02-28",
+          "period": "2027-02-28 to 2027-03-28"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 7",
+          "amount": 433.33,
+          "currency": "GBP",
+          "dueDate": "2027-03-29",
+          "period": "2027-03-29 to 2027-04-28"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, quarter 3",
+          "amount": 9000,
+          "currency": "GBP",
+          "dueDate": "2027-03-29",
+          "period": "2027-03-29 to 2027-06-28"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 8",
+          "amount": 433.33,
+          "currency": "GBP",
+          "dueDate": "2027-04-29",
+          "period": "2027-04-29 to 2027-05-28"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 9",
+          "amount": 433.33,
+          "currency": "GBP",
+          "dueDate": "2027-05-29",
+          "period": "2027-05-29 to 2027-06-28"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 10",
+          "amount": 433.33,
+          "currency": "GBP",
+          "dueDate": "2027-06-29",
+          "period": "2027-06-29 to 2027-07-28"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, quarter 4",
+          "amount": 9000,
+          "currency": "GBP",
+          "dueDate": "2027-06-29",
+          "period": "2027-06-29 to 2027-09-28"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 11",
+          "amount": 433.33,
+          "currency": "GBP",
+          "dueDate": "2027-07-29",
+          "period": "2027-07-29 to 2027-08-28"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 12",
+          "amount": 433.33,
+          "currency": "GBP",
+          "dueDate": "2027-08-29",
+          "period": "2027-08-29 to 2027-09-28"
+        }
+      ]
+    },
+    {
+      "file": "lease-h-uk-02.pdf",
+      "ref": "ACM-UK-H-02",
+      "country": "UK",
+      "leaseType": "residential",
+      "layout": "narrative",
+      "dateStyle": "slash",
+      "fields": {
+        "landlord": "Acme Lettings (South) Limited",
+        "tenant": "Daniel Pearce",
+        "guarantor": null,
+        "premises": "Flat 7, 3 Marine Parade, Brighton BN2 1TL",
+        "commencementDate": "2026-04-06",
+        "termMonths": 12,
+        "rentAmount": 1350,
+        "rentFrequency": "monthly",
+        "reviewMechanism": "none",
+        "reviewPercent": null,
+        "outgoingsBasis": "landlord_pays",
+        "outgoingsAnnual": null,
+        "bondAmount": 1557.69,
+        "breakNoticeMonths": 2,
+        "breakDate": "2026-10-06",
+        "renewalTerms": 0,
+        "renewalTermMonths": null,
+        "permittedUse": "Private residence",
+        "makeGood": "fair_wear",
+        "insurance": "landlord",
+        "leaseRef": "ACM-UK-H-02",
+        "currency": "GBP",
+        "expiryDate": "2027-04-05",
+        "annualRent": 16200,
+        "reviewDates": null
+      },
+      "risks": [
+        "short_break_notice"
+      ],
+      "issues": [],
+      "charges": [
+        {
+          "kind": "bond",
+          "description": "Bond / security deposit",
+          "amount": 1557.69,
+          "currency": "GBP",
+          "dueDate": "2026-04-06",
+          "period": "one-off"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 1",
+          "amount": 1350,
+          "currency": "GBP",
+          "dueDate": "2026-04-06",
+          "period": "2026-04-06 to 2026-05-05"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 2",
+          "amount": 1350,
+          "currency": "GBP",
+          "dueDate": "2026-05-06",
+          "period": "2026-05-06 to 2026-06-05"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 3",
+          "amount": 1350,
+          "currency": "GBP",
+          "dueDate": "2026-06-06",
+          "period": "2026-06-06 to 2026-07-05"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 4",
+          "amount": 1350,
+          "currency": "GBP",
+          "dueDate": "2026-07-06",
+          "period": "2026-07-06 to 2026-08-05"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 5",
+          "amount": 1350,
+          "currency": "GBP",
+          "dueDate": "2026-08-06",
+          "period": "2026-08-06 to 2026-09-05"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 6",
+          "amount": 1350,
+          "currency": "GBP",
+          "dueDate": "2026-09-06",
+          "period": "2026-09-06 to 2026-10-05"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 7",
+          "amount": 1350,
+          "currency": "GBP",
+          "dueDate": "2026-10-06",
+          "period": "2026-10-06 to 2026-11-05"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 8",
+          "amount": 1350,
+          "currency": "GBP",
+          "dueDate": "2026-11-06",
+          "period": "2026-11-06 to 2026-12-05"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 9",
+          "amount": 1350,
+          "currency": "GBP",
+          "dueDate": "2026-12-06",
+          "period": "2026-12-06 to 2027-01-05"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 10",
+          "amount": 1350,
+          "currency": "GBP",
+          "dueDate": "2027-01-06",
+          "period": "2027-01-06 to 2027-02-05"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 11",
+          "amount": 1350,
+          "currency": "GBP",
+          "dueDate": "2027-02-06",
+          "period": "2027-02-06 to 2027-03-05"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 12",
+          "amount": 1350,
+          "currency": "GBP",
+          "dueDate": "2027-03-06",
+          "period": "2027-03-06 to 2027-04-05"
+        }
+      ]
+    },
+    {
+      "file": "lease-h-us-01.pdf",
+      "ref": "ACM-US-H-01",
+      "country": "US",
+      "leaseType": "commercial",
+      "layout": "narrative",
+      "dateStyle": "us-long",
+      "fields": {
+        "landlord": "Acme Plaza Owners LLC",
+        "tenant": "Harbor Light Yoga LLC",
+        "guarantor": "Rachel Nguyen",
+        "premises": "Suite 5, 2200 Ocean Avenue, San Francisco, CA 94127",
+        "commencementDate": "2026-06-01",
+        "termMonths": 60,
+        "rentAmount": 6800,
+        "rentFrequency": "monthly",
+        "reviewMechanism": "fixed",
+        "reviewPercent": 3,
+        "outgoingsBasis": "proportion",
+        "outgoingsAnnual": 12000,
+        "bondAmount": 13600,
+        "breakNoticeMonths": null,
+        "breakDate": null,
+        "renewalTerms": 1,
+        "renewalTermMonths": 60,
+        "permittedUse": "Yoga and wellness studio",
+        "makeGood": "tenant_cost",
+        "insurance": "both",
+        "leaseRef": "ACM-US-H-01",
+        "currency": "USD",
+        "expiryDate": "2031-05-31",
+        "annualRent": 81600,
+        "reviewDates": [
+          "2027-06-01",
+          "2028-06-01",
+          "2029-06-01",
+          "2030-06-01"
+        ]
+      },
+      "risks": [
+        "personal_guarantee",
+        "uncapped_outgoings",
+        "make_good_tenant_cost"
+      ],
+      "issues": [],
+      "charges": [
+        {
+          "kind": "bond",
+          "description": "Bond / security deposit",
+          "amount": 13600,
+          "currency": "USD",
+          "dueDate": "2026-06-01",
+          "period": "one-off"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 1",
+          "amount": 1000,
+          "currency": "USD",
+          "dueDate": "2026-06-01",
+          "period": "2026-06-01 to 2026-06-30"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 1",
+          "amount": 6800,
+          "currency": "USD",
+          "dueDate": "2026-06-01",
+          "period": "2026-06-01 to 2026-06-30"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 2",
+          "amount": 1000,
+          "currency": "USD",
+          "dueDate": "2026-07-01",
+          "period": "2026-07-01 to 2026-07-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 2",
+          "amount": 6800,
+          "currency": "USD",
+          "dueDate": "2026-07-01",
+          "period": "2026-07-01 to 2026-07-31"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 3",
+          "amount": 1000,
+          "currency": "USD",
+          "dueDate": "2026-08-01",
+          "period": "2026-08-01 to 2026-08-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 3",
+          "amount": 6800,
+          "currency": "USD",
+          "dueDate": "2026-08-01",
+          "period": "2026-08-01 to 2026-08-31"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 4",
+          "amount": 1000,
+          "currency": "USD",
+          "dueDate": "2026-09-01",
+          "period": "2026-09-01 to 2026-09-30"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 4",
+          "amount": 6800,
+          "currency": "USD",
+          "dueDate": "2026-09-01",
+          "period": "2026-09-01 to 2026-09-30"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 5",
+          "amount": 1000,
+          "currency": "USD",
+          "dueDate": "2026-10-01",
+          "period": "2026-10-01 to 2026-10-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 5",
+          "amount": 6800,
+          "currency": "USD",
+          "dueDate": "2026-10-01",
+          "period": "2026-10-01 to 2026-10-31"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 6",
+          "amount": 1000,
+          "currency": "USD",
+          "dueDate": "2026-11-01",
+          "period": "2026-11-01 to 2026-11-30"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 6",
+          "amount": 6800,
+          "currency": "USD",
+          "dueDate": "2026-11-01",
+          "period": "2026-11-01 to 2026-11-30"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 7",
+          "amount": 1000,
+          "currency": "USD",
+          "dueDate": "2026-12-01",
+          "period": "2026-12-01 to 2026-12-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 7",
+          "amount": 6800,
+          "currency": "USD",
+          "dueDate": "2026-12-01",
+          "period": "2026-12-01 to 2026-12-31"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 8",
+          "amount": 1000,
+          "currency": "USD",
+          "dueDate": "2027-01-01",
+          "period": "2027-01-01 to 2027-01-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 8",
+          "amount": 6800,
+          "currency": "USD",
+          "dueDate": "2027-01-01",
+          "period": "2027-01-01 to 2027-01-31"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 9",
+          "amount": 1000,
+          "currency": "USD",
+          "dueDate": "2027-02-01",
+          "period": "2027-02-01 to 2027-02-28"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 9",
+          "amount": 6800,
+          "currency": "USD",
+          "dueDate": "2027-02-01",
+          "period": "2027-02-01 to 2027-02-28"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 10",
+          "amount": 1000,
+          "currency": "USD",
+          "dueDate": "2027-03-01",
+          "period": "2027-03-01 to 2027-03-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 10",
+          "amount": 6800,
+          "currency": "USD",
+          "dueDate": "2027-03-01",
+          "period": "2027-03-01 to 2027-03-31"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 11",
+          "amount": 1000,
+          "currency": "USD",
+          "dueDate": "2027-04-01",
+          "period": "2027-04-01 to 2027-04-30"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 11",
+          "amount": 6800,
+          "currency": "USD",
+          "dueDate": "2027-04-01",
+          "period": "2027-04-01 to 2027-04-30"
+        },
+        {
+          "kind": "outgoings",
+          "description": "Outgoings instalment, month 12",
+          "amount": 1000,
+          "currency": "USD",
+          "dueDate": "2027-05-01",
+          "period": "2027-05-01 to 2027-05-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 12",
+          "amount": 6800,
+          "currency": "USD",
+          "dueDate": "2027-05-01",
+          "period": "2027-05-01 to 2027-05-31"
+        }
+      ]
+    },
+    {
+      "file": "lease-h-us-02.pdf",
+      "ref": "ACM-US-H-02",
+      "country": "US",
+      "leaseType": "residential",
+      "layout": "narrative",
+      "dateStyle": "us-slash",
+      "fields": {
+        "landlord": "Acme Urban Living LLC",
+        "tenant": "Samantha Brooks",
+        "guarantor": null,
+        "premises": "Apt 12C, 480 Congress Street, Boston, MA 02210",
+        "commencementDate": "2026-09-01",
+        "termMonths": 12,
+        "rentAmount": 2900,
+        "rentFrequency": "monthly",
+        "reviewMechanism": "none",
+        "reviewPercent": null,
+        "outgoingsBasis": "landlord_pays",
+        "outgoingsAnnual": null,
+        "bondAmount": 2900,
+        "breakNoticeMonths": null,
+        "breakDate": null,
+        "renewalTerms": 0,
+        "renewalTermMonths": null,
+        "permittedUse": "Private residence",
+        "makeGood": "fair_wear",
+        "insurance": "landlord",
+        "leaseRef": "ACM-US-H-02",
+        "currency": "USD",
+        "expiryDate": "2027-08-31",
+        "annualRent": 34800,
+        "reviewDates": null
+      },
+      "risks": [],
+      "issues": [],
+      "charges": [
+        {
+          "kind": "bond",
+          "description": "Bond / security deposit",
+          "amount": 2900,
+          "currency": "USD",
+          "dueDate": "2026-09-01",
+          "period": "one-off"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 1",
+          "amount": 2900,
+          "currency": "USD",
+          "dueDate": "2026-09-01",
+          "period": "2026-09-01 to 2026-09-30"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 2",
+          "amount": 2900,
+          "currency": "USD",
+          "dueDate": "2026-10-01",
+          "period": "2026-10-01 to 2026-10-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 3",
+          "amount": 2900,
+          "currency": "USD",
+          "dueDate": "2026-11-01",
+          "period": "2026-11-01 to 2026-11-30"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 4",
+          "amount": 2900,
+          "currency": "USD",
+          "dueDate": "2026-12-01",
+          "period": "2026-12-01 to 2026-12-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 5",
+          "amount": 2900,
+          "currency": "USD",
+          "dueDate": "2027-01-01",
+          "period": "2027-01-01 to 2027-01-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 6",
+          "amount": 2900,
+          "currency": "USD",
+          "dueDate": "2027-02-01",
+          "period": "2027-02-01 to 2027-02-28"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 7",
+          "amount": 2900,
+          "currency": "USD",
+          "dueDate": "2027-03-01",
+          "period": "2027-03-01 to 2027-03-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 8",
+          "amount": 2900,
+          "currency": "USD",
+          "dueDate": "2027-04-01",
+          "period": "2027-04-01 to 2027-04-30"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 9",
+          "amount": 2900,
+          "currency": "USD",
+          "dueDate": "2027-05-01",
+          "period": "2027-05-01 to 2027-05-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 10",
+          "amount": 2900,
+          "currency": "USD",
+          "dueDate": "2027-06-01",
+          "period": "2027-06-01 to 2027-06-30"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 11",
+          "amount": 2900,
+          "currency": "USD",
+          "dueDate": "2027-07-01",
+          "period": "2027-07-01 to 2027-07-31"
+        },
+        {
+          "kind": "rent",
+          "description": "Rent, month 12",
+          "amount": 2900,
+          "currency": "USD",
+          "dueDate": "2027-08-01",
+          "period": "2027-08-01 to 2027-08-31"
+        }
+      ]
+    }
+  ],
+  "reconciliation": []
+}

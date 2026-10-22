@@ -4,6 +4,8 @@
 // - A disk cache keyed by the full request, so evaluations are repeatable and cost nothing to re-run.
 // - Every call is reported to an optional logger (the server stores them in the AiCall table).
 // With no API key, or AI_DRIVER=off, aiEnabled() is false and features fall back to their rules.
+// AI_DRIVER=replay answers only from the cache (no key, no network): a cache miss is an AiError, so tests and CI can
+// replay recorded replies offline and fail loudly when a recording is missing.
 import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
@@ -24,6 +26,8 @@ export interface ChatRequest {
   schema?: JsonSchema
   temperature?: number
   maxTokens?: number
+  /** Where this feature's replies are cached (defaults to AI_CACHE_DIR); a committed folder makes replays repeatable. */
+  cacheDir?: string
 }
 
 export interface ChatResult<T = unknown> {
@@ -68,11 +72,14 @@ export function aiConfig() {
   }
 }
 
-/** True when a model can be called: a key is set and AI_DRIVER isn't "off". */
+/** True when a model can be called: a key is set and AI_DRIVER isn't "off", or AI_DRIVER is "replay". */
 export function aiEnabled(): boolean {
   const c = aiConfig()
-  return c.driver !== 'off' && c.apiKey.length > 0
+  return c.driver === 'replay' || (c.driver !== 'off' && c.apiKey.length > 0)
 }
+
+/** True when replies come from the cache only (AI_DRIVER=replay). */
+export const replayOnly = () => aiConfig().driver === 'replay'
 
 /** Pulls a JSON object out of a reply: the whole text, a ```json fence, or the outermost {...}. */
 export function parseJson<T = unknown>(text: string): T | null {
@@ -112,13 +119,15 @@ export async function chat<T = unknown>(req: ChatRequest): Promise<ChatResult<T>
   }
 
   const key = createHash('sha256').update(JSON.stringify({ url: c.baseUrl, body })).digest('hex')
-  const cacheFile = join(c.cacheDir, `${key}.json`)
+  const cacheDir = req.cacheDir ?? c.cacheDir
+  const cacheFile = join(cacheDir, `${key}.json`)
   if (c.useCache && existsSync(cacheFile)) {
     const hit = JSON.parse(readFileSync(cacheFile, 'utf8'))
     const result: ChatResult<T> = { ...hit, json: req.schema ? parseJson<T>(hit.text) : null, cached: true }
     await report(req.feature, result, null)
     return result
   }
+  if (replayOnly()) throw new AiError(`No cached reply for this ${req.feature} request (AI_DRIVER=replay makes no live calls).`)
 
   const started = Date.now()
   let lastError = ''
@@ -148,7 +157,7 @@ export async function chat<T = unknown>(req: ChatRequest): Promise<ChatResult<T>
           cached: false,
         }
         if (c.useCache) {
-          mkdirSync(c.cacheDir, { recursive: true })
+          mkdirSync(cacheDir, { recursive: true })
           const { json: _json, cached: _cached, ...stored } = result
           writeFileSync(cacheFile, JSON.stringify(stored))
         }

@@ -3,6 +3,7 @@ Accounts,Key a supplier invoice into accounting and check GST,invoice_extraction
 Accounts,Match bank lines to rent and chase gaps,rent_reconciliation,64,3,0.08,3,"One line at a time: find the tenant, the week, part-payments, then update the rent ledger"
 Tenant services,Read a tenant email and log or answer it,inbox_triage,70,6,0.06,2,"Find the tenant and property, decide urgency, log a maintenance job, draft a reply citing the terms"
 Property manager,Enter a new lease from the signed agreement,lease_extraction,2,25,0.15,3,"Rent, bond, dates, pets and occupants into the system; check against the advertised terms"
+Property manager,Abstract a commercial lease and set up its charges,lease_abstraction,3,45,0.2,3,"Read the whole deed for the key terms, review dates, outgoings and break clauses; set up the rent and outgoings charges; note the risks for the owner"
 Property manager,Write the monthly owner report,,12,35,0.05,1,"Rent received, arrears, maintenance done and planned, per owner"
 Property manager,Book a contractor for a maintenance job,,14,10,0.04,2,"Choose a contractor, agree the quote, give access details"
 Property manager,Routine inspection write-up,,4,45,0.03,1,"On site; photos and notes into the inspection template"

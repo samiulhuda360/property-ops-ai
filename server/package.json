@@ -25,6 +25,7 @@
     "jsonwebtoken": "^9.0.2",
     "multer": "^2.4.0",
     "pdf-parse": "^2.4.5",
+    "yaml": "^2.8.1",
     "zod": "^4.6.5"
   },
   "devDependencies": {

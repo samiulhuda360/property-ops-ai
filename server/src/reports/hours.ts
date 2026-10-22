@@ -15,6 +15,7 @@ export const AUTOMATION_LABELS: Record<Automation, string> = {
   invoice_extraction: 'Supplier invoices',
   rent_reconciliation: 'Rent reconciliation',
   lease_extraction: 'Lease summaries',
+  lease_abstraction: 'Lease abstraction',
 }
 
 export interface RunInput {

@@ -8,6 +8,7 @@ import { prisma } from '../src/lib/prisma'
 import { loadDemo as loadDocuments } from '../src/documents/demo'
 import { loadDemo as loadInbox } from '../src/inbox/demo'
 import { loadDemo as loadReconciliation } from '../src/reconciliation/demo'
+import { loadDemo as loadLeases } from '../src/leases/demo'
 
 // Log model calls exactly as the server does, so the usage panel includes the demo load.
 setCallLogger((record) => prisma.aiCall.create({ data: record }).then(() => undefined))
@@ -23,6 +24,8 @@ async function main() {
   console.log(JSON.stringify(await loadDocuments(user.id)))
   console.log('Reconciliation: the September 2026 bank statement...')
   console.log(JSON.stringify(await loadReconciliation(user.id)))
+  console.log('Leases: the issued-invoice ledger and 24 sample leases through the abstraction pipeline...')
+  console.log(JSON.stringify(await loadLeases(user.id)))
 }
 
 main()

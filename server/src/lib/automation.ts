@@ -8,6 +8,7 @@ import { prisma } from './prisma'
 export const BASELINE_MINUTES = {
   invoice_extraction: 12,
   lease_extraction: 25,
+  lease_abstraction: 45,
   rent_reconciliation: 3,
   inbox_triage: 6,
 } as const

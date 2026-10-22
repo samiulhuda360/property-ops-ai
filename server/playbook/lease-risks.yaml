@@ -1,0 +1,76 @@
+# Lease risk playbook. Each rule raises a finding when all of its conditions hold:
+#   when:    tests on the abstracted terms (eq, ne, lt, lte, gt, gte, in, present, absent) and on leaseType
+#   pattern: a case-insensitive regular expression the lease text must contain (the matching sentence is quoted)
+#   absent:  a regular expression the lease text must NOT contain
+# A finding cites the page and sentence of the pattern match, or of the field named in `cite`.
+version: 1
+rules:
+  - code: personal_guarantee
+    title: Personal guarantee
+    severity: high
+    explanation: An individual is personally liable for the tenant's obligations, jointly and severally. Check the guarantor's means and whether the guarantee is capped or time-limited.
+    when:
+      guarantor: { present: true }
+    pattern: "personally guarantee|jointly and severally"
+
+  - code: ratchet_review
+    title: Ratchet rent review
+    severity: high
+    explanation: The rent can only go up at a review, even if market rents fall. In some jurisdictions a ratchet is unenforceable in a retail lease; elsewhere it should be priced in.
+    pattern: "shall in no case be less than the rent payable immediately before|shall not be less than the rent payable (immediately )?before|in no event shall the rent be reduced|upwards? only"
+
+  - code: uncapped_outgoings
+    title: Uncapped outgoings, service charge or CAM
+    severity: medium
+    explanation: The tenant pays outgoings with no cap on the annual increase, so a jump in rates, insurance or management fees passes straight through.
+    when:
+      outgoingsBasis: { in: [tenant_pays, proportion] }
+    absent: "capped at|shall not exceed the amount payable in the previous year|cap on"
+    cite: outgoingsBasis
+
+  - code: make_good_tenant_cost
+    title: Make good at the tenant's cost
+    severity: medium
+    explanation: The tenant must strip out its fit-out and reinstate the premises at its own expense, and pay the landlord's costs if it does not. Budget for this at expiry and record the condition at entry.
+    when:
+      makeGood: { eq: tenant_cost }
+    cite: makeGood
+
+  - code: short_break_notice
+    title: Short notice for an early termination
+    severity: medium
+    explanation: Less than three months' notice is enough to end the lease, which gives the other party little time to plan for a vacancy or a move.
+    when:
+      breakNoticeMonths: { lt: 3 }
+    cite: breakNoticeMonths
+
+  - code: landlord_break
+    title: Landlord may terminate early
+    severity: high
+    explanation: The landlord (or either party) can end the lease before expiry, so the tenant's security of tenure is limited.
+    pattern: '\b(the (landlord|lessor)|either party) may (terminate|end|bring the term to an end|determine)'
+
+  - code: fixed_review_high
+    title: Fixed review at 4% or more
+    severity: medium
+    explanation: A fixed annual increase of four per cent or more compounds quickly and may outrun inflation and market rents.
+    when:
+      reviewMechanism: { eq: fixed }
+      reviewPercent: { gte: 4 }
+    cite: reviewPercent
+
+  - code: no_renewal_short_term
+    title: Short term with no right of renewal
+    severity: medium
+    explanation: A commercial term of two years or less with no renewal option leaves the tenant exposed to relocation costs soon after fitting out.
+    when:
+      leaseType: { eq: commercial }
+      termMonths: { lte: 24 }
+      renewalTerms: { in: [0, null] }
+    cite: termMonths
+
+  - code: relocation_clause
+    title: Relocation clause
+    severity: medium
+    explanation: The landlord can move the tenant to other premises in the building on notice; check who pays for the move and the new fit-out.
+    pattern: "may(, on [^,.]+,)? relocate the (tenant|lessee)"

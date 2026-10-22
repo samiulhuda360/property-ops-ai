@@ -13,10 +13,10 @@
 
 ## What it does
 
-Property Ops is a web app for a business that lets out rental homes. It reads tenant emails, supplier bills and the
-bank statement, and prepares the routine work: a reply to send, the details from a bill, and a list of who has
-paid rent. A person checks each item and makes the final decision, so nothing is ever sent or paid by the app on
-its own.
+Property Ops is a web app for a business that lets out rental homes and commercial premises. It reads tenant
+emails, supplier bills, the bank statement and signed leases, and prepares the routine work: a reply to send, the
+details from a bill, a list of who has paid rent, and the key terms of a lease with the clauses that carry a risk.
+A person checks each item and makes the final decision, so nothing is ever sent or paid by the app on its own.
 
 ## A real-life example
 
@@ -47,6 +47,31 @@ each with a reason. In testing it put every urgent email at the top (4 out of 4)
 "high confidence" were all correct. A monthly report shows how many hours were handed back to her, and how that was
 counted.
 
+**Leases, too.** Emma manages 40 commercial leases at Acme Property Group, with shops and offices in Auckland,
+Sydney, Manchester and Denver.
+
+**Before:** when a new lease is signed she reads the whole deed (often 30 pages) to pull out the rent, the review
+dates, who pays the outgoings, the bond, the break clause and the make-good obligation, then sets up the rent and
+outgoings charges in the billing system by hand (about 45 minutes a lease). A wrong rent figure or a missed
+outgoings instalment is usually found months later, and a personal guarantee or an upward-only rent review can sit
+unnoticed in clause 23.
+
+**With Property Ops:** she uploads the signed lease. The app reads the 25 key terms, shows each one beside the
+page and sentence it came from, lists the risky clauses with the wording quoted, works out what should be invoiced
+in the first year, and checks that against the invoices the billing system actually raised. She approves or
+corrects each term, and every decision is written to an audit trail with her name on it.
+
+![Emma's lease in four steps: the lease beside its terms, a risk clause quoted from the page, the charge schedule checked against the invoices, and the audit trail](docs/screenshots/leases.gif)
+
+*A 35-second recording with the demo data: a UK shop lease opened beside its terms, the rent-review clause found on
+the page, a term approved, the ratchet (upward-only) rent review flagged with its wording, and the year's charges
+checked against the invoices, one of them raised twice.*
+
+**After:** on 24 sample leases from four countries the app read 99.5% of the terms correctly, found every one of
+the 40 risk clauses with no false alarms, and found all 8 planted invoice mismatches (a wrong rent, a missed
+instalment, a duplicated quarter, a fee the lease does not provide for). The three terms it got wrong were all
+marked "needs a person".
+
 ## How you would use it
 
 1. Open the app in your web browser and sign in.
@@ -57,17 +82,22 @@ counted.
    system.
 4. **Reconciliation:** upload the bank statement file. You get a list of matched payments, the payments that need
    your decision, and who is behind on rent. Download it all as an Excel workbook.
-5. **Hours returned:** pick a month to see the time saved, and download it for the owner's report.
+5. **Leases:** upload a signed lease as a PDF, or pick one of the 24 samples. The lease opens beside its key terms.
+   Click a page number to see the sentence a term came from, approve or correct each term, decide on each risk
+   flag, check the year's charges against the invoices raised, and download the result as a file.
+6. **Hours returned:** pick a month to see the time saved, and download it for the owner's report.
 
 The technical setup is in [Getting started](#getting-started) further down.
 
 ## Overview
 
-**Property Ops** is a rental property manager for a New Zealand letting business. It comes with three AI
-automations (tasks the software prepares by itself) for the back-office work that eats the week:
+**Property Ops** is a property manager for a letting business, with four AI automations (tasks the software
+prepares by itself) for the back-office work that eats the week:
 - tenant emails;
 - supplier invoices and lease summaries;
-- rent reconciliation against the bank statement.
+- rent reconciliation against the bank statement;
+- lease abstraction: the key terms, risk clauses and charge schedule of commercial and residential leases from New
+  Zealand, Australia, the United Kingdom and the United States, checked against the invoices raised.
 
 Every automation prepares the work and leaves the decision to a person. Nothing is sent, paid or posted on its
 own. A monthly report shows the hours returned, and how they were counted.
@@ -77,7 +107,8 @@ automation is safe, measured and actually saves time.
 
 The demo business is a fictional Auckland property manager:
 - 12 properties, 11 tenancies and 9 "Acme" contractors;
-- a September 2026 month of emails, invoices and bank lines.
+- a September 2026 month of emails, invoices and bank lines;
+- 24 signed leases from four countries, and the 521 invoices the billing system raised for them.
 
 Every person, address and business in it is invented.
 
@@ -106,6 +137,11 @@ Every person, address and business in it is invented.
 
   Every field shows a confidence level, and the review screen puts the PDF beside the fields. Approved invoices export as a Xero (accounting software) bill-import CSV (a plain spreadsheet file), or go to an accounting adapter as draft bills.
 - **Rent reconciliation** (checking the bank statement against the rent that was due). It imports the bank CSV and matches rent by reference, payer and amount. It handles part payments, overpayments and payments covering several weeks, and builds the rent ledger and the arrears. Exceptions are held for a person, with a reason and a suggested action, and the exceptions report downloads as Excel. A model (the AI language service) can suggest who paid an unidentified line, but a suggestion is never applied on its own.
+- **Lease abstraction.** It reads a signed lease (commercial or residential; NZ, AU, UK or US) and returns 25 key terms: parties and guarantor, premises, commencement, expiry and term, rent and frequency, annual rent and currency, rent review mechanism, percentage and dates, outgoings / service charge / CAM basis and estimate, bond or deposit, break clause notice and date, renewal rights, permitted use, make-good / reinstatement and insurance obligations. Every term carries the page it was read from, the sentence it came from and a confidence; the review screen draws the sentence on the PDF. Then:
+  - **checks:** dates parse and are in order, the term agrees with the dates, reviews and breaks fall inside the term, the rent per period agrees with the annual rent, the currency matches the country, and the bond is within the country's usual limit;
+  - **risk flags** from a small [playbook](server/playbook/lease-risks.yaml) (YAML): personal guarantee, ratchet (upward-only) rent review, uncapped outgoings, make good at the tenant's cost, short break notice, landlord break, high fixed review, short term with no renewal, relocation clause, each with the clause quoted and its page;
+  - **charge schedule:** what should be invoiced in the first twelve months (bond, rent per period, outgoings instalments), reconciled against the invoices the billing system raised, with each mismatch citing the invoice number and its source row;
+  - **approval per term** and per risk, an **audit trail** of who approved, corrected or decided what, and **JSON / CSV export**.
 - **Hours-returned report.** Each month it shows the baseline minutes for every item an automation handled, minus the review time measured in the app, with the method on the page. A CSV export is included.
 - **Discovery pack.** It includes process maps for three roles, task timings, and an automation backlog ranked by hours, rework risk and ease ([discovery/](discovery/)).
 - **The model is optional.** Each automation runs on fixed rules alone without an API key (the password for a paid AI service). With a key, any OpenAI-compatible model works (one that accepts the same request format as OpenAI's; Google Gemini by default), using structured JSON output (answers in a fixed, machine-readable form), retries, a response cache and a log of every call.
@@ -116,19 +152,23 @@ Every person, address and business in it is invented.
 %%{init: {"theme": "base", "themeVariables": {"primaryColor": "#e6f2ef", "primaryBorderColor": "#2f6f68", "primaryTextColor": "#13302c", "lineColor": "#5f7471", "secondaryColor": "#f3efe6", "tertiaryColor": "#f7f8f6"}}}%%
 flowchart TD
     MAIL["Mail rule or forwarding service"] -->|"webhook + shared secret"| API
-    BROWSER["React app<br/>dashboard, inbox, documents,<br/>reconciliation, hours returned"] -->|"REST + JWT"| API["Express API"]
+    BROWSER["React app<br/>dashboard, inbox, documents,<br/>reconciliation, leases, hours returned"] -->|"REST + JWT"| API["Express API"]
     subgraph SERVER["Server (Node.js, TypeScript)"]
         API --> INBOX["inbox/<br/>rules, linking, clause retrieval,<br/>model step, guards, tickets"]
         API --> DOCS["documents/<br/>PDF text, rules, model,<br/>validation, matching"]
         API --> RECON["reconciliation/<br/>CSV parser, matcher,<br/>rent ledger, Excel report"]
+        API --> LEASES["leases/<br/>page text, rules, model, checks,<br/>risk playbook, charges, reconciliation"]
         API --> REPORTS["reports/<br/>hours returned, work queue"]
-        INBOX --> LLM["ai/llm.ts<br/>OpenAI-compatible client,<br/>JSON schema, cache, call log"]
+        INBOX --> LLM["ai/llm.ts<br/>OpenAI-compatible client,<br/>JSON schema, cache, replay, call log"]
         DOCS --> LLM
         RECON --> LLM
+        LEASES --> LLM
         DOCS --> ACC["accounting/<br/>adapter, Xero bill CSV"]
         INBOX --> RUNS["lib/automation.ts<br/>one run per item handled"]
         DOCS --> RUNS
         RECON --> RUNS
+        LEASES --> RUNS
+        LEASES --> AUDIT["AuditEvent<br/>who approved what, and when"]
     end
     LLM --> MODEL["Model API<br/>(Gemini by default)"]
     SERVER --> DB[("PostgreSQL<br/>Prisma")]
@@ -241,6 +281,54 @@ Exception reasons:
 
 Rent weeks are marked paid only when fully covered. Arrears are what is still owing at the statement's end date.
 
+### Lease abstraction
+
+```mermaid
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#e6f2ef", "primaryBorderColor": "#2f6f68", "primaryTextColor": "#13302c", "lineColor": "#5f7471", "secondaryColor": "#f3efe6", "tertiaryColor": "#f7f8f6"}}}%%
+flowchart TD
+    U["Upload a lease PDF<br/>or pick a sample"] --> T["Text layer, page by page"]
+    T --> D["Country and lease type:<br/>NZ, AU, UK, US; commercial, residential"]
+    D --> RU["Rules: schedule rows and clause patterns,<br/>day-first or month-first dates, currency"]
+    D --> MO["Model: JSON schema with value,<br/>quoted sentence and confidence per term"]
+    MO --> MG["Merge: model value, rules value when the<br/>model has none; a disagreement is flagged"]
+    RU --> MG
+    MG --> V{"Checks: dates, term, reviews and breaks<br/>inside the term, annual rent, currency, bond"}
+    V -->|"fails"| FIX["One repair call<br/>listing the problems"]
+    FIX --> V
+    V --> C["Confidence per term: high, medium, low;<br/>low means needs a person"]
+    C --> PB["Risk playbook (YAML):<br/>clause quoted, page cited"]
+    C --> CH["Charge schedule, first 12 months:<br/>bond, rent, outgoings instalments"]
+    CH --> RC["Reconciled against the invoices raised:<br/>matched, amount differs, not invoiced, not in the lease"]
+    PB --> Q["Review: PDF with the sentence highlighted,<br/>approve or correct per term, decide per risk"]
+    RC --> Q
+    Q --> AU["Audit trail: who approved or corrected what"]
+    Q --> X["Export JSON / CSV"]
+```
+
+1. The PDF's text layer is read page by page, so every term can say which page it came from.
+2. The wording decides the country (place names, currency, statute names) and the lease type. The country sets the
+   date order (`01/11/2025` is 1 November in NZ, AU and the UK; `11/15/2025` is 15 November in the US), the
+   currency, and the vocabulary: outgoings (NZ, AU), service charge (UK) and CAM charges or operating expenses (US)
+   are one term; bond, deposit, rent deposit and security deposit are one term; make good, reinstatement, dilapidations
+   and restoration are one term.
+3. **Rules** read the labelled rows of the schedule table ("Commencement Date 25 March 2026") and the clause
+   patterns, and keep the line or sentence each value came from.
+4. **Model** (optional): one structured-output call returns every term with the sentence it was read from and the
+   model's confidence. The sentence is located in the page text to get the page.
+5. **Hybrid** (the shipped route when a model is configured): the model's value, the rules' value when the model has
+   none, and a flag when the two disagree; then the checks, one repair call listing any failures, and confidence per
+   term: high when the checks pass and the rules agree, medium when there is nothing to compare, low when a check
+   fails or the two disagree. Low means "needs a person".
+6. The **risk playbook** ([`server/playbook/lease-risks.yaml`](server/playbook/lease-risks.yaml)) has nine rules
+   written as tests on the terms (`breakNoticeMonths < 3`) and patterns on the text ("shall in no case be less than the
+   rent payable immediately before"). Each finding quotes the sentence and cites its page.
+7. The **charge schedule** follows from the terms: bond on commencement, rent per period in advance, the outgoings
+   estimate in twelve instalments. It is reconciled against the invoices the billing system raised for the same lease
+   reference (by kind and due date, to the cent); each line cites the invoice number and the row of the import file.
+8. A person approves or corrects each term (corrections re-run the checks, the risks, the schedule and the
+   reconciliation), accepts or dismisses each risk, and approves the lease once nothing is left for a person. Every
+   extraction and decision is an `AuditEvent` row with the user, the field, the value before and after.
+
 ### Hours returned
 
 ```
@@ -252,6 +340,7 @@ hours returned = baseline minutes for items whose automated work was used - minu
 | Tenant email | 6 |
 | Supplier invoice | 12 |
 | Lease summary | 25 |
+| Lease abstraction | 45 |
 | Bank line | 3 |
 
 - **Where the baselines come from:** the [discovery timings](discovery/task-timings.csv). A test keeps the code and
@@ -276,6 +365,18 @@ hours returned = baseline minutes for items whose automated work was used - minu
 | **Documents queue:** 12 invoices and 3 tenancy summaries; the ones with a problem are flagged. | **Reconciliation:** 50 bank lines, 82% matched automatically, 9 exceptions with reasons and actions, and the arrears. |
 | ![Reviewing a bank line](docs/screenshots/reconciliation-review.png) | ![Hours returned](docs/screenshots/hours.png) |
 | **Reviewing an unclear bank payment:** what the fixed rules found, and the AI's guess at who paid, which is not used until a person agrees. | **Hours returned for the demo month,** by automation, with the method on the page. |
+
+**Lease review:** a New Zealand deed of lease beside its 25 terms. The premises row has been clicked, so the
+sentence it was read from is highlighted on page 1. Each term shows its value, the quoted text, the page, the
+confidence, and approve / correct buttons.
+![Lease review](docs/screenshots/lease-review.png)
+
+| | |
+|---|---|
+| ![Leases queue](docs/screenshots/leases.png) | ![Risk flags](docs/screenshots/lease-risks.png) |
+| **Leases queue:** 24 leases from four countries, with how many terms need a person, how many risk clauses are open, and how many charges need checking. | **Risk flags:** a personal guarantee, uncapped outgoings and make good at the tenant's cost, each with the clause quoted and its page cited; clicking the page shows the clause on the lease. |
+| ![Charges and reconciliation](docs/screenshots/lease-charges.png) | ![Audit trail](docs/screenshots/lease-audit.png) |
+| **Charges against invoices:** the first year's bond, rent and outgoings instalments, each matched to the invoice raised, with the one invoiced at the wrong amount shown. | **Audit trail:** the extraction, two approved terms and one corrected term, with who did it and the value before and after. |
 
 ## Evaluation
 
@@ -318,16 +419,52 @@ exceptions.
 The rules handle reconciliation, because amounts and references reward exact logic. The model's three suggestions
 for unidentified payers were all correct, and a person still confirms each one.
 
+**Lease abstraction** ([report](eval/results/leases.md)): 24 leases in the schedule-table layouts of four
+countries (12 commercial, 12 residential), plus 8 held-out leases written as narrative deeds with no schedule table,
+amounts in words and different vocabulary. Each lease is labelled with its 25 terms, its risk clauses and the charges
+the billing system should have raised; the invoice file carries 8 planted mismatches.
+
+| Seen layouts (24 leases, 600 terms) | Rules | Model | Hybrid (shipped) |
+|---|---|---|---|
+| Terms read correctly | 100% | 99.5% | 99.5% |
+| Leases with every term correct | 24/24 | 21/24 | 21/24 |
+| Wrong terms not sent to a person | 0 | 3 | 0 |
+| Risk flags: precision / recall (40 clauses) | 100% / 100% | 100% / 100% | 100% / 100% |
+| Planted invoice mismatches found | 8/8 | 8/8 | 8/8 |
+| Median time per lease | 31 ms | 4.3 s | 4.5 s |
+| Cost per lease at list price | $0 | $0.0007 | $0.0009 |
+
+| Held-out layouts (8 leases, 200 terms) | Rules | Model | Hybrid (shipped) |
+|---|---|---|---|
+| Terms read correctly | 24.0% | 100% | 100% |
+| Leases with every term correct | 0/8 | 8/8 | 8/8 |
+| Wrong terms not sent to a person | 101 | 0 | 0 |
+| Risk flags: precision / recall (12 clauses) | 100% / 8% | 100% / 100% | 100% / 100% |
+| Median time per lease | 24 ms | 4.5 s | 8.6 s |
+| Cost per lease at list price | $0 | $0.0007 | $0.0014 |
+
+- **Why the hybrid route ships:** on the seen layouts the model misreads three insurance clauses with high
+  confidence; the hybrid route notices that the rules disagree and sends all three to a person, so no wrong term
+  slips through. On the held-out layouts the rules collapse (24%) while the model reads every term; the hybrid keeps
+  the model's answers and flags 9 terms where the rules disagree, all of which turn out to be right. It trades a
+  few extra "needs a person" flags for zero silent errors.
+- **Page citations:** 94.5% of the terms with a value on the seen set and 91.1% on the held-out set carry a page;
+  the rest are inferred (the currency from the country, no renewal right in a residential agreement) and say so.
+- **Cost** is computed from the tokens the API reported, at the list price assumed for `gemini-flash-lite-latest`
+  ($0.10 per million input tokens, $0.40 per million output tokens). The whole evaluation ran on 77 live calls; every
+  reply is cached in [`data/leases/model-cache/`](data/leases/model-cache/), so the tests, CI and the demo replay it
+  without a key.
+
 ## Tech stack
 
 | Layer | Tech |
 |---|---|
-| Frontend | React 18, TypeScript, Vite, Tailwind CSS, TanStack Query, React Router, Recharts |
-| Backend | Node.js 22, Express, TypeScript, Zod, Multer, pdf-parse, ExcelJS |
+| Frontend | React 18, TypeScript, Vite, Tailwind CSS, TanStack Query, React Router, Recharts, pdf.js (lease pages with highlights) |
+| Backend | Node.js 22, Express, TypeScript, Zod, Multer, pdf-parse, ExcelJS, YAML (risk playbook) |
 | Database | PostgreSQL with Prisma (migrations committed) |
-| AI | Any OpenAI-compatible chat API, Google Gemini by default; structured JSON output, retries, disk cache, call log |
-| Tests and CI | Vitest and Supertest against a disposable PostgreSQL, GitHub Actions with a Postgres service |
-| Demo data | Synthetic PDFs rendered from HTML with Playwright, a bank CSV and labelled emails, all with ground truth |
+| AI | Any OpenAI-compatible chat API, Google Gemini by default; structured JSON output, retries, disk cache, replay mode, call log |
+| Tests and CI | Vitest and Supertest against a disposable PostgreSQL, GitHub Actions with a Postgres service; model replies replayed from the committed cache |
+| Demo data | Synthetic PDFs (invoices, tenancy summaries, 32 leases) rendered from HTML with Playwright, a bank CSV, an issued-invoice ledger and labelled emails, all with ground truth |
 
 ## Getting started
 
@@ -340,12 +477,13 @@ npm install
 docker compose up -d db                       # or point DATABASE_URL at your own PostgreSQL
 cp server/.env.example server/.env            # then set JWT_SECRET (and AI_API_KEY to use a model)
 npm run db:setup                              # migrations and the demo portfolio
-npm run demo -w server                        # the demo month through all three automations
+npm run demo -w server                        # the demo month through all four automations
 npm run dev                                   # API on :3001, app on http://localhost:5173
 ```
 
 Sign in with `demo@example.com` / `demo1234`. The demo loader works without an API key (rules only). With
-`AI_API_KEY` set, it uses the model.
+`AI_API_KEY` set, it uses the model. With `AI_DRIVER=replay` and no key, the lease abstraction runs the hybrid route
+from the committed reply cache, so the Leases page shows the model's work offline.
 
 ## Configuration
 
@@ -361,10 +499,12 @@ All settings are environment variables in `server/.env`. Names only; never commi
 | `AI_API_KEY` | Key for any OpenAI-compatible chat API. Without it, everything runs on rules |
 | `AI_BASE_URL` | API endpoint (default: Gemini's OpenAI-compatible endpoint) |
 | `AI_MODEL` | Model name (default `gemini-flash-lite-latest`) |
-| `AI_DRIVER` | Set to `off` to force rules only |
-| `AI_CACHE`, `AI_CACHE_DIR` | Response cache on/off and its folder (default `.cache/ai`) |
+| `AI_DRIVER` | Set to `off` to force rules only, or `replay` to answer only from the cache (no key, no network; a request that was never recorded is an error) |
+| `AI_CACHE`, `AI_CACHE_DIR` | Response cache on/off and its folder (default `.cache/ai`; lease replies are kept in the committed `data/leases/model-cache`) |
+| `AI_MIN_INTERVAL` | Seconds between live lease-abstraction calls on a shared quota (default 4.5) |
 | `AI_TIMEOUT_MS` | Timeout per model call |
 | `DOCUMENT_STORAGE_DIR` | Where uploaded PDFs are kept (default `server/storage/documents`) |
+| `LEASE_STORAGE_DIR` | Where uploaded leases are kept (default `server/storage/leases`) |
 
 ## Usage
 
@@ -375,6 +515,10 @@ All settings are environment variables in `server/.env`. Names only; never commi
   Export approved invoices as a Xero bill-import CSV. ([staff guide](docs/guides/documents.md))
 - **Reconciliation.** Import the bank CSV, work through the exceptions, and download the Excel report.
   ([staff guide](docs/guides/reconciliation.md))
+- **Leases.** Upload a signed lease or pick a sample. Click a page number to see where a term came from, approve
+  or correct each term, decide each risk flag, check the charges against the invoices, and export JSON or CSV.
+  Import the billing system's invoices as a CSV (`row, invoice_number, lease_ref, description, kind, amount,
+  currency, due_date, period`) for the reconciliation. ([staff guide](docs/guides/leases.md))
 - **Hours returned.** Pick the month and download the CSV for the owner report.
   ([staff guide](docs/guides/hours-returned.md))
 
@@ -390,11 +534,14 @@ curl -X POST http://localhost:3001/api/webhooks/inbox \
 
 | Command | What it does |
 |---|---|
-| `npm run demo` | Loads the demo month through the inbox, documents and reconciliation pipelines |
+| `npm run demo` | Loads the demo month through the inbox, documents, reconciliation and lease pipelines |
 | `npx tsx eval/inbox.ts` | Inbox evaluation (`--rules-only` to skip the model) |
 | `npx tsx eval/documents.ts` | Document evaluation, seen and held-out layouts |
 | `npx tsx eval/reconciliation.ts` | Reconciliation evaluation |
+| `npx tsx eval/leases.ts` | Lease abstraction evaluation: rules, model and hybrid on both sets (`AI_DRIVER=replay` to run it from the cache) |
 | `npx tsx scripts/generate-documents.ts` | Regenerates the synthetic PDFs and ground truth (`--heldout` for the unseen layouts) |
+| `npx tsx scripts/generate-leases.ts` | Regenerates the 24 sample leases, the 8 held-out leases, their ground truth and the issued-invoice ledger |
+| `npx tsx scripts/lease-text.ts <pdf>` | Prints a lease's text layer page by page, as the extractor sees it |
 | `npx tsx scripts/generate-bank.ts` | Regenerates the synthetic bank statement and ground truth |
 | `npx tsx scripts/discovery-backlog.ts` | Rebuilds the ranked automation backlog (Excel and Markdown) |
 
@@ -407,6 +554,7 @@ All routes are under `/api` and need a JWT (`POST /api/auth/login`), except the 
 | Inbox | `POST /webhooks/inbox` (shared secret) · `GET /inbox` · `GET /inbox/:id` · `POST /inbox/:id/approve` · `POST /inbox/:id/dismiss` · `POST /inbox/:id/retriage` |
 | Documents | `POST /documents` (PDF upload) · `GET /documents` · `GET /documents/:id` · `GET /documents/:id/file` · `POST /documents/:id/approve` · `POST /documents/:id/reject` · `POST /documents/:id/push` · `GET /documents/export/xero-bills.csv` |
 | Reconciliation | `POST /reconciliation/import` (CSV) · `GET /reconciliation/batches` · `GET /reconciliation/transactions` · `GET /reconciliation/summary` · `POST /reconciliation/transactions/:id/resolve` · `GET /reconciliation/export.xlsx` |
+| Leases | `POST /lease-abstracts` (PDF upload) · `GET /lease-abstracts/samples` · `POST /lease-abstracts/samples/:file` · `POST /lease-abstracts/invoices` (CSV) · `GET /lease-abstracts` · `GET /lease-abstracts/:id` · `GET /lease-abstracts/:id/file` · `GET /lease-abstracts/:id/audit` · `GET /lease-abstracts/:id/export?format=json|csv` · `POST /lease-abstracts/:id/fields/:field` · `POST /lease-abstracts/:id/risks/:code` · `POST /lease-abstracts/:id/approve` · `POST /lease-abstracts/:id/reject` |
 | Reports | `GET /reports/hours?month=YYYY-MM` · `GET /reports/hours.csv` · `GET /reports/work-queue` |
 | Portfolio | properties, tenants, leases, payments, maintenance and contractors (CRUD) |
 
@@ -415,14 +563,17 @@ All routes are under `/api` and need a JWT (`POST /api/auth/login`), except the 
 ```
 property-ops-ai/
 ├── client/                    React app
-│   └── src/pages/             Dashboard, Inbox, Documents, Reconciliation, HoursReturned, portfolio pages
+│   ├── src/pages/             Dashboard, Inbox, Documents, Reconciliation, Leases, HoursReturned, portfolio pages
+│   └── src/components/        layout, sidebar, the pdf.js lease viewer with highlights
 ├── server/
 │   ├── prisma/                schema, migrations, demo seed
+│   ├── playbook/              lease-risks.yaml: the risk playbook
 │   ├── src/
-│   │   ├── ai/llm.ts          OpenAI-compatible client: JSON schema, retries, cache, call log
+│   │   ├── ai/llm.ts          OpenAI-compatible client: JSON schema, retries, cache, replay, call log
 │   │   ├── inbox/             triage rules, linking, clause retrieval, model step, guards, tickets
 │   │   ├── documents/         PDF text, rules, model, validation, matching, review
 │   │   ├── reconciliation/    CSV parser, matcher, rent ledger, Excel report, suggestions
+│   │   ├── leases/            page text, rules, model, hybrid pipeline, checks, risks, charges, reconciliation, review, export
 │   │   ├── accounting/        accounting adapter (mock) and Xero bill-import CSV
 │   │   ├── reports/           hours returned, work queue
 │   │   ├── lib/               automation runs, IRD/GST check digit, Prisma client
@@ -430,7 +581,8 @@ property-ops-ai/
 │   ├── eval/                  evaluation scripts
 │   ├── scripts/               demo loader, synthetic data generators, discovery backlog
 │   └── test/                  unit and API tests
-├── data/                      synthetic emails, PDFs, bank statement and tenancy terms, with ground truth
+├── data/                      synthetic emails, PDFs, bank statement, leases and tenancy terms, with ground truth
+│   └── leases/                24 sample leases, 8 held-out leases, truth.json, invoices.csv, the model reply cache
 ├── eval/results/              evaluation reports (Markdown and JSON)
 ├── discovery/                 process maps, task timings, ranked automation backlog
 ├── docs/                      staff guides and screenshots
@@ -444,21 +596,27 @@ docker compose up -d db
 TEST_DATABASE_URL=postgresql://postgres@localhost:5432/property_ops_test npm test
 ```
 
-The suite has 273 tests in 14 files.
+The suite has 315 tests in 18 files.
 - **Unit tests** cover:
   - the triage rules, linking and guards (promises, injection, citations);
   - document parsing, validation and address matching;
   - the IRD check digit and the bank CSV parser;
   - every planted reconciliation case and the rent allocation;
+  - lease dates by country, schedule rows, quote location, the rules on sample leases, the field schemas and
+    cross-field checks, the charge schedule, the invoice reconciliation and the risk playbook;
+  - the model and hybrid lease routes replayed from the committed cache, including a request that was never
+    recorded being refused;
   - the hours-returned method.
 - **API tests** run against a fresh PostgreSQL. They cover:
   - webhook authentication and idempotency, and approvals that send nothing;
   - PDF upload and review decisions;
+  - lease upload, sample abstraction, invoice import, per-term approval and correction, risk decisions, the
+    approval gate, the audit trail and the JSON / CSV export;
   - a re-import that changes nothing, and the Excel workbook's sheets.
 - **When tests run:**
   - The test database's name must end in `_test`. It is reset and seeded once per run.
   - Without `TEST_DATABASE_URL`, the unit tests run and the database tests are skipped.
-  - No test calls a real model.
+  - No test calls a real model: the lease replay tests read `data/leases/model-cache`.
 - **CI** runs the typecheck, the full suite against a Postgres service and the client build on every push.
 
 ## Licence

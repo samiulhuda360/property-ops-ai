@@ -21,27 +21,31 @@ model User {
   bankTransactions BankTransaction[]
   inboxMessages    InboxMessage[]
   automationRuns   AutomationRun[]
+  leaseAbstracts   LeaseAbstract[]
+  issuedInvoices   IssuedInvoice[]
+  auditEvents      AuditEvent[]
 }
 
 model Property {
-  id            Int                  @id @default(autoincrement())
-  userId        Int
-  user          User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
-  code          String? // short code used in bank references, e.g. MTE14
-  address       String
-  suburb        String
-  city          String
-  bedrooms      Int
-  bathrooms     Float
-  rentPrice     Float
-  status        String               @default("vacant") // vacant | tenanted | maintenance
-  description   String?
-  createdAt     DateTime             @default(now())
-  updatedAt     DateTime             @updatedAt
-  leases        Lease[]
-  maintenance   MaintenanceRequest[]
-  documents     Document[]
-  inboxMessages InboxMessage[]
+  id             Int                  @id @default(autoincrement())
+  userId         Int
+  user           User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  code           String? // short code used in bank references, e.g. MTE14
+  address        String
+  suburb         String
+  city           String
+  bedrooms       Int
+  bathrooms      Float
+  rentPrice      Float
+  status         String               @default("vacant") // vacant | tenanted | maintenance
+  description    String?
+  createdAt      DateTime             @default(now())
+  updatedAt      DateTime             @updatedAt
+  leases         Lease[]
+  maintenance    MaintenanceRequest[]
+  documents      Document[]
+  inboxMessages  InboxMessage[]
+  leaseAbstracts LeaseAbstract[]
 }
 
 model Tenant {
@@ -251,4 +255,72 @@ model AiCall {
   cached       Boolean  @default(false)
   error        String?
   createdAt    DateTime @default(now())
+}
+
+// An uploaded lease and its abstraction: the key terms with page, quote and confidence; the checks; the risk
+// findings; the charge schedule; and the reconciliation against issued invoices.
+model LeaseAbstract {
+  id             Int          @id @default(autoincrement())
+  userId         Int
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fileName       String
+  storagePath    String?
+  pages          Json // [{ num, text }]
+  country        String? // NZ | AU | UK | US
+  leaseType      String? // commercial | residential
+  route          String // rules | llm | hybrid
+  leaseRef       String?
+  terms          Json // { field: { value, page, quote, confidence, source, status } }
+  issues         Json // validation issues: [{ code, field, fields, message, severity }]
+  risks          Json // playbook findings: [{ code, title, severity, explanation, page, quote, status }]
+  charges        Json // charge schedule for the first twelve months
+  reconciliation Json? // charges against issued invoices
+  status         String       @default("needs_review") // needs_review | approved | rejected
+  propertyId     Int?
+  property       Property?    @relation(fields: [propertyId], references: [id], onDelete: SetNull)
+  reviewedAt     DateTime?
+  reviewSeconds  Int?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  auditEvents    AuditEvent[]
+
+  @@index([userId, status])
+}
+
+// An invoice the billing system issued to a tenant, imported for reconciliation against the lease's charge schedule.
+model IssuedInvoice {
+  id            Int      @id @default(autoincrement())
+  userId        Int
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  invoiceNumber String
+  sourceRow     Int // the row of the import file, for citing
+  leaseRef      String
+  description   String
+  kind          String // rent | outgoings | bond | other
+  amount        Float
+  currency      String
+  dueDate       DateTime
+  period        String?
+  createdAt     DateTime @default(now())
+
+  @@unique([userId, invoiceNumber])
+  @@index([userId, leaseRef])
+}
+
+// Who did what to a lease abstraction: every extraction, per-field approval or correction, risk decision and
+// final approval, so a manager can see who approved what and when.
+model AuditEvent {
+  id              Int            @id @default(autoincrement())
+  userId          Int
+  user            User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  leaseAbstractId Int?
+  leaseAbstract   LeaseAbstract? @relation(fields: [leaseAbstractId], references: [id], onDelete: Cascade)
+  action          String // lease.extracted | lease.field_approved | lease.field_corrected | lease.risk_reviewed | lease.approved | lease.rejected
+  field           String?
+  before          Json?
+  after           Json?
+  note            String?
+  createdAt       DateTime       @default(now())
+
+  @@index([leaseAbstractId, createdAt])
 }

@@ -12,6 +12,7 @@ import Inbox from './pages/Inbox'
 import Documents from './pages/Documents'
 import Reconciliation from './pages/Reconciliation'
 import HoursReturned from './pages/HoursReturned'
+import Leases from './pages/Leases'
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated } = useAuth()
@@ -41,6 +42,7 @@ export default function App() {
           <Route path="inbox" element={<Inbox />} />
           <Route path="documents" element={<Documents />} />
           <Route path="reconciliation" element={<Reconciliation />} />
+          <Route path="leases" element={<Leases />} />
           <Route path="hours" element={<HoursReturned />} />
         </Route>
         <Route path="*" element={<Navigate to="/dashboard" replace />} />

@@ -14,6 +14,7 @@ const OUTCOME_LABELS: Record<string, string> = {
 const TASK_LABELS: Record<string, string> = {
   invoice_extraction: 'Supplier invoice',
   lease_extraction: 'Lease summary',
+  lease_abstraction: 'Lease abstraction',
   rent_reconciliation: 'Bank line',
   inbox_triage: 'Tenant email',
 }
