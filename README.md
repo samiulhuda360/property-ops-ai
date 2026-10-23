@@ -24,7 +24,7 @@ share one installation: each user sees only their own company, and their role de
 
 ## A real-life example
 
-Mere runs the office at Acme Lettings, a small Auckland company that looks after 12 rental homes.
+Hannah runs the office at Acme Lettings, a small Auckland company that looks after 12 rental homes.
 
 **Before:** every week she reads each tenant email and writes a reply by hand (about 6 minutes each). She types
 each contractor's bill into the accounts (about 12 minutes each) and ticks off every line of the bank statement
@@ -40,9 +40,9 @@ urgent "no hot water" email can sit behind a pile of routine ones.
    each with a reason and a suggested next step.
 4. She approves, corrects or rejects each item. Replies go out from her own email.
 
-![Mere's month in five steps: the sorted inbox, a bill beside its details, the bank statement checked, an unclear payment, and the hours handed back](docs/screenshots/example.gif)
+![Hannah's month in five steps: the sorted inbox, a bill beside its details, the bank statement checked, an unclear payment, and the hours handed back](docs/screenshots/example.gif)
 
-*Mere's month in five steps, using real screens from the app with the demo data: urgent emails first, a bill checked
+*Hannah's month in five steps, using real screens from the app with the demo data: urgent emails first, a bill checked
 beside its details, the bank statement ticked off, an unclear payment left for her to decide, and the time handed
 back.*
 
