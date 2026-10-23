@@ -18,6 +18,10 @@ emails, supplier bills, the bank statement and signed leases, and prepares the r
 details from a bill, a list of who has paid rent, and the key terms of a lease with the clauses that carry a risk.
 A person checks each item and makes the final decision, so nothing is ever sent or paid by the app on its own.
 
+It also tells you which tenants are likely to fall behind on rent and why, turns a tenant's repair request into a
+work order with a contractor suggestion, and keeps an audit trail of every decision. Several property companies can
+share one installation: each user sees only their own company, and their role decides what they may approve.
+
 ## A real-life example
 
 Mere runs the office at Acme Lettings, a small Auckland company that looks after 12 rental homes.
@@ -72,6 +76,40 @@ the 40 risk clauses with no false alarms, and found all 8 planted invoice mismat
 instalment, a duplicated quarter, a fee the lease does not provide for). The three terms it got wrong were all
 marked "needs a person".
 
+**Rent risk, repairs and roles, too.** Emma also runs the day-to-day at Acme Property Group: 30 tenancies, a
+handful of repair requests a week, James in accounts, Sarah the property manager and Tom, the owner, who likes to
+look but not touch.
+
+**Before:** she finds out a tenant is in trouble when they are already two months behind, because nobody has time
+to read 30 rent ledgers every week. Repair requests are handled by whoever reads them: a "smell of gas" email can sit
+in a queue behind a dripping tap, and choosing a contractor and writing the job up takes about ten minutes each.
+Everyone shares one login, so nobody can say who approved what.
+
+**With Property Ops:**
+1. The **Arrears risk** tab lists every tenancy with a risk band and the reasons in plain words ("paid late 4 of
+   the last 6 months", "two partial payments", "currently NZD 5,633 behind"), and a suggested next step as a draft
+   she can edit and approve: a reminder, a call note or a payment-plan offer.
+2. She pastes a tenant's repair request into **Maintenance**. The app classifies it, flags a gas smell, sparking
+   electrics, flooding or a home that cannot be locked as urgent, suggests a contractor by trade, availability and
+   past jobs, and drafts the work order with a budget band from what similar jobs cost. She approves it; nothing
+   is sent to the contractor by the app.
+3. James can approve supplier invoices up to 5,000 and Sarah can approve work orders up to 2,500; anything above
+   comes to Emma. Tom can see everything and change nothing.
+4. The **Audit trail** shows every extraction, approval and correction with who, when and the value before and
+   after, filterable and downloadable for the owner or an auditor.
+
+![Emma's week in one pass: the arrears risk list, a tenant opened with the reasons and a draft message, the step approved, a gas request triaged into a work order and approved, and the audit trail](docs/screenshots/phase2.gif)
+
+*A 40-second recording with the demo data, signed in as Sarah, the property manager: the risk list, a high-risk
+tenant with the reasons and the draft payment-plan message, the step approved, a "hissing noise from the gas
+meter" request triaged as urgent with the gas contractor and a budget band, the work order approved, and both
+decisions in the audit trail under her name.*
+
+**After:** on 60 tenancies with two years of rent history, the model ranked the tenants who really did fall 30
+days behind in the final three months ahead of the others with an AUC of 0.89 (a simple "late twice in the last
+three months" rule scores 0.79), and 9 of its top 10 were right. On 60 labelled repair requests, every one of
+the 23 safety cases was flagged urgent, and the category was right 95% of the time.
+
 ## How you would use it
 
 1. Open the app in your web browser and sign in.
@@ -85,19 +123,32 @@ marked "needs a person".
 5. **Leases:** upload a signed lease as a PDF, or pick one of the 24 samples. The lease opens beside its key terms.
    Click a page number to see the sentence a term came from, approve or correct each term, decide on each risk
    flag, check the year's charges against the invoices raised, and download the result as a file.
-6. **Hours returned:** pick a month to see the time saved, and download it for the owner's report.
+6. **Tenants, Arrears risk tab:** see who is likely to fall behind and why, open a tenant for the month-by-month
+   history, edit the suggested reminder, call note or payment plan, and approve or dismiss it.
+7. **Maintenance:** click "Triage a tenant request", paste what the tenant wrote (or pick a sample), and open the
+   draft work order: category, urgency, safety notes, the suggested contractor, the budget band. Change anything
+   and approve.
+8. **Audit trail:** filter by what, who and when; download the CSV.
+9. **Company and roles:** see what each role may approve; a manager changes roles here.
+10. **Hours returned:** pick a month to see the time saved, and download it for the owner's report.
 
 The technical setup is in [Getting started](#getting-started) further down.
 
 ## Overview
 
-**Property Ops** is a property manager for a letting business, with four AI automations (tasks the software
+**Property Ops** is a property manager for a letting business, with six AI automations (tasks the software
 prepares by itself) for the back-office work that eats the week:
 - tenant emails;
 - supplier invoices and lease summaries;
 - rent reconciliation against the bank statement;
 - lease abstraction: the key terms, risk clauses and charge schedule of commercial and residential leases from New
-  Zealand, Australia, the United Kingdom and the United States, checked against the invoices raised.
+  Zealand, Australia, the United Kingdom and the United States, checked against the invoices raised;
+- arrears risk: which tenancies are likely to fall 30 days behind in the next three months, why, and what to do;
+- maintenance triage: a tenant's repair request classified, safety cases made urgent, a contractor suggested and a
+  work order drafted.
+
+It is built for a property company's systems: several companies on one installation, every record owned by a
+company, four roles with approval limits, and an audit trail of every decision.
 
 Every automation prepares the work and leaves the decision to a person. Nothing is sent, paid or posted on its
 own. A monthly report shows the hours returned, and how they were counted.
@@ -105,10 +156,14 @@ own. A monthly report shows the hours returned, and how they were counted.
 It's for property managers and their accounts and tenant-services staff, and for anyone who has to show that back-office
 automation is safe, measured and actually saves time.
 
-The demo business is a fictional Auckland property manager:
-- 12 properties, 11 tenancies and 9 "Acme" contractors;
-- a September 2026 month of emails, invoices and bank lines;
-- 24 signed leases from four countries, and the 521 invoices the billing system raised for them.
+The demo has two invented companies:
+- **Acme Property Group**, Auckland: 32 properties, 30 tenancies and 11 "Acme" contractors; a September 2026 month
+  of emails, invoices and bank lines; 24 signed leases from four countries and the 521 invoices the billing system
+  raised for them; two years of rent history and 34 repair requests.
+- **Kestrel Lettings**, Manchester and Leeds: 31 properties, 30 tenancies and 8 "Kestrel" contractors, with their
+  own rent history and 26 repair requests.
+
+Each company has a manager, an accounts user, a property manager and a read-only user.
 
 Every person, address and business in it is invented.
 
@@ -142,6 +197,26 @@ Every person, address and business in it is invented.
   - **risk flags** from a small [playbook](server/playbook/lease-risks.yaml) (YAML): personal guarantee, ratchet (upward-only) rent review, uncapped outgoings, make good at the tenant's cost, short break notice, landlord break, high fixed review, short term with no renewal, relocation clause, each with the clause quoted and its page;
   - **charge schedule:** what should be invoiced in the first twelve months (bond, rent per period, outgoings instalments), reconciled against the invoices the billing system raised, with each mismatch citing the invoice number and its source row;
   - **approval per term** and per risk, an **audit trail** of who approved, corrected or decided what, and **JSON / CSV export**.
+- **Companies and roles.** Every property, tenant, lease, document, bank line, message, score and audit event
+  belongs to one company, and every request is scoped to the signed-in user's company in the server (a user cannot
+  read or change another company's records by id). Four roles: manager (no limit), accounts (invoices up to 5,000,
+  work orders up to 1,000), property manager (invoices up to 1,000, work orders up to 2,500) and read only (sees
+  everything, changes nothing). A manager changes roles; the change applies at once and is audited.
+- **Arrears risk.** From two years of monthly rent history the app computes ten features per tenancy (share of late
+  months, average days late, the trend, partial payments, missed months, the worst month, prior arrears, tenancy
+  age, rent against the market rent, the balance owed) and scores the chance of falling 30 or more days behind in
+  the next three months with a logistic-regression model trained in Python and exported as weights. The server
+  scores from the weights, so there is no Python at runtime. Each tenancy gets a band, the three strongest reasons
+  in plain words, and a suggested next step (reminder, call, payment plan) drafted for a person to approve.
+- **Maintenance triage.** A tenant's request (text and an optional photo description) is classified into nine
+  categories and four urgencies by keyword rules plus the model, with a safety net: a gas smell, dangerous
+  electrics, flooding or water near electrics, or a home that cannot be secured is always urgent. The company's
+  contractors are ranked by trade, availability and past similar jobs, and a work order is drafted: scope, access
+  notes, safety steps for the tenant, and a budget band from the 25th to 75th percentile of similar completed jobs.
+  Approval, within the role's limit, assigns the contractor; the app contacts nobody.
+- **Audit trail.** Every AI extraction, approval, correction, dismissal and role change is one event with the user,
+  the time, the field and the value before and after. The Audit page filters by what, action, who, date and text,
+  and exports CSV.
 - **Hours-returned report.** Each month it shows the baseline minutes for every item an automation handled, minus the review time measured in the app, with the method on the page. A CSV export is included.
 - **Discovery pack.** It includes process maps for three roles, task timings, and an automation backlog ranked by hours, rework risk and ease ([discovery/](discovery/)).
 - **The model is optional.** Each automation runs on fixed rules alone without an API key (the password for a paid AI service). With a key, any OpenAI-compatible model works (one that accepts the same request format as OpenAI's; Google Gemini by default), using structured JSON output (answers in a fixed, machine-readable form), retries, a response cache and a log of every call.
@@ -152,32 +227,47 @@ Every person, address and business in it is invented.
 %%{init: {"theme": "base", "themeVariables": {"primaryColor": "#e6f2ef", "primaryBorderColor": "#2f6f68", "primaryTextColor": "#13302c", "lineColor": "#5f7471", "secondaryColor": "#f3efe6", "tertiaryColor": "#f7f8f6"}}}%%
 flowchart TD
     MAIL["Mail rule or forwarding service"] -->|"webhook + shared secret"| API
-    BROWSER["React app<br/>dashboard, inbox, documents,<br/>reconciliation, leases, hours returned"] -->|"REST + JWT"| API["Express API"]
+    BROWSER["React app<br/>dashboard, inbox, documents, reconciliation, leases,<br/>arrears risk, maintenance triage, audit trail, roles"] -->|"REST + JWT"| API["Express API"]
     subgraph SERVER["Server (Node.js, TypeScript)"]
-        API --> INBOX["inbox/<br/>rules, linking, clause retrieval,<br/>model step, guards, tickets"]
-        API --> DOCS["documents/<br/>PDF text, rules, model,<br/>validation, matching"]
-        API --> RECON["reconciliation/<br/>CSV parser, matcher,<br/>rent ledger, Excel report"]
-        API --> LEASES["leases/<br/>page text, rules, model, checks,<br/>risk playbook, charges, reconciliation"]
-        API --> REPORTS["reports/<br/>hours returned, work queue"]
+        API --> AUTH["middleware/auth.ts<br/>user, company and role on every request;<br/>read-only guard, approval limits"]
+        AUTH --> INBOX["inbox/<br/>rules, linking, clause retrieval,<br/>model step, guards, tickets"]
+        AUTH --> DOCS["documents/<br/>PDF text, rules, model,<br/>validation, matching"]
+        AUTH --> RECON["reconciliation/<br/>CSV parser, matcher,<br/>rent ledger, Excel report"]
+        AUTH --> LEASES["leases/<br/>page text, rules, model, checks,<br/>risk playbook, charges, reconciliation"]
+        AUTH --> RISK["risk/<br/>features from rent history,<br/>exported weights, reasons, next step"]
+        AUTH --> MAINT["maintenance/<br/>rules, model, safety net,<br/>contractor ranking, work order"]
+        AUTH --> REPORTS["reports/<br/>hours returned, work queue"]
+        AUTH --> AUDITAPI["routes/audit.ts<br/>filter, CSV"]
         INBOX --> LLM["ai/llm.ts<br/>OpenAI-compatible client,<br/>JSON schema, cache, replay, call log"]
         DOCS --> LLM
         RECON --> LLM
         LEASES --> LLM
+        MAINT --> LLM
         DOCS --> ACC["accounting/<br/>adapter, Xero bill CSV"]
         INBOX --> RUNS["lib/automation.ts<br/>one run per item handled"]
         DOCS --> RUNS
         RECON --> RUNS
         LEASES --> RUNS
-        LEASES --> AUDIT["AuditEvent<br/>who approved what, and when"]
+        RISK --> RUNS
+        MAINT --> RUNS
+        INBOX --> AUDIT["lib/audit.ts<br/>every extraction, approval,<br/>correction and decision"]
+        DOCS --> AUDIT
+        RECON --> AUDIT
+        LEASES --> AUDIT
+        RISK --> AUDIT
+        MAINT --> AUDIT
+        AUDIT --> AUDITAPI
     end
     LLM --> MODEL["Model API<br/>(Gemini by default)"]
     SERVER --> DB[("PostgreSQL<br/>Prisma")]
+    ML["server/ml/arrears.py (offline)<br/>generate history, train, backtest"] -->|"data/risk/model.json"| RISK
 ```
 
 The app talks to the server over a REST API (standard web requests), signed in with a JWT (a login token).
 Every automation writes one `AutomationRun` row per item it handles, and updates it when a person approves,
 corrects or rejects the item. The hours-returned report is built from those rows. Every model call is stored as an
-`AiCall` row: latency, tokens, cache hit and errors.
+`AiCall` row: latency, tokens, cache hit and errors. The auth middleware loads the user's company and role from the
+database on every request, so a role change takes effect at once, and every query is scoped to that company.
 
 ## How it works
 
@@ -329,6 +419,76 @@ flowchart TD
    reconciliation), accepts or dismisses each risk, and approves the lease once nothing is left for a person. Every
    extraction and decision is an `AuditEvent` row with the user, the field, the value before and after.
 
+### Companies, roles and the audit trail
+
+```mermaid
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#e6f2ef", "primaryBorderColor": "#2f6f68", "primaryTextColor": "#13302c", "lineColor": "#5f7471", "secondaryColor": "#f3efe6", "tertiaryColor": "#f7f8f6"}}}%%
+flowchart LR
+    REQ["Request + JWT"] --> AUTH["authenticate<br/>load user, company, role"]
+    AUTH --> RO{"read only and<br/>not a GET?"}
+    RO -->|yes| DENY["403"]
+    RO -->|no| ROUTE["Route handler<br/>every query: where organisationId = actor's company"]
+    ROUTE --> LIMIT{"approval with money?<br/>invoice total, work-order budget"}
+    LIMIT -->|"above the role's limit"| DENY2["403: needs a manager"]
+    LIMIT -->|within| DO["Decision saved"]
+    DO --> AUDIT["AuditEvent<br/>user, action, entity, field,<br/>before, after, note"]
+```
+
+- **Scoping.** Every company-owned table carries `organisationId`; unique keys that used to be per user (bank line
+  hash, inbox message id, issued invoice number) are per company. Services take an `Actor` (user, company, role)
+  rather than a user id, so a service cannot forget the company.
+- **Roles and limits** live in one place, `server/src/lib/actor.ts`: `assertCanApprove(actor, kind, amount)` is
+  called where an invoice or a work order is approved, and the read-only guard sits on every router.
+- **Audit events** are written by the services, not the routes, so the demo loader, the webhook and the API all
+  leave the same trail. The Audit page reads them per company with filters and a CSV export.
+
+### Arrears risk
+
+```mermaid
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#e6f2ef", "primaryBorderColor": "#2f6f68", "primaryTextColor": "#13302c", "lineColor": "#5f7471", "secondaryColor": "#f3efe6", "tertiaryColor": "#f7f8f6"}}}%%
+flowchart LR
+    HIST["RentMonth rows<br/>24 months per tenancy:<br/>due, paid, days late, arrears"] --> FEAT["features.ts<br/>10 features as of a month"]
+    FEAT --> SCORE["model.ts<br/>sigmoid(coef . z + b)<br/>from data/risk/model.json"]
+    SCORE --> BAND["band: high / medium / low"]
+    SCORE --> WHY["top 3 contributions<br/>in plain words"]
+    BAND --> STEP["next step: reminder, call,<br/>payment plan, or none"]
+    WHY --> STEP
+    STEP --> DRAFT["draft message or call note<br/>for a person to approve"]
+    PY["server/ml/arrears.py<br/>generate, train, backtest"] -.->|"exports weights"| SCORE
+```
+
+- **Training is offline, scoring is online.** `arrears.py` generates the seeded history, computes the same ten
+  features at three earlier cutoffs (159 tenancy-months, 20 positive), fits a standardised logistic regression
+  with balanced class weights, and backtests on the held-out final quarter. It exports mean, scale, coefficients
+  and intercept; `features.ts` and `model.ts` reproduce the probabilities to six decimal places (a test checks all
+  120 scores).
+- **Reasons are the model's own arithmetic:** each feature's standardised contribution is ranked, and the top
+  three positive ones are written in words from the raw values ("paid late 4 of the last 6 months").
+- **Decisions stick.** Rescoring keeps an approved or dismissed step when the band and the step are unchanged;
+  otherwise the tenancy goes back to draft for a person.
+
+### Maintenance triage
+
+```mermaid
+%%{init: {"theme": "base", "themeVariables": {"primaryColor": "#e6f2ef", "primaryBorderColor": "#2f6f68", "primaryTextColor": "#13302c", "lineColor": "#5f7471", "secondaryColor": "#f3efe6", "tertiaryColor": "#f7f8f6"}}}%%
+flowchart LR
+    REQ["Tenant request<br/>text + photo description"] --> RULES["rules.ts<br/>safety patterns, category patterns,<br/>raise / lower words, access notes"]
+    REQ --> MODEL["model.ts<br/>category, urgency, safety,<br/>summary, scope (cached)"]
+    RULES --> MERGE["pipeline.ts<br/>model's category and wording;<br/>safety flags from either side;<br/>any safety flag = urgent;<br/>rules may raise urgency, never lower it"]
+    MODEL --> MERGE
+    MERGE --> CONTR["workorder.ts<br/>rank contractors: trade,<br/>availability, similar jobs"]
+    MERGE --> BUDGET["budget band: 25th-75th percentile<br/>of similar completed jobs"]
+    CONTR --> WO["Draft work order<br/>scope, access, safety steps,<br/>contractor, budget"]
+    BUDGET --> WO
+    WO --> APPROVE["A person approves<br/>within the role's limit"]
+```
+
+- **The safety net is deterministic.** Whatever the model says, a gas smell, sparking or burning electrics, water
+  near electrics, flooding or a home that cannot be locked matches a rule and the request is urgent with the flag
+  set. The model adds recall on wordings the rules do not know ("gassy smell", "won't latch").
+- **Budget bands come from the company's own history**, same category first, then the same trades, then any
+  completed job, and say which ("3 completed gas and heating jobs").
+
 ### Hours returned
 
 ```
@@ -342,6 +502,8 @@ hours returned = baseline minutes for items whose automated work was used - minu
 | Lease summary | 25 |
 | Lease abstraction | 45 |
 | Bank line | 3 |
+| Tenancy at risk (arrears check and reminder) | 8 |
+| Tenant repair request (choose a contractor, write the job up) | 10 |
 
 - **Where the baselines come from:** the [discovery timings](discovery/task-timings.csv). A test keeps the code and
   the timings in step.
@@ -455,16 +617,81 @@ the billing system should have raised; the invoice file carries 8 planted mismat
   reply is cached in [`data/leases/model-cache/`](data/leases/model-cache/), so the tests, CI and the demo replay it
   without a key.
 
+**Arrears risk:** every tenancy with its band, the three strongest reasons in plain words, and the suggested step
+waiting for a person.
+![Arrears risk](docs/screenshots/risk.png)
+
+| | |
+|---|---|
+| ![A tenant's risk opened](docs/screenshots/risk-detail.png) | ![Maintenance with triaged requests](docs/screenshots/maintenance.png) |
+| **A tenant opened:** the reasons, the draft payment-plan message to edit and approve, and the month-by-month rent history behind the score. | **Maintenance:** triaged requests first, each with its urgency, safety flag, suggested contractor and budget band. |
+| ![A draft work order](docs/screenshots/work-order.png) | ![Audit trail](docs/screenshots/audit.png) |
+| **A draft work order** for a gas smell: urgent, the safety steps for the tenant, the scope, access, the gas contractor with why, and the budget from similar jobs. | **Audit trail:** who did what and when, with before and after, filterable and exportable. |
+
+**Company and roles:** what each role may approve, and the company's users; a manager changes roles here.
+![Company and roles](docs/screenshots/company.png)
+
+**Arrears risk** ([report](eval/results/risk.md), [model notes](server/ml/README.md)): 60 tenancies with 24
+months of synthetic rent history generated from hidden payment profiles (reliable, occasionally late, chronically
+late, partial payer, deteriorating, seasonal, and "shock" tenancies that miss a month with no warning). Trained on
+cutoffs up to March 2026; backtested on June 2026 against who went 30 or more days behind in July to September,
+which the model never saw (11 of 60 did).
+
+| Backtest (60 tenancies, 11 in arrears) | Rule: late 2 of last 3, or prior arrears | Gradient boosting | Logistic regression (shipped) |
+|---|---|---|---|
+| AUC | 0.787 | 0.875 | 0.894 |
+| Precision / recall of the top 10 | 60% / 55% | 90% / 82% | 90% / 82% |
+| Precision / recall of the top 15 | 47% / 64% | 60% / 82% | 60% / 82% |
+| Brier score (lower is better) | 0.233 | 0.078 | 0.111 |
+
+- **Calibration:** the 40 tenancies scored under 20% had an observed arrears rate of 5%; the 13 scored over 80%
+  had 69%. With 60 rows the middle bins hold one to three tenancies each, so the probabilities are read as bands
+  (high ≥ 50%, medium ≥ 25%) rather than to the decimal, and the balanced class weights push scores towards the
+  extremes.
+- **The shipped model is the logistic regression** because its weights export to JSON and its reasons are its own
+  arithmetic; gradient boosting is slightly better calibrated here but no better at ranking.
+- **Three of the 11** were shock cases with no warning in earlier months; they are the recall the model cannot reach.
+
+**Maintenance triage** ([report](eval/results/maintenance.md)): 60 labelled tenant requests across both companies,
+40 used while writing the rules and the prompt and 20 held out. Each is labelled with a category, an urgency and the
+safety flags that apply (23 safety cases).
+
+| Held-out set (20 requests, 9 safety cases) | Rules | Model | Model + rules (shipped) |
+|---|---|---|---|
+| Category correct | 90.0% (18/20) | 90.0% (18/20) | 90.0% (18/20) |
+| Urgency correct | 70.0% (14/20) | 90.0% (18/20) | 80.0% (16/20) |
+| Safety cases flagged urgent | 5/9 | 9/9 | 9/9 |
+| Safety flags: precision / recall | 83.3% / 50.0% | 90.9% / 100.0% | 83.3% / 100.0% |
+| Routine requests wrongly made urgent | 1 | 1 | 2 |
+
+| All 60 requests | Rules | Model | Model + rules (shipped) |
+|---|---|---|---|
+| Category correct | 96.7% (58/60) | 95.0% (57/60) | 95.0% (57/60) |
+| Urgency correct | 88.3% (53/60) | 86.7% (52/60) | 85.0% (51/60) |
+| Safety cases flagged urgent | 19/23 | 23/23 | 23/23 |
+| Safety flags: precision / recall | 95.0% / 79.2% | 82.8% / 100.0% | 80.0% / 100.0% |
+| Routine requests wrongly made urgent | 1 | 4 | 5 |
+
+- **Every safety case is urgent on the shipped route, including the nine held-out ones** that the rules alone miss
+  four of ("gassy smell", "won't latch", "overflowed... through the ceiling", "cannot close it"); the model adds
+  that recall and the rules make sure a safety flag always means urgent.
+- **The price of the safety net** is five routine requests made urgent across the 60 (a gutter "pouring down the
+  wall", a dead power supply with a baby in the house), which a person downgrades in one click.
+- The whole evaluation ran on 60 live calls (one per request; both model routes share the cache); replies are in
+  [`data/maintenance/model-cache/`](data/maintenance/model-cache/), so tests, CI and the demo replay them without a
+  key.
+
 ## Tech stack
 
 | Layer | Tech |
 |---|---|
 | Frontend | React 18, TypeScript, Vite, Tailwind CSS, TanStack Query, React Router, Recharts, pdf.js (lease pages with highlights) |
 | Backend | Node.js 22, Express, TypeScript, Zod, Multer, pdf-parse, ExcelJS, YAML (risk playbook) |
-| Database | PostgreSQL with Prisma (migrations committed) |
+| Database | PostgreSQL with Prisma (migrations committed); every company-owned table scoped by `organisationId` |
+| Arrears model | Python 3, NumPy, scikit-learn (offline: generate, train, backtest, export weights to JSON); scored in Node from the weights |
 | AI | Any OpenAI-compatible chat API, Google Gemini by default; structured JSON output, retries, disk cache, replay mode, call log |
 | Tests and CI | Vitest and Supertest against a disposable PostgreSQL, GitHub Actions with a Postgres service; model replies replayed from the committed cache |
-| Demo data | Synthetic PDFs (invoices, tenancy summaries, 32 leases) rendered from HTML with Playwright, a bank CSV, an issued-invoice ledger and labelled emails, all with ground truth |
+| Demo data | Synthetic PDFs (invoices, tenancy summaries, 32 leases) rendered from HTML with Playwright, a bank CSV, an issued-invoice ledger, labelled emails, a seeded 24-month rent history for 60 tenancies and 60 labelled repair requests, all with ground truth |
 
 ## Getting started
 
@@ -477,13 +704,29 @@ npm install
 docker compose up -d db                       # or point DATABASE_URL at your own PostgreSQL
 cp server/.env.example server/.env            # then set JWT_SECRET (and AI_API_KEY to use a model)
 npm run db:setup                              # migrations and the demo portfolio
-npm run demo -w server                        # the demo month through all four automations
+npm run demo -w server                        # both companies through all six automations
 npm run dev                                   # API on :3001, app on http://localhost:5173
 ```
 
-Sign in with `demo@example.com` / `demo1234`. The demo loader works without an API key (rules only). With
-`AI_API_KEY` set, it uses the model. With `AI_DRIVER=replay` and no key, the lease abstraction runs the hybrid route
-from the committed reply cache, so the Leases page shows the model's work offline.
+Sign in with `demo@example.com` / `demo1234` (Emma, the Acme manager). The demo loader works without an API key
+(rules only). With `AI_API_KEY` set, it uses the model. With `AI_DRIVER=replay` and no key, lease abstraction and
+maintenance triage run their model routes from the committed reply caches, so the pages show the model's work
+offline.
+
+Every demo password is `demo1234`:
+
+| Company | Manager | Accounts | Property manager | Read only |
+|---|---|---|---|---|
+| Acme Property Group (Auckland) | `demo@example.com` Emma Walker | `james@acme.example.com` | `sarah@acme.example.com` | `tom@acme.example.com` |
+| Kestrel Lettings (Manchester, Leeds) | `claire@kestrel.example.com` Claire Fox | `daniel@kestrel.example.com` | `lucy@kestrel.example.com` | `oliver@kestrel.example.com` |
+
+The arrears model ships as `data/risk/model.json`, so Python is only needed to regenerate the history or retrain:
+
+```bash
+python -m venv .venv && .venv/Scripts/activate      # or source .venv/bin/activate
+pip install -r server/ml/requirements.txt
+python server/ml/arrears.py all                     # history, training, backtest, scores, report
+```
 
 ## Configuration
 
@@ -500,8 +743,8 @@ All settings are environment variables in `server/.env`. Names only; never commi
 | `AI_BASE_URL` | API endpoint (default: Gemini's OpenAI-compatible endpoint) |
 | `AI_MODEL` | Model name (default `gemini-flash-lite-latest`) |
 | `AI_DRIVER` | Set to `off` to force rules only, or `replay` to answer only from the cache (no key, no network; a request that was never recorded is an error) |
-| `AI_CACHE`, `AI_CACHE_DIR` | Response cache on/off and its folder (default `.cache/ai`; lease replies are kept in the committed `data/leases/model-cache`) |
-| `AI_MIN_INTERVAL` | Seconds between live lease-abstraction calls on a shared quota (default 4.5) |
+| `AI_CACHE`, `AI_CACHE_DIR` | Response cache on/off and its folder (default `.cache/ai`; lease and maintenance replies are kept in the committed `data/leases/model-cache` and `data/maintenance/model-cache`) |
+| `AI_MIN_INTERVAL` | Seconds between live lease-abstraction and triage calls on a shared quota (default 4.5) |
 | `AI_TIMEOUT_MS` | Timeout per model call |
 | `DOCUMENT_STORAGE_DIR` | Where uploaded PDFs are kept (default `server/storage/documents`) |
 | `LEASE_STORAGE_DIR` | Where uploaded leases are kept (default `server/storage/leases`) |
@@ -519,6 +762,13 @@ All settings are environment variables in `server/.env`. Names only; never commi
   or correct each term, decide each risk flag, check the charges against the invoices, and export JSON or CSV.
   Import the billing system's invoices as a CSV (`row, invoice_number, lease_ref, description, kind, amount,
   currency, due_date, period`) for the reconciliation. ([staff guide](docs/guides/leases.md))
+- **Arrears risk** (Tenants page, Arrears risk tab). Open a tenant to see the reasons and the rent history, edit
+  the draft reminder, call note or payment plan, and approve or dismiss it. "Score again" rescores from the rent
+  history on file.
+- **Maintenance.** "Triage a tenant request" with the tenant's words and an optional photo description, or pick a
+  sample. Open the draft work order, change the contractor, scope, access or budget, and approve within your limit.
+- **Audit trail.** Filter by what, action, who, date or text; download the CSV.
+- **Company and roles.** A manager changes a user's role; the limits per role are on the page.
 - **Hours returned.** Pick the month and download the CSV for the owner report.
   ([staff guide](docs/guides/hours-returned.md))
 
@@ -534,7 +784,9 @@ curl -X POST http://localhost:3001/api/webhooks/inbox \
 
 | Command | What it does |
 |---|---|
-| `npm run demo` | Loads the demo month through the inbox, documents, reconciliation and lease pipelines |
+| `npm run demo` | Loads both companies: the demo month through the inbox, documents, reconciliation and lease pipelines, the rent history scored, and the repair requests triaged (`npm run demo claire@kestrel.example.com` for one company) |
+| `npx tsx eval/maintenance.ts` | Maintenance triage evaluation: rules, model and shipped route on the 60 labelled requests (`AI_DRIVER=replay` to run it from the cache) |
+| `python ../server/ml/arrears.py all` | Regenerates the rent history, retrains the arrears model, backtests it and writes `data/risk/` and `eval/results/risk.md` (from the repo root: `python server/ml/arrears.py all`) |
 | `npx tsx eval/inbox.ts` | Inbox evaluation (`--rules-only` to skip the model) |
 | `npx tsx eval/documents.ts` | Document evaluation, seen and held-out layouts |
 | `npx tsx eval/reconciliation.ts` | Reconciliation evaluation |
@@ -547,7 +799,9 @@ curl -X POST http://localhost:3001/api/webhooks/inbox \
 
 ## API
 
-All routes are under `/api` and need a JWT (`POST /api/auth/login`), except the webhook and the health check.
+All routes are under `/api` and need a JWT (`POST /api/auth/login`), except the webhook and the health check. Every
+route answers only with the signed-in user's company's records; a read-only user gets 403 on anything but GET, and
+an approval above the role's limit gets 403 with the reason.
 
 | Area | Routes |
 |---|---|
@@ -555,6 +809,10 @@ All routes are under `/api` and need a JWT (`POST /api/auth/login`), except the 
 | Documents | `POST /documents` (PDF upload) · `GET /documents` · `GET /documents/:id` · `GET /documents/:id/file` · `POST /documents/:id/approve` · `POST /documents/:id/reject` · `POST /documents/:id/push` · `GET /documents/export/xero-bills.csv` |
 | Reconciliation | `POST /reconciliation/import` (CSV) · `GET /reconciliation/batches` · `GET /reconciliation/transactions` · `GET /reconciliation/summary` · `POST /reconciliation/transactions/:id/resolve` · `GET /reconciliation/export.xlsx` |
 | Leases | `POST /lease-abstracts` (PDF upload) · `GET /lease-abstracts/samples` · `POST /lease-abstracts/samples/:file` · `POST /lease-abstracts/invoices` (CSV) · `GET /lease-abstracts` · `GET /lease-abstracts/:id` · `GET /lease-abstracts/:id/file` · `GET /lease-abstracts/:id/audit` · `GET /lease-abstracts/:id/export?format=json|csv` · `POST /lease-abstracts/:id/fields/:field` · `POST /lease-abstracts/:id/risks/:code` · `POST /lease-abstracts/:id/approve` · `POST /lease-abstracts/:id/reject` |
+| Arrears risk | `GET /risk` · `GET /risk?band=high` · `GET /risk/:id` (with the rent history) · `GET /risk/model` · `POST /risk/rescore` · `POST /risk/:id/review` |
+| Maintenance triage | `POST /maintenance/triage` · `GET /maintenance/samples` · `POST /maintenance/samples/:id` · `GET /maintenance/method` · `POST /maintenance/:id/work-order/approve` · `POST /maintenance/:id/work-order/reject` |
+| Audit | `GET /audit?entity=&action=&userId=&from=&to=&search=` · `GET /audit/meta` · `GET /audit/export.csv` |
+| Company | `POST /auth/register` (creates a company; the first user is its manager) · `GET /auth/me` · `GET /auth/users` · `PUT /auth/users/:id/role` (manager only) |
 | Reports | `GET /reports/hours?month=YYYY-MM` · `GET /reports/hours.csv` · `GET /reports/work-queue` |
 | Portfolio | properties, tenants, leases, payments, maintenance and contractors (CRUD) |
 
@@ -563,10 +821,11 @@ All routes are under `/api` and need a JWT (`POST /api/auth/login`), except the 
 ```
 property-ops-ai/
 ├── client/                    React app
-│   ├── src/pages/             Dashboard, Inbox, Documents, Reconciliation, Leases, HoursReturned, portfolio pages
-│   └── src/components/        layout, sidebar, the pdf.js lease viewer with highlights
+│   ├── src/pages/             Dashboard, Inbox, Documents, Reconciliation, Leases, HoursReturned, Audit, Company, portfolio pages
+│   └── src/components/        layout, sidebar, the pdf.js lease viewer, the risk tab, the triage modal and work-order panel
 ├── server/
-│   ├── prisma/                schema, migrations, demo seed
+│   ├── prisma/                schema, migrations, the two-company demo seed
+│   ├── ml/                    arrears.py: rent-history generator, training, backtest, weight export (Python)
 │   ├── playbook/              lease-risks.yaml: the risk playbook
 │   ├── src/
 │   │   ├── ai/llm.ts          OpenAI-compatible client: JSON schema, retries, cache, replay, call log
@@ -574,15 +833,20 @@ property-ops-ai/
 │   │   ├── documents/         PDF text, rules, model, validation, matching, review
 │   │   ├── reconciliation/    CSV parser, matcher, rent ledger, Excel report, suggestions
 │   │   ├── leases/            page text, rules, model, hybrid pipeline, checks, risks, charges, reconciliation, review, export
+│   │   ├── risk/              features from rent history, the exported model, reasons, next steps, demo loader
+│   │   ├── maintenance/       triage rules, model step, pipeline, contractor ranking, work orders, demo loader
 │   │   ├── accounting/        accounting adapter (mock) and Xero bill-import CSV
 │   │   ├── reports/           hours returned, work queue
-│   │   ├── lib/               automation runs, IRD/GST check digit, Prisma client
-│   │   └── routes/            REST API and the inbox webhook
+│   │   ├── middleware/        authentication: user, company and role on every request; the read-only guard
+│   │   ├── lib/               actor and approval limits, audit events, automation runs, IRD/GST check digit, Prisma client
+│   │   └── routes/            REST API, the audit and risk routes, and the inbox webhook
 │   ├── eval/                  evaluation scripts
 │   ├── scripts/               demo loader, synthetic data generators, discovery backlog
 │   └── test/                  unit and API tests
 ├── data/                      synthetic emails, PDFs, bank statement, leases and tenancy terms, with ground truth
-│   └── leases/                24 sample leases, 8 held-out leases, truth.json, invoices.csv, the model reply cache
+│   ├── leases/                24 sample leases, 8 held-out leases, truth.json, invoices.csv, the model reply cache
+│   ├── risk/                  roster.json, history.json (24 months, truth), model.json, scores.json, metrics.json
+│   └── maintenance/           60 labelled repair requests and the model reply cache
 ├── eval/results/              evaluation reports (Markdown and JSON)
 ├── discovery/                 process maps, task timings, ranked automation backlog
 ├── docs/                      staff guides and screenshots
@@ -596,7 +860,7 @@ docker compose up -d db
 TEST_DATABASE_URL=postgresql://postgres@localhost:5432/property_ops_test npm test
 ```
 
-The suite has 315 tests in 18 files.
+The suite has 357 tests in 24 files.
 - **Unit tests** cover:
   - the triage rules, linking and guards (promises, injection, citations);
   - document parsing, validation and address matching;
@@ -606,13 +870,26 @@ The suite has 315 tests in 18 files.
     cross-field checks, the charge schedule, the invoice reconciliation and the risk playbook;
   - the model and hybrid lease routes replayed from the committed cache, including a request that was never
     recorded being refused;
-  - the hours-returned method.
+  - the hours-returned method;
+  - the arrears features on hand-made histories, the exported weights reproducing every Python score to six
+    decimals, the backtest AUC recomputed in Node, and the reasons and next steps;
+  - the triage rules on the labelled requests (every development-set safety case urgent, no routine request made
+    urgent), the contractor ranking, the budget band and the draft work order;
+  - the approval limits per role.
 - **API tests** run against a fresh PostgreSQL. They cover:
   - webhook authentication and idempotency, and approvals that send nothing;
   - PDF upload and review decisions;
   - lease upload, sample abstraction, invoice import, per-term approval and correction, risk decisions, the
     approval gate, the audit trail and the JSON / CSV export;
-  - a re-import that changes nothing, and the Excel workbook's sheets.
+  - a re-import that changes nothing, and the Excel workbook's sheets;
+  - companies and roles: one company cannot list, read, change or delete another's records, a read-only user is
+    refused every change, accounts and property managers are stopped at their invoice and work-order limits, only a
+    manager changes roles and the change applies at once, and registering creates a new company;
+  - the audit trail: events with before and after, filters, the CSV export, and every decision leaving an event;
+  - arrears risk: the demo history loaded and scored, the list and the history behind a score, approving an edited
+    step with review time, rescoring keeping decisions, and the other company seeing nothing;
+  - maintenance triage: a gas request becoming an urgent job with the gas contractor and a budget band, the
+    work-order limit per role, approval assigning the contractor, and rejection.
 - **When tests run:**
   - The test database's name must end in `_test`. It is reset and seeded once per run.
   - Without `TEST_DATABASE_URL`, the unit tests run and the database tests are skipped.
