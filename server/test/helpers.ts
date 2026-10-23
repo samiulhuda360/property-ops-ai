@@ -11,3 +11,10 @@ export async function demoAuth(): Promise<{ Authorization: string }> {
   if (res.status !== 200) throw new Error(`demo login failed: ${res.status}`)
   return { Authorization: `Bearer ${res.body.token}` }
 }
+
+/** Signs in as any seeded demo user (every demo password is demo1234). */
+export async function authAs(email: string): Promise<{ Authorization: string }> {
+  const res = await request(app).post('/api/auth/login').send({ email, password: 'demo1234' })
+  if (res.status !== 200) throw new Error(`login failed for ${email}: ${res.status}`)
+  return { Authorization: `Bearer ${res.body.token}` }
+}

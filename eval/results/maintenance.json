@@ -1,0 +1,2764 @@
+[
+  {
+    "method": "rules",
+    "error": null,
+    "live": 0,
+    "cached": 0,
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "all": {
+      "n": 60,
+      "category": 58,
+      "urgency": 53,
+      "safetyCases": 23,
+      "safetyUrgent": 19,
+      "flagPrecision": 0.95,
+      "flagRecall": 0.7916666666666666,
+      "falseUrgent": 1,
+      "medianLatencyMs": 0
+    },
+    "dev": {
+      "n": 40,
+      "category": 40,
+      "urgency": 39,
+      "safetyCases": 14,
+      "safetyUrgent": 14,
+      "flagPrecision": 1,
+      "flagRecall": 1,
+      "falseUrgent": 0,
+      "medianLatencyMs": 0
+    },
+    "heldout": {
+      "n": 20,
+      "category": 18,
+      "urgency": 14,
+      "safetyCases": 9,
+      "safetyUrgent": 5,
+      "flagPrecision": 0.8333333333333334,
+      "flagRecall": 0.5,
+      "falseUrgent": 1,
+      "medianLatencyMs": 0
+    },
+    "rows": [
+      {
+        "id": "M01",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "gas"
+        ],
+        "gotSafety": [
+          "gas"
+        ],
+        "latencyMs": 4,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M02",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "electrical"
+        ],
+        "gotSafety": [
+          "electrical"
+        ],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M03",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "flooding"
+        ],
+        "gotSafety": [
+          "flooding"
+        ],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M04",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "security"
+        ],
+        "gotSafety": [
+          "security"
+        ],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M05",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 4,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M06",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M07",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M08",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M09",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M10",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M11",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "gas"
+        ],
+        "gotSafety": [
+          "gas"
+        ],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M12",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "electrical"
+        ],
+        "gotSafety": [
+          "electrical"
+        ],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M13",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "flooding"
+        ],
+        "gotSafety": [
+          "flooding"
+        ],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M14",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "security"
+        ],
+        "gotSafety": [
+          "security"
+        ],
+        "latencyMs": 5,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M15",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 3,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M16",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M17",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M18",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M19",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M20",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M21",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M22",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "gas"
+        ],
+        "gotSafety": [
+          "gas"
+        ],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M23",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M24",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "flooding"
+        ],
+        "gotSafety": [
+          "flooding"
+        ],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M25",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "security"
+        ],
+        "gotSafety": [
+          "security"
+        ],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M26",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M27",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M28",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M29",
+        "split": "dev",
+        "category": true,
+        "urgency": false,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M30",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "flooding"
+        ],
+        "gotSafety": [
+          "flooding"
+        ],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M31",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M32",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "security"
+        ],
+        "gotSafety": [
+          "security"
+        ],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M33",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M34",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "electrical"
+        ],
+        "gotSafety": [
+          "electrical"
+        ],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M35",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M36",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M37",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M38",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M39",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M40",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M41",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M42",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "gas"
+        ],
+        "gotSafety": [
+          "gas"
+        ],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M43",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "electrical"
+        ],
+        "gotSafety": [
+          "electrical"
+        ],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M44",
+        "split": "heldout",
+        "category": true,
+        "urgency": false,
+        "safetyCase": true,
+        "flaggedUrgent": false,
+        "expectedSafety": [
+          "flooding"
+        ],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M45",
+        "split": "heldout",
+        "category": false,
+        "urgency": false,
+        "safetyCase": true,
+        "flaggedUrgent": false,
+        "expectedSafety": [
+          "security"
+        ],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M46",
+        "split": "heldout",
+        "category": true,
+        "urgency": false,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M47",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M48",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M49",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M50",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M51",
+        "split": "heldout",
+        "category": true,
+        "urgency": false,
+        "safetyCase": true,
+        "flaggedUrgent": false,
+        "expectedSafety": [
+          "security"
+        ],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M52",
+        "split": "heldout",
+        "category": true,
+        "urgency": false,
+        "safetyCase": true,
+        "flaggedUrgent": false,
+        "expectedSafety": [
+          "gas"
+        ],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M53",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M54",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "flooding",
+          "electrical"
+        ],
+        "gotSafety": [
+          "flooding"
+        ],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M55",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "electrical"
+        ],
+        "gotSafety": [
+          "electrical"
+        ],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M56",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M57",
+        "split": "heldout",
+        "category": false,
+        "urgency": false,
+        "safetyCase": false,
+        "flaggedUrgent": true,
+        "expectedSafety": [],
+        "gotSafety": [
+          "flooding"
+        ],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M58",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M59",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      },
+      {
+        "id": "M60",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "flooding"
+        ],
+        "gotSafety": [
+          "flooding"
+        ],
+        "latencyMs": 0,
+        "live": 0,
+        "cached": 0
+      }
+    ]
+  },
+  {
+    "method": "llm",
+    "error": null,
+    "live": 0,
+    "cached": 60,
+    "inputTokens": 32444,
+    "outputTokens": 8321,
+    "all": {
+      "n": 60,
+      "category": 57,
+      "urgency": 52,
+      "safetyCases": 23,
+      "safetyUrgent": 23,
+      "flagPrecision": 0.8275862068965517,
+      "flagRecall": 1,
+      "falseUrgent": 4,
+      "medianLatencyMs": 1
+    },
+    "dev": {
+      "n": 40,
+      "category": 39,
+      "urgency": 34,
+      "safetyCases": 14,
+      "safetyUrgent": 14,
+      "flagPrecision": 0.7777777777777778,
+      "flagRecall": 1,
+      "falseUrgent": 3,
+      "medianLatencyMs": 1
+    },
+    "heldout": {
+      "n": 20,
+      "category": 18,
+      "urgency": 18,
+      "safetyCases": 9,
+      "safetyUrgent": 9,
+      "flagPrecision": 0.9090909090909091,
+      "flagRecall": 1,
+      "falseUrgent": 1,
+      "medianLatencyMs": 1
+    },
+    "rows": [
+      {
+        "id": "M01",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "gas"
+        ],
+        "gotSafety": [
+          "gas"
+        ],
+        "latencyMs": 3,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M02",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "electrical"
+        ],
+        "gotSafety": [
+          "electrical"
+        ],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M03",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "flooding"
+        ],
+        "gotSafety": [
+          "flooding",
+          "electrical"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M04",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "security"
+        ],
+        "gotSafety": [
+          "security"
+        ],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M05",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M06",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M07",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M08",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M09",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M10",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M11",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "gas"
+        ],
+        "gotSafety": [
+          "gas"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M12",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "electrical"
+        ],
+        "gotSafety": [
+          "electrical"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M13",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "flooding"
+        ],
+        "gotSafety": [
+          "flooding"
+        ],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M14",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "security"
+        ],
+        "gotSafety": [
+          "security"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M15",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M16",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M17",
+        "split": "dev",
+        "category": true,
+        "urgency": false,
+        "safetyCase": false,
+        "flaggedUrgent": true,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M18",
+        "split": "dev",
+        "category": false,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M19",
+        "split": "dev",
+        "category": true,
+        "urgency": false,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M20",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M21",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M22",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "gas"
+        ],
+        "gotSafety": [
+          "gas"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M23",
+        "split": "dev",
+        "category": true,
+        "urgency": false,
+        "safetyCase": false,
+        "flaggedUrgent": true,
+        "expectedSafety": [],
+        "gotSafety": [
+          "electrical"
+        ],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M24",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "flooding"
+        ],
+        "gotSafety": [
+          "flooding"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M25",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "security"
+        ],
+        "gotSafety": [
+          "security"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M26",
+        "split": "dev",
+        "category": true,
+        "urgency": false,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M27",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M28",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M29",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M30",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "flooding"
+        ],
+        "gotSafety": [
+          "electrical",
+          "flooding"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M31",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M32",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "security"
+        ],
+        "gotSafety": [
+          "security"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M33",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M34",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "electrical"
+        ],
+        "gotSafety": [
+          "electrical"
+        ],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M35",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M36",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M37",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M38",
+        "split": "dev",
+        "category": true,
+        "urgency": false,
+        "safetyCase": false,
+        "flaggedUrgent": true,
+        "expectedSafety": [],
+        "gotSafety": [
+          "security"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M39",
+        "split": "dev",
+        "category": true,
+        "urgency": false,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M40",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M41",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M42",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "gas"
+        ],
+        "gotSafety": [
+          "gas"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M43",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "electrical"
+        ],
+        "gotSafety": [
+          "electrical"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M44",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "flooding"
+        ],
+        "gotSafety": [
+          "flooding"
+        ],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M45",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "security"
+        ],
+        "gotSafety": [
+          "security"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M46",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M47",
+        "split": "heldout",
+        "category": true,
+        "urgency": false,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M48",
+        "split": "heldout",
+        "category": true,
+        "urgency": false,
+        "safetyCase": false,
+        "flaggedUrgent": true,
+        "expectedSafety": [],
+        "gotSafety": [
+          "electrical"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M49",
+        "split": "heldout",
+        "category": false,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M50",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M51",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "security"
+        ],
+        "gotSafety": [
+          "security"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M52",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "gas"
+        ],
+        "gotSafety": [
+          "gas"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M53",
+        "split": "heldout",
+        "category": false,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M54",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "flooding",
+          "electrical"
+        ],
+        "gotSafety": [
+          "electrical",
+          "flooding"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M55",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "electrical"
+        ],
+        "gotSafety": [
+          "electrical"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M56",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M57",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M58",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M59",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M60",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "flooding"
+        ],
+        "gotSafety": [
+          "flooding"
+        ],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      }
+    ]
+  },
+  {
+    "method": "llm+rules",
+    "error": null,
+    "live": 0,
+    "cached": 60,
+    "inputTokens": 32444,
+    "outputTokens": 8321,
+    "all": {
+      "n": 60,
+      "category": 57,
+      "urgency": 51,
+      "safetyCases": 23,
+      "safetyUrgent": 23,
+      "flagPrecision": 0.8,
+      "flagRecall": 1,
+      "falseUrgent": 5,
+      "medianLatencyMs": 1
+    },
+    "dev": {
+      "n": 40,
+      "category": 39,
+      "urgency": 35,
+      "safetyCases": 14,
+      "safetyUrgent": 14,
+      "flagPrecision": 0.7777777777777778,
+      "flagRecall": 1,
+      "falseUrgent": 3,
+      "medianLatencyMs": 1
+    },
+    "heldout": {
+      "n": 20,
+      "category": 18,
+      "urgency": 16,
+      "safetyCases": 9,
+      "safetyUrgent": 9,
+      "flagPrecision": 0.8333333333333334,
+      "flagRecall": 1,
+      "falseUrgent": 2,
+      "medianLatencyMs": 1
+    },
+    "rows": [
+      {
+        "id": "M01",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "gas"
+        ],
+        "gotSafety": [
+          "gas"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M02",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "electrical"
+        ],
+        "gotSafety": [
+          "electrical"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M03",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "flooding"
+        ],
+        "gotSafety": [
+          "flooding",
+          "electrical"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M04",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "security"
+        ],
+        "gotSafety": [
+          "security"
+        ],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M05",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M06",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M07",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M08",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M09",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M10",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M11",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "gas"
+        ],
+        "gotSafety": [
+          "gas"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M12",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "electrical"
+        ],
+        "gotSafety": [
+          "electrical"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M13",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "flooding"
+        ],
+        "gotSafety": [
+          "flooding"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M14",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "security"
+        ],
+        "gotSafety": [
+          "security"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M15",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M16",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M17",
+        "split": "dev",
+        "category": true,
+        "urgency": false,
+        "safetyCase": false,
+        "flaggedUrgent": true,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M18",
+        "split": "dev",
+        "category": false,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M19",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M20",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M21",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M22",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "gas"
+        ],
+        "gotSafety": [
+          "gas"
+        ],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M23",
+        "split": "dev",
+        "category": true,
+        "urgency": false,
+        "safetyCase": false,
+        "flaggedUrgent": true,
+        "expectedSafety": [],
+        "gotSafety": [
+          "electrical"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M24",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "flooding"
+        ],
+        "gotSafety": [
+          "flooding"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M25",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "security"
+        ],
+        "gotSafety": [
+          "security"
+        ],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M26",
+        "split": "dev",
+        "category": true,
+        "urgency": false,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M27",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M28",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M29",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M30",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "flooding"
+        ],
+        "gotSafety": [
+          "flooding",
+          "electrical"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M31",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M32",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "security"
+        ],
+        "gotSafety": [
+          "security"
+        ],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M33",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M34",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "electrical"
+        ],
+        "gotSafety": [
+          "electrical"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M35",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M36",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M37",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M38",
+        "split": "dev",
+        "category": true,
+        "urgency": false,
+        "safetyCase": false,
+        "flaggedUrgent": true,
+        "expectedSafety": [],
+        "gotSafety": [
+          "security"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M39",
+        "split": "dev",
+        "category": true,
+        "urgency": false,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M40",
+        "split": "dev",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M41",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M42",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "gas"
+        ],
+        "gotSafety": [
+          "gas"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M43",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "electrical"
+        ],
+        "gotSafety": [
+          "electrical"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M44",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "flooding"
+        ],
+        "gotSafety": [
+          "flooding"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M45",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "security"
+        ],
+        "gotSafety": [
+          "security"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M46",
+        "split": "heldout",
+        "category": true,
+        "urgency": false,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M47",
+        "split": "heldout",
+        "category": true,
+        "urgency": false,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M48",
+        "split": "heldout",
+        "category": true,
+        "urgency": false,
+        "safetyCase": false,
+        "flaggedUrgent": true,
+        "expectedSafety": [],
+        "gotSafety": [
+          "electrical"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M49",
+        "split": "heldout",
+        "category": false,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M50",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M51",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "security"
+        ],
+        "gotSafety": [
+          "security"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M52",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "gas"
+        ],
+        "gotSafety": [
+          "gas"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M53",
+        "split": "heldout",
+        "category": false,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M54",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "flooding",
+          "electrical"
+        ],
+        "gotSafety": [
+          "flooding",
+          "electrical"
+        ],
+        "latencyMs": 2,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M55",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "electrical"
+        ],
+        "gotSafety": [
+          "electrical"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M56",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M57",
+        "split": "heldout",
+        "category": true,
+        "urgency": false,
+        "safetyCase": false,
+        "flaggedUrgent": true,
+        "expectedSafety": [],
+        "gotSafety": [
+          "flooding"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M58",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M59",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": false,
+        "flaggedUrgent": false,
+        "expectedSafety": [],
+        "gotSafety": [],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      },
+      {
+        "id": "M60",
+        "split": "heldout",
+        "category": true,
+        "urgency": true,
+        "safetyCase": true,
+        "flaggedUrgent": true,
+        "expectedSafety": [
+          "flooding"
+        ],
+        "gotSafety": [
+          "flooding"
+        ],
+        "latencyMs": 1,
+        "live": 0,
+        "cached": 1
+      }
+    ]
+  }
+]

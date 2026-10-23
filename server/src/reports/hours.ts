@@ -16,6 +16,8 @@ export const AUTOMATION_LABELS: Record<Automation, string> = {
   rent_reconciliation: 'Rent reconciliation',
   lease_extraction: 'Lease summaries',
   lease_abstraction: 'Lease abstraction',
+  risk_review: 'Arrears risk review',
+  maintenance_triage: 'Maintenance triage',
 }
 
 export interface RunInput {
@@ -76,16 +78,16 @@ function monthRange(month: string): { start: Date; end: Date } {
 }
 
 /** Months (YYYY-MM) that have automation runs, newest first. */
-export async function monthsWithRuns(userId: number): Promise<string[]> {
-  const runs = await prisma.automationRun.findMany({ where: { userId }, select: { createdAt: true } })
+export async function monthsWithRuns(organisationId: number): Promise<string[]> {
+  const runs = await prisma.automationRun.findMany({ where: { organisationId }, select: { createdAt: true } })
   const months = new Set(runs.map((r) => r.createdAt.toISOString().slice(0, 7)))
   return [...months].sort().reverse()
 }
 
-export async function hoursReport(userId: number, month: string) {
+export async function hoursReport(organisationId: number, month: string) {
   const { start, end } = monthRange(month)
   const runs = await prisma.automationRun.findMany({
-    where: { userId, createdAt: { gte: start, lt: end } },
+    where: { organisationId, createdAt: { gte: start, lt: end } },
     select: { automation: true, baselineMinutes: true, reviewSeconds: true, outcome: true },
   })
   const { rows, totals } = summarise(runs)
@@ -100,6 +102,8 @@ export async function hoursReport(userId: number, month: string) {
         'Baseline minutes per item come from the discovery timings (discovery/task-timings.csv).',
         'Review time is measured in the app, from opening an item to approving, correcting or rejecting it.',
         'Rejected or failed items earn no credit: a person did that task by hand.',
+        'Arrears risk counts one item per tenancy the model flagged with a next step (reminder, call or payment plan); the baseline is the arrears check and reminder done by hand.',
+        'Maintenance triage counts one item per tenant request triaged with a contractor suggestion and a draft work order; the baseline is choosing a contractor and writing the job up by hand.',
       ],
     },
   }

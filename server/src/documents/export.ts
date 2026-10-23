@@ -5,13 +5,15 @@ import { toBill, toXeroBillsCsv, type InvoiceForBill } from '../accounting/xero'
 import { prisma } from '../lib/prisma'
 import { DocumentError, valuesOf } from './service'
 import type { LineItem } from './types'
+import type { Actor } from '../lib/actor'
 
 type DocumentWithContractor = NonNullable<Awaited<ReturnType<typeof findInvoices>>>[number]
 
-function findInvoices(userId: number, where: { ids?: number[]; statuses: string[] }) {
+function findInvoices(actor: Actor, where: { ids?: number[]; statuses: string[] }) {
   return prisma.document.findMany({
     where: {
-      userId,
+      userId: actor.userId,
+      organisationId: actor.organisationId,
       kind: 'invoice',
       status: { in: where.statuses },
       ...(where.ids ? { id: { in: where.ids } } : {}),
@@ -34,6 +36,7 @@ export function invoiceForBill(doc: DocumentWithContractor): InvoiceForBill {
   return {
     id: doc.id,
     userId: doc.userId,
+    organisationId: doc.organisationId,
     supplierName: doc.contractor?.name ?? text(v.supplierName) ?? 'Unknown supplier',
     contactEmail: doc.contractor?.email ?? null,
     trade: doc.contractor?.trade ?? null,
@@ -51,8 +54,8 @@ export function invoiceForBill(doc: DocumentWithContractor): InvoiceForBill {
  * The CSV of approved invoices (or of the given ones, to download an export again), and marks them exported.
  * Returns null when there is nothing to export.
  */
-export async function exportXeroBills(userId: number, ids?: number[]): Promise<{ csv: string; count: number } | null> {
-  const docs = await findInvoices(userId, ids ? { ids, statuses: ['approved', 'exported'] } : { statuses: ['approved'] })
+export async function exportXeroBills(actor: Actor, ids?: number[]): Promise<{ csv: string; count: number } | null> {
+  const docs = await findInvoices(actor, ids ? { ids, statuses: ['approved', 'exported'] } : { statuses: ['approved'] })
   if (docs.length === 0) return null
   const csv = toXeroBillsCsv(docs.map((d) => toBill(invoiceForBill(d))))
   await prisma.document.updateMany({
@@ -63,8 +66,8 @@ export async function exportXeroBills(userId: number, ids?: number[]): Promise<{
 }
 
 /** Sends one approved invoice to the accounting adapter as a draft bill, then marks it exported. */
-export async function pushToAccounting(userId: number, id: number) {
-  const [doc] = Number.isInteger(id) ? await findInvoices(userId, { ids: [id], statuses: ['needs_review', 'approved', 'exported', 'rejected'] }) : []
+export async function pushToAccounting(actor: Actor, id: number) {
+  const [doc] = Number.isInteger(id) ? await findInvoices(actor, { ids: [id], statuses: ['needs_review', 'approved', 'exported', 'rejected'] }) : []
   if (!doc) throw new DocumentError(404, 'Invoice not found')
   if (doc.status !== 'approved') {
     throw new DocumentError(409, doc.status === 'exported' ? 'This invoice is already exported.' : 'Approve the invoice before sending it to accounting.')
@@ -81,7 +84,7 @@ export async function pushToAccounting(userId: number, id: number) {
   return { document, bill, adapter: adapter.name }
 }
 
-export async function listAccountingBills(userId: number) {
+export async function listAccountingBills(actor: Actor) {
   const adapter = accountingAdapter()
-  return { adapter: adapter.name, bills: await adapter.listBills({ userId }) }
+  return { adapter: adapter.name, bills: await adapter.listBills({ organisationId: actor.organisationId }) }
 }

@@ -13,6 +13,8 @@ import Documents from './pages/Documents'
 import Reconciliation from './pages/Reconciliation'
 import HoursReturned from './pages/HoursReturned'
 import Leases from './pages/Leases'
+import Audit from './pages/Audit'
+import Company from './pages/Company'
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated } = useAuth()
@@ -44,6 +46,8 @@ export default function App() {
           <Route path="reconciliation" element={<Reconciliation />} />
           <Route path="leases" element={<Leases />} />
           <Route path="hours" element={<HoursReturned />} />
+          <Route path="audit" element={<Audit />} />
+          <Route path="company" element={<Company />} />
         </Route>
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>

@@ -18,11 +18,12 @@ async function managerWithDemoPortfolio(email: string) {
   const res = await request(app).post('/api/auth/register').send({ email, password: 'test-pass-1', name: 'Reconciliation Test' })
   if (res.status !== 201) throw new Error(`register failed: ${res.status}`)
   const userId: number = res.body.user.id
+  const organisationId: number = res.body.user.organisation.id
   const demo = await prisma.user.findUniqueOrThrow({ where: { email: 'demo@example.com' } })
   const contractorIds = new Map<number, number>()
   for (const c of await prisma.contractor.findMany({ where: { userId: demo.id }, orderBy: { id: 'asc' } })) {
     const copy = await prisma.contractor.create({
-      data: { userId, name: c.name, trade: c.trade, email: c.email, gstNumber: c.gstNumber, bankAccount: c.bankAccount },
+      data: { userId, organisationId, name: c.name, trade: c.trade, email: c.email, gstNumber: c.gstNumber, bankAccount: c.bankAccount },
     })
     contractorIds.set(c.id, copy.id)
   }
@@ -33,11 +34,11 @@ async function managerWithDemoPortfolio(email: string) {
   })
   for (const p of properties) {
     const property = await prisma.property.create({
-      data: { userId, code: p.code, address: p.address, suburb: p.suburb, city: p.city, bedrooms: p.bedrooms, bathrooms: p.bathrooms, rentPrice: p.rentPrice, status: p.status },
+      data: { userId, organisationId, code: p.code, address: p.address, suburb: p.suburb, city: p.city, bedrooms: p.bedrooms, bathrooms: p.bathrooms, rentPrice: p.rentPrice, status: p.status },
     })
     for (const l of p.leases) {
       const tenant = await prisma.tenant.create({
-        data: { userId, firstName: l.tenant.firstName, lastName: l.tenant.lastName, email: l.tenant.email, phone: l.tenant.phone },
+        data: { userId, organisationId, firstName: l.tenant.firstName, lastName: l.tenant.lastName, email: l.tenant.email, phone: l.tenant.phone },
       })
       const lease = await prisma.lease.create({
         data: { propertyId: property.id, tenantId: tenant.id, startDate: l.startDate, endDate: l.endDate, weeklyRent: l.weeklyRent, bondAmount: l.bondAmount, rentReference: l.rentReference, status: l.status },
@@ -61,7 +62,7 @@ async function managerWithDemoPortfolio(email: string) {
       })
     }
   }
-  return { auth: { Authorization: `Bearer ${res.body.token}` }, userId }
+  return { auth: { Authorization: `Bearer ${res.body.token}` }, userId, organisationId }
 }
 
 const lineAt = (userId: number, row: number) =>
@@ -334,14 +335,14 @@ describe.skipIf(!hasDb)('reconciliation model suggestions', () => {
   })
 
   it('asks only about unknown and ambiguous lines, stores the answer as a suggestion and applies nothing', async () => {
-    const { userId } = await managerWithDemoPortfolio('reconciliation-ai@example.com')
+    const { userId, organisationId } = await managerWithDemoPortfolio('reconciliation-ai@example.com')
     Object.assign(process.env, { AI_API_KEY: 'test-key', AI_DRIVER: '', AI_MIN_GAP_MS: '0', AI_CACHE_DIR: mkdtempSync(join(tmpdir(), 'recon-ai-')) })
     const answer = { tenancy: 'TAK9', category: 'rent', confidence: 0.8, reason: 'The same payer used the TAK9 reference on 07/09 and 14/09.' }
     const fetchMock = vi.spyOn(globalThis, 'fetch').mockImplementation(
       async () => new Response(JSON.stringify({ choices: [{ message: { content: JSON.stringify(answer) } }], usage: { prompt_tokens: 900, completion_tokens: 40 } })),
     )
 
-    const result = await importStatement(userId, '2026-09-statement.csv', csv)
+    const result = await importStatement({ userId, organisationId, role: 'manager' }, '2026-09-statement.csv', csv)
     expect(fetchMock).toHaveBeenCalledTimes(3)
     expect(result).toMatchObject({ method: 'rules+model', suggestions: 3, exceptions: 9 })
 

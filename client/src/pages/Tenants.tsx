@@ -3,6 +3,8 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { getTenants, createTenant, updateTenant, deleteTenant } from '../api/tenants'
 import { Tenant } from '../types'
 import Modal from '../components/Modal'
+import RiskTab from '../components/RiskTab'
+import { useSearchParams } from 'react-router-dom'
 
 const EMPTY: Partial<Tenant> = { firstName: '', lastName: '', email: '', phone: '' }
 
@@ -13,6 +15,8 @@ export default function Tenants() {
   const [editing, setEditing] = useState<Tenant | null>(null)
   const [form, setForm] = useState<Partial<Tenant>>(EMPTY)
   const [deleteId, setDeleteId] = useState<number | null>(null)
+  const [params, setParams] = useSearchParams()
+  const tab = params.get('tab') === 'risk' ? 'risk' : 'tenants'
 
   const create = useMutation({ mutationFn: createTenant, onSuccess: () => { qc.invalidateQueries({ queryKey: ['tenants'] }); setModal(null) } })
   const update = useMutation({ mutationFn: ({ id, data }: { id: number; data: Partial<Tenant> }) => updateTenant(id, data), onSuccess: () => { qc.invalidateQueries({ queryKey: ['tenants'] }); setModal(null) } })
@@ -36,15 +40,31 @@ export default function Tenants() {
           <h1 className="text-2xl font-bold text-gray-900">Tenants</h1>
           <p className="text-gray-500 mt-1">{tenants.length} tenants registered</p>
         </div>
-        <button className="btn-primary" onClick={openAdd}>
-          <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-          </svg>
-          Add Tenant
-        </button>
+        {tab === 'tenants' && (
+          <button className="btn-primary" onClick={openAdd}>
+            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+            </svg>
+            Add Tenant
+          </button>
+        )}
       </div>
 
-      {isLoading ? (
+      <div className="flex gap-2">
+        {(['tenants', 'risk'] as const).map((t) => (
+          <button
+            key={t}
+            onClick={() => setParams(t === 'risk' ? { tab: 'risk' } : {})}
+            className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${tab === t ? 'bg-blue-600 text-white' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'}`}
+          >
+            {t === 'risk' ? 'Arrears risk' : 'Tenants'}
+          </button>
+        ))}
+      </div>
+
+      {tab === 'risk' ? (
+        <RiskTab />
+      ) : isLoading ? (
         <div className="text-center py-12 text-gray-400">Loading...</div>
       ) : tenants.length === 0 ? (
         <div className="card text-center py-16">

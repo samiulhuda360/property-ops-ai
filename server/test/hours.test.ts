@@ -38,8 +38,8 @@ describe.skipIf(!hasDb)('hours returned: API', () => {
     const user = await prisma.user.findUniqueOrThrow({ where: { email: 'demo@example.com' } })
     await prisma.automationRun.createMany({
       data: [
-        { userId: user.id, automation: 'rent_reconciliation', itemRef: 'test:1', baselineMinutes: 3, outcome: 'auto', createdAt: new Date('2026-07-10') },
-        { userId: user.id, automation: 'rent_reconciliation', itemRef: 'test:2', baselineMinutes: 3, outcome: 'reviewed', reviewSeconds: 60, createdAt: new Date('2026-07-11') },
+        { userId: user.id, organisationId: user.organisationId, automation: 'rent_reconciliation', itemRef: 'test:1', baselineMinutes: 3, outcome: 'auto', createdAt: new Date('2026-07-10') },
+        { userId: user.id, organisationId: user.organisationId, automation: 'rent_reconciliation', itemRef: 'test:2', baselineMinutes: 3, outcome: 'reviewed', reviewSeconds: 60, createdAt: new Date('2026-07-11') },
       ],
     })
     const res = await request(app).get('/api/reports/hours?month=2026-07').set(auth)

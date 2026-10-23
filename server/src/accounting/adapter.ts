@@ -14,6 +14,7 @@ export interface BillLine {
 
 export interface Bill {
   userId: number
+  organisationId: number
   documentId: number
   contactName: string
   contactEmail: string | null
@@ -37,7 +38,7 @@ export interface PushedBill extends Bill {
 export interface AccountingAdapter {
   readonly name: string
   pushBill(bill: Bill): Promise<PushedBill>
-  listBills(filter?: { userId?: number }): Promise<PushedBill[]>
+  listBills(filter?: { organisationId?: number }): Promise<PushedBill[]>
 }
 
 export class AccountingError extends Error {}
@@ -60,7 +61,7 @@ export class MockAccountingAdapter implements AccountingAdapter {
     const bills = this.read()
     const clash = bills.find(
       (b) =>
-        b.userId === bill.userId &&
+        b.organisationId === bill.organisationId &&
         b.contactName.toLowerCase() === bill.contactName.toLowerCase() &&
         b.invoiceNumber.toUpperCase() === bill.invoiceNumber.toUpperCase(),
     )
@@ -76,8 +77,8 @@ export class MockAccountingAdapter implements AccountingAdapter {
     return pushed
   }
 
-  async listBills(filter: { userId?: number } = {}): Promise<PushedBill[]> {
-    return this.read().filter((b) => filter.userId === undefined || b.userId === filter.userId)
+  async listBills(filter: { organisationId?: number } = {}): Promise<PushedBill[]> {
+    return this.read().filter((b) => filter.organisationId === undefined || b.organisationId === filter.organisationId)
   }
 }
 

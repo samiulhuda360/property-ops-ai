@@ -2,6 +2,7 @@
 // maintenance job, record the automation run, and handle a person's approve / dismiss / re-run decisions.
 // Approving stores the reply as approved. Nothing is ever emailed: there is no sending code in this feature.
 import { Prisma } from '@prisma/client'
+import { audit } from '../lib/audit'
 import { recordReview, recordRun, type RunOutcome } from '../lib/automation'
 import { prisma } from '../lib/prisma'
 import type { RemovedSentence } from './guards'
@@ -9,6 +10,7 @@ import { loadDirectory, parseFrom, type LinkMethod } from './link'
 import { ensureTicket, reporterLabel, type TicketDecision } from './tickets'
 import { triageEmail, type TriageResult } from './triage'
 import type { Category, TriageFlag, Urgency } from './types'
+import { isRole, type Actor } from '../lib/actor'
 
 export interface IncomingEmail {
   from: string
@@ -52,14 +54,15 @@ export function getMessage(id: number): Promise<InboxMessageWithLinks | null> {
   return prisma.inboxMessage.findUnique({ where: { id }, include: messageInclude })
 }
 
-export function findMessage(userId: number, id: number): Promise<InboxMessageWithLinks | null> {
-  return prisma.inboxMessage.findFirst({ where: { id, userId }, include: messageInclude })
+export function findMessage(actor: Actor, id: number): Promise<InboxMessageWithLinks | null> {
+  return prisma.inboxMessage.findFirst({ where: { id, organisationId: actor.organisationId }, include: messageInclude })
 }
 
-export function listMessages(userId: number, filters: { statuses?: string[]; category?: string }): Promise<InboxMessageWithLinks[]> {
+export function listMessages(actor: Actor, filters: { statuses?: string[]; category?: string }): Promise<InboxMessageWithLinks[]> {
   return prisma.inboxMessage.findMany({
     where: {
-      userId,
+      userId: actor.userId,
+      organisationId: actor.organisationId,
       ...(filters.statuses?.length ? { status: { in: filters.statuses } } : {}),
       ...(filters.category ? { category: filters.category } : {}),
     },
@@ -68,24 +71,29 @@ export function listMessages(userId: number, filters: { statuses?: string[]; cat
   })
 }
 
-/** The account a webhook message belongs to: the user whose email is the `to` address, else the first user. */
-export async function resolveOwner(to?: string | null): Promise<number | null> {
+/**
+ * The account a webhook message belongs to: the user whose email is the `to` address, else the first user (the
+ * demo manager). The message is stored for that user's organisation.
+ */
+export async function resolveOwner(to?: string | null): Promise<Actor | null> {
+  const select = { id: true, organisationId: true, role: true } as const
+  const toActor = (u: { id: number; organisationId: number; role: string }): Actor => ({ userId: u.id, organisationId: u.organisationId, role: isRole(u.role) ? u.role : 'read_only' })
   if (to) {
     const address = parseFrom(to).email
-    const user = await prisma.user.findFirst({ where: { email: { equals: address, mode: 'insensitive' } }, select: { id: true } })
-    if (user) return user.id
+    const user = await prisma.user.findFirst({ where: { email: { equals: address, mode: 'insensitive' } }, select })
+    if (user) return toActor(user)
   }
-  const first = await prisma.user.findFirst({ orderBy: { id: 'asc' }, select: { id: true } })
-  return first?.id ?? null
+  const first = await prisma.user.findFirst({ orderBy: { id: 'asc' }, select })
+  return first ? toActor(first) : null
 }
 
 const atOrBefore = (d: Date) => new Date(Math.min(d.getTime(), Date.now()))
 
 /** Stores an email and triages it. A messageId already stored for the account returns the stored message. */
-export async function ingestEmail(userId: number, email: IncomingEmail): Promise<{ duplicate: boolean; message: InboxMessageWithLinks }> {
+export async function ingestEmail(actor: Actor, email: IncomingEmail): Promise<{ duplicate: boolean; message: InboxMessageWithLinks }> {
   const externalId = email.messageId?.trim() || null
   const existing = async () => {
-    const found = externalId ? await prisma.inboxMessage.findUnique({ where: { userId_externalId: { userId, externalId } }, select: { id: true } }) : null
+    const found = externalId ? await prisma.inboxMessage.findUnique({ where: { organisationId_externalId: { organisationId: actor.organisationId, externalId } }, select: { id: true } }) : null
     return found ? getMessage(found.id) : null
   }
 
@@ -96,7 +104,8 @@ export async function ingestEmail(userId: number, email: IncomingEmail): Promise
   try {
     const created = await prisma.inboxMessage.create({
       data: {
-        userId,
+        userId: actor.userId,
+        organisationId: actor.organisationId,
         externalId,
         fromAddress: email.from.trim(),
         subject: email.subject.trim(),
@@ -175,7 +184,7 @@ export async function triageStoredMessage(id: number, opts: { firstRun: boolean 
   const msg = await prisma.inboxMessage.findUniqueOrThrow({ where: { id } })
   const ref = itemRef(id)
   try {
-    const dir = await loadDirectory(msg.userId)
+    const dir = await loadDirectory(msg.organisationId)
     const result = await triageEmail({ from: msg.fromAddress, subject: msg.subject, text: msg.body, receivedAt: msg.receivedAt }, dir)
     const previous = (msg.triage as unknown as TriageDetails | null) ?? null
     const ticket = await decideTicket(msg, result, previous)
@@ -198,17 +207,26 @@ export async function triageStoredMessage(id: number, opts: { firstRun: boolean 
         maintenanceRequestId: ticket.id,
       },
     })
+    await audit({
+      actor: msg,
+      action: 'inbox.triaged',
+      entity: 'inbox',
+      entityId: id,
+      after: { method: result.method, category: result.category, urgency: result.urgency, needsPerson: result.needsPerson, ticket: ticket.id },
+      note: `${result.method} triaged "${msg.subject}" as ${result.category}, ${result.urgency}${result.needsPerson ? ', needs a person' : ''}.`,
+      at: opts.firstRun ? msg.receivedAt : undefined,
+    })
     if (opts.firstRun) {
-      await recordRun({ userId: msg.userId, automation: 'inbox_triage', itemRef: ref, outcome: 'auto', at: msg.receivedAt })
+      await recordRun({ actor: msg, automation: 'inbox_triage', itemRef: ref, outcome: 'auto', at: msg.receivedAt })
     } else {
       const run = await prisma.automationRun.findFirst({ where: { itemRef: ref }, orderBy: { id: 'desc' } })
-      if (!run) await recordRun({ userId: msg.userId, automation: 'inbox_triage', itemRef: ref, outcome: 'auto', at: msg.receivedAt })
+      if (!run) await recordRun({ actor: msg, automation: 'inbox_triage', itemRef: ref, outcome: 'auto', at: msg.receivedAt })
       else if (run.outcome === 'failed') await recordReview(ref, 0, 'auto')
     }
   } catch (e) {
     console.error(`Inbox triage failed for message ${id}:`, e instanceof Error ? e.message : e)
     await prisma.inboxMessage.update({ where: { id }, data: { status: 'new', reason: 'Triage failed. Run it again from the inbox.' } })
-    if (opts.firstRun) await recordRun({ userId: msg.userId, automation: 'inbox_triage', itemRef: ref, outcome: 'failed', at: msg.receivedAt })
+    if (opts.firstRun) await recordRun({ actor: msg, automation: 'inbox_triage', itemRef: ref, outcome: 'failed', at: msg.receivedAt })
   }
   return (await getMessage(id))!
 }
@@ -222,8 +240,8 @@ export type ReviewResult = { ok: true; message: InboxMessageWithLinks } | { ok: 
  * A person approves the reply (edited or not). The reply is stored with status "approved" for the person to send
  * from their own email. Nothing is sent from here.
  */
-export async function approveMessage(userId: number, id: number, replyDraft: string, reviewSeconds: number): Promise<ReviewResult> {
-  const msg = await prisma.inboxMessage.findFirst({ where: { id, userId } })
+export async function approveMessage(actor: Actor, id: number, replyDraft: string, reviewSeconds: number): Promise<ReviewResult> {
+  const msg = await prisma.inboxMessage.findFirst({ where: { id, organisationId: actor.organisationId } })
   if (!msg) return { ok: false, status: 404, error: 'Message not found' }
   if (msg.status === 'approved' || msg.status === 'sent') return { ok: false, status: 409, error: 'This reply has already been approved.' }
   if (msg.status === 'new') return { ok: false, status: 409, error: 'This message has not been triaged yet. Run the triage first.' }
@@ -244,12 +262,22 @@ export async function approveMessage(userId: number, id: number, replyDraft: str
     },
   })
   await recordReview(itemRef(id), seconds, outcome)
+  await audit({
+    actor,
+    action: 'inbox.approved',
+    entity: 'inbox',
+    entityId: id,
+    field: 'replyDraft',
+    before: changed ? systemDraft : undefined,
+    after: changed ? replyDraft.trim() : undefined,
+    note: changed ? `Reply to "${msg.subject}" approved after editing.` : `Reply to "${msg.subject}" approved as drafted.`,
+  })
   return { ok: true, message: (await getMessage(id))! }
 }
 
 /** A person decides the message needs no reply from this draft. */
-export async function dismissMessage(userId: number, id: number, reviewSeconds: number): Promise<ReviewResult> {
-  const msg = await prisma.inboxMessage.findFirst({ where: { id, userId } })
+export async function dismissMessage(actor: Actor, id: number, reviewSeconds: number): Promise<ReviewResult> {
+  const msg = await prisma.inboxMessage.findFirst({ where: { id, organisationId: actor.organisationId } })
   if (!msg) return { ok: false, status: 404, error: 'Message not found' }
   if (msg.status === 'approved' || msg.status === 'sent') return { ok: false, status: 409, error: 'An approved reply cannot be dismissed.' }
   const previous = (msg.triage as unknown as TriageDetails | null) ?? null
@@ -263,12 +291,13 @@ export async function dismissMessage(userId: number, id: number, reviewSeconds: 
     },
   })
   await recordReview(itemRef(id), seconds, 'rejected')
+  await audit({ actor, action: 'inbox.dismissed', entity: 'inbox', entityId: id, note: `"${msg.subject}" dismissed: no reply from this draft.` })
   return { ok: true, message: (await getMessage(id))! }
 }
 
 /** Runs the triage again (for example after adding the tenant, or once a model is configured). */
-export async function retriageMessage(userId: number, id: number): Promise<ReviewResult> {
-  const msg = await prisma.inboxMessage.findFirst({ where: { id, userId }, select: { status: true } })
+export async function retriageMessage(actor: Actor, id: number): Promise<ReviewResult> {
+  const msg = await prisma.inboxMessage.findFirst({ where: { id, organisationId: actor.organisationId }, select: { status: true } })
   if (!msg) return { ok: false, status: 404, error: 'Message not found' }
   if (msg.status === 'approved' || msg.status === 'sent') return { ok: false, status: 409, error: 'An approved reply cannot be triaged again.' }
   return { ok: true, message: await triageStoredMessage(id, { firstRun: false }) }

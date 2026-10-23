@@ -13,15 +13,15 @@ function extractedValue(extracted: unknown, field: string): string | null {
  * Reference data for one manager. Rejected documents don't count as earlier invoices, and `excludeDocumentId` leaves
  * out the document being re-checked (so it isn't a duplicate of itself).
  */
-export async function loadReferenceData(userId: number, options: { excludeDocumentId?: number } = {}): Promise<ReferenceData> {
+export async function loadReferenceData(organisationId: number, options: { excludeDocumentId?: number } = {}): Promise<ReferenceData> {
   const [properties, contractors, jobs, leases, invoices] = await Promise.all([
-    prisma.property.findMany({ where: { userId }, select: { id: true, code: true, address: true, suburb: true } }),
-    prisma.contractor.findMany({ where: { userId } }),
-    prisma.maintenanceRequest.findMany({ where: { property: { userId } } }),
-    prisma.lease.findMany({ where: { property: { userId } }, include: { tenant: true } }),
+    prisma.property.findMany({ where: { organisationId }, select: { id: true, code: true, address: true, suburb: true } }),
+    prisma.contractor.findMany({ where: { organisationId } }),
+    prisma.maintenanceRequest.findMany({ where: { property: { organisationId } } }),
+    prisma.lease.findMany({ where: { property: { organisationId } }, include: { tenant: true } }),
     prisma.document.findMany({
       where: {
-        userId,
+        organisationId,
         kind: 'invoice',
         invoiceNumber: { not: null },
         status: { not: 'rejected' },

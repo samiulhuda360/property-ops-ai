@@ -1,3 +1,4 @@
+import type { Actor } from './actor'
 import { prisma } from './prisma'
 
 /**
@@ -11,6 +12,8 @@ export const BASELINE_MINUTES = {
   lease_abstraction: 45,
   rent_reconciliation: 3,
   inbox_triage: 6,
+  risk_review: 8,
+  maintenance_triage: 10,
 } as const
 
 export type Automation = keyof typeof BASELINE_MINUTES
@@ -18,7 +21,7 @@ export type RunOutcome = 'auto' | 'reviewed' | 'corrected' | 'rejected' | 'faile
 
 /** Records one item an automation handled. Call it when the item is created, then update reviewSeconds on review. */
 export async function recordRun(input: {
-  userId: number
+  actor: Pick<Actor, 'userId' | 'organisationId'>
   automation: Automation
   itemRef: string
   outcome: RunOutcome
@@ -27,7 +30,8 @@ export async function recordRun(input: {
 }) {
   return prisma.automationRun.create({
     data: {
-      userId: input.userId,
+      userId: input.actor.userId,
+      organisationId: input.actor.organisationId,
       automation: input.automation,
       itemRef: input.itemRef,
       outcome: input.outcome,

@@ -12,7 +12,8 @@ describe.skipIf(!hasDb)('API on the demo data', () => {
     const auth = await demoAuth()
     const properties = await request(app).get('/api/properties').set(auth)
     expect(properties.status).toBe(200)
-    expect(properties.body).toHaveLength(12)
+    expect(properties.body.length).toBeGreaterThanOrEqual(12)
+    expect(properties.body.map((p: { code: string }) => p.code)).toContain('MTE14')
 
     const contractors = await request(app).get('/api/contractors').set(auth)
     expect(contractors.body.map((c: { name: string }) => c.name)).toContain('Acme Plumbing')

@@ -1,7 +1,8 @@
 import { NextFunction, Response, Router } from 'express'
 import multer from 'multer'
 import { z } from 'zod'
-import { authenticate, AuthRequest } from '../middleware/auth'
+import { PermissionError } from '../lib/actor'
+import { authenticate, requireWrite, AuthRequest } from '../middleware/auth'
 import { loadDemo } from '../reconciliation/demo'
 import { buildWorkbook } from '../reconciliation/excel'
 import {
@@ -18,6 +19,7 @@ import {
 // Rent reconciliation: import a bank statement CSV, match it, review the exceptions, export the workbook.
 const router = Router()
 router.use(authenticate)
+router.use(requireWrite)
 
 const MAX_BYTES = 2 * 1024 * 1024
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: MAX_BYTES, files: 1 } })
@@ -30,6 +32,10 @@ const handle = (fn: Handler) => async (req: AuthRequest, res: Response) => {
   } catch (e) {
     if (e instanceof ReconciliationError) {
       res.status(e.status).json({ error: e.message, details: e.details })
+      return
+    }
+    if (e instanceof PermissionError) {
+      res.status(e.status).json({ error: e.message })
       return
     }
     console.error(e)
@@ -48,7 +54,7 @@ function decode(buffer: Buffer): string {
 
 async function batchFrom(req: AuthRequest): Promise<string | null> {
   const requested = typeof req.query.batch === 'string' ? req.query.batch.trim() : ''
-  return requested || (await latestBatch(req.userId!))
+  return requested || (await latestBatch(req.actor!))
 }
 
 /** POST /api/reconciliation/import (multipart, field "file"): imports the lines and runs the matching. */
@@ -73,7 +79,7 @@ router.post(
       res.status(400).json({ error: 'Upload the CSV export from the bank (a .csv file).' })
       return
     }
-    const result = await importStatement(req.userId!, file.originalname, decode(file.buffer))
+    const result = await importStatement(req.actor!, file.originalname, decode(file.buffer))
     res.status(result.alreadyImported ? 200 : 201).json(result)
   }),
 )
@@ -82,7 +88,7 @@ router.post(
 router.post(
   '/demo',
   handle(async (req, res) => {
-    const result = await loadDemo(req.userId!)
+    const result = await loadDemo(req.actor!)
     res.status(result.alreadyImported ? 200 : 201).json(result)
   }),
 )
@@ -91,7 +97,7 @@ router.post(
 router.get(
   '/batches',
   handle(async (req, res) => {
-    res.json(await listBatches(req.userId!))
+    res.json(await listBatches(req.actor!))
   }),
 )
 
@@ -107,7 +113,7 @@ router.get(
       return
     }
     const batch = await batchFrom(req)
-    res.json(batch ? await listTransactions(req.userId!, batch, status as StatusFilter) : [])
+    res.json(batch ? await listTransactions(req.actor!, batch, status as StatusFilter) : [])
   }),
 )
 
@@ -116,7 +122,7 @@ router.get(
   '/summary',
   handle(async (req, res) => {
     const batch = await batchFrom(req)
-    const summary = batch ? await batchSummary(req.userId!, batch) : null
+    const summary = batch ? await batchSummary(req.actor!, batch) : null
     if (!summary) {
       res.status(404).json({ error: batch ? 'That statement was not found.' : 'No statement has been imported yet.' })
       return
@@ -146,7 +152,7 @@ router.post(
       })
       return
     }
-    res.json(await resolveLine(req.userId!, id, parsed.data))
+    res.json(await resolveLine(req.actor!, id, parsed.data))
   }),
 )
 
@@ -155,12 +161,12 @@ router.get(
   '/export.xlsx',
   handle(async (req, res) => {
     const batch = await batchFrom(req)
-    const summary = batch ? await batchSummary(req.userId!, batch) : null
+    const summary = batch ? await batchSummary(req.actor!, batch) : null
     if (!batch || !summary) {
       res.status(404).json({ error: 'No statement to export.' })
       return
     }
-    const lines = await listTransactions(req.userId!, batch, 'all')
+    const lines = await listTransactions(req.actor!, batch, 'all')
     const book = buildWorkbook({ summary, lines, generatedAt: new Date() })
     const buffer = Buffer.from(await book.xlsx.writeBuffer())
     res.setHeader('content-type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')

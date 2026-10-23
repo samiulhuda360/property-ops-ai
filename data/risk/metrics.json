@@ -1,0 +1,142 @@
+{
+  "backtest": {
+    "cutoff": "2026-06",
+    "positives": 11,
+    "rows": 60
+  },
+  "bands": {
+    "backtest": {
+      "high": 16,
+      "low": 42,
+      "medium": 2
+    },
+    "demo": {
+      "high": 19,
+      "low": 38,
+      "medium": 3
+    },
+    "thresholds": {
+      "high": 0.5,
+      "medium": 0.25
+    }
+  },
+  "calibration": {
+    "gradient_boosting": [
+      {
+        "bin": "0.0-0.2",
+        "count": 47,
+        "meanPredicted": 0.013520833788235414,
+        "observedRate": 0.0425531914893617
+      },
+      {
+        "bin": "0.2-0.4",
+        "count": 0,
+        "meanPredicted": 0.0,
+        "observedRate": 0.0
+      },
+      {
+        "bin": "0.4-0.6",
+        "count": 0,
+        "meanPredicted": 0.0,
+        "observedRate": 0.0
+      },
+      {
+        "bin": "0.6-0.8",
+        "count": 2,
+        "meanPredicted": 0.752593588378317,
+        "observedRate": 0.0
+      },
+      {
+        "bin": "0.8-1.0",
+        "count": 11,
+        "meanPredicted": 0.9599526445261154,
+        "observedRate": 0.8181818181818182
+      }
+    ],
+    "logistic_regression": [
+      {
+        "bin": "0.0-0.2",
+        "count": 40,
+        "meanPredicted": 0.04899347453841664,
+        "observedRate": 0.05
+      },
+      {
+        "bin": "0.2-0.4",
+        "count": 3,
+        "meanPredicted": 0.23413256962198195,
+        "observedRate": 0.0
+      },
+      {
+        "bin": "0.4-0.6",
+        "count": 3,
+        "meanPredicted": 0.5138428643316564,
+        "observedRate": 0.0
+      },
+      {
+        "bin": "0.6-0.8",
+        "count": 1,
+        "meanPredicted": 0.7661925126419441,
+        "observedRate": 0.0
+      },
+      {
+        "bin": "0.8-1.0",
+        "count": 13,
+        "meanPredicted": 0.9630232720277994,
+        "observedRate": 0.6923076923076923
+      }
+    ]
+  },
+  "models": {
+    "gradient_boosting": {
+      "auc": 0.8747680890538034,
+      "brier": 0.07837306268501804,
+      "precisionAt10": 0.9,
+      "precisionAt15": 0.6,
+      "recallAt10": 0.8181818181818182,
+      "recallAt15": 0.8181818181818182
+    },
+    "logistic_regression": {
+      "auc": 0.8942486085343229,
+      "brier": 0.11122423572827936,
+      "precisionAt10": 0.9,
+      "precisionAt15": 0.6,
+      "recallAt10": 0.8181818181818182,
+      "recallAt15": 0.8181818181818182
+    },
+    "random": {
+      "auc": 0.5,
+      "note": "expected value of a random ranking, not simulated"
+    },
+    "rule": {
+      "auc": 0.7866419294990723,
+      "brier": 0.23333333333333334,
+      "flagged": 21,
+      "precisionAt10": 0.6,
+      "precisionAt15": 0.4666666666666667,
+      "precisionFlagged": 0.42857142857142855,
+      "recallAt10": 0.5454545454545454,
+      "recallAt15": 0.6363636363636364,
+      "recallFlagged": 0.8181818181818182
+    }
+  },
+  "numpyVsSklearnMaxAbsDiff": 0.0,
+  "profiles": {
+    "chronic_late": 7,
+    "deteriorating": 5,
+    "occasional_late": 12,
+    "partial_payer": 6,
+    "reliable": 23,
+    "seasonal": 4,
+    "shock": 3
+  },
+  "trainedAt": "2026-10-23",
+  "training": {
+    "cutoffs": [
+      "2025-09",
+      "2025-12",
+      "2026-03"
+    ],
+    "positives": 20,
+    "rows": 159
+  }
+}

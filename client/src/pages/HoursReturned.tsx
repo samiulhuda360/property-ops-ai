@@ -17,6 +17,8 @@ const TASK_LABELS: Record<string, string> = {
   lease_abstraction: 'Lease abstraction',
   rent_reconciliation: 'Bank line',
   inbox_triage: 'Tenant email',
+  risk_review: 'Tenancy at risk',
+  maintenance_triage: 'Tenant repair request',
 }
 
 function monthName(month: string) {

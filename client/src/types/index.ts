@@ -1,7 +1,23 @@
+export type Role = 'manager' | 'accounts' | 'property_manager' | 'read_only'
+
 export interface User {
   id: number
   email: string
   name: string
+  role?: Role
+  roleLabel?: string
+  limits?: { invoice: number | null; workOrder: number | null; canDecide: boolean }
+  organisation?: { id: number; name: string; slug: string; country: string; currency: string }
+}
+
+export interface Contractor {
+  id: number
+  name: string
+  trade: string
+  email?: string | null
+  available?: boolean
+  availableFrom?: string | null
+  notes?: string | null
 }
 
 export interface Property {
@@ -64,11 +80,21 @@ export interface MaintenanceRequest {
   id: number
   propertyId: number
   property?: Property
+  contractorId?: number | null
+  contractor?: Contractor | null
   title: string
   description: string
   priority: 'low' | 'medium' | 'high' | 'urgent'
   status: 'open' | 'in_progress' | 'completed'
+  source?: 'manual' | 'inbox' | 'tenant_request'
+  category?: string | null
+  triage?: import('./maintenance').Triage | null
+  workOrder?: import('./maintenance').WorkOrder | null
+  triageMethod?: string | null
+  photoNote?: string | null
+  quoteAmount?: number | null
   cost?: number
   completedAt?: string
+  approvedAt?: string | null
   createdAt: string
 }

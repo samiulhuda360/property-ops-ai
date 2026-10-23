@@ -10,27 +10,27 @@ const MONTH = /^\d{4}-(0[1-9]|1[0-2])$/
 
 /** GET /api/reports/hours?month=YYYY-MM (defaults to the latest month with automation runs). */
 router.get('/hours', async (req: AuthRequest, res: Response) => {
-  const months = await monthsWithRuns(req.userId!)
+  const months = await monthsWithRuns(req.actor!.organisationId)
   const requested = typeof req.query.month === 'string' ? req.query.month : undefined
   if (requested && !MONTH.test(requested)) {
     res.status(400).json({ error: 'month must look like 2026-09' })
     return
   }
   const month = requested ?? months[0] ?? new Date().toISOString().slice(0, 7)
-  const [report, usage] = await Promise.all([hoursReport(req.userId!, month), aiUsage()])
+  const [report, usage] = await Promise.all([hoursReport(req.actor!.organisationId, month), aiUsage()])
   res.json({ ...report, months, aiUsage: usage })
 })
 
 /** GET /api/reports/work-queue: counts of items waiting for a person, for the dashboard. */
 router.get('/work-queue', async (req: AuthRequest, res: Response) => {
-  res.json(await workQueue(req.userId!))
+  res.json(await workQueue(req.actor!.organisationId))
 })
 
 /** GET /api/reports/hours.csv?month=YYYY-MM: the same table for a spreadsheet or an owner report. */
 router.get('/hours.csv', async (req: AuthRequest, res: Response) => {
   const month = typeof req.query.month === 'string' && MONTH.test(req.query.month) ? req.query.month : undefined
-  const months = await monthsWithRuns(req.userId!)
-  const report = await hoursReport(req.userId!, month ?? months[0] ?? new Date().toISOString().slice(0, 7))
+  const months = await monthsWithRuns(req.actor!.organisationId)
+  const report = await hoursReport(req.actor!.organisationId, month ?? months[0] ?? new Date().toISOString().slice(0, 7))
   const lines = [
     'automation,items,baseline_minutes_per_item,baseline_hours,review_hours,hours_returned',
     ...report.rows.map(

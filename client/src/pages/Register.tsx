@@ -6,6 +6,7 @@ export default function Register() {
   const { register, isAuthenticated } = useAuth()
   const navigate = useNavigate()
   const [name, setName] = useState('')
+  const [company, setCompany] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -19,7 +20,7 @@ export default function Register() {
     if (password.length < 6) { setError('Password must be at least 6 characters'); return }
     setLoading(true)
     try {
-      await register(name, email, password)
+      await register(name, email, password, company)
       navigate('/dashboard')
     } catch (err: any) {
       setError(err.response?.data?.error || 'Registration failed')
@@ -55,9 +56,21 @@ export default function Register() {
                 className="input"
                 value={name}
                 onChange={e => setName(e.target.value)}
-                placeholder="John Smith"
+                placeholder="Sarah Thompson"
                 required
               />
+            </div>
+            <div>
+              <label className="label">Company</label>
+              <input
+                type="text"
+                className="input"
+                value={company}
+                onChange={e => setCompany(e.target.value)}
+                placeholder="Harbour Homes Ltd"
+                required
+              />
+              <p className="text-xs text-gray-400 mt-1">You become the company's manager and can invite other roles later.</p>
             </div>
             <div>
               <label className="label">Email address</label>

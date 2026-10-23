@@ -16,6 +16,8 @@ import inboxRoutes from './routes/inbox'
 import webhookRoutes from './routes/webhooks'
 import reportRoutes from './routes/reports'
 import leaseAbstractRoutes from './routes/leaseAbstracts'
+import riskRoutes from './routes/risk'
+import auditRoutes from './routes/audit'
 
 // Every model call is stored for the AI usage panel; a failed write never breaks a feature.
 setCallLogger((record) => prisma.aiCall.create({ data: record }).then(() => undefined))
@@ -42,6 +44,8 @@ export function createApp() {
   app.use('/api/webhooks', webhookRoutes)
   app.use('/api/reports', reportRoutes)
   app.use('/api/lease-abstracts', leaseAbstractRoutes)
+  app.use('/api/risk', riskRoutes)
+  app.use('/api/audit', auditRoutes)
 
   app.get('/api/health', (_req, res) => res.json({ status: 'ok' }))
   return app

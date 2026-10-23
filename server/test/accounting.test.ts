@@ -8,6 +8,7 @@ import { toBill, toXeroBillsCsv, XERO_BILL_COLUMNS, type InvoiceForBill } from '
 const invoice: InvoiceForBill = {
   id: 1,
   userId: 1,
+  organisationId: 1,
   supplierName: 'Acme Plumbing',
   contactEmail: 'accounts@acme-plumbing.example.com',
   trade: 'plumbing',
@@ -55,7 +56,7 @@ describe('mock accounting adapter', () => {
     const pushed = await adapter.pushBill(toBill(invoice))
     expect(pushed).toMatchObject({ id: 'MOCK-BILL-0001', status: 'DRAFT', invoiceNumber: 'AP-2291' })
     await expect(adapter.pushBill(toBill(invoice))).rejects.toBeInstanceOf(AccountingError)
-    expect(await new MockAccountingAdapter(file).listBills({ userId: 1 })).toHaveLength(1)
-    expect(await adapter.listBills({ userId: 2 })).toEqual([])
+    expect(await new MockAccountingAdapter(file).listBills({ organisationId: 1 })).toHaveLength(1)
+    expect(await adapter.listBills({ organisationId: 2 })).toEqual([])
   })
 })

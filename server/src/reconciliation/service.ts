@@ -5,6 +5,7 @@
 // twice, importing statements out of order, or changing a decision can never double-count money.
 import { Prisma, type BankTransaction } from '@prisma/client'
 import { aiConfig, aiEnabled } from '../ai/llm'
+import { audit } from '../lib/audit'
 import { recordReview, recordRun, type RunOutcome } from '../lib/automation'
 import { prisma } from '../lib/prisma'
 import { suggestForLine, type AiSuggestion, type SuggestionInput } from './ai'
@@ -24,6 +25,7 @@ import {
   type Snapshot,
   type StatementLine,
 } from './types'
+import type { Actor } from '../lib/actor'
 
 export const AUTOMATION = 'rent_reconciliation' as const
 
@@ -130,13 +132,13 @@ export interface Portfolio {
 }
 
 /** Leases, rent payments (with the money already allocated to each), contractors, jobs and earlier lines. */
-export async function loadPortfolio(userId: number, db: Db = prisma): Promise<Portfolio> {
-  const properties = await db.property.findMany({ where: { userId }, orderBy: { id: 'asc' } })
-  const leases = await db.lease.findMany({ where: { property: { userId } }, include: { tenant: true, property: true }, orderBy: { id: 'asc' } })
-  const payments = await db.payment.findMany({ where: { lease: { property: { userId } } }, orderBy: [{ dueDate: 'asc' }, { id: 'asc' }] })
-  const contractors = await db.contractor.findMany({ where: { userId }, orderBy: { id: 'asc' } })
-  const jobs = await db.maintenanceRequest.findMany({ where: { property: { userId } }, include: { property: true }, orderBy: { id: 'asc' } })
-  const lines = await db.bankTransaction.findMany({ where: { userId }, orderBy: [{ date: 'asc' }, { id: 'asc' }] })
+export async function loadPortfolio(actor: Actor, db: Db = prisma): Promise<Portfolio> {
+  const properties = await db.property.findMany({ where: { organisationId: actor.organisationId }, orderBy: { id: 'asc' } })
+  const leases = await db.lease.findMany({ where: { property: { organisationId: actor.organisationId } }, include: { tenant: true, property: true }, orderBy: { id: 'asc' } })
+  const payments = await db.payment.findMany({ where: { lease: { property: { organisationId: actor.organisationId } } }, orderBy: [{ dueDate: 'asc' }, { id: 'asc' }] })
+  const contractors = await db.contractor.findMany({ where: { organisationId: actor.organisationId }, orderBy: { id: 'asc' } })
+  const jobs = await db.maintenanceRequest.findMany({ where: { property: { organisationId: actor.organisationId } }, include: { property: true }, orderBy: { id: 'asc' } })
+  const lines = await db.bankTransaction.findMany({ where: { organisationId: actor.organisationId }, orderBy: [{ date: 'asc' }, { id: 'asc' }] })
 
   const touched = new Set(lines.flatMap((l) => readDetails(l).touchedPayments))
   const allocated = new Map<number, number>()
@@ -199,10 +201,10 @@ export async function loadPortfolio(userId: number, db: Db = prisma): Promise<Po
  * paid (with the date of the line that finished paying it) when fully covered, otherwise pending.
  * Payments paid before any bank line touched them (the opening balance) are left alone.
  */
-export async function refreshLedger(userId: number, db: Db): Promise<void> {
-  const leases = await db.lease.findMany({ where: { property: { userId } } })
-  const payments = await db.payment.findMany({ where: { lease: { property: { userId } } } })
-  const lines = await db.bankTransaction.findMany({ where: { userId }, orderBy: [{ date: 'asc' }, { id: 'asc' }] })
+export async function refreshLedger(actor: Actor, db: Db): Promise<void> {
+  const leases = await db.lease.findMany({ where: { property: { organisationId: actor.organisationId } } })
+  const payments = await db.payment.findMany({ where: { lease: { property: { organisationId: actor.organisationId } } } })
+  const lines = await db.bankTransaction.findMany({ where: { organisationId: actor.organisationId }, orderBy: [{ date: 'asc' }, { id: 'asc' }] })
   const touched = new Set(lines.flatMap((l) => readDetails(l).touchedPayments))
 
   for (const lease of leases) {
@@ -282,7 +284,7 @@ export interface ImportResult {
 }
 
 export async function importStatement(
-  userId: number,
+  actor: Actor,
   fileName: string,
   text: string,
   options: { suggest?: boolean } = {},
@@ -295,7 +297,7 @@ export async function importStatement(
   const hashes = lineHashes(parsed.lines)
   const batch = batchId(fileName, parsed.lines)
   const known = await prisma.bankTransaction.findMany({
-    where: { userId, lineHash: { in: hashes } },
+    where: { organisationId: actor.organisationId, lineHash: { in: hashes } },
     select: { lineHash: true, importBatch: true },
   })
   const knownHashes = new Set(known.map((k) => k.lineHash))
@@ -310,7 +312,7 @@ export async function importStatement(
   try {
     ids = await prisma.$transaction(
       async (tx) => {
-        const { snapshot } = await loadPortfolio(userId, tx)
+        const { snapshot } = await loadPortfolio(actor, tx)
         const { results } = reconcile(
           fresh.map((f) => f.line),
           snapshot,
@@ -342,7 +344,8 @@ export async function importStatement(
           }
           const row = await tx.bankTransaction.create({
             data: {
-              userId,
+              userId: actor.userId,
+              organisationId: actor.organisationId,
               importBatch: batch,
               date: day(line.date),
               amount: line.amount,
@@ -361,7 +364,7 @@ export async function importStatement(
           })
           created.push(row.id)
         }
-        await refreshLedger(userId, tx)
+        await refreshLedger(actor, tx)
         return created
       },
       { timeout: 60_000, maxWait: 10_000 },
@@ -376,14 +379,25 @@ export async function importStatement(
   const saved = await prisma.bankTransaction.findMany({ where: { id: { in: ids } }, orderBy: { id: 'asc' } })
   for (const line of saved) {
     if (line.matchStatus === 'matched' && !line.exception) {
-      await recordRun({ userId, automation: AUTOMATION, itemRef: `bank:${line.id}`, outcome: 'auto', at: line.date })
+      await recordRun({ actor, automation: AUTOMATION, itemRef: `bank:${line.id}`, outcome: 'auto', at: line.date })
     }
   }
 
   let suggestions = 0
   if ((options.suggest ?? true) && aiEnabled()) {
-    suggestions = await addSuggestions(userId, saved.filter(needsSuggestion))
+    suggestions = await addSuggestions(actor, saved.filter(needsSuggestion))
   }
+  const matchedCount = saved.filter((l) => l.matchStatus === 'matched').length
+  const exceptionCount = saved.filter((l) => l.matchStatus === 'exception').length
+  await audit({
+    actor,
+    action: 'bank.imported',
+    entity: 'bank',
+    entityId: null,
+    after: { batch, lines: saved.length, matched: matchedCount, exceptions: exceptionCount, suggestions },
+    note: `${fileName}: ${saved.length} lines imported, ${matchedCount} matched by the rules, ${exceptionCount} for a person${suggestions ? `, ${suggestions} model suggestions` : ''}.`,
+    at: saved.length ? saved[saved.length - 1].date : undefined,
+  })
 
   return {
     ...base,
@@ -445,9 +459,9 @@ export function suggestionInput(line: BankTransaction, portfolio: Portfolio, asO
 }
 
 /** Asks the model about each line and stores its answer as a suggestion. Returns how many usable suggestions came back. */
-export async function addSuggestions(userId: number, lines: BankTransaction[]): Promise<number> {
+export async function addSuggestions(actor: Actor, lines: BankTransaction[]): Promise<number> {
   if (lines.length === 0) return 0
-  const portfolio = await loadPortfolio(userId)
+  const portfolio = await loadPortfolio(actor)
   const asOf = portfolio.lines.reduce((max, l) => (iso(l.date) > max ? iso(l.date) : max), '0000-00-00')
   let usable = 0
   for (const line of lines) {
@@ -476,8 +490,8 @@ export interface ResolveInput {
  * tenancy (or links a payment to another job); ignore leaves the line out of the ledger. The rent ledger is rebuilt
  * afterwards, and the review time is added to the line's automation run.
  */
-export async function resolveLine(userId: number, id: number, input: ResolveInput) {
-  const line = await prisma.bankTransaction.findFirst({ where: { id, userId } })
+export async function resolveLine(actor: Actor, id: number, input: ResolveInput) {
+  const line = await prisma.bankTransaction.findFirst({ where: { id, organisationId: actor.organisationId } })
   if (!line) throw new ReconciliationError('Bank line not found.', 404)
   const d = readDetails(line)
   const next: LineDetails = { ...d }
@@ -496,13 +510,13 @@ export async function resolveLine(userId: number, id: number, input: ResolveInpu
     }
   } else if (input.decision === 'reassign') {
     if (input.leaseId) {
-      const lease = await prisma.lease.findFirst({ where: { id: input.leaseId, property: { userId } } })
+      const lease = await prisma.lease.findFirst({ where: { id: input.leaseId, property: { organisationId: actor.organisationId } } })
       if (!lease) throw new ReconciliationError('That tenancy was not found.', 404)
       if (line.amount <= 0) throw new ReconciliationError('Only money in can be put towards rent.')
       Object.assign(next, { leaseId: lease.id, propertyId: lease.propertyId, allocatable: true, method: 'person', confidence: 1, jobId: null, contractorId: null, category: null })
       matchType = 'rent'
     } else if (input.jobId) {
-      const job = await prisma.maintenanceRequest.findFirst({ where: { id: input.jobId, property: { userId } } })
+      const job = await prisma.maintenanceRequest.findFirst({ where: { id: input.jobId, property: { organisationId: actor.organisationId } } })
       if (!job) throw new ReconciliationError('That job was not found.', 404)
       Object.assign(next, { jobId: job.id, propertyId: job.propertyId, contractorId: job.contractorId ?? d.contractorId, leaseId: null, allocatable: false, method: 'person', confidence: 1 })
       matchType = 'contractor'
@@ -540,16 +554,26 @@ export async function resolveLine(userId: number, id: number, input: ResolveInpu
         where: { id: line.id },
         data: { matchStatus, matchType, details: asJson(next), resolution: asJson(resolution) },
       })
-      await refreshLedger(userId, tx)
+      await refreshLedger(actor, tx)
     },
     { timeout: 60_000, maxWait: 10_000 },
   )
 
   const itemRef = `bank:${line.id}`
   const reviewed = await recordReview(itemRef, reviewSeconds, outcome)
-  if (!reviewed) await recordRun({ userId, automation: AUTOMATION, itemRef, outcome, reviewSeconds, at: line.date })
+  if (!reviewed) await recordRun({ actor, automation: AUTOMATION, itemRef, outcome, reviewSeconds, at: line.date })
 
-  const [view] = await describeLines(userId, await prisma.bankTransaction.findMany({ where: { id: line.id } }))
+  await audit({
+    actor,
+    action: 'bank.resolved',
+    entity: 'bank',
+    entityId: line.id,
+    field: 'decision',
+    before: { matchStatus: d.engine.matchStatus, exception: d.engine.exception, leaseId: d.engine.leaseId, jobId: d.engine.jobId },
+    after: { decision: input.decision, matchStatus, leaseId: next.leaseId, jobId: next.jobId },
+    note: `Bank line ${line.id} (${line.description}, ${line.amount}): ${input.decision}${input.note?.trim() ? `; ${input.note.trim()}` : ''}.`,
+  })
+  const [view] = await describeLines(actor, await prisma.bankTransaction.findMany({ where: { id: line.id } }))
   return view
 }
 
@@ -589,10 +613,10 @@ export interface LineView {
   engine: LineDetails['engine']
 }
 
-export async function describeLines(userId: number, lines: BankTransaction[]): Promise<LineView[]> {
-  const leases = await prisma.lease.findMany({ where: { property: { userId } }, include: { tenant: true, property: true } })
-  const jobs = await prisma.maintenanceRequest.findMany({ where: { property: { userId } }, include: { property: true } })
-  const contractors = await prisma.contractor.findMany({ where: { userId } })
+export async function describeLines(actor: Actor, lines: BankTransaction[]): Promise<LineView[]> {
+  const leases = await prisma.lease.findMany({ where: { property: { organisationId: actor.organisationId } }, include: { tenant: true, property: true } })
+  const jobs = await prisma.maintenanceRequest.findMany({ where: { property: { organisationId: actor.organisationId } }, include: { property: true } })
+  const contractors = await prisma.contractor.findMany({ where: { organisationId: actor.organisationId } })
   return lines.map((line) => {
     const d = readDetails(line)
     const lease = leases.find((l) => l.id === d.leaseId)
@@ -663,14 +687,14 @@ function leaseRefOf(lease: { id: number; propertyId: number; weeklyRent: number;
 
 export type StatusFilter = 'all' | 'exception' | 'matched' | 'ignored' | 'resolved'
 
-export async function listTransactions(userId: number, batch: string | undefined, status: StatusFilter = 'all'): Promise<LineView[]> {
-  const where: Prisma.BankTransactionWhereInput = { userId, ...(batch ? { importBatch: batch } : {}) }
+export async function listTransactions(actor: Actor, batch: string | undefined, status: StatusFilter = 'all'): Promise<LineView[]> {
+  const where: Prisma.BankTransactionWhereInput = { organisationId: actor.organisationId, ...(batch ? { importBatch: batch } : {}) }
   if (status === 'exception') where.matchStatus = 'exception'
   if (status === 'matched') where.matchStatus = 'matched'
   if (status === 'ignored') where.matchStatus = 'ignored'
   if (status === 'resolved') Object.assign(where, { exception: { not: null }, matchStatus: { not: 'exception' } })
   const lines = await prisma.bankTransaction.findMany({ where, orderBy: [{ date: 'asc' }, { id: 'asc' }] })
-  return describeLines(userId, lines)
+  return describeLines(actor, lines)
 }
 
 export interface BatchInfo {
@@ -683,9 +707,9 @@ export interface BatchInfo {
   importedAt: string
 }
 
-export async function listBatches(userId: number): Promise<BatchInfo[]> {
+export async function listBatches(actor: Actor): Promise<BatchInfo[]> {
   const lines = await prisma.bankTransaction.findMany({
-    where: { userId },
+    where: { organisationId: actor.organisationId },
     select: { importBatch: true, date: true, createdAt: true, matchStatus: true, details: true },
     orderBy: { id: 'asc' },
   })
@@ -709,8 +733,8 @@ export async function listBatches(userId: number): Promise<BatchInfo[]> {
   return [...batches.values()].sort((a, b) => b.importedAt.localeCompare(a.importedAt) || b.periodEnd.localeCompare(a.periodEnd))
 }
 
-export async function latestBatch(userId: number): Promise<string | null> {
-  return (await listBatches(userId))[0]?.batch ?? null
+export async function latestBatch(actor: Actor): Promise<string | null> {
+  return (await listBatches(actor))[0]?.batch ?? null
 }
 
 export interface BatchSummary {
@@ -730,8 +754,8 @@ export interface BatchSummary {
   method: { label: string; rules: true; model: { enabled: boolean; name: string | null; suggestions: number } }
 }
 
-export async function batchSummary(userId: number, batch: string): Promise<BatchSummary | null> {
-  const portfolio = await loadPortfolio(userId)
+export async function batchSummary(actor: Actor, batch: string): Promise<BatchSummary | null> {
+  const portfolio = await loadPortfolio(actor)
   const lines = portfolio.lines.filter((l) => l.importBatch === batch)
   if (lines.length === 0) return null
   const dates = lines.map((l) => iso(l.date)).sort()

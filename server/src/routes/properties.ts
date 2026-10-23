@@ -1,15 +1,16 @@
 import { Router, Response } from 'express'
 import { prisma } from '../lib/prisma'
-import { authenticate, AuthRequest } from '../middleware/auth'
+import { authenticate, requireWrite, AuthRequest } from '../middleware/auth'
 
 const router = Router()
 
 router.use(authenticate)
+router.use(requireWrite)
 
 router.get('/', async (req: AuthRequest, res: Response) => {
   try {
     const properties = await prisma.property.findMany({
-      where: { userId: req.userId },
+      where: { organisationId: req.actor!.organisationId },
       include: {
         leases: { where: { status: 'active' }, include: { tenant: true } },
         _count: { select: { maintenance: true } },
@@ -25,7 +26,7 @@ router.get('/', async (req: AuthRequest, res: Response) => {
 router.get('/:id', async (req: AuthRequest, res: Response) => {
   try {
     const property = await prisma.property.findFirst({
-      where: { id: Number(req.params.id), userId: req.userId },
+      where: { id: Number(req.params.id), organisationId: req.actor!.organisationId },
       include: {
         leases: { include: { tenant: true, payments: { orderBy: { dueDate: 'desc' }, take: 5 } } },
         maintenance: { orderBy: { createdAt: 'desc' } },
@@ -42,7 +43,7 @@ router.post('/', async (req: AuthRequest, res: Response) => {
   try {
     const { address, suburb, city, bedrooms, bathrooms, rentPrice, status, description } = req.body
     const property = await prisma.property.create({
-      data: { address, suburb, city, bedrooms: Number(bedrooms), bathrooms: Number(bathrooms), rentPrice: Number(rentPrice), status: status || 'vacant', description, userId: req.userId! },
+      data: { address, suburb, city, bedrooms: Number(bedrooms), bathrooms: Number(bathrooms), rentPrice: Number(rentPrice), status: status || 'vacant', description, userId: req.actor!.userId, organisationId: req.actor!.organisationId },
     })
     res.status(201).json(property)
   } catch {
@@ -52,7 +53,7 @@ router.post('/', async (req: AuthRequest, res: Response) => {
 
 router.put('/:id', async (req: AuthRequest, res: Response) => {
   try {
-    const existing = await prisma.property.findFirst({ where: { id: Number(req.params.id), userId: req.userId } })
+    const existing = await prisma.property.findFirst({ where: { id: Number(req.params.id), organisationId: req.actor!.organisationId } })
     if (!existing) { res.status(404).json({ error: 'Not found' }); return }
     const { address, suburb, city, bedrooms, bathrooms, rentPrice, status, description } = req.body
     const property = await prisma.property.update({
@@ -67,7 +68,7 @@ router.put('/:id', async (req: AuthRequest, res: Response) => {
 
 router.delete('/:id', async (req: AuthRequest, res: Response) => {
   try {
-    const existing = await prisma.property.findFirst({ where: { id: Number(req.params.id), userId: req.userId } })
+    const existing = await prisma.property.findFirst({ where: { id: Number(req.params.id), organisationId: req.actor!.organisationId } })
     if (!existing) { res.status(404).json({ error: 'Not found' }); return }
     await prisma.property.delete({ where: { id: Number(req.params.id) } })
     res.json({ success: true })

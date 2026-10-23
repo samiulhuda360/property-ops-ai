@@ -6,12 +6,13 @@ import { approveMessage, dismissMessage, findMessage, listMessages, retriageMess
 import { getClause } from '../inbox/terms'
 import { CATEGORIES } from '../inbox/types'
 import { prisma } from '../lib/prisma'
-import { authenticate, AuthRequest } from '../middleware/auth'
+import { authenticate, requireWrite, AuthRequest } from '../middleware/auth'
 
 // The tenant inbox for the signed-in manager. Approving stores the reply as approved: nothing is ever emailed.
 const router = Router()
 
 router.use(authenticate)
+router.use(requireWrite)
 
 const STATUSES = ['new', 'triaged', 'approved', 'sent', 'dismissed'] as const
 const STATUS_GROUPS: Record<string, string[]> = { open: ['new', 'triaged'], all: [] }
@@ -41,7 +42,7 @@ function sendReview(res: Response, result: ReviewResult) {
 /** Mode and counts for the page header. */
 router.get('/meta', async (req: AuthRequest, res: Response) => {
   try {
-    const grouped = await prisma.inboxMessage.groupBy({ by: ['status'], where: { userId: req.userId }, _count: { _all: true } })
+    const grouped = await prisma.inboxMessage.groupBy({ by: ['status'], where: { organisationId: req.actor!.organisationId }, _count: { _all: true } })
     const count = (s: string) => grouped.find((g) => g.status === s)?._count._all ?? 0
     res.json({
       aiEnabled: aiEnabled(),
@@ -62,7 +63,7 @@ router.get('/meta', async (req: AuthRequest, res: Response) => {
 /** Loads 15 sample emails through the webhook pipeline (safe to repeat). */
 router.post('/demo', async (req: AuthRequest, res: Response) => {
   try {
-    res.json(await loadDemo(req.userId!))
+    res.json(await loadDemo(req.actor!))
   } catch (e) {
     console.error('Inbox demo load failed:', e instanceof Error ? e.message : e)
     res.status(500).json({ error: 'Server error' })
@@ -81,7 +82,7 @@ router.get('/', async (req: AuthRequest, res: Response) => {
     return
   }
   try {
-    res.json(await listMessages(req.userId!, { statuses, category }))
+    res.json(await listMessages(req.actor!, { statuses, category }))
   } catch {
     res.status(500).json({ error: 'Server error' })
   }
@@ -94,7 +95,7 @@ router.get('/:id', async (req: AuthRequest, res: Response) => {
     return
   }
   try {
-    const message = await findMessage(req.userId!, id)
+    const message = await findMessage(req.actor!, id)
     if (!message) {
       res.status(404).json({ error: 'Message not found' })
       return
@@ -126,7 +127,7 @@ router.post('/:id/approve', async (req: AuthRequest, res: Response) => {
     return
   }
   try {
-    sendReview(res, await approveMessage(req.userId!, id, parsed.data.replyDraft, parsed.data.reviewSeconds))
+    sendReview(res, await approveMessage(req.actor!, id, parsed.data.replyDraft, parsed.data.reviewSeconds))
   } catch {
     res.status(500).json({ error: 'Server error' })
   }
@@ -146,7 +147,7 @@ router.post('/:id/dismiss', async (req: AuthRequest, res: Response) => {
     return
   }
   try {
-    sendReview(res, await dismissMessage(req.userId!, id, parsed.data.reviewSeconds))
+    sendReview(res, await dismissMessage(req.actor!, id, parsed.data.reviewSeconds))
   } catch {
     res.status(500).json({ error: 'Server error' })
   }
@@ -159,7 +160,7 @@ router.post('/:id/retriage', async (req: AuthRequest, res: Response) => {
     return
   }
   try {
-    sendReview(res, await retriageMessage(req.userId!, id))
+    sendReview(res, await retriageMessage(req.actor!, id))
   } catch {
     res.status(500).json({ error: 'Server error' })
   }

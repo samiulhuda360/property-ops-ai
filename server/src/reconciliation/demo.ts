@@ -7,9 +7,10 @@
 // From server/: npx tsx src/reconciliation/demo.ts [email]   (default demo@example.com)
 import { DEMO_STATEMENT, readDemoStatement } from './fixture'
 import { importStatement, type ImportResult } from './service'
+import { actorFor, type Actor } from '../lib/actor'
 
-export async function loadDemo(userId: number): Promise<ImportResult> {
-  return importStatement(userId, DEMO_STATEMENT, readDemoStatement())
+export async function loadDemo(actor: Actor): Promise<ImportResult> {
+  return importStatement(actor, DEMO_STATEMENT, readDemoStatement())
 }
 
 async function main() {
@@ -18,7 +19,7 @@ async function main() {
   try {
     const user = await prisma.user.findUnique({ where: { email } })
     if (!user) throw new Error(`No user ${email}: run the seed first (npm run db:seed).`)
-    const result = await loadDemo(user.id)
+    const result = await loadDemo(actorFor(user))
     console.log(
       result.alreadyImported
         ? `Already imported: ${result.lines} lines in batch ${result.batch}.`

@@ -12,6 +12,7 @@ const OWNER = 'inbox-api-test@example.com'
 describe.skipIf(!hasDb)('tenant inbox webhook and API', () => {
   let auth: { Authorization: string }
   let userId: number
+  let owner: { userId: number; organisationId: number }
   let propertyId: number
   const previousSecret = process.env.INBOX_WEBHOOK_SECRET
 
@@ -26,11 +27,12 @@ describe.skipIf(!hasDb)('tenant inbox webhook and API', () => {
     const reg = await request(app).post('/api/auth/register').send({ email: OWNER, password: 'test1234', name: 'Inbox Test' })
     auth = { Authorization: `Bearer ${reg.body.token}` }
     userId = reg.body.user.id
+    owner = { userId, organisationId: reg.body.user.organisation.id as number }
     const property = await prisma.property.create({
-      data: { userId, code: 'TST4', address: '4 Harakeke Street', suburb: 'Grey Lynn', city: 'Auckland', bedrooms: 2, bathrooms: 1, rentPrice: 600, status: 'tenanted' },
+      data: { ...owner, code: 'TST4', address: '4 Harakeke Street', suburb: 'Grey Lynn', city: 'Auckland', bedrooms: 2, bathrooms: 1, rentPrice: 600, status: 'tenanted' },
     })
     propertyId = property.id
-    const tenant = await prisma.tenant.create({ data: { userId, firstName: 'Ruby', lastName: 'Taylor', email: 'ruby.taylor@example.com', phone: '021 555 0190' } })
+    const tenant = await prisma.tenant.create({ data: { ...owner, firstName: 'Ruby', lastName: 'Taylor', email: 'ruby.taylor@example.com', phone: '021 555 0190' } })
     await prisma.lease.create({ data: { propertyId, tenantId: tenant.id, startDate: new Date('2025-01-06'), weeklyRent: 600, bondAmount: 2400, rentReference: 'TAYLOR TST4' } })
   })
 
@@ -242,11 +244,11 @@ describe.skipIf(!hasDb)('tenant inbox webhook and API', () => {
 
   describe('demo loader', () => {
     it('pushes 15 sample emails through the pipeline once', async () => {
-      const first = await loadDemo(userId)
+      const first = await loadDemo({ ...owner, role: 'manager' })
       expect(first).toEqual({ loaded: 15, alreadyLoaded: 0, method: 'rules' })
       expect(await prisma.inboxMessage.count({ where: { userId, externalId: { startsWith: 'demo-' } } })).toBe(15)
       expect(await prisma.automationRun.count({ where: { userId, automation: 'inbox_triage', itemRef: { startsWith: 'inbox:' } } })).toBeGreaterThanOrEqual(15)
-      expect(await loadDemo(userId)).toEqual({ loaded: 0, alreadyLoaded: 15, method: 'rules' })
+      expect(await loadDemo({ ...owner, role: 'manager' })).toEqual({ loaded: 0, alreadyLoaded: 15, method: 'rules' })
     })
   })
 })

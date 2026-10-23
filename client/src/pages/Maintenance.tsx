@@ -4,6 +4,8 @@ import { getMaintenanceRequests, createMaintenanceRequest, updateMaintenanceRequ
 import { getProperties } from '../api/properties'
 import { MaintenanceRequest } from '../types'
 import Modal from '../components/Modal'
+import TriageModal from '../components/TriageModal'
+import WorkOrderPanel from '../components/WorkOrderPanel'
 import { format } from 'date-fns'
 
 const EMPTY: Partial<MaintenanceRequest> = { title: '', description: '', priority: 'medium', status: 'open' }
@@ -30,6 +32,8 @@ export default function Maintenance() {
   const [form, setForm] = useState<Partial<MaintenanceRequest>>(EMPTY)
   const [deleteId, setDeleteId] = useState<number | null>(null)
   const [filter, setFilter] = useState<string>('all')
+  const [triage, setTriage] = useState(false)
+  const [openId, setOpenId] = useState<number | null>(null)
 
   const create = useMutation({ mutationFn: createMaintenanceRequest, onSuccess: () => { qc.invalidateQueries({ queryKey: ['maintenance'] }); setModal(null) } })
   const update = useMutation({ mutationFn: ({ id, data }: { id: number; data: Partial<MaintenanceRequest> }) => updateMaintenanceRequest(id, data), onSuccess: () => { qc.invalidateQueries({ queryKey: ['maintenance'] }); setModal(null) } })
@@ -46,7 +50,10 @@ export default function Maintenance() {
 
   const f = (field: keyof MaintenanceRequest, val: string | number) => setForm(prev => ({ ...prev, [field]: val }))
 
-  const filtered = filter === 'all' ? requests : requests.filter(r => r.status === filter)
+  // Draft work orders wait for a person, so they come first; then the newest jobs.
+  const filtered = (filter === 'all' ? requests : requests.filter(r => r.status === filter))
+    .slice()
+    .sort((a, b) => Number(b.workOrder?.status === 'draft') - Number(a.workOrder?.status === 'draft') || b.createdAt.localeCompare(a.createdAt))
   const openCount = requests.filter(r => r.status === 'open').length
   const inProgressCount = requests.filter(r => r.status === 'in_progress').length
 
@@ -57,12 +64,17 @@ export default function Maintenance() {
           <h1 className="text-2xl font-bold text-gray-900">Maintenance</h1>
           <p className="text-gray-500 mt-1">{openCount} open · {inProgressCount} in progress</p>
         </div>
-        <button className="btn-primary" onClick={openAdd}>
-          <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-          </svg>
-          New Request
-        </button>
+        <div className="flex gap-2">
+          <button className="btn-secondary" onClick={openAdd}>
+            Log by hand
+          </button>
+          <button className="btn-primary" onClick={() => setTriage(true)}>
+            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            Triage a tenant request
+          </button>
+        </div>
       </div>
 
       <div className="flex gap-2">
@@ -93,14 +105,25 @@ export default function Maintenance() {
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap mb-1">
-                    <h3 className="font-semibold text-gray-900">{r.title}</h3>
+                    <h3 className="font-semibold text-gray-900 cursor-pointer hover:text-blue-700" onClick={() => setOpenId(r.id)}>{r.title}</h3>
                     <span className={`badge ${priorityColors[r.priority]}`}>{r.priority}</span>
                     <span className={`badge ${statusColors[r.status]}`}>{r.status.replace('_', ' ')}</span>
+                    {r.triage?.safety?.map((s) => (
+                      <span key={s} className="badge bg-red-100 text-red-700">{s}</span>
+                    ))}
+                    {r.workOrder && (
+                      <span className={`badge ${r.workOrder.status === 'draft' ? 'bg-amber-100 text-amber-700' : r.workOrder.status === 'approved' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'}`}>
+                        work order {r.workOrder.status}
+                      </span>
+                    )}
                   </div>
                   <p className="text-sm text-gray-500 mb-2">{r.property?.address}</p>
                   <p className="text-sm text-gray-600">{r.description}</p>
                   <div className="mt-2 flex items-center gap-4 text-xs text-gray-400">
                     <span>Logged {format(new Date(r.createdAt), 'd MMM yyyy')}</span>
+                    {r.workOrder?.contractor && <span>Suggested: {r.workOrder.contractor.name}</span>}
+                    {r.workOrder?.budget && <span>Budget {r.workOrder.budget.currency} {r.workOrder.budget.low}–{r.workOrder.budget.high}</span>}
+                    {r.workOrder && <button className="text-blue-600 hover:underline" onClick={() => setOpenId(r.id)}>Open work order</button>}
                     {r.completedAt && <span>Completed {format(new Date(r.completedAt), 'd MMM yyyy')}</span>}
                     {r.cost && <span>Cost: ${r.cost}</span>}
                   </div>
@@ -175,6 +198,9 @@ export default function Maintenance() {
           </div>
         </form>
       </Modal>
+
+      <TriageModal isOpen={triage} onClose={() => setTriage(false)} onDone={(job) => { setTriage(false); setOpenId(job.id) }} />
+      {openId !== null && requests.find((r) => r.id === openId) && <WorkOrderPanel job={requests.find((r) => r.id === openId)!} onClose={() => setOpenId(null)} />}
 
       <Modal isOpen={deleteId !== null} onClose={() => setDeleteId(null)} title="Delete Request">
         <p className="text-gray-600 mb-6">Delete this maintenance request?</p>

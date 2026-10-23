@@ -11,10 +11,12 @@ import {
   storedFilePath,
 } from '../documents/service'
 import { prisma } from '../lib/prisma'
-import { authenticate, AuthRequest } from '../middleware/auth'
+import { PermissionError } from '../lib/actor'
+import { authenticate, requireWrite, AuthRequest } from '../middleware/auth'
 
 const router = Router()
 router.use(authenticate)
+router.use(requireWrite)
 
 const MAX_UPLOAD_BYTES = 10 * 1024 * 1024
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: MAX_UPLOAD_BYTES, files: 1 } })
@@ -38,7 +40,7 @@ const RELATIONS = {
 } as const
 
 function fail(res: Response, e: unknown) {
-  if (e instanceof DocumentError) {
+  if (e instanceof DocumentError || e instanceof PermissionError) {
     res.status(e.status).json({ error: e.message })
     return
   }
@@ -61,7 +63,7 @@ router.get('/export/xero-bills.csv', async (req: AuthRequest, res: Response) => 
       typeof req.query.ids === 'string' && req.query.ids.trim()
         ? req.query.ids.split(',').map((s) => Number(s)).filter(Number.isInteger)
         : undefined
-    const result = await exportXeroBills(req.userId!, ids)
+    const result = await exportXeroBills(req.actor!, ids)
     if (!result) {
       res.status(404).json({ error: 'No approved invoices to export.' })
       return
@@ -79,7 +81,7 @@ router.get('/export/xero-bills.csv', async (req: AuthRequest, res: Response) => 
 /** Bills sent to the accounting adapter (the mock keeps them in a local file). */
 router.get('/accounting/bills', async (req: AuthRequest, res: Response) => {
   try {
-    res.json(await listAccountingBills(req.userId!))
+    res.json(await listAccountingBills(req.actor!))
   } catch (e) {
     fail(res, e)
   }
@@ -90,7 +92,7 @@ router.get('/', async (req: AuthRequest, res: Response) => {
     const status = typeof req.query.status === 'string' && STATUSES.includes(req.query.status) ? req.query.status : undefined
     const kind = req.query.kind === 'invoice' || req.query.kind === 'lease' ? req.query.kind : undefined
     const documents = await prisma.document.findMany({
-      where: { userId: req.userId, ...(status ? { status } : {}), ...(kind ? { kind } : {}) },
+      where: { organisationId: req.actor!.organisationId, ...(status ? { status } : {}), ...(kind ? { kind } : {}) },
       select: {
         id: true,
         kind: true,
@@ -141,7 +143,7 @@ router.post(
         res.status(400).json({ error: 'Upload one PDF in the "file" field.' })
         return
       }
-      const doc = await processDocument({ userId: req.userId!, fileName: file.originalname || 'document.pdf', data: file.buffer })
+      const doc = await processDocument({ actor: req.actor!, fileName: file.originalname || 'document.pdf', data: file.buffer })
       const full = await prisma.document.findUnique({ where: { id: doc.id }, include: RELATIONS })
       res.status(201).json(full)
     } catch (e) {
@@ -153,7 +155,7 @@ router.post(
 router.get('/:id', async (req: AuthRequest, res: Response) => {
   try {
     const doc = await prisma.document.findFirst({
-      where: { id: Number(req.params.id) || -1, userId: req.userId },
+      where: { id: Number(req.params.id) || -1, organisationId: req.actor!.organisationId },
       include: RELATIONS,
     })
     if (!doc) {
@@ -170,7 +172,7 @@ router.get('/:id', async (req: AuthRequest, res: Response) => {
 router.get('/:id/file', async (req: AuthRequest, res: Response) => {
   try {
     const doc = await prisma.document.findFirst({
-      where: { id: Number(req.params.id) || -1, userId: req.userId },
+      where: { id: Number(req.params.id) || -1, organisationId: req.actor!.organisationId },
       select: { fileName: true, storagePath: true },
     })
     const path = doc ? storedFilePath(doc.storagePath) : null
@@ -189,7 +191,7 @@ router.get('/:id/file', async (req: AuthRequest, res: Response) => {
 /** Body: { fields: { name: value }, reviewSeconds }. Records the review; nothing is paid or posted. */
 router.post('/:id/approve', async (req: AuthRequest, res: Response) => {
   try {
-    const result = await approveDocument(req.userId!, Number(req.params.id), req.body ?? {})
+    const result = await approveDocument(req.actor!, Number(req.params.id), req.body ?? {})
     const document = await prisma.document.findUnique({ where: { id: result.document.id }, include: RELATIONS })
     res.json({ document, changedFields: result.changedFields })
   } catch (e) {
@@ -200,7 +202,7 @@ router.post('/:id/approve', async (req: AuthRequest, res: Response) => {
 /** Body: { reviewSeconds, reason? }. */
 router.post('/:id/reject', async (req: AuthRequest, res: Response) => {
   try {
-    const doc = await rejectDocument(req.userId!, Number(req.params.id), req.body ?? {})
+    const doc = await rejectDocument(req.actor!, Number(req.params.id), req.body ?? {})
     res.json(await prisma.document.findUnique({ where: { id: doc.id }, include: RELATIONS }))
   } catch (e) {
     fail(res, e)
@@ -210,7 +212,7 @@ router.post('/:id/reject', async (req: AuthRequest, res: Response) => {
 /** Sends one approved invoice to the accounting adapter as a draft bill (a person's button). */
 router.post('/:id/push', async (req: AuthRequest, res: Response) => {
   try {
-    res.json(await pushToAccounting(req.userId!, Number(req.params.id)))
+    res.json(await pushToAccounting(req.actor!, Number(req.params.id)))
   } catch (e) {
     fail(res, e)
   }

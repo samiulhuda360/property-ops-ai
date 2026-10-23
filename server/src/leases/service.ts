@@ -7,6 +7,7 @@ import { basename, join, resolve, sep } from 'node:path'
 import type { Prisma } from '@prisma/client'
 import { AiError, aiEnabled } from '../ai/llm'
 import { matchProperty } from '../documents/address'
+import { audit } from '../lib/audit'
 import { recordReview, recordRun } from '../lib/automation'
 import { prisma } from '../lib/prisma'
 import { scheduleCharges } from './charges'
@@ -32,6 +33,7 @@ import {
   type TermField,
 } from './types'
 import { checkValues, validateTerms } from './validate'
+import type { Actor } from '../lib/actor'
 
 export class LeaseError extends Error {
   constructor(
@@ -76,38 +78,11 @@ export function removeStoredFile(storagePath: string | null) {
 }
 
 // ---------------------------------------------------------------------------------------------------------------
-// Audit
-
-export async function audit(input: {
-  userId: number
-  leaseAbstractId: number | null
-  action: string
-  field?: string | null
-  before?: unknown
-  after?: unknown
-  note?: string | null
-  at?: Date
-}) {
-  return prisma.auditEvent.create({
-    data: {
-      userId: input.userId,
-      leaseAbstractId: input.leaseAbstractId,
-      action: input.action,
-      field: input.field ?? null,
-      before: input.before === undefined ? undefined : json(input.before),
-      after: input.after === undefined ? undefined : json(input.after),
-      note: input.note ?? null,
-      ...(input.at ? { createdAt: input.at } : {}),
-    },
-  })
-}
-
-// ---------------------------------------------------------------------------------------------------------------
 // Issued invoices and reconciliation
 
-export async function invoicesFor(userId: number, leaseRef: string | null): Promise<IssuedInvoiceRef[]> {
+export async function invoicesFor(actor: Actor, leaseRef: string | null): Promise<IssuedInvoiceRef[]> {
   if (!leaseRef) return []
-  const rows = await prisma.issuedInvoice.findMany({ where: { userId, leaseRef: { equals: leaseRef, mode: 'insensitive' } } })
+  const rows = await prisma.issuedInvoice.findMany({ where: { organisationId: actor.organisationId, leaseRef: { equals: leaseRef, mode: 'insensitive' } } })
   return rows.map((r) => ({
     id: r.id,
     invoiceNumber: r.invoiceNumber,
@@ -149,7 +124,7 @@ export function csvCells(line: string): string[] {
  * row, invoice_number, lease_ref, description, kind, amount, currency, due_date, period.
  * An invoice number already imported is replaced.
  */
-export async function importIssuedInvoices(userId: number, csv: string): Promise<number> {
+export async function importIssuedInvoices(actor: Actor, csv: string): Promise<number> {
   const lines = csv.replace(/\r/g, '').split('\n').filter((l) => l.trim())
   const header = csvCells(lines[0]).map((h) => h.trim().toLowerCase())
   const col = (name: string) => header.indexOf(name)
@@ -164,7 +139,8 @@ export async function importIssuedInvoices(userId: number, csv: string): Promise
     const amount = Number(c[col('amount')])
     if (!invoiceNumber || !/^\d{4}-\d{2}-\d{2}$/.test(dueDate) || !Number.isFinite(amount)) continue
     const data = {
-      userId,
+      userId: actor.userId,
+      organisationId: actor.organisationId,
       invoiceNumber,
       sourceRow: col('row') >= 0 && Number(c[col('row')]) ? Number(c[col('row')]) : i + 2,
       leaseRef: c[col('lease_ref')].trim(),
@@ -175,7 +151,7 @@ export async function importIssuedInvoices(userId: number, csv: string): Promise
       dueDate: new Date(`${dueDate}T00:00:00Z`),
       period: col('period') >= 0 ? c[col('period')].trim() : null,
     }
-    await prisma.issuedInvoice.upsert({ where: { userId_invoiceNumber: { userId, invoiceNumber } }, create: data, update: data })
+    await prisma.issuedInvoice.upsert({ where: { organisationId_invoiceNumber: { organisationId: actor.organisationId, invoiceNumber } }, create: data, update: data })
     count++
   }
   return count
@@ -185,7 +161,7 @@ export async function importIssuedInvoices(userId: number, csv: string): Promise
 // Processing
 
 export interface ProcessInput {
-  userId: number
+  actor: Actor
   fileName: string
   data: Uint8Array
   route?: Route
@@ -251,13 +227,14 @@ export async function processLease(input: ProcessInput) {
     }
   }
 
-  const properties = await prisma.property.findMany({ where: { userId: input.userId }, select: { id: true, code: true, address: true, suburb: true } })
+  const properties = await prisma.property.findMany({ where: { organisationId: input.actor.organisationId }, select: { id: true, code: true, address: true, suburb: true } })
   const property = matchProperty(abstraction.terms.premises, properties)
-  const reconciliation = reconcileCharges(abstraction.terms.leaseRef, abstraction.charges, await invoicesFor(input.userId, abstraction.terms.leaseRef))
+  const reconciliation = reconcileCharges(abstraction.terms.leaseRef, abstraction.charges, await invoicesFor(input.actor, abstraction.terms.leaseRef))
   const storagePath = saveFile(input.data, input.fileName)
   const lease = await prisma.leaseAbstract.create({
     data: {
-      userId: input.userId,
+      userId: input.actor.userId,
+      organisationId: input.actor.organisationId,
       fileName: basename(input.fileName),
       storagePath,
       pages: json(pages),
@@ -278,7 +255,7 @@ export async function processLease(input: ProcessInput) {
   })
   const needsPerson = TERM_FIELDS.filter((f) => abstraction.extracted[f].status === 'needs_person')
   await audit({
-    userId: input.userId,
+    actor: input.actor,
     leaseAbstractId: lease.id,
     action: 'lease.extracted',
     after: {
@@ -294,7 +271,7 @@ export async function processLease(input: ProcessInput) {
     note: `${abstraction.route} read ${TERM_FIELDS.length - needsPerson.length} of ${TERM_FIELDS.length} terms; ${needsPerson.length} need a person.`,
     at: input.receivedAt,
   })
-  await recordRun({ userId: input.userId, automation: AUTOMATION, itemRef: itemRef(lease.id), outcome, at: input.receivedAt })
+  await recordRun({ actor: input.actor, automation: AUTOMATION, itemRef: itemRef(lease.id), outcome, at: input.receivedAt })
   return lease
 }
 
@@ -305,8 +282,8 @@ type Stored = Record<TermField, ExtractedTerm>
 const storedTerms = (terms: unknown) => terms as Stored
 const valuesOf = (terms: Stored): LeaseTerms => Object.fromEntries(TERM_FIELDS.map((f) => [f, terms[f]?.value ?? null])) as unknown as LeaseTerms
 
-async function findOwn(userId: number, id: number) {
-  const lease = Number.isInteger(id) ? await prisma.leaseAbstract.findFirst({ where: { id, userId } }) : null
+async function findOwn(actor: Actor, id: number) {
+  const lease = Number.isInteger(id) ? await prisma.leaseAbstract.findFirst({ where: { id, organisationId: actor.organisationId } }) : null
   if (!lease) throw new LeaseError(404, 'Lease not found')
   return lease
 }
@@ -316,7 +293,7 @@ function assertField(field: string): asserts field is TermField {
 }
 
 /** Re-runs the checks, the charge schedule, the risks and the reconciliation after a person changed a term. */
-async function recompute(userId: number, lease: { id: number; country: string | null; leaseType: string | null; pages: unknown }, terms: Stored) {
+async function recompute(actor: Actor, lease: { id: number; country: string | null; leaseType: string | null; pages: unknown }, terms: Stored) {
   const values = valuesOf(terms)
   const country = (lease.country ?? 'NZ') as Abstraction['country']
   const leaseType = (lease.leaseType ?? 'commercial') as Abstraction['leaseType']
@@ -331,7 +308,7 @@ async function recompute(userId: number, lease: { id: number; country: string | 
   const pages = lease.pages as PageText[]
   const risks = findRisks(values, terms, pages, leaseType)
   const charges = scheduleCharges(values)
-  const reconciliation = reconcileCharges(values.leaseRef, charges, await invoicesFor(userId, values.leaseRef))
+  const reconciliation = reconcileCharges(values.leaseRef, charges, await invoicesFor(actor, values.leaseRef))
   return { issues, risks, charges, reconciliation, leaseRef: values.leaseRef }
 }
 
@@ -344,8 +321,8 @@ const seconds = (value: unknown) => {
  * A person approves one term as read, or corrects it. A correction is checked against the field schema, re-runs the
  * checks, risks, charges and reconciliation, and is written to the audit log with the value before and after.
  */
-export async function reviewField(userId: number, id: number, field: string, body: { value?: unknown; approve?: boolean }) {
-  const lease = await findOwn(userId, id)
+export async function reviewField(actor: Actor, id: number, field: string, body: { value?: unknown; approve?: boolean }) {
+  const lease = await findOwn(actor, id)
   if (lease.status !== 'needs_review') throw new LeaseError(409, `This lease is already ${lease.status}.`)
   assertField(field)
   const terms = storedTerms(lease.terms)
@@ -370,7 +347,7 @@ export async function reviewField(userId: number, id: number, field: string, bod
   }
   terms[field] = after
   // Re-runs the checks; the person's decision on this field stands, other terms a check now doubts go back to a person.
-  const { issues, risks, charges, reconciliation, leaseRef } = await recompute(userId, lease, terms)
+  const { issues, risks, charges, reconciliation, leaseRef } = await recompute(actor, lease, terms)
   const existingRisks = (lease.risks as unknown as RiskFinding[]) ?? []
   const keptRisks = risks.map((r) => ({ ...r, status: existingRisks.find((x) => x.code === r.code)?.status ?? 'open' }))
   const updated = await prisma.leaseAbstract.update({
@@ -379,7 +356,7 @@ export async function reviewField(userId: number, id: number, field: string, bod
     include: RELATIONS,
   })
   await audit({
-    userId,
+    actor,
     leaseAbstractId: id,
     action,
     field,
@@ -391,8 +368,8 @@ export async function reviewField(userId: number, id: number, field: string, bod
 }
 
 /** A person accepts or dismisses a risk finding. */
-export async function reviewRisk(userId: number, id: number, code: string, body: { status?: unknown; note?: unknown }) {
-  const lease = await findOwn(userId, id)
+export async function reviewRisk(actor: Actor, id: number, code: string, body: { status?: unknown; note?: unknown }) {
+  const lease = await findOwn(actor, id)
   const status = body.status
   if (status !== 'accepted' && status !== 'dismissed' && status !== 'open') throw new LeaseError(400, 'status must be accepted, dismissed or open.')
   const risks = (lease.risks as unknown as RiskFinding[]) ?? []
@@ -402,7 +379,7 @@ export async function reviewRisk(userId: number, id: number, code: string, body:
   risk.status = status as RiskStatus
   const note = typeof body.note === 'string' ? body.note.trim().slice(0, 500) : ''
   const updated = await prisma.leaseAbstract.update({ where: { id }, data: { risks: json(risks) }, include: RELATIONS })
-  await audit({ userId, leaseAbstractId: id, action: 'lease.risk_reviewed', field: code, before, after: status, note: note || `${risk.title}: ${status}.` })
+  await audit({ actor, leaseAbstractId: id, action: 'lease.risk_reviewed', field: code, before, after: status, note: note || `${risk.title}: ${status}.` })
   return updated
 }
 
@@ -410,8 +387,8 @@ export async function reviewRisk(userId: number, id: number, code: string, body:
  * Final approval: every term that needed a person must have been approved or corrected. Records the review time on
  * the automation run; nothing is posted anywhere.
  */
-export async function approveLease(userId: number, id: number, body: { reviewSeconds?: unknown }) {
-  const lease = await findOwn(userId, id)
+export async function approveLease(actor: Actor, id: number, body: { reviewSeconds?: unknown }) {
+  const lease = await findOwn(actor, id)
   if (lease.status !== 'needs_review') throw new LeaseError(409, `This lease is already ${lease.status}.`)
   const terms = storedTerms(lease.terms)
   const pending = TERM_FIELDS.filter((f) => terms[f]?.status === 'needs_person')
@@ -426,12 +403,12 @@ export async function approveLease(userId: number, id: number, body: { reviewSec
     include: RELATIONS,
   })
   await recordReview(itemRef(id), reviewSeconds, corrected.length ? 'corrected' : 'reviewed')
-  await audit({ userId, leaseAbstractId: id, action: 'lease.approved', after: { corrected }, note: corrected.length ? `Approved with ${corrected.length} corrected term${corrected.length > 1 ? 's' : ''}.` : 'Approved as read.' })
+  await audit({ actor, leaseAbstractId: id, action: 'lease.approved', after: { corrected }, note: corrected.length ? `Approved with ${corrected.length} corrected term${corrected.length > 1 ? 's' : ''}.` : 'Approved as read.' })
   return updated
 }
 
-export async function rejectLease(userId: number, id: number, body: { reviewSeconds?: unknown; reason?: unknown }) {
-  const lease = await findOwn(userId, id)
+export async function rejectLease(actor: Actor, id: number, body: { reviewSeconds?: unknown; reason?: unknown }) {
+  const lease = await findOwn(actor, id)
   if (lease.status === 'rejected') throw new LeaseError(409, 'This lease is already rejected.')
   const reason = typeof body.reason === 'string' ? body.reason.trim().slice(0, 500) : ''
   const reviewSeconds = seconds(body.reviewSeconds)
@@ -441,7 +418,7 @@ export async function rejectLease(userId: number, id: number, body: { reviewSeco
     include: RELATIONS,
   })
   await recordReview(itemRef(id), reviewSeconds, 'rejected')
-  await audit({ userId, leaseAbstractId: id, action: 'lease.rejected', note: reason ? `Rejected: ${reason}` : 'Rejected by a person.' })
+  await audit({ actor, leaseAbstractId: id, action: 'lease.rejected', note: reason ? `Rejected: ${reason}` : 'Rejected by a person.' })
   return updated
 }
 
@@ -462,8 +439,8 @@ export interface ExportedLease {
   reconciliation: Reconciliation | null
 }
 
-export async function exportLease(userId: number, id: number): Promise<ExportedLease> {
-  const lease = await findOwn(userId, id)
+export async function exportLease(actor: Actor, id: number): Promise<ExportedLease> {
+  const lease = await findOwn(actor, id)
   const terms = storedTerms(lease.terms)
   return {
     id: lease.id,

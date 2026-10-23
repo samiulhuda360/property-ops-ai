@@ -1,15 +1,16 @@
 import { Router, Response } from 'express'
 import { prisma } from '../lib/prisma'
-import { authenticate, AuthRequest } from '../middleware/auth'
+import { authenticate, requireWrite, AuthRequest } from '../middleware/auth'
 
 const router = Router()
 
 router.use(authenticate)
+router.use(requireWrite)
 
 router.get('/', async (req: AuthRequest, res: Response) => {
   try {
     const payments = await prisma.payment.findMany({
-      where: { lease: { property: { userId: req.userId } } },
+      where: { lease: { property: { organisationId: req.actor!.organisationId } } },
       include: { lease: { include: { property: true, tenant: true } } },
       orderBy: { dueDate: 'desc' },
     })
@@ -23,7 +24,7 @@ router.post('/', async (req: AuthRequest, res: Response) => {
   try {
     const { leaseId, amount, dueDate, paidDate, status, notes } = req.body
     const lease = await prisma.lease.findFirst({
-      where: { id: Number(leaseId), property: { userId: req.userId } },
+      where: { id: Number(leaseId), property: { organisationId: req.actor!.organisationId } },
     })
     if (!lease) { res.status(404).json({ error: 'Lease not found' }); return }
     const payment = await prisma.payment.create({
@@ -46,7 +47,7 @@ router.post('/', async (req: AuthRequest, res: Response) => {
 router.put('/:id', async (req: AuthRequest, res: Response) => {
   try {
     const payment = await prisma.payment.findFirst({
-      where: { id: Number(req.params.id), lease: { property: { userId: req.userId } } },
+      where: { id: Number(req.params.id), lease: { property: { organisationId: req.actor!.organisationId } } },
     })
     if (!payment) { res.status(404).json({ error: 'Not found' }); return }
     const { amount, dueDate, paidDate, status, notes } = req.body
@@ -70,7 +71,7 @@ router.put('/:id', async (req: AuthRequest, res: Response) => {
 router.delete('/:id', async (req: AuthRequest, res: Response) => {
   try {
     const payment = await prisma.payment.findFirst({
-      where: { id: Number(req.params.id), lease: { property: { userId: req.userId } } },
+      where: { id: Number(req.params.id), lease: { property: { organisationId: req.actor!.organisationId } } },
     })
     if (!payment) { res.status(404).json({ error: 'Not found' }); return }
     await prisma.payment.delete({ where: { id: Number(req.params.id) } })

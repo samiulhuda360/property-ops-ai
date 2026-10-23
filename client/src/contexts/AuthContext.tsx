@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback, ReactNode } from 'react'
+import { createContext, useContext, useState, useCallback, useEffect, ReactNode } from 'react'
 import { User } from '../types'
 import api from '../api/client'
 
@@ -6,7 +6,7 @@ interface AuthContextType {
   user: User | null
   token: string | null
   login: (email: string, password: string) => Promise<void>
-  register: (name: string, email: string, password: string) => Promise<void>
+  register: (name: string, email: string, password: string, company: string) => Promise<void>
   logout: () => void
   isAuthenticated: boolean
 }
@@ -28,13 +28,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser(data.user)
   }, [])
 
-  const register = useCallback(async (name: string, email: string, password: string) => {
-    const { data } = await api.post<{ token: string; user: User }>('/auth/register', { name, email, password })
+  const register = useCallback(async (name: string, email: string, password: string, company: string) => {
+    const { data } = await api.post<{ token: string; user: User }>('/auth/register', { name, email, password, company })
     localStorage.setItem('token', data.token)
     localStorage.setItem('user', JSON.stringify(data.user))
     setToken(data.token)
     setUser(data.user)
   }, [])
+
+  useEffect(() => {
+    if (!token) return
+    api
+      .get<User>('/auth/me')
+      .then(({ data }) => {
+        localStorage.setItem('user', JSON.stringify(data))
+        setUser(data)
+      })
+      .catch(() => undefined)
+  }, [token])
 
   const logout = useCallback(() => {
     localStorage.removeItem('token')

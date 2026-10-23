@@ -4,6 +4,7 @@
 import { aiEnabled } from '../ai/llm'
 import { loadSampleEmails } from './data'
 import { ingestEmail } from './pipeline'
+import type { Actor } from '../lib/actor'
 
 /** A mix of categories and the hard cases: urgent repairs, a duplicate report, an injection attempt, te reo, ... */
 export const DEMO_EMAIL_IDS = [
@@ -30,7 +31,7 @@ export interface DemoLoadResult {
   method: 'rules' | 'llm+rules'
 }
 
-export async function loadDemo(userId: number): Promise<DemoLoadResult> {
+export async function loadDemo(actor: Actor): Promise<DemoLoadResult> {
   const wanted = new Set<string>(DEMO_EMAIL_IDS)
   const emails = loadSampleEmails()
     .filter((e) => wanted.has(e.id))
@@ -39,7 +40,7 @@ export async function loadDemo(userId: number): Promise<DemoLoadResult> {
   let loaded = 0
   let alreadyLoaded = 0
   for (const e of emails) {
-    const result = await ingestEmail(userId, {
+    const result = await ingestEmail(actor, {
       from: e.from,
       subject: e.subject,
       text: e.text,

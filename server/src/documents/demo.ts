@@ -7,6 +7,7 @@ import { readFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import { prisma } from '../lib/prisma'
 import { defaultMethod, itemRef, processDocument, removeStoredFile } from './service'
+import { actorFor, type Actor } from '../lib/actor'
 
 export const DEMO_DATA_DIR = resolve(__dirname, '../../../data/documents')
 
@@ -36,14 +37,14 @@ export interface DemoResult {
 }
 
 /** Loads the sample for one manager, replacing an earlier demo load (its documents and automation runs). */
-export async function loadDemo(userId: number): Promise<DemoResult> {
+export async function loadDemo(actor: Actor): Promise<DemoResult> {
   const files = DEMO_DOCUMENTS.map(([file]) => file)
   const earlier = await prisma.document.findMany({
-    where: { userId, fileName: { in: files } },
+    where: { organisationId: actor.organisationId, fileName: { in: files } },
     select: { id: true, storagePath: true },
   })
   if (earlier.length) {
-    await prisma.automationRun.deleteMany({ where: { userId, itemRef: { in: earlier.map((d) => itemRef(d.id)) } } })
+    await prisma.automationRun.deleteMany({ where: { organisationId: actor.organisationId, itemRef: { in: earlier.map((d) => itemRef(d.id)) } } })
     await prisma.document.deleteMany({ where: { id: { in: earlier.map((d) => d.id) } } })
     for (const d of earlier) removeStoredFile(d.storagePath)
   }
@@ -51,7 +52,7 @@ export async function loadDemo(userId: number): Promise<DemoResult> {
   let needsAttention = 0
   for (const [file, received] of DEMO_DOCUMENTS) {
     const doc = await processDocument({
-      userId,
+      actor,
       fileName: file,
       data: readFileSync(join(DEMO_DATA_DIR, file)),
       receivedAt: new Date(`${received}T09:00:00+12:00`), // 9 am in Auckland
@@ -69,7 +70,7 @@ if (require.main === module) {
     .findUnique({ where: { email } })
     .then(async (user) => {
       if (!user) throw new Error(`No user with email ${email}. Run the seed first.`)
-      const result = await loadDemo(user.id)
+      const result = await loadDemo(actorFor(user))
       console.log(
         `Loaded ${result.loaded} documents for ${email} with ${result.method}; ${result.needsAttention} have issues to review.`,
       )

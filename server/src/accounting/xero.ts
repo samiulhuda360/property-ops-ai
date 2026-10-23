@@ -37,6 +37,7 @@ export const DEFAULT_ACCOUNT_CODE = '429' // General Expenses
 export interface InvoiceForBill {
   id: number
   userId: number
+  organisationId: number
   supplierName: string
   contactEmail: string | null
   trade: string | null
@@ -70,6 +71,7 @@ export function toBill(invoice: InvoiceForBill): Bill {
     : [{ description: `Invoice ${invoice.invoiceNumber}`, quantity: 1, unitAmount: subtotal, accountCode, taxType: TAX_TYPE }]
   return {
     userId: invoice.userId,
+    organisationId: invoice.organisationId,
     documentId: invoice.id,
     contactName: invoice.supplierName,
     contactEmail: invoice.contactEmail,

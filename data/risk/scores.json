@@ -1,0 +1,1812 @@
+{
+  "backtest": {
+    "asOf": "2026-06",
+    "scores": {
+      "acme-ALB16": {
+        "features": {
+          "avg_days_late_6": 4.666666666666667,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.3333333333333333,
+          "late_trend": 9.333333333333334,
+          "max_days_late_12": 18.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9864844215338653,
+          "tenancy_months": 46.0
+        },
+        "probability": 0.2363088708530842
+      },
+      "acme-AVD25": {
+        "features": {
+          "avg_days_late_6": 2.8333333333333335,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.3333333333333333,
+          "late_trend": -5.666666666666667,
+          "max_days_late_12": 16.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0169478266651542,
+          "tenancy_months": 11.0
+        },
+        "probability": 0.06372304865848477
+      },
+      "acme-BKL4": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 1.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0163959853669424,
+          "tenancy_months": 30.0
+        },
+        "probability": 0.03455449845244102
+      },
+      "acme-BRW9": {
+        "features": {
+          "avg_days_late_6": 0.8333333333333334,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.16666666666666666,
+          "late_trend": -1.6666666666666667,
+          "max_days_late_12": 5.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9861121794871796,
+          "tenancy_months": 8.0
+        },
+        "probability": 0.08681771895982478
+      },
+      "acme-EPS3": {
+        "features": {
+          "avg_days_late_6": 1.5,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.16666666666666666,
+          "late_trend": -3.0,
+          "max_days_late_12": 9.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9879499648285776,
+          "tenancy_months": 23.0
+        },
+        "probability": 0.04075735076861124
+      },
+      "acme-FLB7": {
+        "features": {
+          "avg_days_late_6": 4.166666666666667,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.5,
+          "late_trend": 1.0000000000000004,
+          "max_days_late_12": 11.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.985075757836691,
+          "tenancy_months": 28.0
+        },
+        "probability": 0.214434565890038
+      },
+      "acme-GLF12": {
+        "features": {
+          "avg_days_late_6": 4.166666666666667,
+          "balance_ratio": 0.7223878874854417,
+          "late_share_6": 0.3333333333333333,
+          "late_trend": -0.33333333333333304,
+          "max_days_late_12": 20.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 1.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9846130359609041,
+          "tenancy_months": 38.0
+        },
+        "probability": 0.43185497712493154
+      },
+      "acme-GLN22": {
+        "features": {
+          "avg_days_late_6": 10.0,
+          "balance_ratio": 1.0,
+          "late_share_6": 0.16666666666666666,
+          "late_trend": 20.0,
+          "max_days_late_12": 60.0,
+          "missed_count_12": 1.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 1.0166653846153846,
+          "tenancy_months": 13.0
+        },
+        "probability": 0.9995645088678388
+      },
+      "acme-GRL44": {
+        "features": {
+          "avg_days_late_6": 3.3333333333333335,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.3333333333333333,
+          "late_trend": -6.666666666666667,
+          "max_days_late_12": 15.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0821918674308404,
+          "tenancy_months": 36.0
+        },
+        "probability": 0.026784044139012888
+      },
+      "acme-HND5": {
+        "features": {
+          "avg_days_late_6": 1.8333333333333333,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.16666666666666666,
+          "late_trend": 3.6666666666666665,
+          "max_days_late_12": 14.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9714307378359757,
+          "tenancy_months": 34.0
+        },
+        "probability": 0.07098011773212491
+      },
+      "acme-HWK27": {
+        "features": {
+          "avg_days_late_6": 21.166666666666668,
+          "balance_ratio": 0.0,
+          "late_share_6": 1.0,
+          "late_trend": 15.000000000000002,
+          "max_days_late_12": 33.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 1.0144916387959866,
+          "tenancy_months": 44.0
+        },
+        "probability": 0.9947492104412747
+      },
+      "acme-MLB10": {
+        "features": {
+          "avg_days_late_6": 12.5,
+          "balance_ratio": 0.0,
+          "late_share_6": 1.0,
+          "late_trend": 13.0,
+          "max_days_late_12": 24.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9852918718417739,
+          "tenancy_months": 10.0
+        },
+        "probability": 0.9809963121002955
+      },
+      "acme-MLW33": {
+        "features": {
+          "avg_days_late_6": 3.1666666666666665,
+          "balance_ratio": 1.166018848426831e-16,
+          "late_share_6": 0.3333333333333333,
+          "late_trend": 0.3333333333333335,
+          "max_days_late_12": 20.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0465135000241503,
+          "tenancy_months": 25.0
+        },
+        "probability": 0.09565834813239911
+      },
+      "acme-MNG6": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 3.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0833317307692307,
+          "tenancy_months": 60.0
+        },
+        "probability": 0.01138678571528429
+      },
+      "acme-MNW21": {
+        "features": {
+          "avg_days_late_6": 3.5,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.3333333333333333,
+          "late_trend": -7.0,
+          "max_days_late_12": 15.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0212749242636263,
+          "tenancy_months": 49.0
+        },
+        "probability": 0.015444067512686246
+      },
+      "acme-MRB6": {
+        "features": {
+          "avg_days_late_6": 4.333333333333333,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.5,
+          "late_trend": -6.0,
+          "max_days_late_12": 11.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9883703145167133,
+          "tenancy_months": 27.0
+        },
+        "probability": 0.08175242101487491
+      },
+      "acme-MTE14": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 0.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9729719615676075,
+          "tenancy_months": 17.0
+        },
+        "probability": 0.05486238155167204
+      },
+      "acme-MTR31": {
+        "features": {
+          "avg_days_late_6": 1.3333333333333333,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.3333333333333333,
+          "late_trend": 0.0,
+          "max_days_late_12": 10.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0535713549844026,
+          "tenancy_months": 59.0
+        },
+        "probability": 0.0281222585839332
+      },
+      "acme-NLN11": {
+        "features": {
+          "avg_days_late_6": 15.333333333333334,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.6666666666666666,
+          "late_trend": 4.666666666666668,
+          "max_days_late_12": 34.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 1.0384630746495187,
+          "tenancy_months": 9.0
+        },
+        "probability": 0.9368321256189324
+      },
+      "acme-ONE3": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 0.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0370384615384616,
+          "tenancy_months": 4.0
+        },
+        "probability": 0.09068418686402471
+      },
+      "acme-PAP18": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 0.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0172440547003379,
+          "tenancy_months": 24.0
+        },
+        "probability": 0.04446538028426266
+      },
+      "acme-PKA28": {
+        "features": {
+          "avg_days_late_6": 1.1666666666666667,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.3333333333333333,
+          "late_trend": -2.3333333333333335,
+          "max_days_late_12": 4.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0217425112751026,
+          "tenancy_months": 31.0
+        },
+        "probability": 0.06125856790405585
+      },
+      "acme-PKG15": {
+        "features": {
+          "avg_days_late_6": 17.833333333333332,
+          "balance_ratio": 0.0,
+          "late_share_6": 1.0,
+          "late_trend": 0.33333333333333215,
+          "max_days_late_12": 35.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 0.9857153689179878,
+          "tenancy_months": 41.0
+        },
+        "probability": 0.8900708549765084
+      },
+      "acme-PKR19": {
+        "features": {
+          "avg_days_late_6": 18.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 1.0,
+          "late_trend": 15.333333333333334,
+          "max_days_late_12": 37.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 0.987011001987011,
+          "tenancy_months": 15.0
+        },
+        "probability": 0.9962213205053745
+      },
+      "acme-PON7": {
+        "features": {
+          "avg_days_late_6": 18.833333333333332,
+          "balance_ratio": 0.0,
+          "late_share_6": 1.0,
+          "late_trend": 16.333333333333336,
+          "max_days_late_12": 42.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 1.0156274226291138,
+          "tenancy_months": 20.0
+        },
+        "probability": 0.9961582149130895
+      },
+      "acme-PTC13": {
+        "features": {
+          "avg_days_late_6": 4.166666666666667,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.5,
+          "late_trend": -4.333333333333333,
+          "max_days_late_12": 11.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0135124599662577,
+          "tenancy_months": 57.0
+        },
+        "probability": 0.036896851130622806
+      },
+      "acme-RMU8": {
+        "features": {
+          "avg_days_late_6": 0.6666666666666666,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.3333333333333333,
+          "late_trend": -0.6666666666666667,
+          "max_days_late_12": 4.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0114933687002652,
+          "tenancy_months": 52.0
+        },
+        "probability": 0.03437797954233428
+      },
+      "acme-SNY5": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 2.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0161277715536332,
+          "tenancy_months": 60.0
+        },
+        "probability": 0.011145505084165343
+      },
+      "acme-TAK9": {
+        "features": {
+          "avg_days_late_6": 14.833333333333334,
+          "balance_ratio": 1.0,
+          "late_share_6": 0.6666666666666666,
+          "late_trend": 8.333333333333334,
+          "max_days_late_12": 30.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 0.9873427335372283,
+          "tenancy_months": 18.0
+        },
+        "probability": 0.9969564755368603
+      },
+      "acme-TTH2": {
+        "features": {
+          "avg_days_late_6": 3.2,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.4,
+          "late_trend": -8.0,
+          "max_days_late_12": 10.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0169478266651542,
+          "tenancy_months": 5.0
+        },
+        "probability": 0.0850185614678486
+      },
+      "kestrel-ALT24": {
+        "features": {
+          "avg_days_late_6": 0.8333333333333334,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.16666666666666666,
+          "late_trend": -1.6666666666666667,
+          "max_days_late_12": 5.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.963414702786674,
+          "tenancy_months": 48.0
+        },
+        "probability": 0.02058204833329356
+      },
+      "kestrel-ANC7B": {
+        "features": {
+          "avg_days_late_6": 11.833333333333334,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.8333333333333334,
+          "late_trend": -7.0,
+          "max_days_late_12": 35.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 1.022225641025641,
+          "tenancy_months": 16.0
+        },
+        "probability": 0.5392086046858302
+      },
+      "kestrel-ARM16": {
+        "features": {
+          "avg_days_late_6": 1.1666666666666667,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.3333333333333333,
+          "late_trend": -2.3333333333333335,
+          "max_days_late_12": 5.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0285759497843947,
+          "tenancy_months": 60.0
+        },
+        "probability": 0.02101409493961363
+      },
+      "kestrel-BRM15": {
+        "features": {
+          "avg_days_late_6": 0.5,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.16666666666666666,
+          "late_trend": 1.0,
+          "max_days_late_12": 4.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9714242386280468,
+          "tenancy_months": 45.0
+        },
+        "probability": 0.03500144203180792
+      },
+      "kestrel-CHE8": {
+        "features": {
+          "avg_days_late_6": 4.0,
+          "balance_ratio": 7.237339172359714e-16,
+          "late_share_6": 0.3333333333333333,
+          "late_trend": -2.6666666666666665,
+          "max_days_late_12": 16.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9666692307692308,
+          "tenancy_months": 27.0
+        },
+        "probability": 0.07010844258588224
+      },
+      "kestrel-CHO18": {
+        "features": {
+          "avg_days_late_6": 8.833333333333334,
+          "balance_ratio": 0.0,
+          "late_share_6": 1.0,
+          "late_trend": 1.666666666666666,
+          "max_days_late_12": 13.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0377417641270368,
+          "tenancy_months": 6.0
+        },
+        "probability": 0.8701245967227256
+      },
+      "kestrel-CHP9": {
+        "features": {
+          "avg_days_late_6": 1.6666666666666667,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.3333333333333333,
+          "late_trend": -0.6666666666666667,
+          "max_days_late_12": 6.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9687452674392608,
+          "tenancy_months": 40.0
+        },
+        "probability": 0.057043297979635414
+      },
+      "kestrel-DDS31": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 0.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9850723649314238,
+          "tenancy_months": 43.0
+        },
+        "probability": 0.021803562512020355
+      },
+      "kestrel-DID14": {
+        "features": {
+          "avg_days_late_6": 8.166666666666666,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.6666666666666666,
+          "late_trend": 11.0,
+          "max_days_late_12": 29.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9814786324786324,
+          "tenancy_months": 22.0
+        },
+        "probability": 0.7661925126419441
+      },
+      "kestrel-DRS2": {
+        "features": {
+          "avg_days_late_6": 0.5,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.16666666666666666,
+          "late_trend": 1.0,
+          "max_days_late_12": 3.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0810807439470107,
+          "tenancy_months": 42.0
+        },
+        "probability": 0.04441497666074049
+      },
+      "kestrel-ECC33": {
+        "features": {
+          "avg_days_late_6": 27.333333333333332,
+          "balance_ratio": 0.0,
+          "late_share_6": 1.0,
+          "late_trend": 16.666666666666664,
+          "max_days_late_12": 41.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 0.9512230815125009,
+          "tenancy_months": 60.0
+        },
+        "probability": 0.9969578699678202
+      },
+      "kestrel-FAL3": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 4.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0238131868131868,
+          "tenancy_months": 34.0
+        },
+        "probability": 0.026924354535944953
+      },
+      "kestrel-GTN7": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 0.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9736922011830006,
+          "tenancy_months": 58.0
+        },
+        "probability": 0.012465708166395554
+      },
+      "kestrel-HDG9": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 5.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.026313711915563,
+          "tenancy_months": 12.0
+        },
+        "probability": 0.057079750097162194
+      },
+      "kestrel-HEA22": {
+        "features": {
+          "avg_days_late_6": 15.833333333333334,
+          "balance_ratio": 1.0,
+          "late_share_6": 1.0,
+          "late_trend": -1.6666666666666679,
+          "max_days_late_12": 34.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 0.9677443368345827,
+          "tenancy_months": 32.0
+        },
+        "probability": 0.9890928440467328
+      },
+      "kestrel-HOR5": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.4410923076923077,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 17.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 1.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 1.034480014641871,
+          "tenancy_months": 20.0
+        },
+        "probability": 0.2516542721228237
+      },
+      "kestrel-HYD17": {
+        "features": {
+          "avg_days_late_6": 19.166666666666668,
+          "balance_ratio": 2.0,
+          "late_share_6": 0.6666666666666666,
+          "late_trend": -9.666666666666666,
+          "max_days_late_12": 60.0,
+          "missed_count_12": 2.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 1.0697671922461816,
+          "tenancy_months": 22.0
+        },
+        "probability": 0.9999908803360817
+      },
+      "kestrel-KRK26": {
+        "features": {
+          "avg_days_late_6": 0.3333333333333333,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.16666666666666666,
+          "late_trend": -0.6666666666666666,
+          "max_days_late_12": 2.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9800060923264381,
+          "tenancy_months": 24.0
+        },
+        "probability": 0.05908987794025852
+      },
+      "kestrel-LEV27": {
+        "features": {
+          "avg_days_late_6": 2.5,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.3333333333333333,
+          "late_trend": 5.0,
+          "max_days_late_12": 9.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0249922115684171,
+          "tenancy_months": 60.0
+        },
+        "probability": 0.07704942467354055
+      },
+      "kestrel-MDL8": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 0.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9545487921286437,
+          "tenancy_months": 4.0
+        },
+        "probability": 0.08478917735533258
+      },
+      "kestrel-MRP6": {
+        "features": {
+          "avg_days_late_6": 1.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.3333333333333333,
+          "late_trend": 0.6666666666666666,
+          "max_days_late_12": 4.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9642883634295699,
+          "tenancy_months": 54.0
+        },
+        "probability": 0.04075687619703597
+      },
+      "kestrel-MSH14": {
+        "features": {
+          "avg_days_late_6": 5.666666666666667,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.6666666666666666,
+          "late_trend": 0.0,
+          "max_days_late_12": 9.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9743550295857989,
+          "tenancy_months": 3.0
+        },
+        "probability": 0.5704650111842072
+      },
+      "kestrel-NQT11": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 1.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0250038942382582,
+          "tenancy_months": 17.0
+        },
+        "probability": 0.055284433052012284
+      },
+      "kestrel-PRE5": {
+        "features": {
+          "avg_days_late_6": 1.1666666666666667,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.3333333333333333,
+          "late_trend": 2.3333333333333335,
+          "max_days_late_12": 4.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9807663290937009,
+          "tenancy_months": 29.0
+        },
+        "probability": 0.1305791783385639
+      },
+      "kestrel-RND4": {
+        "features": {
+          "avg_days_late_6": 2.0,
+          "balance_ratio": 1.0755833333333333,
+          "late_share_6": 0.16666666666666666,
+          "late_trend": -4.0,
+          "max_days_late_12": 15.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 3.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 0.9729749957900121,
+          "tenancy_months": 14.0
+        },
+        "probability": 0.8715873223278591
+      },
+      "kestrel-SAL41": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 6.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9827560139097774,
+          "tenancy_months": 26.0
+        },
+        "probability": 0.03220185974684333
+      },
+      "kestrel-STR19": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 14.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9791634615384616,
+          "tenancy_months": 37.0
+        },
+        "probability": 0.015943582598926493
+      },
+      "kestrel-URM21": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 4.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0638299961702,
+          "tenancy_months": 56.0
+        },
+        "probability": 0.01248434540239407
+      },
+      "kestrel-WDL9": {
+        "features": {
+          "avg_days_late_6": 0.6666666666666666,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.16666666666666666,
+          "late_trend": -1.3333333333333333,
+          "max_days_late_12": 4.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9782575978006763,
+          "tenancy_months": 7.0
+        },
+        "probability": 0.0944251399443066
+      },
+      "kestrel-WTH12": {
+        "features": {
+          "avg_days_late_6": 3.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.3333333333333333,
+          "late_trend": -6.0,
+          "max_days_late_12": 13.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9795887611027908,
+          "tenancy_months": 51.0
+        },
+        "probability": 0.01600733494629139
+      }
+    }
+  },
+  "demo": {
+    "asOf": "2026-09",
+    "scores": {
+      "acme-ALB16": {
+        "features": {
+          "avg_days_late_6": 6.166666666666667,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.5,
+          "late_trend": -6.333333333333334,
+          "max_days_late_12": 18.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9864844215338653,
+          "tenancy_months": 49.0
+        },
+        "probability": 0.03911710104146014
+      },
+      "acme-AVD25": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 16.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0169478266651542,
+          "tenancy_months": 14.0
+        },
+        "probability": 0.035251861758765095
+      },
+      "acme-BKL4": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 1.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0163959853669424,
+          "tenancy_months": 33.0
+        },
+        "probability": 0.03101622100040405
+      },
+      "acme-BRW9": {
+        "features": {
+          "avg_days_late_6": 0.5,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.16666666666666666,
+          "late_trend": 1.0,
+          "max_days_late_12": 5.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9861121794871796,
+          "tenancy_months": 11.0
+        },
+        "probability": 0.11143056547882124
+      },
+      "acme-EPS3": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 9.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9879499648285776,
+          "tenancy_months": 26.0
+        },
+        "probability": 0.02893196361167858
+      },
+      "acme-FLB7": {
+        "features": {
+          "avg_days_late_6": 3.8333333333333335,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.5,
+          "late_trend": -1.666666666666667,
+          "max_days_late_12": 11.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.985075757836691,
+          "tenancy_months": 31.0
+        },
+        "probability": 0.12665192776657822
+      },
+      "acme-GLF12": {
+        "features": {
+          "avg_days_late_6": 5.166666666666667,
+          "balance_ratio": 0.7223878874854417,
+          "late_share_6": 0.5,
+          "late_trend": 2.333333333333333,
+          "max_days_late_12": 13.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9846130359609041,
+          "tenancy_months": 41.0
+        },
+        "probability": 0.6424660062616988
+      },
+      "acme-GLN22": {
+        "features": {
+          "avg_days_late_6": 18.0,
+          "balance_ratio": 1.0,
+          "late_share_6": 0.6666666666666666,
+          "late_trend": -4.0,
+          "max_days_late_12": 60.0,
+          "missed_count_12": 1.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 1.0166653846153846,
+          "tenancy_months": 16.0
+        },
+        "probability": 0.9984883911811643
+      },
+      "acme-GRL44": {
+        "features": {
+          "avg_days_late_6": 0.5,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.16666666666666666,
+          "late_trend": 1.0,
+          "max_days_late_12": 15.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0821918674308404,
+          "tenancy_months": 39.0
+        },
+        "probability": 0.031786033717439016
+      },
+      "acme-HND5": {
+        "features": {
+          "avg_days_late_6": 4.5,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.5,
+          "late_trend": 1.6666666666666665,
+          "max_days_late_12": 14.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9714307378359757,
+          "tenancy_months": 37.0
+        },
+        "probability": 0.17066054897002902
+      },
+      "acme-HWK27": {
+        "features": {
+          "avg_days_late_6": 39.666666666666664,
+          "balance_ratio": 2.0,
+          "late_share_6": 1.0,
+          "late_trend": 21.999999999999996,
+          "max_days_late_12": 60.0,
+          "missed_count_12": 2.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 1.0144916387959866,
+          "tenancy_months": 47.0
+        },
+        "probability": 0.9999999992452433
+      },
+      "acme-MLB10": {
+        "features": {
+          "avg_days_late_6": 32.166666666666664,
+          "balance_ratio": 1.0,
+          "late_share_6": 1.0,
+          "late_trend": 26.333333333333336,
+          "max_days_late_12": 60.0,
+          "missed_count_12": 1.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 0.9852918718417739,
+          "tenancy_months": 13.0
+        },
+        "probability": 0.9999998093925527
+      },
+      "acme-MLW33": {
+        "features": {
+          "avg_days_late_6": 4.5,
+          "balance_ratio": 0.3004000000000001,
+          "late_share_6": 0.3333333333333333,
+          "late_trend": 2.3333333333333335,
+          "max_days_late_12": 17.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 1.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0465135000241503,
+          "tenancy_months": 28.0
+        },
+        "probability": 0.4035309631432014
+      },
+      "acme-MNG6": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 3.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0833317307692307,
+          "tenancy_months": 60.0
+        },
+        "probability": 0.01138678571528429
+      },
+      "acme-MNW21": {
+        "features": {
+          "avg_days_late_6": 0.16666666666666666,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.16666666666666666,
+          "late_trend": 0.3333333333333333,
+          "max_days_late_12": 15.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0212749242636263,
+          "tenancy_months": 52.0
+        },
+        "probability": 0.015757036683514213
+      },
+      "acme-MRB6": {
+        "features": {
+          "avg_days_late_6": 0.6666666666666666,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.16666666666666666,
+          "late_trend": -1.3333333333333333,
+          "max_days_late_12": 11.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9883703145167133,
+          "tenancy_months": 30.0
+        },
+        "probability": 0.03303711638283525
+      },
+      "acme-MTE14": {
+        "features": {
+          "avg_days_late_6": 14.833333333333334,
+          "balance_ratio": 1.0,
+          "late_share_6": 0.5,
+          "late_trend": 29.666666666666668,
+          "max_days_late_12": 60.0,
+          "missed_count_12": 1.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 0.9729719615676075,
+          "tenancy_months": 20.0
+        },
+        "probability": 0.9999826246131366
+      },
+      "acme-MTR31": {
+        "features": {
+          "avg_days_late_6": 3.1666666666666665,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.5,
+          "late_trend": 3.666666666666667,
+          "max_days_late_12": 10.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0535713549844026,
+          "tenancy_months": 60.0
+        },
+        "probability": 0.10585670528362197
+      },
+      "acme-NLN11": {
+        "features": {
+          "avg_days_late_6": 14.666666666666666,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.8333333333333334,
+          "late_trend": -6.000000000000002,
+          "max_days_late_12": 34.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 1.0384630746495187,
+          "tenancy_months": 12.0
+        },
+        "probability": 0.7486326202681636
+      },
+      "acme-ONE3": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 0.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0370384615384616,
+          "tenancy_months": 7.0
+        },
+        "probability": 0.08188588186228443
+      },
+      "acme-PAP18": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 0.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0172440547003379,
+          "tenancy_months": 27.0
+        },
+        "probability": 0.03995425673593255
+      },
+      "acme-PKA28": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 4.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0217425112751026,
+          "tenancy_months": 34.0
+        },
+        "probability": 0.02687594211454426
+      },
+      "acme-PKG15": {
+        "features": {
+          "avg_days_late_6": 13.833333333333334,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.8333333333333334,
+          "late_trend": -8.333333333333334,
+          "max_days_late_12": 35.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 0.9857153689179878,
+          "tenancy_months": 44.0
+        },
+        "probability": 0.32113060922615283
+      },
+      "acme-PKR19": {
+        "features": {
+          "avg_days_late_6": 34.0,
+          "balance_ratio": 1.0,
+          "late_share_6": 1.0,
+          "late_trend": 16.666666666666668,
+          "max_days_late_12": 60.0,
+          "missed_count_12": 1.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 0.987011001987011,
+          "tenancy_months": 18.0
+        },
+        "probability": 0.9999991715549583
+      },
+      "acme-PON7": {
+        "features": {
+          "avg_days_late_6": 39.5,
+          "balance_ratio": 2.0,
+          "late_share_6": 1.0,
+          "late_trend": 25.0,
+          "max_days_late_12": 60.0,
+          "missed_count_12": 2.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 1.0156274226291138,
+          "tenancy_months": 23.0
+        },
+        "probability": 0.9999999998087834
+      },
+      "acme-PTC13": {
+        "features": {
+          "avg_days_late_6": 4.833333333333333,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.5,
+          "late_trend": 5.666666666666667,
+          "max_days_late_12": 12.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0135124599662577,
+          "tenancy_months": 60.0
+        },
+        "probability": 0.17154185649154133
+      },
+      "acme-RMU8": {
+        "features": {
+          "avg_days_late_6": 0.16666666666666666,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.16666666666666666,
+          "late_trend": -0.3333333333333333,
+          "max_days_late_12": 4.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0114933687002652,
+          "tenancy_months": 55.0
+        },
+        "probability": 0.01895241382364303
+      },
+      "acme-SNY5": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 2.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0161277715536332,
+          "tenancy_months": 60.0
+        },
+        "probability": 0.011145505084165343
+      },
+      "acme-TAK9": {
+        "features": {
+          "avg_days_late_6": 19.5,
+          "balance_ratio": 1.0,
+          "late_share_6": 0.8333333333333334,
+          "late_trend": 1.0,
+          "max_days_late_12": 30.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 0.9873427335372283,
+          "tenancy_months": 21.0
+        },
+        "probability": 0.9970185354465977
+      },
+      "acme-TTH2": {
+        "features": {
+          "avg_days_late_6": 3.8333333333333335,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.3333333333333333,
+          "late_trend": 7.666666666666667,
+          "max_days_late_12": 12.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0169478266651542,
+          "tenancy_months": 8.0
+        },
+        "probability": 0.5123973678141537
+      },
+      "kestrel-ALT24": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 5.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.963414702786674,
+          "tenancy_months": 51.0
+        },
+        "probability": 0.013221192440519752
+      },
+      "kestrel-ANC7B": {
+        "features": {
+          "avg_days_late_6": 10.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.8333333333333334,
+          "late_trend": 3.333333333333332,
+          "max_days_late_12": 33.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 1.022225641025641,
+          "tenancy_months": 19.0
+        },
+        "probability": 0.8206269966486774
+      },
+      "kestrel-ARM16": {
+        "features": {
+          "avg_days_late_6": 0.6666666666666666,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.16666666666666666,
+          "late_trend": 1.3333333333333333,
+          "max_days_late_12": 5.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0285759497843947,
+          "tenancy_months": 60.0
+        },
+        "probability": 0.022475603725063256
+      },
+      "kestrel-BRM15": {
+        "features": {
+          "avg_days_late_6": 0.5,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.16666666666666666,
+          "late_trend": -1.0,
+          "max_days_late_12": 4.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9714242386280468,
+          "tenancy_months": 48.0
+        },
+        "probability": 0.022544750313427606
+      },
+      "kestrel-CHE8": {
+        "features": {
+          "avg_days_late_6": 4.5,
+          "balance_ratio": 0.6755393221768651,
+          "late_share_6": 0.3333333333333333,
+          "late_trend": 3.6666666666666665,
+          "max_days_late_12": 19.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 2.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9666692307692308,
+          "tenancy_months": 30.0
+        },
+        "probability": 0.7445719899240452
+      },
+      "kestrel-CHO18": {
+        "features": {
+          "avg_days_late_6": 4.833333333333333,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.5,
+          "late_trend": -9.666666666666666,
+          "max_days_late_12": 13.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0377417641270368,
+          "tenancy_months": 9.0
+        },
+        "probability": 0.09051622135504232
+      },
+      "kestrel-CHP9": {
+        "features": {
+          "avg_days_late_6": 2.6666666666666665,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.3333333333333333,
+          "late_trend": 2.666666666666667,
+          "max_days_late_12": 12.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9687452674392608,
+          "tenancy_months": 43.0
+        },
+        "probability": 0.08468081052789019
+      },
+      "kestrel-DDS31": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 0.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9850723649314238,
+          "tenancy_months": 46.0
+        },
+        "probability": 0.01954451104294874
+      },
+      "kestrel-DID14": {
+        "features": {
+          "avg_days_late_6": 13.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.8333333333333334,
+          "late_trend": -1.3333333333333321,
+          "max_days_late_12": 29.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9814786324786324,
+          "tenancy_months": 25.0
+        },
+        "probability": 0.595821100410474
+      },
+      "kestrel-DRS2": {
+        "features": {
+          "avg_days_late_6": 12.333333333333334,
+          "balance_ratio": 1.0,
+          "late_share_6": 0.5,
+          "late_trend": 22.666666666666668,
+          "max_days_late_12": 60.0,
+          "missed_count_12": 1.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 1.0810807439470107,
+          "tenancy_months": 45.0
+        },
+        "probability": 0.9997833282407488
+      },
+      "kestrel-ECC33": {
+        "features": {
+          "avg_days_late_6": 40.833333333333336,
+          "balance_ratio": 1.0,
+          "late_share_6": 1.0,
+          "late_trend": 10.333333333333336,
+          "max_days_late_12": 60.0,
+          "missed_count_12": 1.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 0.9512230815125009,
+          "tenancy_months": 60.0
+        },
+        "probability": 0.9999968976844001
+      },
+      "kestrel-FAL3": {
+        "features": {
+          "avg_days_late_6": 0.5,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.16666666666666666,
+          "late_trend": 1.0,
+          "max_days_late_12": 3.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0238131868131868,
+          "tenancy_months": 37.0
+        },
+        "probability": 0.05050999339502393
+      },
+      "kestrel-GTN7": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 0.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9736922011830006,
+          "tenancy_months": 60.0
+        },
+        "probability": 0.011581619162456376
+      },
+      "kestrel-HDG9": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 5.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.026313711915563,
+          "tenancy_months": 15.0
+        },
+        "probability": 0.05135765125338194
+      },
+      "kestrel-HEA22": {
+        "features": {
+          "avg_days_late_6": 14.166666666666666,
+          "balance_ratio": 1.0,
+          "late_share_6": 1.0,
+          "late_trend": -1.666666666666666,
+          "max_days_late_12": 22.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 0.9677443368345827,
+          "tenancy_months": 35.0
+        },
+        "probability": 0.9892869493547088
+      },
+      "kestrel-HOR5": {
+        "features": {
+          "avg_days_late_6": 0.8333333333333334,
+          "balance_ratio": 0.9344384615384616,
+          "late_share_6": 0.16666666666666666,
+          "late_trend": 1.6666666666666667,
+          "max_days_late_12": 17.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 2.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 1.034480014641871,
+          "tenancy_months": 23.0
+        },
+        "probability": 0.8163185457376373
+      },
+      "kestrel-HYD17": {
+        "features": {
+          "avg_days_late_6": 14.166666666666666,
+          "balance_ratio": 2.0,
+          "late_share_6": 0.8333333333333334,
+          "late_trend": -0.3333333333333339,
+          "max_days_late_12": 60.0,
+          "missed_count_12": 1.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 1.0697671922461816,
+          "tenancy_months": 25.0
+        },
+        "probability": 0.9999107498622049
+      },
+      "kestrel-KRK26": {
+        "features": {
+          "avg_days_late_6": 0.6666666666666666,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.16666666666666666,
+          "late_trend": 1.3333333333333333,
+          "max_days_late_12": 4.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9800060923264381,
+          "tenancy_months": 27.0
+        },
+        "probability": 0.07248907333952521
+      },
+      "kestrel-LEV27": {
+        "features": {
+          "avg_days_late_6": 4.166666666666667,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.5,
+          "late_trend": -1.6666666666666665,
+          "max_days_late_12": 10.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0249922115684171,
+          "tenancy_months": 60.0
+        },
+        "probability": 0.053636321760470757
+      },
+      "kestrel-MDL8": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 0.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9545487921286437,
+          "tenancy_months": 7.0
+        },
+        "probability": 0.07651468806373665
+      },
+      "kestrel-MRP6": {
+        "features": {
+          "avg_days_late_6": 0.6666666666666666,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.16666666666666666,
+          "late_trend": -1.3333333333333333,
+          "max_days_late_12": 4.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9642883634295699,
+          "tenancy_months": 57.0
+        },
+        "probability": 0.015755781133867445
+      },
+      "kestrel-MSH14": {
+        "features": {
+          "avg_days_late_6": 5.166666666666667,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.6666666666666666,
+          "late_trend": -1.0,
+          "max_days_late_12": 11.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9743550295857989,
+          "tenancy_months": 6.0
+        },
+        "probability": 0.4565269218160005
+      },
+      "kestrel-NQT11": {
+        "features": {
+          "avg_days_late_6": 0.16666666666666666,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.16666666666666666,
+          "late_trend": 0.3333333333333333,
+          "max_days_late_12": 1.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0250038942382582,
+          "tenancy_months": 20.0
+        },
+        "probability": 0.08295498978636014
+      },
+      "kestrel-PRE5": {
+        "features": {
+          "avg_days_late_6": 1.1666666666666667,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.3333333333333333,
+          "late_trend": -2.3333333333333335,
+          "max_days_late_12": 4.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9807663290937009,
+          "tenancy_months": 32.0
+        },
+        "probability": 0.05714807811287835
+      },
+      "kestrel-RND4": {
+        "features": {
+          "avg_days_late_6": 1.1666666666666667,
+          "balance_ratio": 0.5755833333333331,
+          "late_share_6": 0.16666666666666666,
+          "late_trend": 2.3333333333333335,
+          "max_days_late_12": 15.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 2.0,
+          "prior_arrears": 1.0,
+          "rent_ratio": 0.9729749957900121,
+          "tenancy_months": 17.0
+        },
+        "probability": 0.7136379765286501
+      },
+      "kestrel-SAL41": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 6.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9827560139097774,
+          "tenancy_months": 29.0
+        },
+        "probability": 0.028897274868459843
+      },
+      "kestrel-STR19": {
+        "features": {
+          "avg_days_late_6": 1.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.16666666666666666,
+          "late_trend": 2.0,
+          "max_days_late_12": 14.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9791634615384616,
+          "tenancy_months": 40.0
+        },
+        "probability": 0.03777343579894941
+      },
+      "kestrel-URM21": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 0.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 1.0638299961702,
+          "tenancy_months": 59.0
+        },
+        "probability": 0.013009890872340434
+      },
+      "kestrel-WDL9": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 4.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9782575978006763,
+          "tenancy_months": 10.0
+        },
+        "probability": 0.06096033826288883
+      },
+      "kestrel-WTH12": {
+        "features": {
+          "avg_days_late_6": 0.0,
+          "balance_ratio": 0.0,
+          "late_share_6": 0.0,
+          "late_trend": 0.0,
+          "max_days_late_12": 13.0,
+          "missed_count_12": 0.0,
+          "partial_count_6": 0.0,
+          "prior_arrears": 0.0,
+          "rent_ratio": 0.9795887611027908,
+          "tenancy_months": 54.0
+        },
+        "probability": 0.008864742387802762
+      }
+    }
+  }
+}

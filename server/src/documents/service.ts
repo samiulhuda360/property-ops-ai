@@ -5,6 +5,8 @@ import { existsSync, mkdirSync, unlinkSync, writeFileSync } from 'node:fs'
 import { basename, join, resolve, sep } from 'node:path'
 import type { Prisma } from '@prisma/client'
 import { AiError, aiEnabled } from '../ai/llm'
+import { assertCanApprove, type Actor } from '../lib/actor'
+import { audit } from '../lib/audit'
 import { recordReview, recordRun } from '../lib/automation'
 import { prisma } from '../lib/prisma'
 import { sameFieldValue } from './compare'
@@ -103,7 +105,7 @@ function emptyExtraction(kind: DocumentKind, issue: Issue): Extraction {
 }
 
 export interface ProcessInput {
-  userId: number
+  actor: Actor
   fileName: string
   data: Uint8Array
   /** Defaults to llm+validation when a model is configured, otherwise rules. */
@@ -121,7 +123,7 @@ export async function processDocument(input: ProcessInput) {
     throw new DocumentError(400, e instanceof Error ? e.message : 'Could not read the PDF.')
   }
 
-  const ref = await loadReferenceData(input.userId)
+  const ref = await loadReferenceData(input.actor.organisationId)
   const method = input.method ?? defaultMethod()
   let extraction: Extraction
   let outcome: 'auto' | 'failed' = 'auto'
@@ -155,7 +157,8 @@ export async function processDocument(input: ProcessInput) {
   const storagePath = saveFile(input.data, input.fileName)
   const doc = await prisma.document.create({
     data: {
-      userId: input.userId,
+      userId: input.actor.userId,
+      organisationId: input.actor.organisationId,
       kind: extraction.kind,
       fileName: basename(input.fileName),
       storagePath,
@@ -170,10 +173,20 @@ export async function processDocument(input: ProcessInput) {
     },
   })
   await recordRun({
-    userId: input.userId,
+    actor: input.actor,
     automation: automationFor(extraction.kind),
     itemRef: itemRef(doc.id),
     outcome,
+    at: input.receivedAt,
+  })
+  const alarms = extraction.issues.filter((i) => i.severity !== 'info').map((i) => i.code)
+  await audit({
+    actor: input.actor,
+    action: 'document.extracted',
+    entity: 'document',
+    entityId: doc.id,
+    after: { kind: extraction.kind, method: extraction.method, total: doc.total, issues: alarms },
+    note: `${extraction.method} read ${doc.fileName} (${extraction.kind}${doc.total !== null ? `, total ${doc.total}` : ''}); ${alarms.length ? `${alarms.length} check${alarms.length > 1 ? 's' : ''} to look at` : 'no issues'}.`,
     at: input.receivedAt,
   })
   return doc
@@ -218,8 +231,8 @@ const REQUIRED_TO_APPROVE: Record<DocumentKind, string[]> = {
   lease: ['tenantNames', 'propertyAddress', 'startDate', 'weeklyRent', 'bond'],
 }
 
-async function findOwn(userId: number, id: number) {
-  const doc = Number.isInteger(id) ? await prisma.document.findFirst({ where: { id, userId } }) : null
+async function findOwn(actor: Actor, id: number) {
+  const doc = Number.isInteger(id) ? await prisma.document.findFirst({ where: { id, organisationId: actor.organisationId } }) : null
   if (!doc) throw new DocumentError(404, 'Document not found')
   return doc
 }
@@ -228,8 +241,8 @@ async function findOwn(userId: number, id: number) {
  * Approves a document with the person's corrections. Records the review as "corrected" when any field changed,
  * otherwise "reviewed". Approval only records the decision: nothing is paid, sent or posted.
  */
-export async function approveDocument(userId: number, id: number, body: { fields?: unknown; reviewSeconds?: unknown }) {
-  const doc = await findOwn(userId, id)
+export async function approveDocument(actor: Actor, id: number, body: { fields?: unknown; reviewSeconds?: unknown }) {
+  const doc = await findOwn(actor, id)
   if (doc.status !== 'needs_review') throw new DocumentError(409, `This document is already ${doc.status}.`)
   const kind = doc.kind as DocumentKind
   const before = valuesOf(kind, doc.extracted)
@@ -240,8 +253,10 @@ export async function approveDocument(userId: number, id: number, body: { fields
     throw new DocumentError(400, `Fill in the ${missing.map((f) => FIELD_LABELS[f]).join(', ')} before approving.`)
   }
   const changed = fieldNames(kind).filter((f) => f in corrections && !sameFieldValue(f, before[f], after[f]))
+  // The role's approval limit applies to the money at stake: a supplier invoice above it needs a manager.
+  assertCanApprove(actor, 'invoice', kind === 'invoice' && typeof after.total === 'number' ? after.total : null)
 
-  const ref = await loadReferenceData(userId, { excludeDocumentId: id })
+  const ref = await loadReferenceData(actor.organisationId, { excludeDocumentId: id })
   const { issues, links } = validate(kind, after as unknown as Fields, ref)
   const extracted = { ...(doc.extracted as unknown as Record<string, ExtractedField>) }
   for (const f of changed) extracted[f] = { value: after[f], confidence: 'high', source: 'person' }
@@ -260,11 +275,20 @@ export async function approveDocument(userId: number, id: number, body: { fields
     },
   })
   await recordReview(itemRef(id), reviewSeconds, changed.length ? 'corrected' : 'reviewed')
+  await audit({
+    actor,
+    action: 'document.approved',
+    entity: 'document',
+    entityId: id,
+    before: changed.length ? Object.fromEntries(changed.map((f) => [f, before[f]])) : undefined,
+    after: changed.length ? Object.fromEntries(changed.map((f) => [f, after[f]])) : undefined,
+    note: changed.length ? `${doc.fileName} approved with ${changed.map((f) => FIELD_LABELS[f]).join(', ')} corrected.` : `${doc.fileName} approved as read.`,
+  })
   return { document: updated, changedFields: changed }
 }
 
-export async function rejectDocument(userId: number, id: number, body: { reviewSeconds?: unknown; reason?: unknown }) {
-  const doc = await findOwn(userId, id)
+export async function rejectDocument(actor: Actor, id: number, body: { reviewSeconds?: unknown; reason?: unknown }) {
+  const doc = await findOwn(actor, id)
   if (doc.status !== 'needs_review' && doc.status !== 'approved') {
     throw new DocumentError(409, `This document is already ${doc.status}.`)
   }
@@ -290,6 +314,7 @@ export async function rejectDocument(userId: number, id: number, body: { reviewS
     },
   })
   await recordReview(itemRef(id), reviewSeconds, 'rejected')
+  await audit({ actor, action: 'document.rejected', entity: 'document', entityId: id, note: reason ? `${doc.fileName} rejected: ${reason}` : `${doc.fileName} rejected by a person.` })
   return updated
 }
 

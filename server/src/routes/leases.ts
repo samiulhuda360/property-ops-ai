@@ -1,15 +1,16 @@
 import { Router, Response } from 'express'
 import { prisma } from '../lib/prisma'
-import { authenticate, AuthRequest } from '../middleware/auth'
+import { authenticate, requireWrite, AuthRequest } from '../middleware/auth'
 
 const router = Router()
 
 router.use(authenticate)
+router.use(requireWrite)
 
 router.get('/', async (req: AuthRequest, res: Response) => {
   try {
     const leases = await prisma.lease.findMany({
-      where: { property: { userId: req.userId } },
+      where: { property: { organisationId: req.actor!.organisationId } },
       include: { property: true, tenant: true },
       orderBy: { createdAt: 'desc' },
     })
@@ -23,7 +24,7 @@ router.post('/', async (req: AuthRequest, res: Response) => {
   try {
     const { propertyId, tenantId, startDate, endDate, weeklyRent, bondAmount, notes } = req.body
 
-    const property = await prisma.property.findFirst({ where: { id: Number(propertyId), userId: req.userId } })
+    const property = await prisma.property.findFirst({ where: { id: Number(propertyId), organisationId: req.actor!.organisationId } })
     if (!property) { res.status(404).json({ error: 'Property not found' }); return }
 
     const lease = await prisma.lease.create({
@@ -51,7 +52,7 @@ router.post('/', async (req: AuthRequest, res: Response) => {
 router.put('/:id', async (req: AuthRequest, res: Response) => {
   try {
     const lease = await prisma.lease.findFirst({
-      where: { id: Number(req.params.id), property: { userId: req.userId } },
+      where: { id: Number(req.params.id), property: { organisationId: req.actor!.organisationId } },
     })
     if (!lease) { res.status(404).json({ error: 'Not found' }); return }
     const { startDate, endDate, weeklyRent, bondAmount, status, notes } = req.body
@@ -79,7 +80,7 @@ router.put('/:id', async (req: AuthRequest, res: Response) => {
 router.delete('/:id', async (req: AuthRequest, res: Response) => {
   try {
     const lease = await prisma.lease.findFirst({
-      where: { id: Number(req.params.id), property: { userId: req.userId } },
+      where: { id: Number(req.params.id), property: { organisationId: req.actor!.organisationId } },
     })
     if (!lease) { res.status(404).json({ error: 'Not found' }); return }
     await prisma.lease.delete({ where: { id: Number(req.params.id) } })

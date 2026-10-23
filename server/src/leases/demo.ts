@@ -8,6 +8,7 @@ import { readFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import { prisma } from '../lib/prisma'
 import { defaultRoute, importIssuedInvoices, itemRef, processLease, removeStoredFile } from './service'
+import { actorFor, type Actor } from '../lib/actor'
 
 export const DEMO_LEASES_DIR = resolve(__dirname, '../../../data/leases')
 
@@ -54,21 +55,21 @@ export interface DemoResult {
 }
 
 /** Loads the sample for one manager, replacing an earlier demo load (its leases, audit events and automation runs). */
-export async function loadDemo(userId: number): Promise<DemoResult> {
+export async function loadDemo(actor: Actor): Promise<DemoResult> {
   const files = DEMO_LEASES.map((s) => s.file)
-  const earlier = await prisma.leaseAbstract.findMany({ where: { userId, fileName: { in: files } }, select: { id: true, storagePath: true } })
+  const earlier = await prisma.leaseAbstract.findMany({ where: { organisationId: actor.organisationId, fileName: { in: files } }, select: { id: true, storagePath: true } })
   if (earlier.length) {
-    await prisma.automationRun.deleteMany({ where: { userId, itemRef: { in: earlier.map((l) => itemRef(l.id)) } } })
+    await prisma.automationRun.deleteMany({ where: { organisationId: actor.organisationId, itemRef: { in: earlier.map((l) => itemRef(l.id)) } } })
     await prisma.leaseAbstract.deleteMany({ where: { id: { in: earlier.map((l) => l.id) } } })
     for (const l of earlier) removeStoredFile(l.storagePath)
   }
-  await prisma.issuedInvoice.deleteMany({ where: { userId } })
-  const invoices = await importIssuedInvoices(userId, readFileSync(join(DEMO_LEASES_DIR, 'invoices.csv'), 'utf8'))
+  await prisma.issuedInvoice.deleteMany({ where: { organisationId: actor.organisationId } })
+  const invoices = await importIssuedInvoices(actor, readFileSync(join(DEMO_LEASES_DIR, 'invoices.csv'), 'utf8'))
 
   let needsAttention = 0
   for (const [i, sample] of DEMO_LEASES.entries()) {
     const lease = await processLease({
-      userId,
+      actor,
       fileName: sample.file,
       data: readFileSync(join(DEMO_LEASES_DIR, sample.file)),
       receivedAt: new Date(`2026-09-${String(3 + Math.floor(i / 2)).padStart(2, '0')}T${i % 2 ? '14' : '09'}:30:00+12:00`),
@@ -87,7 +88,7 @@ if (require.main === module) {
     .findUnique({ where: { email } })
     .then(async (user) => {
       if (!user) throw new Error(`No user with email ${email}. Run the seed first.`)
-      const result = await loadDemo(user.id)
+      const result = await loadDemo(actorFor(user))
       console.log(`Loaded ${result.invoices} issued invoices and ${result.loaded} leases for ${email} with ${result.route}; ${result.needsAttention} need attention.`)
     })
     .catch((e) => {

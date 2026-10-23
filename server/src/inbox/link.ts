@@ -40,10 +40,10 @@ export interface Directory {
   contractors: DirContractor[]
 }
 
-export async function loadDirectory(userId: number): Promise<Directory> {
+export async function loadDirectory(organisationId: number): Promise<Directory> {
   const [tenants, properties, contractors] = await Promise.all([
     prisma.tenant.findMany({
-      where: { userId },
+      where: { organisationId },
       select: {
         id: true,
         firstName: true,
@@ -54,8 +54,8 @@ export async function loadDirectory(userId: number): Promise<Directory> {
       },
       orderBy: { id: 'asc' },
     }),
-    prisma.property.findMany({ where: { userId }, select: { id: true, code: true, address: true, suburb: true }, orderBy: { id: 'asc' } }),
-    prisma.contractor.findMany({ where: { userId }, select: { id: true, name: true, email: true }, orderBy: { id: 'asc' } }),
+    prisma.property.findMany({ where: { organisationId }, select: { id: true, code: true, address: true, suburb: true }, orderBy: { id: 'asc' } }),
+    prisma.contractor.findMany({ where: { organisationId }, select: { id: true, name: true, email: true }, orderBy: { id: 'asc' } }),
   ])
   return { tenants, properties, contractors }
 }

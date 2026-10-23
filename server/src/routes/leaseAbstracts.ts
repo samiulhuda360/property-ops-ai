@@ -19,10 +19,12 @@ import {
 } from '../leases/service'
 import { FIELD_LABELS, TERM_FIELDS } from '../leases/types'
 import { prisma } from '../lib/prisma'
-import { authenticate, AuthRequest } from '../middleware/auth'
+import { PermissionError } from '../lib/actor'
+import { authenticate, requireWrite, AuthRequest } from '../middleware/auth'
 
 const router = Router()
 router.use(authenticate)
+router.use(requireWrite)
 
 const MAX_UPLOAD_BYTES = 10 * 1024 * 1024
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: MAX_UPLOAD_BYTES, files: 1 } })
@@ -48,7 +50,7 @@ const LIST_SELECT = {
 } as const
 
 function fail(res: Response, e: unknown) {
-  if (e instanceof LeaseError) {
+  if (e instanceof LeaseError || e instanceof PermissionError) {
     res.status(e.status).json({ error: e.message })
     return
   }
@@ -81,7 +83,7 @@ router.post('/samples/:file', async (req: AuthRequest, res: Response) => {
       res.status(404).json({ error: 'Sample not found' })
       return
     }
-    const lease = await processLease({ userId: req.userId!, fileName: file, data: readFileSync(path) })
+    const lease = await processLease({ actor: req.actor!, fileName: file, data: readFileSync(path) })
     res.status(201).json(lease)
   } catch (e) {
     fail(res, e)
@@ -106,7 +108,7 @@ router.post(
         res.status(400).json({ error: 'Upload one CSV in the "file" field.' })
         return
       }
-      const imported = await importIssuedInvoices(req.userId!, req.file.buffer.toString('utf8'))
+      const imported = await importIssuedInvoices(req.actor!, req.file.buffer.toString('utf8'))
       res.json({ imported })
     } catch (e) {
       fail(res, e)
@@ -118,7 +120,7 @@ router.get('/', async (req: AuthRequest, res: Response) => {
   try {
     const status = typeof req.query.status === 'string' && STATUSES.includes(req.query.status) ? req.query.status : undefined
     const leases = await prisma.leaseAbstract.findMany({
-      where: { userId: req.userId, ...(status ? { status } : {}) },
+      where: { organisationId: req.actor!.organisationId, ...(status ? { status } : {}) },
       select: LIST_SELECT,
       orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
     })
@@ -148,7 +150,7 @@ router.post(
         res.status(400).json({ error: 'Upload one PDF in the "file" field.' })
         return
       }
-      const lease = await processLease({ userId: req.userId!, fileName: file.originalname || 'lease.pdf', data: file.buffer })
+      const lease = await processLease({ actor: req.actor!, fileName: file.originalname || 'lease.pdf', data: file.buffer })
       res.status(201).json(lease)
     } catch (e) {
       fail(res, e)
@@ -158,7 +160,7 @@ router.post(
 
 router.get('/:id', async (req: AuthRequest, res: Response) => {
   try {
-    const lease = await prisma.leaseAbstract.findFirst({ where: { id: Number(req.params.id) || -1, userId: req.userId }, include: RELATIONS })
+    const lease = await prisma.leaseAbstract.findFirst({ where: { id: Number(req.params.id) || -1, organisationId: req.actor!.organisationId }, include: RELATIONS })
     if (!lease) {
       res.status(404).json({ error: 'Lease not found' })
       return
@@ -173,7 +175,7 @@ router.get('/:id', async (req: AuthRequest, res: Response) => {
 router.get('/:id/file', async (req: AuthRequest, res: Response) => {
   try {
     const lease = await prisma.leaseAbstract.findFirst({
-      where: { id: Number(req.params.id) || -1, userId: req.userId },
+      where: { id: Number(req.params.id) || -1, organisationId: req.actor!.organisationId },
       select: { fileName: true, storagePath: true },
     })
     const path = lease ? storedFilePath(lease.storagePath) : null
@@ -192,7 +194,7 @@ router.get('/:id/file', async (req: AuthRequest, res: Response) => {
 /** The audit trail: who extracted, approved, corrected or decided what, and when. */
 router.get('/:id/audit', async (req: AuthRequest, res: Response) => {
   try {
-    const lease = await prisma.leaseAbstract.findFirst({ where: { id: Number(req.params.id) || -1, userId: req.userId }, select: { id: true } })
+    const lease = await prisma.leaseAbstract.findFirst({ where: { id: Number(req.params.id) || -1, organisationId: req.actor!.organisationId }, select: { id: true } })
     if (!lease) {
       res.status(404).json({ error: 'Lease not found' })
       return
@@ -211,7 +213,7 @@ router.get('/:id/audit', async (req: AuthRequest, res: Response) => {
 /** The abstraction as JSON (?format=csv for the CSV). */
 router.get('/:id/export', async (req: AuthRequest, res: Response) => {
   try {
-    const x = await exportLease(req.userId!, Number(req.params.id))
+    const x = await exportLease(req.actor!, Number(req.params.id))
     const stem = x.fileName.replace(/\.pdf$/i, '').replace(/[^A-Za-z0-9._-]/g, '_')
     if (req.query.format === 'csv') {
       res.setHeader('Content-Type', 'text/csv; charset=utf-8')
@@ -229,7 +231,7 @@ router.get('/:id/export', async (req: AuthRequest, res: Response) => {
 /** Body: { approve: true } to approve the term as read, or { value } to correct it. */
 router.post('/:id/fields/:field', async (req: AuthRequest, res: Response) => {
   try {
-    res.json(await reviewField(req.userId!, Number(req.params.id), String(req.params.field), req.body ?? {}))
+    res.json(await reviewField(req.actor!, Number(req.params.id), String(req.params.field), req.body ?? {}))
   } catch (e) {
     fail(res, e)
   }
@@ -238,7 +240,7 @@ router.post('/:id/fields/:field', async (req: AuthRequest, res: Response) => {
 /** Body: { status: accepted | dismissed | open, note? }. */
 router.post('/:id/risks/:code', async (req: AuthRequest, res: Response) => {
   try {
-    res.json(await reviewRisk(req.userId!, Number(req.params.id), String(req.params.code), req.body ?? {}))
+    res.json(await reviewRisk(req.actor!, Number(req.params.id), String(req.params.code), req.body ?? {}))
   } catch (e) {
     fail(res, e)
   }
@@ -247,7 +249,7 @@ router.post('/:id/risks/:code', async (req: AuthRequest, res: Response) => {
 /** Body: { reviewSeconds }. Records the decision; nothing is posted anywhere. */
 router.post('/:id/approve', async (req: AuthRequest, res: Response) => {
   try {
-    res.json(await approveLease(req.userId!, Number(req.params.id), req.body ?? {}))
+    res.json(await approveLease(req.actor!, Number(req.params.id), req.body ?? {}))
   } catch (e) {
     fail(res, e)
   }
@@ -256,7 +258,7 @@ router.post('/:id/approve', async (req: AuthRequest, res: Response) => {
 /** Body: { reviewSeconds, reason? }. */
 router.post('/:id/reject', async (req: AuthRequest, res: Response) => {
   try {
-    res.json(await rejectLease(req.userId!, Number(req.params.id), req.body ?? {}))
+    res.json(await rejectLease(req.actor!, Number(req.params.id), req.body ?? {}))
   } catch (e) {
     fail(res, e)
   }
